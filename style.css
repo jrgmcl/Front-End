@@ -1,0 +1,61 @@
+
+
+/*CSS LOG IN */
+
+
+.form-container form{
+   padding: 15px;
+   position: fixed;
+   margin-left: 250px;
+   height: 50px; 
+   margin-top: 50px;
+   
+   
+
+}
+
+.form-container form {
+
+   font-size: 20px;
+   font-weight: 500;
+}
+
+
+.form-container form h3{
+   font-size: 30px;
+   text-transform: uppercase;
+   margin-bottom: 30px;
+   color:#555d5d;
+   padding: 10px;
+   font-weight:708;
+}
+
+.form-container form input,
+.form-container form select{
+   width: 100%;
+   padding:5px;
+   font-size: 15px;
+   margin: 2px 0px 30px
+   
+
+}
+
+.form-container form select option{
+   background: #f2f8ee;
+}
+
+
+.form-container form .form-btn{
+   background: #555d5d;
+   color:#f2f8ee;
+   text-transform: capitalize;
+   font-size: 20px;
+   cursor: pointer;
+   width: 150px;
+}
+
+
+
+
+
+
