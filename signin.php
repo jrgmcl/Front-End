@@ -43,6 +43,7 @@ $row = mysqli_fetch_array($sql);
 
 if($row["total"] > 0){
 	header("Location: index.php");
+	exit();
 }
 else{
 	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username."&password=".$password);
