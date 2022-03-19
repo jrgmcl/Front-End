@@ -42,11 +42,7 @@ $sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username =
 $row = mysqli_fetch_array($sql);
 
 if($row["total"] > 0){
-	?>
-	<script>
-		alert('Login successful');
-	</script>
-	<?php
+	header("Location: index.php");
 }
 else{
 	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username."&password=".$password);
