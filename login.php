@@ -1,9 +1,5 @@
 <?php
-$emptyusername_err = 'Please enter your Username!';
-$emptypassword_err = 'Please enter your Password!';
-$emptyuserpass_err = 'Please enter your Username and Password!';
-$invalidcredentials_err = 'Username/Password is incorrect!';
-$all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $invalidcredentials_err);
+include 'err.php';
 ?>
 
 
@@ -23,7 +19,7 @@ $all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $in
 <div class="container" id="container">
 <div class="form-container sign-up-container">
 
-<form action="register_button.php">
+<form action="signup.php" id="form-id">
 	<h1>FaceCognition Registration</h1>
 	
 	<?php if (isset($_GET['error'])) { ?>
@@ -64,44 +60,10 @@ $all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $in
 		echo $_GET['ru_course'];
 	}?>" placeholder="Course">
 
-	<!-- Button for Popup Upload -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload</button>
-	<br>
-
 	<button>Register</button>
 </form>
-
-<!-- Popup Upload -->
-<div class="modal" id="Upload">
-    <div class="modal-dialog">
-		<div class="modal-content">
-
-			<!-- Modal Header -->
-			<div class="modal-header">
-			<h4 class="modal-title">Upload 5 Face Images</h4>
-			<a class="close" data-dismiss="modal"></a>
-			</div>
-
-			<!-- Modal body -->
-			<div class="modal-body">
-				<!-- Form for file uploading -->
-				<form class="form-upload" action= "fileupload.php" method="POST" enctype="multipart/form-data">
-					Choose File from PC: <input type="file" name="file">
-					<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-					<button class"button" type="submit" name="submit">Submit</button>
-				</form>
-			</div>
-
-			<!-- Modal footer -->
-			<div class="modal-footer">
-			
-			</div>
-
-		</div>
-    </div>
 </div>
 
-</div>
 
 <div class="form-container sign-in-container">
 	<form action="signin.php">
@@ -164,6 +126,7 @@ $all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $in
 	const signInButton = document.getElementById('login');
 	const container = document.getElementById('container');
 
+
 	signUpButton.addEventListener('click', () => {
 		container.classList.add("right-panel-active");
 		clearErrors();
@@ -181,7 +144,6 @@ $all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $in
 		);
 	}
 </script>
-
 
 </body>
 </html>

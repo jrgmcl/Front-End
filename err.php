@@ -14,4 +14,17 @@ $emptyusername_err = 'Please enter your Username!';
 $emptypassword_err = 'Please enter your Password!';
 $emptyuserpass_err = 'Please enter your Username and Password!';
 $invalidcredentials_err = 'Username/Password is incorrect!';
+
+$all_err = array($emptyusername_err,
+					$emptypassword_err,
+					$emptyuserpass_err,
+					$invalidcredentials_err,
+					$email_err,
+					$emptyname_err,
+					$emptystudentid_err,
+					$emptycourse_err,
+					$emptyemail_err,
+					$emptyfile_err,
+					$userexist_err,
+					$emailvalid_err);
 ?>

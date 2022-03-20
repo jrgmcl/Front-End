@@ -1,5 +1,9 @@
 <?php
 include 'err.php';
+$ru_name = $_GET["ru_name"];
+$ru_studentid = $_GET["ru_studentid"];
+$ru_course = $_GET["ru_course"];
+$ru_email = $_GET["ru_email"];
 ?>
 
 
@@ -19,7 +23,7 @@ include 'err.php';
 <div class="container right-panel-active" id="container">
 <div class="form-container sign-up-container">
 
-<form action="signup.php">
+<form>
 	<h1>FaceCognition Registration</h1>
 	
 	<?php if (isset($_GET['error'])) { ?>
@@ -34,7 +38,7 @@ include 'err.php';
 	}
 	else{
 		echo $_GET['ru_name'];
-	}?>" placeholder="Name">
+	}?>" placeholder="Name" Disabled>
 
 	<input type="studentid" name="ru_studentid" value="<?php
 	if (empty($_GET['ru_studentid'])) {
@@ -42,7 +46,7 @@ include 'err.php';
 	}
 	else{
 		echo $_GET['ru_studentid'];
-	}?>" placeholder="Student ID number">
+	}?>" placeholder="Student ID number" Disabled>
 
 	<input type="email" name="ru_email" value="<?php
 	if (empty($_GET['ru_email'])) {
@@ -50,7 +54,7 @@ include 'err.php';
 	}
 	else{
 		echo $_GET['ru_email'];
-	}?>" placeholder="Email">
+	}?>" placeholder="Email" Disabled>
 
 	<input type="course" name="ru_course" value="<?php
 	if (empty($_GET['ru_course'])) {
@@ -58,12 +62,41 @@ include 'err.php';
 	}
 	else{
 		echo $_GET['ru_course'];
-	}?>" placeholder="Course">
+	}?>" placeholder="Course" Disabled>
 
-
-	<button>Register</button>
+	<!-- Button for Popup Upload -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload Images</button>
 </form>
 
+<!-- Popup Upload -->
+<div class="modal" id="Upload">
+    <div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+			<h4 class="modal-title">Upload 5 Face Images</h4>
+			<a class="close" data-dismiss="modal"></a>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<!-- Form for file uploading -->
+				<form class="form-upload" action= "append_user.php<?php echo "?ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email?>" method="POST" enctype="multipart/form-data">
+					Choose File from PC: <input type="file" name="file">
+					<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+					<button class"button" type="submit" name="submit">Submit</button>
+				</form>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			
+			</div>
+
+		</div>
+    </div>
+</div>
 
 </div>
 
