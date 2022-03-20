@@ -97,6 +97,32 @@ input {
 	width: 100%;
 }
 
+select {
+	background-color: #eee;
+	border: none;
+	border-radius: 15px;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+select:hover {
+	background-color: #eee;
+	border: none;
+	border-radius: 15px;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+option {
+	background-color: #eee;
+	border: none;
+	border-radius: 5px;
+	padding: 3px 2px;
+	margin: 4px 0;
+	width: 100%;
+}
+
 
 .container {
 	background-color: #fff;
