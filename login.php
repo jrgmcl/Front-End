@@ -1,21 +1,36 @@
-<!DOCTYPE html>
+<?php
+$emptyusername_err = 'Please enter your Username!';
+$emptypassword_err = 'Please enter your Password!';
+$emptyuserpass_err = 'Please enter your Username and Password!';
+$invalidcredentials_err = 'Username/Password is incorrect!';
+$all_err = array($emptyusername_err, $emptypassword_err, $emptyuserpass_err, $invalidcredentials_err);
+?>
+
+
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN”
+“http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>FaceCognition</title>
 	<link rel="stylesheet" type="text/css" href="login-reg-styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="body">
 
 <div class="container" id="container">
 <div class="form-container sign-up-container">
 
-<form action="signup.php">
+<form action="register_button.php">
 	<h1>FaceCognition Registration</h1>
 	
 	<?php if (isset($_GET['error'])) { ?>
      	<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
     <?php } ?>
+
+	<span>Make sure all the information is correct.</span>
 	
 	<input type="name" name="ru_name" value="<?php
 	if (empty($_GET['ru_name'])) {
@@ -49,17 +64,61 @@
 		echo $_GET['ru_course'];
 	}?>" placeholder="Course">
 
+	<!-- Button for Popup Upload -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload</button>
+	<br>
+
 	<button>Register</button>
 </form>
+
+<!-- Popup Upload -->
+<div class="modal" id="Upload">
+    <div class="modal-dialog">
+		<div class="modal-content">
+
+			<!-- Modal Header -->
+			<div class="modal-header">
+			<h4 class="modal-title">Upload 5 Face Images</h4>
+			<a class="close" data-dismiss="modal"></a>
+			</div>
+
+			<!-- Modal body -->
+			<div class="modal-body">
+				<!-- Form for file uploading -->
+				<form class="form-upload" action= "fileupload.php" method="POST" enctype="multipart/form-data">
+					Choose File from PC: <input type="file" name="file">
+					<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+					<button class"button" type="submit" name="submit">Submit</button>
+				</form>
+			</div>
+
+			<!-- Modal footer -->
+			<div class="modal-footer">
+			
+			</div>
+
+		</div>
+    </div>
+</div>
+
 </div>
 
 <div class="form-container sign-in-container">
 	<form action="signin.php">
 	<h1>FaceCognition Admin Login</h1>
-	<br>
-	<?php if (isset($_GET['error'])) { ?>
-     	<p class="loginerror-msg"><?php echo $_GET['error']; ?></p>
-    <?php } ?>
+	
+	<?php
+	if (!empty($_GET['error'])) {
+		if (in_array($_GET['error'], $all_err)){
+	?>
+     	<p class="loginerror-msg">
+		<?php echo
+		$_GET['error'];
+		?>
+		</p>
+    <?php
+	}}
+	?>
 
 	<span>Only authorized user can login here.</span>
 

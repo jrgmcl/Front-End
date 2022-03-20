@@ -1,17 +1,13 @@
 <?php
 
 include 'config.php';
+include 'err.php';
 
 $username = $_GET["username"];
 $password = $_GET["password"];
 $salt = "fr";
 $password_encrypted = sha1($password);
 
-#Errors
-$emptyusername_err = 'Please enter your Username!';
-$emptypassword_err = 'Please enter your Password!';
-$emptyuserpass_err = 'Please enter your Username and Password!';
-$invalidcredentials_err = 'Username/Password is incorrect!';
 
 if (empty($username) && empty($password)) {
 	header("Location: login.php?error=".$emptyuserpass_err."&username=".$username);

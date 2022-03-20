@@ -1,3 +1,7 @@
+<?php
+$all_err = array("email_err", "emptyname_err", "emptystudentid_err", "emptycourse_err", "emptyemail_err", "userexist_err", "emailvalid_err");
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +20,9 @@
 	<?php if (isset($_GET['error'])) { ?>
      	<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
     <?php } ?>
-	
+
+	<span>Make sure all the information is correct.</span>
+
 	<input type="name" name="ru_name" value="<?php
 	if (empty($_GET['ru_name'])) {
 		echo "";
@@ -57,9 +63,19 @@
 	<form action="signin.php">
 	<h1>FaceCognition Admin Login</h1>
 
-	<?php if (isset($_GET['error'])) { ?>
-     	<p class="loginerror-msg"><?php echo $_GET['error']; ?></p>
-    <?php } ?>
+	<?php
+	if (!empty($_GET['error'])) {
+		if (in_array($_GET['error'], $all_err)){
+	?>
+     	<p class="regerror-msg">
+		<?php echo
+		$_GET['error'];
+		?>
+		</p>
+    <?php
+	}}
+	?>
+
 
 	<span>Only authorized user can login here.</span>
 
