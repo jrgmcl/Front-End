@@ -1,15 +1,6 @@
 <?php  
 
-$servername ="localhost";
-$username = "root";
-$password = "";
-$dbname = "fr";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if($conn->connect_error){
-	die("connection failed");
-}
+include 'config.php';
 
 #Grab input values
 $ru_name = $_GET["ru_name"];
@@ -19,19 +10,28 @@ $ru_email = $_GET["ru_email"];
 $id = 0;
 
 #Errors
-$registered_err = 'Information already exists on the system';
 $email_err = 'Enter a valid E-mail address';
 $emptyname_err = 'Please enter your name!';
 $emptystudentid_err = 'Please enter your Student ID!';
 $emptycourse_err = 'Please enter your Course!';
 $emptyemail_err = 'Please enter your E-mail!';
+$userexist_err ='Sorry, your e-mail and student ID already exists on the system!';
+$emailvalid_err = 'Sorry, your e-mail is not valid!';
 
 if (empty($ru_name)) {
-	header("Location: login.php?error=".$emptyname_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
+	header("Location: main_register.php?error=".$emptyname_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
 	exit();
-	}
+}
 else if(empty($ru_studentid)){
-    header("Location: login.php?error=".$emptystudentid_err);
+    header("Location: main_register.php?error=".$emptystudentid_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
+	exit();
+}
+else if(empty($ru_course)){
+    header("Location: main_register.php?error=".$emptycourse_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
+	exit();
+}
+else if(empty($ru_email)){
+	header("Location: main_register.php?error=".$emptyemail_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
 	exit();
 }
 
@@ -40,12 +40,14 @@ $select = mysqli_query($conn, "SELECT * FROM rgsted_users WHERE ru_email = '$ru_
 
 #If email add and student ID exists on the database
 if (!$select || mysqli_num_rows($select) == 0) {
-
+	header("Location: main_register.php?error=".$userexist_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
+	exit();
 }
 
 #If input email is not a valid email address
 elseif (!filter_var($ru_email, FILTER_VALIDATE_EMAIL)) {
-
+	header("Location: main_register.php?error=".$emailvalid_err."&ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email);
+	exit();
 }
 
 #Else register the information from the input values
@@ -67,6 +69,4 @@ else {
 		<?php
 	}
 }
-
-
 ?>
