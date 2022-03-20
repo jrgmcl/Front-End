@@ -27,8 +27,6 @@ body{
   margin-left: 350px;
   margin-top: 50px; 
   position: absolute;
-  
-
 }
 
 
@@ -160,18 +158,21 @@ body{
         <a href="#dash" class="dash-board">
         <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
         <span class="item">Dashboard</span></a>
+
         <a href="index.php">
         <span class="icon">
         <i class='fa-regular fa-address-book' style='color:#f2f2f2'></i></span>
-        <span class="item">Records</span>
+        <span class="item">Records</span></a>
+
         <a href="Register.php">
         <span class="icon">
         <i class='fa-solid fa-user-plus' style='color:#ffffff'></i></span>
         <span class="item">Register</span></a>
+
         <a href="#">
         <span class="icon">
         <i class='fa-solid fa-user-gear' style='color:#fdfcfc'></i></span>
-        <span class="item">Request</span></a></a></li>
+        <span class="item">Request</span></a></li>
       </div>
       </div>
 
