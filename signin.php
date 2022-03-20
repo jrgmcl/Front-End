@@ -1,15 +1,6 @@
 <?php
 
-$servername ="localhost";
-$username = "root";
-$password = "";
-$dbname = "fr";
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if($conn->connect_error){
-	die("connection failed");
-}
+include 'config.php';
 
 $username = $_GET["username"];
 $password = $_GET["password"];
@@ -23,15 +14,15 @@ $emptyuserpass_err = 'Please enter your Username and Password!';
 $invalidcredentials_err = 'Username/Password is incorrect!';
 
 if (empty($username) && empty($password)) {
-	header("Location: login.php?error=".$emptyuserpass_err."&username=".$username."&password=".$password);
+	header("Location: login.php?error=".$emptyuserpass_err."&username=".$username);
 	exit();
 }
 else if (empty($username)) {
-	header("Location: login.php?error=".$emptyusername_err."&username=".$username."&password=".$password);
+	header("Location: login.php?error=".$emptyusername_err."&username=".$username);
 	exit();
 }
 else if(empty($password)){
-    header("Location: login.php?error=".$emptypassword_err."&username=".$username."&password=".$password);
+    header("Location: login.php?error=".$emptypassword_err."&username=".$username);
 	exit();
 }
 
@@ -46,7 +37,7 @@ if($row["total"] > 0){
 	exit();
 }
 else{
-	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username."&password=".$password);
+	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username);
 	exit();
 }
 
