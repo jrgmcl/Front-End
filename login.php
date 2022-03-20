@@ -107,12 +107,20 @@
 
 	signUpButton.addEventListener('click', () => {
 		container.classList.add("right-panel-active");
-		errors.clear();
+		clearErrors();
 	});
+
 	signInButton.addEventListener('click', () => {
 		container.classList.remove("right-panel-active");
-		errors.clear();
+		clearErrors();
 	});
+
+	function clearErrors() {
+		Array.prototype.forEach.call(
+			document.getElementsByClassName("regerror-msg"),
+			function(el) { el.style.display = "none"; }
+		);
+	}
 </script>
 
 
