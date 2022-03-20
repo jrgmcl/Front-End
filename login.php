@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="login-reg-styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body class="body">
 
 <div class="container" id="container">
 <div class="form-container sign-up-container">
@@ -56,7 +56,7 @@
 <div class="form-container sign-in-container">
 	<form action="signin.php">
 	<h1>FaceCognition Admin Login</h1>
-
+	<br>
 	<?php if (isset($_GET['error'])) { ?>
      	<p class="loginerror-msg"><?php echo $_GET['error']; ?></p>
     <?php } ?>

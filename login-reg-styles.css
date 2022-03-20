@@ -5,6 +5,8 @@
 }
 
 body {
+	background-image: url("images/BGpic.jpg");
+	background-position: center;
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
