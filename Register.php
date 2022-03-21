@@ -59,8 +59,10 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 
          margin: 0;
          padding: 0;
-         background-position: center;
-         background: #f2f8ee;
+         background: url(Default.jpg);
+         position: relative; 
+
+
       }
 
       header {
@@ -203,7 +205,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
       <h3> STI College <span> Cubao</span></h3>
       </div>
       <div class="right_area">
-      <a href="#" class="logout_btn">Log out</a> 
+      <a href="Logout.php" class="logout_btn">Log out</a> 
       </div>
     </header>
 
@@ -214,7 +216,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
      <center> <h4> Admin </h4></center>
         
        <!--Menu Sidebar Items-->
-      <a href="#dash" class="dash-board">
+      <a href="dashboard.php">
        <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
        <span class="item">Dashboard </span></a>
 
@@ -226,7 +228,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
        <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
        <span class="item"> Register</span </a>
       
-      <a href="#">
+      <a href="request.php">
        <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
        <span class="item">Request</span></a>
       
