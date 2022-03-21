@@ -7,45 +7,50 @@
 if(isset($_POST['submit'])){ // declaration of variables ang assigning data from database
 
    // declared name $ should be same from the database
-
-   $name = mysqli_real_escape_string($conn, $_POST['name']); 
-   $student_id = mysqli_real_escape_string($conn, $_POST['student_id']);
-   $course = $_POST['course'];
-
+  
+   #Grab input values
+   $ru_name = $_POST["ru_name"];
+   $ru_studentid = $_POST["ru_studentid"];
+   $ru_course = $_POST["ru_course"];
+   $ru_email = $_POST["ru_email"];
+    $id = 0;
 // fetching the email and student id from database
 
-   $select = " SELECT * FROM user_form WHERE student_id = '$student_id' ";
+   $rs = mysqli_query($conn, $register);
 
-   $result = mysqli_query($conn, $select);
-
-   if(mysqli_num_rows($result) > 0){
+   if ($rs){
 
       $error[] = 'user already exist!';
 
-   }else{
-
-      if($pass != $cpass){
-         $error[] = 'password not matched!';
       }else{
-         $insert = "INSERT INTO user_form(name, email, course, student_id) VALUES ('$name','$email','$course','$student_id') " ;
-         mysqli_query($conn, $insert);
-         header('location:Register.php'); //hEADER LOGIN
+        $register = "INSERT INTO `rgstrd_users` (id, ru_name, ru_studentid, ru_course, ru_email) 
+        VALUES ('$id', '$ru_name', '$ru_studentid', '$ru_course', '$ru_email')";
+        $rs = mysqli_query($conn, $register);
+         header('location:Register.php'); // When registering, page will go back to Register.php
       }
-   }
+   }    ?>
 
-};
 
-?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
+  <!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
+  <html>
+  <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+
+
+<body class="body">
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
-   <title>Registration  </title>
+    <title>Registration  </title>
+ 
 
    <!-- CSS FOR MAIN -->
 
@@ -70,7 +75,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 
       .left_area h3 {
          color: #f2f8ee;
-         margin-top: -35px;
+         margin-top: -20px;
          text-transform: uppercase;
          font-size: 22px;
          font-weight: 900;
@@ -88,7 +93,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -37px;
+         margin-top: -20px;
          margin-right: 20px;
          border-radius: 2px;
          font-size: 15px;
@@ -116,7 +121,6 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 
       }
 
-
       .sidebar h4 {
          color: #f2f8ee;
          margin-bottom: 10px;
@@ -124,8 +128,6 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
         background: #555d5d;
         margin-top: -30px;
       }
-
-    
 
       .sidebar a {
          color: #f2f8ee;
@@ -152,7 +154,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
       label #sidebar_btn {
          z-index: 1;
          color: #f2f8ee;
-         margin-top: -18px;
+         margin-top: -6px;
          position: absolute;
          cursor: pointer;
          left: 300px;
@@ -186,142 +188,142 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
          display: none;
       }
    </style>
-
+    
    <!-- CSS MAIN ENDS -->
 
 <body>
-
-
    <!--Sidebar Toggle-->
    <input type="checkbox" id="check">
 
-
    <header>
       <label for="check">
-         <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
+      <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
       </label>
       <div class="left_area">
-         <h3> STI College <span> Cubao</span></h3>
+      <h3> STI College <span> Cubao</span></h3>
       </div>
       <div class="right_area">
-         <a href="#" class="logout_btn">Log out</a> 
-         <a href="#" class="log_btn> Admin</a>
-         <a href="# class="register">Register User</a>
+      <a href="#" class="logout_btn">Log out</a> 
       </div>
-   </header>
-
-   <div class="sidebar">
-      <center>
-         <h4> Admin </h4>
-   </center>
+    </header>
 
 
-      <!--Menu Sidebar Items-->
 
+  <div class="sidebar">
+      
+     <center> <h4> Admin </h4></center>
+        
+       <!--Menu Sidebar Items-->
       <a href="#dash" class="dash-board">
-         <span class="icon"><i class='fa-solid fa-bars ' style='color:#55d5d'></i></span>
-         <span class="item"  >Dashboard</span>
-      </a>
+       <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
+       <span class="item">Dashboard </span></a>
 
       <a href="index.php">
-         <span class="icon"><i class='fa-regular fa-address-book ' style='color:#55d5d'></i></span>
-         <span class="item">Records</span>
+       <span class="icon"><i class='fa-regular fa-address-book ' style='color:#55d5d'></i></span>
+       <span class="item">Records</span>
 
-
-         <a href="Register.php">
-            <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
-            <span class="item"> Register</span>
-
-         </a>
-
-         <a href="#"">
-             <span class=" icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
-            <span class="item">Request</span>
-         </a>
-
-
-
-      </a></li>
-
-
-   </div>
+      <a href="Register.php">
+       <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
+       <span class="item"> Register</span </a>
+      
+      <a href="#">
+       <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
+       <span class="item">Request</span></a>
+      
+     </div>
 
    <!-- NAVIGATION ENDS -->
 
-   <div class="form-container">
-
-      <form action="" method="post">
-        <b> <h3>Register User</h3> </b>
-         <?php
-          if(isset($error)){
-             foreach($error as $error){
-                echo '<span class="error-msg">' .$error. '</span>';
-              };
-            };
-            ?>
-
-            
-        <p> User ID </p>
-         </td>  <input type="student_id" name="student_id" required placeholder="User ID"> </td>
-
-         <p>Full Name </p>
-           <td><input type="text" name="name" required placeholder="Full name"></td>
-         
+    
+<div class="container" id="container">
+    <div class="form-container">
       
-        <p> Course </p> <select name="course">
-             <option value="user">   </option>
-             <option value="user">ASCT</option>
-            <option value="user">BSCPE</option>
-            <option value="user">BSIT</option>
-            <option value="user">BSCS</option>
-            <option value="user">BSBA</option>
-            <option value="user">BSA</option>
-            <option value="user">BSTM</option>
-            <option value="user">BMMA</option>
-            <option value="user">BSHM</option>
-            <option value="user">TOP</option>
-            <option value="user">GAS</option>
-            <option value="user">STEM</option>
-            <option value="user">Faculty Staff</option>
+    <form action="" id="form-id" method="post">
+	<h1>Register User</h1>
+	
+	<?php if (isset($_GET['error'])) { ?>
+    <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+    <?php } ?>
 
-         </select>
+	 <span>Provide the following.</span>
 
-         <input type="submit" name="submit" value="Proceed" class="form-btn">
+     <br>
+	
+	 <input type="name" name="ru_name" value="<?php
+	    if (empty($_GET['ru_name'])) {
+		echo "";
+    	}
+	    else{
+		echo $_GET['ru_name'];
+	    }?>" placeholder="Name">
+  
+	  <input type="studentid" name="ru_studentid" value="<?php
+	    if (empty($_GET['ru_studentid'])) {
+		echo "";
+	    }
+	    else{
+		echo $_GET['ru_studentid'];
+	    }?>" placeholder="Student ID number">
 
-   
-         </form>
-         
+      <input type="email" name="ru_email" value="<?php
+	    if (empty($_GET['ru_email'])) {
+		echo "";
+	    }
+	    else{
+	    echo $_GET['ru_email'];
+	    }?>" placeholder="Email">
 
+	  <select name="ru_course" value="<?php
+	   if (empty($_GET['ru_course'])) {
+	   echo "";
+	   }
+    	else{
+
+		echo $_GET['ru_course'];
+
+	   }?>" placeholder="Course">
+        <option disabled selected value>Select a Course</option>
+        <option value="ASCT">ASCT</option>
+        <option value="BSCPE">BSCPE</option>
+        <option value="BSIT">BSIT</option>
+        <option value="BSCS">BSCS</option>
+        <option value="BSBA">BSBA</option>
+        <option value="BSA">BSA</option>
+        <option value="BSTM">BSTM</option>
+        <option value="BMMA">BMMA</option>
+        <option value="BSHM">BSHM</option>
+        <option value="TOP">TOP</option>
+        <option value="GAS">GAS</option>
+        <option value="STEM">STEM</option>
+        <option value="Faculty Staff">Faculty Staff</option>
+     </select>
+ 
+     
    <br>
-   <br>
-   <br>
-   
-   <br>
-   <br>
-   <br>
-   <br>
-   
-   <br>
-   <br>
-   <br>
-   <br>
-   
-   <br>
-   <br>
-   <br>
-   <br>
-   
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
+	<!-- Form for file uploading -->
         
-    <?php
+       <form class="form-upload" action= "fileupload.php<?php echo "?ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email?>" method="POST" enctype="multipart/form-data">
+		Choose File from PC: <input type="file" name="file" multiple>
+   <br>
+	<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+		<button class"button" type="submit" name="submit">Submit</button>
+			
+        
+        
+        </form>
+			</div>
+			
+			</div>
 
-    include 'upload.php';
-
-    ?>
+		</div>
+    </div>
+    
+    </div>
+</div>
+			</div?
+		</div>
+    </div>
+</div>
 
    </div>
 
