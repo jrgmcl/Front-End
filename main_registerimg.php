@@ -110,7 +110,7 @@ $ru_email = $_GET["ru_email"];
 			<div class="modal-body">
 				<!-- Form for file uploading -->
 				<form class="form-upload" action= "append_user.php<?php echo "?ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email?>" method="POST" enctype="multipart/form-data">
-					Choose File from PC: <input type="file" name="file" multiple>
+					Choose File from PC: <input type="file" name="upload[]" multiple>
 					<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
 					<button class"button" type="submit" name="submit">Submit</button>
 				</form>
