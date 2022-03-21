@@ -30,7 +30,7 @@ $ru_email = $_GET["ru_email"];
      	<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
     <?php } ?>
 
-	<span>Make sure all the information is correct.</span>
+	<span>Please upload your picture to proceed the registration!</span>
 	
 	<input type="name" name="ru_name" value="<?php
 	if (empty($_GET['ru_name'])) {
@@ -56,13 +56,40 @@ $ru_email = $_GET["ru_email"];
 		echo $_GET['ru_email'];
 	}?>" placeholder="Email" Disabled>
 
-	<input type="course" name="ru_course" value="<?php
+	<select name="ru_course" value="<?php
 	if (empty($_GET['ru_course'])) {
 		echo "";
 	}
 	else{
 		echo $_GET['ru_course'];
 	}?>" placeholder="Course" Disabled>
+        <option value="<?php
+		if (empty($_GET['ru_course'])) {
+			echo "";
+		}
+		else{
+			echo $_GET['ru_course'];
+		}?>" disabled selected value>"<?php
+			if (empty($_GET['ru_course'])) {
+				echo "";
+			}
+			else{
+				echo $_GET['ru_course'];
+			}?>"</option>
+        <option value="ASCT">ASCT</option>
+        <option value="BSCPE">BSCPE</option>
+        <option value="BSIT">BSIT</option>
+        <option value="BSCS">BSCS</option>
+        <option value="BSBA">BSBA</option>
+        <option value="BSA">BSA</option>
+        <option value="BSTM">BSTM</option>
+        <option value="BMMA">BMMA</option>
+        <option value="BSHM">BSHM</option>
+        <option value="TOP">TOP</option>
+        <option value="GAS">GAS</option>
+        <option value="STEM">STEM</option>
+        <option value="Faculty Staff">Faculty Staff</option>
+     </select>
 
 	<!-- Button for Popup Upload -->
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload Images</button>

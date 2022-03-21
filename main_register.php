@@ -19,7 +19,7 @@ include 'err.php';
 <div class="container right-panel-active" id="container">
 <div class="form-container sign-up-container">
 
-<form action="signup.php">
+<form action="signup.php" id="form-id">
 	<h1>FaceCognition Registration</h1>
 	
 	<?php if (isset($_GET['error'])) { ?>
@@ -52,20 +52,34 @@ include 'err.php';
 		echo $_GET['ru_email'];
 	}?>" placeholder="Email">
 
-	<input type="course" name="ru_course" value="<?php
+	<select name="ru_course" value="<?php
 	if (empty($_GET['ru_course'])) {
 		echo "";
 	}
 	else{
 		echo $_GET['ru_course'];
 	}?>" placeholder="Course">
+        <option disabled selected value>Select a Course</option>
+        <option value="ASCT">ASCT</option>
+        <option value="BSCPE">BSCPE</option>
+        <option value="BSIT">BSIT</option>
+        <option value="BSCS">BSCS</option>
+        <option value="BSBA">BSBA</option>
+        <option value="BSA">BSA</option>
+        <option value="BSTM">BSTM</option>
+        <option value="BMMA">BMMA</option>
+        <option value="BSHM">BSHM</option>
+        <option value="TOP">TOP</option>
+        <option value="GAS">GAS</option>
+        <option value="STEM">STEM</option>
+        <option value="Faculty Staff">Faculty Staff</option>
+     </select>
 
 
 	<button>Register</button>
 </form>
-
-
 </div>
+
 
 <div class="form-container sign-in-container">
 	<form action="signin.php">
@@ -128,6 +142,7 @@ include 'err.php';
 	const signInButton = document.getElementById('login');
 	const container = document.getElementById('container');
 
+
 	signUpButton.addEventListener('click', () => {
 		container.classList.add("right-panel-active");
 		clearErrors();
@@ -145,7 +160,6 @@ include 'err.php';
 		);
 	}
 </script>
-
 
 </body>
 </html>
