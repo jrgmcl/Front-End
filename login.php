@@ -52,7 +52,7 @@ include 'err.php';
 		echo $_GET['ru_email'];
 	}?>" placeholder="Email">
 
-	<select name="ru_course" value="<?php
+	<select class="select" name="ru_course" value="<?php
 	if (empty($_GET['ru_course'])) {
 		echo "";
 	}
@@ -60,7 +60,7 @@ include 'err.php';
 		echo $_GET['ru_course'];
 	}?>" placeholder="Course">
         <option disabled selected value>Select a Course</option>
-        <option value="ASCT">ASCT</option>
+        <option class="option" value="ASCT">ASCT</option>
         <option value="BSCPE">BSCPE</option>
         <option value="BSIT">BSIT</option>
         <option value="BSCS">BSCS</option>

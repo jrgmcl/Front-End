@@ -21,7 +21,6 @@ body {
 	margin: -20px 0 0px;
 }
 
-
 h1 {
 	font-weight: bold;
 	margin: 0;
@@ -99,29 +98,25 @@ input {
 
 select {
 	background-color: #eee;
-	border: none;
 	border-radius: 15px;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
 }
-select:hover {
-	background-color: #eee;
-	border: none;
-	border-radius: 15px;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
+select:after{
+	
+}
+
+select:hover{
+
 }
 
 option {
-	background-color: #eee;
-	border: none;
-	border-radius: 5px;
-	padding: 3px 2px;
-	margin: 4px 0;
-	width: 100%;
+	background: #eee;
+	color: #000;
+	font-size: 14px;
 }
+
 
 
 .container {
