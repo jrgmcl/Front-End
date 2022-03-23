@@ -182,7 +182,7 @@
      <center> <h4> Admin </h4></center>
         
        <!--Menu Sidebar Items-->
-      <a href="dashboard.php" class="dash-board">
+      <a href="#dash" class="dash-board">
        <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
        <span class="item">Dashboard </span></a>
 

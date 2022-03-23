@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 
 
 
-  <!DOCTYPE HTML PUBLIC â€œ-//W3C//DTD HTML 4.01//ENâ€ â€œhttp://www.w3.org/TR/html4/strict.dtd">
+  <!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
   <html>
   <head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
