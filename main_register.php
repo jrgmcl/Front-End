@@ -155,7 +155,7 @@ include 'err.php';
 
 	function clearErrors() {
 		Array.prototype.forEach.call(
-			document.getElementsByClassName("regerror-msg"),
+			document.getElementsByClassName("loginerror-msg"),
 			function(el) { el.style.display = "none"; }
 		);
 	}
