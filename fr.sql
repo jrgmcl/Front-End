@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2022 at 08:52 AM
+-- Generation Time: Mar 23, 2022 at 04:02 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -42,23 +42,44 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `logs`
+--
+
+CREATE TABLE `logs` (
+  `count` int(64) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `course` varchar(64) NOT NULL,
+  `date` date NOT NULL,
+  `time` time(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pending_users`
+--
+
+CREATE TABLE `pending_users` (
+  `id` int(11) NOT NULL COMMENT 'System ID#',
+  `ru_name` text NOT NULL,
+  `ru_studentid` varchar(32) NOT NULL,
+  `ru_course` text NOT NULL,
+  `ru_email` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rgstrd_users`
 --
 
 CREATE TABLE `rgstrd_users` (
   `id` int(11) NOT NULL COMMENT 'System ID#',
   `ru_name` text NOT NULL,
-  `ru_studentid` int(24) NOT NULL,
+  `ru_studentid` varchar(32) NOT NULL,
   `ru_course` text NOT NULL,
   `ru_email` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `rgstrd_users`
---
-
-INSERT INTO `rgstrd_users` (`id`, `ru_name`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
-(8, 'Jorge', 12345, 'cpe', 'jorgegalang21@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -73,6 +94,18 @@ ALTER TABLE `admin`
   ADD KEY `password_2` (`password`);
 
 --
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+  ADD PRIMARY KEY (`count`);
+
+--
+-- Indexes for table `pending_users`
+--
+ALTER TABLE `pending_users`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `rgstrd_users`
 --
 ALTER TABLE `rgstrd_users`
@@ -83,10 +116,22 @@ ALTER TABLE `rgstrd_users`
 --
 
 --
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+  MODIFY `count` int(64) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pending_users`
+--
+ALTER TABLE `pending_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'System ID#';
+
+--
 -- AUTO_INCREMENT for table `rgstrd_users`
 --
 ALTER TABLE `rgstrd_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=68;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
