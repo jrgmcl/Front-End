@@ -4,21 +4,29 @@
 
 .container {
 
-	padding: 50px;
+	padding: 20px;
 	position: absolute;
 	margin-left: 300px;
 	margin-top: 20px;
 }
 
 .form-container form{
-   padding: 15px;
+   padding: 0px;
    position: absolute;
    margin-left: 50px;
-   height: 50px; 
    margin-top: 10px;
    
    
 
+}
+
+.form-container {
+	padding: 0;
+	margin-right: 0;
+	position: relative;
+	margin-left: 20px;
+	
+	
 }
 
 .form-container form {
@@ -43,7 +51,7 @@
    width: 60%;
    padding:5px;
    font-size: 15px;
-   margin: 2px 0px 30px
+   margin: 2px 0px 20px
    
 
 }
@@ -59,7 +67,6 @@
    text-transform: capitalize;
    font-size: 20px;
    cursor: pointer;
-   width: 150px;
 }
 
 
@@ -74,7 +81,7 @@ input select {
 
 .button{
    display: inline-block;
-   padding:10px 30px;
+   padding:10px 10px;
    font-size: 20px;
    background: #333;
    color:#fff;
@@ -120,3 +127,81 @@ input select {
 form.form-upload{
   position: center;
 }
+
+
+
+/* CARD CSS */
+
+.card-container{
+
+	padding: 0px auto;
+	position: absolute;
+	width: 53rem;
+	height: 18rem;
+	margin-top: 7rem;
+	margin-left: 26rem; 
+	background:  #5db1b9;
+	border-radius: 20px;
+	 
+	
+	
+	
+	
+	
+	
+}
+
+.card-body{
+
+	box-shadow: 5px 8px 2px 2px;
+	border-radius: 10px;
+	margin: 0;
+	padding-bottom:0;
+	
+	
+
+}
+
+
+.card-deck{
+
+	padding: 0;
+	margin-left: 2rem;
+	margin-top: 1.5rem;
+	
+	
+	
+}
+.card-group{
+
+	position: absolute;
+	border-radius: 8px;
+	opacity: 80%;
+	
+	
+}
+
+.card-title{
+
+	font-size: 25px; 
+	font-weight: 900;
+	
+}
+
+.card-text{
+
+	font-size: 25px; 
+	font-weight: 700; 
+
+
+	
+	
+}
+
+.row{
+	font-size: 25px; 
+	font-weight: 500;
+	margin-left: 60px;
+}
+
+

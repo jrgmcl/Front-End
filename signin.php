@@ -29,7 +29,7 @@ $sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username =
 $row = mysqli_fetch_array($sql);
 
 if($row["total"] > 0){
-	header("Location: index.php");
+	header("Location: admin_page.php");
 	exit();
 }
 else{

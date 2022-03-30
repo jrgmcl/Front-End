@@ -89,15 +89,14 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
          color: #555d5d;
         
       }
-
       .logout_btn {
-         padding: 5px;
+         padding: 5px 5px;
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -20px;
+         margin-top: -18px;
          margin-right: 20px;
-         border-radius: 2px;
+         border-radius: 14px;
          font-size: 15px;
          font-weight: 600;
          color: #f2f8ee;
@@ -204,9 +203,24 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
       <div class="left_area">
       <h3> STI College <span> Cubao</span></h3>
       </div>
+
+      <div class="main">
+
       <div class="right_area">
       <a href="Logout.php" class="logout_btn">Log out</a> 
       </div>
+
+         <!--- HTML SEARCH BOX-->
+
+      <link rel="stylesheet" href="search.css">
+       
+     <div class="search-container">
+     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
+        <input type=" text" placeholder ="search " name ="q">
+        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
+        </form>
+    </div>
+
     </header>
 
 
@@ -236,12 +250,15 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 
    <!-- NAVIGATION ENDS -->
 
-    
-<div class="container" id="container">
+   <div class="gridcontainer">
+      <div class="row">
+   <div class="card" style="width: 40rem; height: 30rem;">
+  <div class="card-body" style="width: 50rem; height: 30rem; ">
+    <h5 class="card-header" > Register User </h5>
+
     <div class="form-container">
       
     <form action="" id="form-id" method="post">
-	<h1>Register User</h1>
 	
 	<?php if (isset($_GET['error'])) { ?>
     <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
@@ -305,7 +322,7 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
 	<!-- Form for file uploading -->
         
        <form class="form-upload" action= "fileupload.php<?php echo "?ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email?>" method="POST" enctype="multipart/form-data">
-		Choose File from PC: <input type="file" name="file" multiple>
+		Upload Image: <input type="file" name="file" multiple>
    <br>
 	<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
 		<button class"button" type="submit" name="submit">Submit</button>
@@ -313,6 +330,19 @@ if(isset($_POST['submit'])){ // declaration of variables ang assigning data from
         
         
         </form>
+    
+
+    <br>
+
+
+
+    </br>
+
+      </div>
+      </div>
+
+    
+
 			</div>
 			
 			</div>

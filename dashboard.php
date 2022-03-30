@@ -57,13 +57,13 @@
       }
 
       .logout_btn {
-         padding: 5px;
+         padding: 5px 5px;
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -20px;
+         margin-top: -18px;
          margin-right: 20px;
-         border-radius: 2px;
+         border-radius: 14px;
          font-size: 15px;
          font-weight: 600;
          color: #f2f8ee;
@@ -170,29 +170,45 @@
       <div class="left_area">
       <h3> STI College <span> Cubao</span></h3>
       </div>
+
+
       <div class="right_area">
       <a href="Logout.php" class="logout_btn">Log out</a> 
+
       </div>
+
+      
+
+         <!--- HTML SEARCH BOX-->
+
+      <link rel="stylesheet" href="search.css">
+       
+     <div class="search-container">
+     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
+        <input type=" text" placeholder ="search " name ="q">
+        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
+        </form>
+    </div>
+
     </header>
 
 
-
   <div class="sidebar">
-      
-     <center> <h4> Admin </h4></center>
-        
+    
+     <center> <H4> <a href="dashboard.php"> Admin </a></h4> </center>
+       
        <!--Menu Sidebar Items-->
       <a href="#dash" class="dash-board">
        <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
-       <span class="item">Dashboard </span></a>
+       <span class="item">Dashboard </span></a> 
 
       <a href="index.php">
        <span class="icon"><i class='fa-regular fa-address-book ' style='color:#55d5d'></i></span>
-       <span class="item">Records</span>
+       <span class="item">Records</span> <br>
 
       <a href="Register.php">
        <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
-       <span class="item"> Register</span </a>
+       <span class="item"> Register</span </a>  <br>
       
       <a href="request.php">
        <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
@@ -200,4 +216,118 @@
       
      </div>
 
-   <!-- NAVIGATION ENDS -->
+     <!-- NAVIGATION ENDS -->
+
+     <!-- CARD FACE RECOGNITION -->
+   <div class = "card-container">
+   <div class=" card-deck">
+   <div class="card-group">
+  
+         <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
+             <div class="card-body" > 
+
+                 <a href=" index.php">  <h5 class="card-title" style=" color:#000">FACE RECOGNITION:</h5> </a>
+       
+
+
+                    <br>
+                    <p class="card-text" style=" color: #00ff00">ACTIVE</p>
+ 
+                   <?php
+
+                   require 'config.php';
+
+                    $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
+                    $query_run = mysqli_query($conn,$query);
+               
+                    $row = mysqli_num_rows($query_run); //Fetch number of row
+
+                          echo '<p>'.$row.'</p>'; // To call rows inside <p>
+
+
+                   ?>
+
+
+                   </br>
+              </div>
+          </div>
+
+           <div class="card bg-light mb-3" style="width:15rem; height: 15rem;">
+             <div class="card-body" > 
+                 <br>
+                 <a href=" index.php">  <h5 class="card-title" style=" color:#000">Registered User</h5> </a>
+       
+
+
+                    <br>
+                    <p class="card-text">Total:</p>
+ 
+                   <?php
+
+                   require 'config.php';
+
+                    $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
+                    $query_run = mysqli_query($conn,$query);
+               
+                    $row = mysqli_num_rows($query_run); //Fetch number of row
+
+                          echo '<p>'.$row.'</p>'; // To call rows inside <p>
+
+
+                   ?>
+
+
+                   </br>
+              </div>
+          </div>
+
+          
+           <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
+             <div class="card-body" > 
+                <br>
+                 <a href=" index.php">  <h5 class="card-title" style=" color:#000">Requests:</h5> </a>
+       
+
+
+                    <br>
+                    <p class="card-text">Total:</p>
+ 
+                   <?php
+
+                   require 'config.php';
+
+                    $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
+                    $query_run = mysqli_query($conn,$query);
+               
+                    $row = mysqli_num_rows($query_run); //Fetch number of row
+
+                          echo '<p>'.$row.'</p>'; // To call rows inside <p>
+
+
+                   ?>
+
+
+                   </br>
+              </div>
+          </div>
+
+
+
+
+      </div>
+    </div>
+
+
+
+
+
+
+
+ </div>
+
+</div>
+
+</body>
+</html>
+
+

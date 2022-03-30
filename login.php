@@ -1,5 +1,8 @@
 <?php
 include 'err.php';
+
+
+
 ?>
 
 
@@ -15,6 +18,8 @@ include 'err.php';
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="body">
+
+<!-- Register HTML -->
 
 <div class="container" id="container">
 <div class="form-container sign-up-container">
@@ -79,6 +84,9 @@ include 'err.php';
 	<button>Register</button>
 </form>
 </div>
+
+
+<!-- LOG IN HTML -->
 
 
 <div class="form-container sign-in-container">

@@ -27,4 +27,6 @@ $all_err = array($emptyusername_err,
 					$emptyfile_err,
 					$userexist_err,
 					$emailvalid_err);
+
+if (isset#)
 ?>

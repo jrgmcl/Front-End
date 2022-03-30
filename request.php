@@ -56,14 +56,14 @@
         
       }
 
-      .logout_btn {
-         padding: 5px;
+          .logout_btn {
+         padding: 5px 5px;
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -20px;
+         margin-top: -18px;
          margin-right: 20px;
-         border-radius: 2px;
+         border-radius: 14px;
          font-size: 15px;
          font-weight: 600;
          color: #f2f8ee;
@@ -173,6 +173,23 @@
       <div class="right_area">
       <a href="Logout.php" class="logout_btn">Log out</a> 
       </div>
+
+
+          <!--- HTML SEARCH BOX-->
+
+      <link rel="stylesheet" href="search.css">
+       
+     <div class="search-container">
+     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
+        <input type=" text" placeholder ="search " name ="q">
+        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
+        </form>
+    </div>
+
+
+
+
+
     </header>
 
 
@@ -182,7 +199,7 @@
      <center> <h4> Admin </h4></center>
         
        <!--Menu Sidebar Items-->
-      <a href="dashboard.php" class="dash-board">
+      <a href="#dash" class="dash-board">
        <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
        <span class="item">Dashboard </span></a>
 
@@ -194,7 +211,7 @@
        <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
        <span class="item"> Register</span </a>
       
-      <a href="request.php">
+      <a href="#">
        <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
        <span class="item">Request</span></a>
       

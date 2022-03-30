@@ -1,11 +1,7 @@
 <?php
 
 @include 'config.php';
-
-
-if(!isset($_SESSION['username'])){
-   
-}
+@include "header.php";
 
 ?>
 

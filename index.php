@@ -146,6 +146,25 @@ body{
         </div>
         <div class="right_area"><a href="login.php" class="logout_btn">Log out</a>
         </div>
+
+
+        
+         <!--- HTML SEARCH BOX-->
+
+      <link rel="stylesheet" href="search.css">
+       
+     <div class="search-container">
+     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
+        <input type=" text" placeholder ="search " name ="q">
+        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
+        </form>
+    </div>
+
+
+
+
+
+
       </header>
 
       
@@ -155,7 +174,7 @@ body{
         </center>
 
         <!--Menu Sidebar Items-->
-        <a href="#dash" class="dash-board">
+        <a href="dashboard.php" class="dash-board">
         <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
         <span class="item">Dashboard</span></a>
 

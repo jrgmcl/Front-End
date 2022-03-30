@@ -31,20 +31,20 @@ header {
 
 }
 
-.logout_btn {
-  padding: 5px;
-  background: #5db1b9;
-  text-decoration: none;
-  float: right;
-  margin-top: -21px;
-  margin-right: 20px;
-  border-radius: 2px;
-  font-size: 15px;
-  font-weight: 600;
-  color: #f2f8ee;
-  transition-property: background;
+  .logout_btn {
+         padding: 5px 5px;
+         background: #5db1b9;
+         text-decoration: none;
+         float: right;
+         margin-top: -18px;
+         margin-right: 20px;
+         border-radius: 14px;
+         font-size: 15px;
+         font-weight: 600;
+         color: #f2f8ee;
+         transition-property: background;
 
-}
+      }
 
 .logout_btn:hover {
   background: #555d5d;
