@@ -11,11 +11,18 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
-from PyQt5.QtWidgets import * 
+from PyQt5.QtWidgets import *
+from images import rsrc
+import datetime
 
+dt = datetime.datetime.now()
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
+        shadow0 = QGraphicsDropShadowEffect()
+        shadow1 = QGraphicsDropShadowEffect()
+        shadow0.setBlurRadius(25)
+        shadow1.setBlurRadius(25)
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(600, 1024)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -38,38 +45,47 @@ class Ui_MainWindow(object):
         self.centralwidget.setFont(font)
         self.centralwidget.setObjectName("centralwidget")
         self.frame0 = QtWidgets.QFrame(self.centralwidget)
-        self.frame0.setGeometry(QtCore.QRect(20, 134, 560, 425))
+        self.frame0.setGeometry(QtCore.QRect(40, 134, 520, 850))
         font = QtGui.QFont()
         font.setFamily("Unispace")
         font.setBold(True)
         font.setWeight(75)
         self.frame0.setFont(font)
-        self.frame0.setStyleSheet("border-radius: 15px;\n"
+        self.frame0.setStyleSheet("border-radius: 10px;\n"
 "")
+        self.frame0.setGraphicsEffect(shadow0)
         self.frame0.setFrameShape(QtWidgets.QFrame.Box)
         self.frame0.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame0.setLineWidth(2)
         self.frame0.setMidLineWidth(0)
         self.frame0.setObjectName("frame0")
-        self.title_0 = QtWidgets.QLabel(self.frame0)
-        self.title_0.setGeometry(QtCore.QRect(0, 10, 560, 50))
+        self.fr_title = QtWidgets.QLabel(self.frame0)
+        self.fr_title.setGeometry(QtCore.QRect(0, 10, 520, 50))
         font = QtGui.QFont()
-        font.setFamily("Candara")
-        font.setPointSize(28)
+        font.setFamily("Montserrat SemiBold")
         font.setBold(True)
         font.setWeight(75)
-        self.title_0.setFont(font)
-        self.title_0.setMouseTracking(True)
-        self.title_0.setStyleSheet("")
-        self.title_0.setTextFormat(QtCore.Qt.RichText)
-        self.title_0.setAlignment(QtCore.Qt.AlignCenter)
-        self.title_0.setObjectName("title_0")
+        self.fr_title.setFont(font)
+        self.fr_title.setMouseTracking(True)
+        self.fr_title.setStyleSheet("")
+        self.fr_title.setTextFormat(QtCore.Qt.RichText)
+        self.fr_title.setScaledContents(False)
+        self.fr_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.fr_title.setWordWrap(False)
+        self.fr_title.setObjectName("fr_title")
         self.camera_0 = QtWidgets.QGraphicsView(self.frame0)
-        self.camera_0.setGeometry(QtCore.QRect(25, 80, 180, 320))
+        self.camera_0.setGeometry(QtCore.QRect(40, 80, 180, 320))
+        self.camera_0.setStyleSheet("background-color: rgb(129, 129, 129);\n"
+"border-radius: 0px;")
         self.camera_0.setObjectName("camera_0")
         self.bg_0 = QtWidgets.QGraphicsView(self.frame0)
-        self.bg_0.setGeometry(QtCore.QRect(0, 0, 560, 425))
-        self.bg_0.setStyleSheet("background-color: rgba(242, 248, 238, 75);\n"
+        self.bg_0.setGeometry(QtCore.QRect(0, 0, 520, 850))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.bg_0.sizePolicy().hasHeightForWidth())
+        self.bg_0.setSizePolicy(sizePolicy)
+        self.bg_0.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "")
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.NoBrush)
@@ -78,80 +94,40 @@ class Ui_MainWindow(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         self.bg_0.setForegroundBrush(brush)
         self.bg_0.setObjectName("bg_0")
-        self.textBrowser = QtWidgets.QTextBrowser(self.frame0)
-        self.textBrowser.setGeometry(QtCore.QRect(230, 80, 305, 230))
-        self.textBrowser.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
+        self.name = QtWidgets.QLabel(self.frame0)
+        self.name.setGeometry(QtCore.QRect(260, 180, 220, 30))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        font.setPointSize(8)
+        self.name.setFont(font)
+        self.name.setStyleSheet("background-color: rgb(229, 229, 229);\n"
 "border-style: solid;\n"
-"border-color: rgba(90, 150, 150, 150);\n"
-"border-radius: 1px;\n"
-"border-width: 2px;")
-        self.textBrowser.setObjectName("textBrowser")
-        self.textBrowser_2 = QtWidgets.QTextBrowser(self.frame0)
-        self.textBrowser_2.setGeometry(QtCore.QRect(230, 315, 305, 85))
-        self.textBrowser_2.setStyleSheet("background-color: rgba(255, 255, 255, 0);\n"
-"border-style: solid;\n"
-"border-color: rgba(90, 150, 150, 150);\n"
-"border-radius: 1px;\n"
-"border-width: 2px;")
-        self.textBrowser_2.setObjectName("textBrowser_2")
-        self.bg_0.raise_()
-        self.title_0.raise_()
-        self.camera_0.raise_()
-        self.textBrowser.raise_()
-        self.textBrowser_2.raise_()
-        self.datetime = QtWidgets.QWidget(self.centralwidget)
-        self.datetime.setGeometry(QtCore.QRect(20, 20, 560, 94))
+"border-radius: 10px;\n"
+"")
+        self.name.setObjectName("name")
+        self.qr_descrip = QtWidgets.QLabel(self.frame0)
+        self.qr_descrip.setGeometry(QtCore.QRect(50, 510, 421, 81))
         font = QtGui.QFont()
-        font.setPointSize(16)
-        self.datetime.setFont(font)
-        self.datetime.setObjectName("datetime")
-        self.Date = QtWidgets.QLabel(self.datetime)
-        self.Date.setGeometry(QtCore.QRect(205, 5, 150, 30))
-        font = QtGui.QFont()
-        font.setFamily("MS Serif")
-        font.setBold(True)
-        font.setWeight(75)
-        self.Date.setFont(font)
-        self.Date.setAlignment(QtCore.Qt.AlignCenter)
-        self.Date.setObjectName("Date")
-        self.Time = QtWidgets.QLabel(self.datetime)
-        self.Time.setGeometry(QtCore.QRect(180, 40, 200, 50))
-        font = QtGui.QFont()
-        font.setFamily("MS Serif")
-        font.setPointSize(32)
-        font.setBold(True)
-        font.setWeight(75)
-        self.Time.setFont(font)
-        self.Time.setAlignment(QtCore.Qt.AlignCenter)
-        self.Time.setObjectName("Time")
-        self.frame1 = QtWidgets.QFrame(self.centralwidget)
-        self.frame1.setGeometry(QtCore.QRect(20, 579, 560, 425))
-        font = QtGui.QFont()
-        font.setFamily("Unispace")
-        font.setBold(True)
-        font.setWeight(75)
-        self.frame1.setFont(font)
-        self.frame1.setStyleSheet("border-radius: 15px;")
-        self.frame1.setFrameShape(QtWidgets.QFrame.Box)
-        self.frame1.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame1.setLineWidth(2)
-        self.frame1.setMidLineWidth(0)
-        self.frame1.setObjectName("frame1")
-        self.title_1 = QtWidgets.QLabel(self.frame1)
-        self.title_1.setGeometry(QtCore.QRect(0, 10, 560, 50))
-        font = QtGui.QFont()
-        font.setFamily("Candara")
-        font.setPointSize(28)
-        font.setBold(True)
-        font.setWeight(75)
-        self.title_1.setFont(font)
-        self.title_1.setMouseTracking(True)
-        self.title_1.setTextFormat(QtCore.Qt.AutoText)
-        self.title_1.setAlignment(QtCore.Qt.AlignCenter)
-        self.title_1.setObjectName("title_1")
-        self.bg_1 = QtWidgets.QGraphicsView(self.frame1)
-        self.bg_1.setGeometry(QtCore.QRect(0, 0, 560, 425))
-        self.bg_1.setStyleSheet("background-color: rgba(242, 248, 238, 75);")
+        font.setFamily("Montserrat Medium")
+        self.qr_descrip.setFont(font)
+        self.qr_descrip.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:9pt; font-weight:600; color:#ffffff;\">DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION DESCRIPTION </span></p></body></html>")
+        self.qr_descrip.setWordWrap(True)
+        self.qr_descrip.setIndent(0)
+        self.qr_descrip.setObjectName("qr_descrip")
+        self.qr = QtWidgets.QGraphicsView(self.frame0)
+        self.qr.setGeometry(QtCore.QRect(160, 600, 200, 200))
+        self.qr.setStyleSheet("background-color: rgb(131, 131, 131);")
+        self.qr.setObjectName("qr")
+        self.bg_1 = QtWidgets.QGraphicsView(self.frame0)
+        self.bg_1.setGeometry(QtCore.QRect(0, 425, 520, 425))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.bg_1.sizePolicy().hasHeightForWidth())
+        self.bg_1.setSizePolicy(sizePolicy)
+        self.bg_1.setStyleSheet("background-color: rgb(93, 177, 185);\n"
+"\n"
+"")
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
         brush.setStyle(QtCore.Qt.NoBrush)
         self.bg_1.setBackgroundBrush(brush)
@@ -159,21 +135,132 @@ class Ui_MainWindow(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         self.bg_1.setForegroundBrush(brush)
         self.bg_1.setObjectName("bg_1")
-        self.camera_1 = QtWidgets.QGraphicsView(self.frame1)
-        self.camera_1.setGeometry(QtCore.QRect(295, 160, 240, 240))
-        self.camera_1.setObjectName("camera_1")
-        self.label = QtWidgets.QLabel(self.frame1)
-        self.label.setGeometry(QtCore.QRect(25, 70, 510, 75))
-        self.label.setText("<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">fgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgfgf</span></p></body></html>")
-        self.label.setIndent(0)
-        self.label.setObjectName("label")
+        self.bg_11 = QtWidgets.QGraphicsView(self.frame0)
+        self.bg_11.setGeometry(QtCore.QRect(0, 425, 520, 71))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.bg_11.sizePolicy().hasHeightForWidth())
+        self.bg_11.setSizePolicy(sizePolicy)
+        self.bg_11.setStyleSheet("background-color: rgb(93, 177, 185);\n"
+"border-radius: 0px;\n"
+"\n"
+"")
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.NoBrush)
+        self.bg_11.setBackgroundBrush(brush)
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
+        brush.setStyle(QtCore.Qt.NoBrush)
+        self.bg_11.setForegroundBrush(brush)
+        self.bg_11.setObjectName("bg_11")
+        self.course = QtWidgets.QLabel(self.frame0)
+        self.course.setGeometry(QtCore.QRect(260, 220, 220, 30))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        self.course.setFont(font)
+        self.course.setStyleSheet("background-color: rgb(229, 229, 229);\n"
+"border-style: solid;\n"
+"border-radius: 10px;\n"
+"")
+        self.course.setObjectName("course")
+        self.temp = QtWidgets.QLabel(self.frame0)
+        self.temp.setGeometry(QtCore.QRect(260, 260, 220, 30))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        self.temp.setFont(font)
+        self.temp.setStyleSheet("background-color: rgb(229, 229, 229);\n"
+"border-style: solid;\n"
+"border-radius: 10px;\n"
+"")
+        self.temp.setObjectName("temp")
+        self.qr_title = QtWidgets.QLabel(self.frame0)
+        self.qr_title.setGeometry(QtCore.QRect(0, 460, 520, 50))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat SemiBold")
+        font.setBold(True)
+        font.setWeight(75)
+        self.qr_title.setFont(font)
+        self.qr_title.setMouseTracking(True)
+        self.qr_title.setStyleSheet("")
+        self.qr_title.setTextFormat(QtCore.Qt.RichText)
+        self.qr_title.setScaledContents(False)
+        self.qr_title.setAlignment(QtCore.Qt.AlignCenter)
+        self.qr_title.setWordWrap(False)
+        self.qr_title.setObjectName("qr_title")
+        self.status = QtWidgets.QLabel(self.frame0)
+        self.status.setGeometry(QtCore.QRect(260, 315, 220, 70))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        self.status.setFont(font)
+        self.status.setStyleSheet("background-color: rgba(255, 0, 2, 75);\n"
+"border-style: solid;\n"
+"border-radius: 10px;\n"
+"")
+        self.status.setObjectName("status")
+        self.instruct = QtWidgets.QLabel(self.frame0)
+        self.instruct.setGeometry(QtCore.QRect(260, 80, 220, 80))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        font.setPointSize(8)
+        self.instruct.setFont(font)
+        self.instruct.setStyleSheet("background-color: rgba(0, 255, 0, 50);\n"
+"border-style: solid;\n"
+"border-radius: 10px;\n"
+"")
+        self.instruct.setText("<html><head/><body><p align=\"center\"><span style=\" font-size:10pt; font-weight:600;\">Please position your face on the middle of the camera!</span></p></body></html>")
+        self.instruct.setScaledContents(False)
+        self.instruct.setAlignment(QtCore.Qt.AlignCenter)
+        self.instruct.setWordWrap(True)
+        self.instruct.setObjectName("instruct")
+        self.bg_0.raise_()
+        self.bg_11.raise_()
         self.bg_1.raise_()
-        self.title_1.raise_()
-        self.camera_1.raise_()
-        self.label.raise_()
+        self.fr_title.raise_()
+        self.camera_0.raise_()
+        self.name.raise_()
+        self.qr_descrip.raise_()
+        self.qr.raise_()
+        self.course.raise_()
+        self.temp.raise_()
+        self.qr_title.raise_()
+        self.status.raise_()
+        self.instruct.raise_()
+        self.datetime = QtWidgets.QWidget(self.centralwidget)
+        self.datetime.setGeometry(QtCore.QRect(40, 20, 520, 94))
+        font = QtGui.QFont()
+        font.setPointSize(16)
+        self.datetime.setFont(font)
+        self.datetime.setStyleSheet("background-color: rgba(255, 255, 255, 255);\n"
+"border-radius: 10px;\n"
+"")
+        self.datetime.setGraphicsEffect(shadow1)
+        self.datetime.setObjectName("datetime")
+        self.Date = QtWidgets.QLabel(self.datetime)
+        self.Date.setGeometry(QtCore.QRect(160, 10, 200, 30))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat SemiBold")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.Date.setFont(font)
+        self.Date.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
+        self.Date.setAlignment(QtCore.Qt.AlignCenter)
+        self.Date.setObjectName("Date")
+        self.Time = QtWidgets.QLabel(self.datetime)
+        self.Time.setGeometry(QtCore.QRect(160, 35, 200, 50))
+        font = QtGui.QFont()
+        font.setFamily("Montserrat Medium")
+        font.setPointSize(32)
+        font.setBold(False)
+        font.setWeight(75)
+        self.Time.setFont(font)
+        self.Time.setStyleSheet("background-color: rgba(255, 255, 255, 0);")
+        self.Time.setAlignment(QtCore.Qt.AlignCenter)
+        self.Time.setObjectName("Time")
         self.bg = QtWidgets.QGraphicsView(self.centralwidget)
         self.bg.setGeometry(QtCore.QRect(0, 0, 600, 1024))
         self.bg.setMaximumSize(QtCore.QSize(600, 1024))
+        self.bg.setMouseTracking(False)
         self.bg.setAutoFillBackground(False)
         self.bg.setStyleSheet("background-image: url(:/bf_full/BGpic.jpg);\n"
 "")
@@ -184,27 +271,19 @@ class Ui_MainWindow(object):
         brush.setStyle(QtCore.Qt.NoBrush)
         self.bg.setForegroundBrush(brush)
         self.bg.setObjectName("bg")
-        self.frame = QtWidgets.QFrame(self.centralwidget)
-        self.frame.setGeometry(QtCore.QRect(-40, -40, 240, 240))
-        self.frame.setAutoFillBackground(False)
-        self.frame.setStyleSheet("\n"
+        self.Logo = QtWidgets.QFrame(self.centralwidget)
+        self.Logo.setGeometry(QtCore.QRect(20, 20, 128, 128))
+        self.Logo.setAutoFillBackground(False)
+        self.Logo.setStyleSheet("\n"
 "image: url(:/logo/logo.png);\n"
 "")
-        shadow = QGraphicsDropShadowEffect()
-  
-        # setting blur radius
-        shadow.setBlurRadius(15)
-  
-        # adding shadow to the label
-        self.frame0.setGraphicsEffect(shadow)
-        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame.setObjectName("frame")
+        self.Logo.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.Logo.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.Logo.setObjectName("Logo")
         self.bg.raise_()
-        self.frame.raise_()
         self.datetime.raise_()
-        self.frame1.raise_()
         self.frame0.raise_()
+        self.Logo.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -213,31 +292,27 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.title_0.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:28pt; font-weight:600;\">FaceCognition</span></p></body></html>"))
-        self.textBrowser.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.fr_title.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:18pt; font-weight:600;\">Information</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Name:</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Course:</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt; font-weight:600;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-weight:600;\">Temperature:</span></p></body></html>"))
-        self.textBrowser_2.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"</style></head><body style=\" font-family:\'Montserrat SemiBold\'; font-size:8pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:28pt;\">FaceCognition</span></p></body></html>"))
+        self.name.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">Jorge Michael Galang</span></p></body></html>"))
+        self.course.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">&lt;Course&gt;</span></p></body></html>"))
+        self.temp.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">&lt;Temperature&gt;</span></p></body></html>"))
+        self.qr_title.setText(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:16pt; font-weight:600;\">Status</span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8pt; font-weight:600;\"> </span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:11pt; font-style:italic;\">Status content</span></p></body></html>"))
-        self.Date.setText(_translate("MainWindow", "<Date>"))
-        self.Time.setText(_translate("MainWindow", "<Time>"))
-        self.title_1.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:28pt;\">QR CODE</span></p></body></html>"))
-from images import rsrc
+"</style></head><body style=\" font-family:\'Montserrat SemiBold\'; font-size:8pt; font-weight:600; font-style:normal;\">\n"
+"<p style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-family:\'Montserrat\'; font-size:28pt; color:#ffffff;\">QR Code</span></p></body></html>"))
+        self.status.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:10pt;\">No face detected!</span></p></body></html>"))
+        self.Date.setText(_translate("MainWindow", str(dt.strftime("%a, %b %d, %Y"))))
+        self.Time.setText(_translate("MainWindow", str(dt.strftime("%I:%M%p"))))
+        
+    def update_label(self):
+        dt = datetime.datetime.now()
+        self.Date.setText(str(dt.strftime("%a, %b %d, %Y")))
+        self.Time.setText(str(dt.strftime("%I:%M%p")))
 
 
 if __name__ == "__main__":
@@ -246,5 +321,11 @@ if __name__ == "__main__":
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+
+    
+    timer = QtCore.QTimer()
+    timer.timeout.connect(ui.update_label)
+    timer.start(2000) #refresh the window every 2 seconds
+    
     MainWindow.show()
     sys.exit(app.exec_())
