@@ -1,255 +1,143 @@
-<DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> STI Admin Portal</title>
-    <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="dashstyles.css" />
-    <link rel= "sytylesheet" type= "text/css">
+<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+<html>
 
-    
-<!--CSS FOR TABLE RECORDS -->
-<style>
-body{
+<!-- Screen adjustment for devices to fit -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  margin:0;
-  padding:0;
-  background: url(Default.jpg);
-  background-position: center;
-}
+<head>
 
-.table-container{
+	<title>QRCubao</title>
 
-  padding:0;
-  margin-left: 350px;
-  margin-top: 50px; 
-  position: absolute;
-}
+	<!--CSS LINK-->
+	<link rel="stylesheet" type="text/css" href="webapp.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+	<!--JQUERY LINK-->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 
-.heading {
-  font-size: 40px;
-  text-align: center;
-  color: #555d5d;
-  margin-bottom: 10px;
-  margin-top: 20px;
-}
+	<!--JS LINK -->
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-  align-items: center;
-}
+	<!--BOOSTRAP BUNDLE -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
-.table thead {
-  background-color: #5a9696;
-}
-
-.table thead tr th {
-  font-size: 18px;
-  font-weight: 200l;
-  letter-spacing: 0.5px;
-  color: #f2f8ee;
-  opacity: 1;
-  padding: 20px;
-  vertical-align: center;
-  border: 1.5px solid #f2f8ee;
-  text-align: center;
-}
-
-.table tbody tr td {
-  font-size: 14px;
-  letter-spacing: 0.35px;
-  font-weight: normal;
-  color: #f2f8ee;
-  background-color: #555d5d;
-  padding: 8px;
-  text-align: center;
-  border: 1.5px solid #f2f8ee;
-}
-
-.table .text_status {
-  font: 34px;
-  font-weight: bold;
-  letter-spacing: 0.35px;
-  color: #87ff6f;
-}
-
-.table .off_status {
-  font: 34px;
-  font-weight: bold;
-  letter-spacing: 0.35px;
-  color: #ff5050;
-}
-
-@media (max-width: 770px) {
-  .table thead {
-    display: none;
-  }
-
-  .table,
-  .table tbody,
-  .table tr,
-  .table td {
-    display: block;
-    width: 100%;
-  }
-
-  .table tr {
-    margin-bottom: 15px;
-  }
-
-  .table tbody tr td {
-    text-align: right;
-    padding-left: 50%;
-    position: relative;
-  }
-
-  .table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 50%;
-    padding-left: 15px;
-    font-weight: 600;
-    font-size: 14px;
-    text-align: left;
-  }
-
-  .heading h1 {
-
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-}
-</style>
-
-<!--CSS FOR TABLE ENDS-->
-
-  
-  <!-- HTML PROGRAM SIDE BAR -->
-
-    <body>
-   
-      <!--Sidebar Toggle-->
-      <input type="checkbox" id="check">
-      <header>
-        <label for="check">
-          <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
-        </label>
-        <div class="left_area">
-          <h3>STI College <span>Cubao</span></h3>
-        </div>
-        <div class="right_area"><a href="login.php" class="logout_btn">Log out</a>
-        </div>
-
-
-        
-         <!--- HTML SEARCH BOX-->
-
-      <link rel="stylesheet" href="search.css">
-       
-     <div class="search-container">
-     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
-        <input type=" text" placeholder ="search " name ="q">
-        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
-        </form>
-    </div>
-
-
-
-
-
-
-      </header>
-
-      
-      <div class="sidebar">
-        <center>
-          <h4>Admin</h4>
-        </center>
-
-        <!--Menu Sidebar Items-->
-        <a href="dashboard.php" class="dash-board">
-        <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
-        <span class="item">Dashboard</span></a>
-
-        <a href="index.php">
-        <span class="icon">
-        <i class='fa-regular fa-address-book' style='color:#f2f2f2'></i></span>
-        <span class="item">Records</span></a>
-
-        <a href="Register.php">
-        <span class="icon">
-        <i class='fa-solid fa-user-plus' style='color:#ffffff'></i></span>
-        <span class="item">Register</span></a>
-
-        <a href="#">
-        <span class="icon">
-        <i class='fa-solid fa-user-gear' style='color:#fdfcfc'></i></span>
-        <span class="item">Request</span></a></li>
-      </div>
-      </div>
-
-    <!-- RECORDS TABLE HTML -->
-
-    <div class="table-container">
-      <h1 class="heading">STI College Records</h1>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>No.</th>
-            <th>Name</th>
-            <th>Email </th>
-            <th>Student ID</th>
-         
-            <th>Time in </th>
-            <th>Time out </th>
-          </tr>
-        <tbody>
-        
-<?php include ("config.php");
-
-//error_reporting(0);
-$query="select * from user_form";
-$data=mysqli_query ($conn, $query);
-$total=mysqli_num_rows ($data);
-
-
-
-//echo $total;
-
-if ($total !=0) {
-  while ($result=mysqli_fetch_assoc ($data)) {
-
-    echo "
-<tr><td>". $result ['id'] . "</td>
-<td>" . $result ['name'] . "</td>
-<td>" . $result ['email'] ."</td>
-<td>".  $result ['student_id'] . "</td>
-<td>" .   $result ['time_in']  .  "</td>
-<td>" .   $result ['time_out']  .  "</td></tr>";
-
-  }
-}
-
-else {
-  echo "No records.";
-}
-?>
-
-
-</tbody>
-        </thead>
-      </table>
-    </div>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
-  </html>
+
+<body class="body">
+
+	<!-- Register HTML -->
+
+	<h2 style=" text-align: center; font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"> Welcome to STI College Cubao </h2>
+
+	<center>
+		<div class="table">
+			<table>
+				<tr>
+					<div class="container" id="container">
+						<form action="signup.php" id="form-id">
+
+							<center>
+								<h1 style="font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"> Registration for Visitor</h1>
+
+								<!--VALIDATIOON FOR ERROR-->
+
+								<?php if (isset($_GET['error'])) { ?>
+									<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+								<?php } ?>
+
+								<span>Make sure all the information is correct.</span>
+
+								<input type="name" name="ru_name" value="<?php
+																			if (empty($_GET['ru_name'])) {
+																				echo "";
+																			} else {
+																				echo $_GET['ru_name'];
+																			} ?>" placeholder="Name">
+
+								<input type="studentid" name="ru_studentid" value="<?php
+																					if (empty($_GET['ru_studentid'])) {
+																						echo "";
+																					} else {
+																						echo $_GET['ru_studentid'];
+																					} ?>" placeholder="Student ID number">
+
+								<input type="email" name="ru_email" value="<?php
+																			if (empty($_GET['ru_email'])) {
+																				echo "";
+																			} else {
+																				echo $_GET['ru_email'];
+																			} ?>" placeholder="Email">
+
+
+
+								</br>
+								<button>Register</button>
+						</form>
+					</div>
+	</center>
+	</div>
+
+
+	</tr>
+
+
+
+	<!-- LOG IN HTML -->
+
+	<tr>
+		<div class="form-container" id="form-container">
+			<form action="signin.php">
+
+
+				<center>
+					<h1 style="font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">FaceCognition Admin Login</h1>
+
+					<?php
+					if (!empty($_GET['error'])) {
+						if (in_array($_GET['error'], $all_err)) {
+					?>
+							<p class="loginerror-msg">
+								<?php echo
+								$_GET['error'];
+								?>
+							</p>
+					<?php
+						}
+					}
+					?>
+
+					<span>Only registered users can log in.</span>
+
+					<input type="username" name="username" value="<?php
+																	if (empty($_GET['username'])) {
+																		echo "";
+																	} else {
+																		echo $_GET['username'];
+																	} ?>" placeholder="Username">
+
+					<input type="password" name="password" value="<?php
+																	if (empty($_GET['password'])) {
+																		echo "";
+																	} else {
+																		echo $_GET['password'];
+																	} ?>" placeholder="Password">
+
+					<br>
+
+
+					</br>
+					<button>Login</button>
+			</form>
+		</div>
+		</center>
+	</tr>
+
+
+	</div>
+	</div>
+	</div>
+	</center>
+
+</body>
+
+</html>
