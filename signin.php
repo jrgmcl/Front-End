@@ -23,7 +23,7 @@ else if(empty($password)){
 }
 
 
-$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '".$username."' and 
+$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '".$_SESSION["username"]."' and 
 	password = '".$password_encrypted."'");
 
 $row = mysqli_fetch_array($sql);
