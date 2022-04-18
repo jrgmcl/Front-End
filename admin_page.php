@@ -1,7 +1,7 @@
 <?php
 
 @include 'config.php';
-@include "header.php";
+@include 'header.php';
 
 ?>
 
@@ -102,9 +102,9 @@
       <h3>hi, <span>admin</span></h3>
       <h1>welcome </h1>
       <p>this is an admin page</p>
-      <a href="index.php" class="btn">Records</a>
-      <a href="Register.php" class="btn">register</a>
-      <a href="Logout.php" class="btn">logout</a>
+      <a href="dashboard.php" class="btn">Records</a>
+      <a href="register.php" class="btn">register</a>
+      <a href="logout.php" class="btn">logout</a>
    </div>
 
 </div>

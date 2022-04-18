@@ -6,7 +6,7 @@ include 'err.php';
 $_SESSION["username"] = $_GET["username"];
 $password = $_GET["password"];
 $salt = "fr";
-$password_encrypted = sha1($password);
+$_SESSION["password_encrypted"] = sha1($password);
 
 
 if (empty($username) && empty($password)) {
@@ -14,7 +14,7 @@ if (empty($username) && empty($password)) {
 	exit();
 }
 else if (empty($username)) {
-	header("Location: login.php?error=".$emptyusername_err."&username=".$username);
+	header("Location: login.php?error=".$emptyusername_err."&username=".$_SESSION["username"]);
 	exit();
 }
 else if(empty($password)){
@@ -24,7 +24,7 @@ else if(empty($password)){
 
 
 $sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '".$_SESSION["username"]."' and 
-	password = '".$password_encrypted."'");
+	password = '".$_SESSION["password_encrypted"]."'");
 
 $row = mysqli_fetch_array($sql);
 
@@ -33,7 +33,7 @@ if($row["total"] > 0){
 	exit();
 }
 else{
-	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username);
+	header("Location: login.php?error=".$invalidcredentials_err."&username=".$_SESSION["username"]);
 	exit();
 }
 
