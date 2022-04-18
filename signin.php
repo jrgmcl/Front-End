@@ -1,16 +1,16 @@
 <?php
-
+session_start();
 include 'config.php';
 include 'err.php';
 
-$username = $_GET["username"];
+$_SESSION["username"] = $_GET["username"];
 $password = $_GET["password"];
 $salt = "fr";
 $password_encrypted = sha1($password);
 
 
 if (empty($username) && empty($password)) {
-	header("Location: login.php?error=".$emptyuserpass_err."&username=".$username);
+	header("Location: login.php?error=".$emptyuserpass_err."&username=".$_SESSION["username"]);
 	exit();
 }
 else if (empty($username)) {
@@ -18,7 +18,7 @@ else if (empty($username)) {
 	exit();
 }
 else if(empty($password)){
-    header("Location: login.php?error=".$emptypassword_err."&username=".$username);
+    header("Location: login.php?error=".$emptypassword_err."&username=".$_SESSION["username"]);
 	exit();
 }
 
