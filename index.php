@@ -1,143 +1,186 @@
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<?php
 
-<!-- Screen adjustment for devices to fit -->
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+include 'config.php';
+error_reporting(0);
 
-<head>
 
-	<title>QRCubao</title>
+$select = "SELECT * FROM rgstrd_users ";
+$query = mysqli_query($conn, $select);
 
-	<!--CSS LINK-->
-	<link rel="stylesheet" type="text/css" href="webapp.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<!--JQUERY LINK-->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-	<!--JS LINK -->
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-
-	<!--BOOSTRAP BUNDLE -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
-</head>
-
-<body class="body">
-
-	<!-- Register HTML -->
-
-	<h2 style=" text-align: center; font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"> Welcome to STI College Cubao </h2>
-
-	<center>
-		<div class="table">
-			<table>
-				<tr>
-					<div class="container" id="container">
-						<form action="signup.php" id="form-id">
-
-							<center>
-								<h1 style="font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"> Registration for Visitor</h1>
-
-								<!--VALIDATIOON FOR ERROR-->
-
-								<?php if (isset($_GET['error'])) { ?>
-									<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-								<?php } ?>
-
-								<span>Make sure all the information is correct.</span>
-
-								<input type="name" name="ru_name" value="<?php
-																			if (empty($_GET['ru_name'])) {
-																				echo "";
-																			} else {
-																				echo $_GET['ru_name'];
-																			} ?>" placeholder="Name">
-
-								<input type="studentid" name="ru_studentid" value="<?php
-																					if (empty($_GET['ru_studentid'])) {
-																						echo "";
-																					} else {
-																						echo $_GET['ru_studentid'];
-																					} ?>" placeholder="Student ID number">
-
-								<input type="email" name="ru_email" value="<?php
-																			if (empty($_GET['ru_email'])) {
-																				echo "";
-																			} else {
-																				echo $_GET['ru_email'];
-																			} ?>" placeholder="Email">
+?>
 
 
 
-								</br>
-								<button>Register</button>
-						</form>
-					</div>
-	</center>
-	</div>
+
+<DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> STI Admin Portal</title>
+    <link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- CSS FOR SIDE BAR and NAVBAR -->
+    <link rel="stylesheet" href="dashstyles.css" />
+    <link rel="sytylesheet" type="text/css">
+
+    <!-- CSS SEARCHBAR -->
+    <link rel="stylesheet" href="searchbar.css">
+    <link rel="stylesheet" href="search.css">
 
 
-	</tr>
+    <!-- SCRIPT FOR EXCEL EXPORT-->
+
+    <script src="table2excel.js"></script>
+
+    <!-- HTML PROGRAM SIDE BAR -->
+
+  <body>
+
+    <!--Sidebar Toggle-->
+    <input type="checkbox" id="check">
+
+    <header>
+
+      <label for="check">
+        <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
+      </label>
+
+      <!--LOGO LOCATION-->
+      <div class="left_area">
+        <h3> STI College <span> Cubao</span></h3>
+      </div>
+
+      <!--SHOWS CURRENT DATE AND TIME-->
+      <div class="date_time">
+        <span>Date/Time:
+          <?php echo (strftime("%m/%d/%Y %H:%M")); ?></span>
+
+      </div>
+
+      <!-- LOG OUT BUTTON-->
+      <div class="right_area">
+        <a href="Logout.php" class="logout_btn">Log out</a>
+      </div>
+
+    </header>
 
 
 
-	<!-- LOG IN HTML -->
 
-	<tr>
-		<div class="form-container" id="form-container">
-			<form action="signin.php">
+    <div class="sidebar">
+      <center>
+        <br>
+        <br>
+        <H4> Welcome, Admin! </h4>
+        <br>
+        <br>
+      </center>
+
+      <!--Menu Sidebar Items-->
+      <a href="dashboard.php" class="dash-board">
+        <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
+        <span class="item">Dashboard</span></a>
+
+      <a href="index.php">
+        <span class="icon">
+          <i class='fa-regular fa-address-book' style='color:#f2f2f2'></i></span>
+        <span class="item">Records</span></a>
+
+      <a href="Register.php">
+        <span class="icon">
+          <i class='fa-solid fa-user-plus' style='color:#ffffff'></i></span>
+        <span class="item">Register</span></a>
+
+      <a href="request.php">
+        <span class="icon">
+          <i class='fa-solid fa-user-gear' style='color:#fdfcfc'></i></span>
+        <span class="item">Request</span></a></li>
+    </div>
+    </div>
+
+    <!-- RECORDS TABLE HTML -->
+
+    <div class="table-container">
+      <h1 class="heading">STI College Records</h1>
+      <!-- TABLE FOR EXCEL EXPORT -->
+      <table id="example-table" class=" table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Email </th>
+            <th>Student ID</th>
+            <th>Course</th>
+
+            <th>Time in </th>
+            <th>Time out </th>
+          </tr>
+        <tbody>
+
+          <div class="search-container">
+            <form action=" search.php" method="post" class="search-bar">
+              <!-- To link for the search table in search.php -->
+              <input type=" text" placeholder="search " name="search">
+              <button name="submit"> SEARCH </button>
+            </form>
+
+            <button id="downloadexcel"> EXPORT </button>
 
 
-				<center>
-					<h1 style="font-size: 25px; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">FaceCognition Admin Login</h1>
-
-					<?php
-					if (!empty($_GET['error'])) {
-						if (in_array($_GET['error'], $all_err)) {
-					?>
-							<p class="loginerror-msg">
-								<?php echo
-								$_GET['error'];
-								?>
-							</p>
-					<?php
-						}
-					}
-					?>
-
-					<span>Only registered users can log in.</span>
-
-					<input type="username" name="username" value="<?php
-																	if (empty($_GET['username'])) {
-																		echo "";
-																	} else {
-																		echo $_GET['username'];
-																	} ?>" placeholder="Username">
-
-					<input type="password" name="password" value="<?php
-																	if (empty($_GET['password'])) {
-																		echo "";
-																	} else {
-																		echo $_GET['password'];
-																	} ?>" placeholder="Password">
-
-					<br>
+            <br>
+            </br>
+          </div>
 
 
-					</br>
-					<button>Login</button>
-			</form>
-		</div>
-		</center>
-	</tr>
+          <?php
+          $sel = "SELECT * FROM rgstrd_users";
+          $query = $conn->query($sel);
+          while ($result = $query->fetch_assoc()) {
+
+            echo "
+          <tr>
+
+          <td>" . $result['id'] . " </td>
+          <td>" . $result['ru_name'] . " </td>
+          <td>" . $result['ru_email'] . " </td>
+          <td>" . $result['ru_studentid'] . " </td>
+          <td>" . $result['ru_course'] . " </td>
+          <td>" . $result['time_out'] . " </td>
+          <td>" . $result['time_in'] . " </td>
 
 
-	</div>
-	</div>
-	</div>
-	</center>
+        ";
+          }
 
-</body>
 
-</html>
+
+          ?>
+
+
+
+        </tbody>
+        </thead>
+      </table>
+    </div>
+  </body>
+
+  <!-- JS FOR EXPORTING TO EXCEL -->
+  <script>
+    document.getElementById('downloadexcel').addEventListener('click', function() {
+
+      var table2excel = new Table2Excel();
+      table2excel.export(document.querySelectorAll("#example-table"));
+
+    });
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+
+  </html>

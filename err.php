@@ -28,4 +28,5 @@ $all_err = array($emptyusername_err,
 					$userexist_err,
 					$emailvalid_err);
 
+
 ?>

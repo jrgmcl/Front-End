@@ -1,22 +1,28 @@
+<!DOCTYPE HTML PUBLIC ï¿½-//W3C//DTD HTML 4.01//ENï¿½ ï¿½http://www.w3.org/TR/html4/strict.dtd">
+<html>
 
-<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
-  <html>
-  <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<head>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 
 
 <body class="body">
-    <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <title>Registration  </title>
- 
+   <?php
+
+
+   ?>
+
+
+
+
+   <meta charset="UTF-8">
+   <link rel="stylesheet" type="text/css" href="style.css">
+   <title>Registration </title>
+
 
    <!-- CSS FOR MAIN -->
 
@@ -25,8 +31,8 @@
 
          margin: 0;
          padding: 0;
-         background: url(Default.jpg);
-         position: relative; 
+         background-color: #f2f8ee;
+         position: relative;
 
 
       }
@@ -53,17 +59,17 @@
 
       .left_area span {
          color: #555d5d;
-        
+
       }
 
-          .logout_btn {
+      .logout_btn {
          padding: 5px 5px;
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -18px;
+         margin-top: -30px;
          margin-right: 20px;
-         border-radius: 14px;
+         border-radius: 1px;
          font-size: 15px;
          font-weight: 600;
          color: #f2f8ee;
@@ -73,6 +79,19 @@
 
       .logout_btn:hover {
          background: #555d5d;
+      }
+
+      .date_time span {
+
+         text-align: right;
+         color: white;
+         margin-left: 40rem;
+         margin-top: -30rem;
+         font-size: 19px;
+      }
+
+      .date_time {
+         margin-top: -1.2rem;
       }
 
       .sidebar {
@@ -85,16 +104,16 @@
          height: 100%;
          transition: 0.5s;
          transition-property: left;
-         border: solid; 
+         border: solid;
 
       }
 
       .sidebar h4 {
          color: #f2f8ee;
          margin-bottom: 10px;
-        padding: 10px; 
-        background: #555d5d;
-        margin-top: -30px;
+         padding: 10px;
+         background: #555d5d;
+         margin-top: -30px;
       }
 
       .sidebar a {
@@ -108,7 +127,7 @@
          transition: 0.5s;
          transition-property: background;
          font-size: 18px;
-   
+
       }
 
       .sidebar a:hover {
@@ -156,65 +175,75 @@
          display: none;
       }
    </style>
-    
+
    <!-- CSS MAIN ENDS -->
 
-<body>
-   <!--Sidebar Toggle-->
-   <input type="checkbox" id="check">
+   <body>
+      <!--Sidebar Toggle-->
+      <input type="checkbox" id="check">
 
-   <header>
-      <label for="check">
-      <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
-      </label>
-      <div class="left_area">
-      <h3> STI College <span> Cubao</span></h3>
+      <header>
+
+         <label for="check">
+            <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
+         </label>
+
+         <!--LOGO LOCATION-->
+         <div class="left_area">
+            <h3> STI College <span> Cubao</span></h3>
+         </div>
+
+         <!--SHOWS CURRENT DATE AND TIME-->
+         <div class="date_time">
+            <span>Date/Time:
+               <?php echo (strftime("%m/%d/%Y %H:%M")); ?></span>
+
+         </div>
+
+         <!-- LOG OUT BUTTON-->
+         <div class="right_area">
+            <a href="Logout.php" class="logout_btn">Log out</a>
+         </div>
+
+      </header>
+
+      <div class="sidebar">
+
+         <center>
+            <br>
+            <br>
+            <H4> Welcome, Admin! </h4>
+            <br>
+            <br>
+         </center>
+
+         <!--Menu Sidebar Items-->
+         <a href="dashboard.php" class="dash-board">
+            <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
+            <span class="item">Dashboard </span></a>
+
+         <a href="index.php">
+            <span class="icon"><i class='fa-regular fa-address-book ' style='color:#fafcff'></i></span>
+            <span class="item">Records</span>
+
+            <a href="Register.php">
+               <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#fafcff'></i></span>
+               <span class="item"> Register</span </a>
+
+               <a href="request.php">
+                  <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#fafcff'></i></span>
+                  <span class="item">Request</span></a>
+
       </div>
-      <div class="right_area">
-      <a href="Logout.php" class="logout_btn">Log out</a> 
-      </div>
 
 
-          <!--- HTML SEARCH BOX-->
+      <!-- NAVIGATION ENDS -->
 
-      <link rel="stylesheet" href="search.css">
-       
-     <div class="search-container">
-     <form action ="http://localhost/Front-End/index.php" method = "get" class="search-bar"> <!-- To link for the search table in index.php -->
-        <input type=" text" placeholder ="search " name ="q">
-        <button type ="submit"> <i class="fa-solid fa-magnifying-glass "></i></button>
-        </form>
-    </div>
+      <!-- Requesting form -->
 
+      <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   </body>
 
-
-
-
-    </header>
-
-
-
-  <div class="sidebar">
-      
-     <center> <h4> Admin </h4></center>
-        
-       <!--Menu Sidebar Items-->
-      <a href="#dash" class="dash-board">
-       <span class="icon"><i class='fa-solid fa-bars' style='color:#55d5d'></i></span>
-       <span class="item">Dashboard </span></a>
-
-      <a href="index.php">
-       <span class="icon"><i class='fa-regular fa-address-book ' style='color:#55d5d'></i></span>
-       <span class="item">Records</span>
-
-      <a href="Register.php">
-       <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#55d5d'></i></span>
-       <span class="item"> Register</span </a>
-      
-      <a href="#">
-       <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#55d5d'></i></span>
-       <span class="item">Request</span></a>
-      
-     </div>
-
-   <!-- NAVIGATION ENDS -->
+</html>
