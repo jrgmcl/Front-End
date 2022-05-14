@@ -29,3 +29,9 @@
   - *sudo mysql_secure_installation*
 - **PHPMyAdmin** *sudo apt install phpmyadmin -y*
 
+## Database Info
+**Host:** Localhost</br>
+**Username:** root</br>
+**Password:** frpi</br>
+**Database:** fr</br>
+
