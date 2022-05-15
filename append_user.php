@@ -8,11 +8,7 @@ $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
 $newfilename = $ru_firstname.".".$ru_lastname;
 
-<<<<<<< HEAD
-$destination_path = getcwd() . DIRECTORY_SEPARATOR;
-=======
 $dataset = "/var/www/html/datasets/";
->>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 $file_name = $_FILES['upload']['name'];
 $temp_path = $_FILES['upload']['tmp_name'];
 $destination_path = $temp_path.$file_name;
@@ -43,13 +39,6 @@ $initiate = mysqli_query($conn, $register);
 
 
 #Alert if success or not
-<<<<<<< HEAD
-if ($rs) {
-    for ($i = 0; $i < $total; $i++) {
-        $tmp_singlepath = $temp_path[$i];
-        $name_array = explode('.', $file_name[$i]);
-        $target_path = $destination_path . $location . $ru_name . '_' . $i . '.' . $name_array[1];
-=======
 if ($initiate) {
     $dbid = sprintf("%03d.", $id);
     mkdir($dataset.$dbid.$newfilename, 0777, true);
@@ -57,32 +46,22 @@ if ($initiate) {
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
         $target_path = $dataset.$newfilename.'/'.$dbid.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
->>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 echo ("<script LANGUAGE='JavaScript'>
-<<<<<<< HEAD
-                    window.alert('Succesfully Registered! Recorded " . $total . " images.');
-=======
                     window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
->>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
                     window.location.href='login.php';
                     </script>");
             }
         }
     }
-<<<<<<< HEAD
-} else {
-    echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Something went wrong. Please Try again later...');
-=======
 }
 
 else {
     echo ("<script LANGUAGE='JavaScript'>
     window.alert('Something went wrong on the server! Please Try again later...');
->>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
     window.location.href='login.php';
     </script>");
+###
 }
