@@ -1,0 +1,57 @@
+.body{
+	background: #d5e9e9;
+	padding: 0;
+	margin: 0;
+}
+
+#container{
+	box-sizing:border-box;
+	background: white;
+	
+}
+
+#form-container{
+	box-sizing:border-box;
+	background: #60c2c6;
+	
+}
+body{
+	background: #555d5d;
+	padding: 0;
+	margin: 0;
+}
+
+#container{
+	padding: 20px;
+	box-sizing:border-box;
+	background: white;
+	
+}
+
+#form-container{
+	padding: 30px;
+	box-sizing:border-box;
+	background: #15a8ad;
+	
+}
+
+.table{
+	padding: 0px;
+	width: 25rem;
+	margin-left: .5rem;
+	position: static;
+}
+
+input{
+	margin: 5px;
+	display: flex;
+	width: 20rem;
+	
+	
+} 
+
+h2{
+	margin-top: 8rem;
+	padding: 0;
+	
+}

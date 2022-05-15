@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 23, 2022 at 04:02 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 7.4.27
+-- Host: localhost:3306
+-- Generation Time: May 15, 2022 at 02:19 PM
+-- Server version: 10.3.34-MariaDB-0+deb10u1
+-- PHP Version: 7.3.31-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -42,16 +41,27 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logs`
+-- Table structure for table `log`
 --
 
-CREATE TABLE `logs` (
-  `count` int(64) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `course` varchar(64) NOT NULL,
-  `date` date NOT NULL,
-  `time` time(6) NOT NULL
+CREATE TABLE `log` (
+  `count` int(3) NOT NULL COMMENT 'System ID#',
+  `id` int(3) NOT NULL,
+  `ru_firstname` char(32) NOT NULL,
+  `ru_lastname` char(32) NOT NULL,
+  `ru_studentid` int(16) NOT NULL,
+  `ru_course` varchar(16) NOT NULL,
+  `ru_email` varchar(32) NOT NULL,
+  `time_in` datetime(6) NOT NULL,
+  `time_out` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log`
+--
+
+INSERT INTO `log` (`count`, `id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`, `time_in`, `time_out`) VALUES
+(1, 1, 'Jorge Michael', 'Galang', 2000013822, 'BSCPE', 'jorgegalang21@gmail.com', '2022-05-15 14:19:32.000000', '2022-05-15 19:49:19.000000');
 
 -- --------------------------------------------------------
 
@@ -60,11 +70,12 @@ CREATE TABLE `logs` (
 --
 
 CREATE TABLE `pending_users` (
-  `id` int(11) NOT NULL COMMENT 'System ID#',
-  `ru_name` text NOT NULL,
-  `ru_studentid` varchar(32) NOT NULL,
-  `ru_course` text NOT NULL,
-  `ru_email` varchar(64) NOT NULL
+  `id` int(3) NOT NULL COMMENT 'System ID#',
+  `ru_firstname` char(32) NOT NULL,
+  `ru_lastname` char(32) NOT NULL,
+  `ru_studentid` int(16) NOT NULL,
+  `ru_course` varchar(16) NOT NULL,
+  `ru_email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -74,12 +85,20 @@ CREATE TABLE `pending_users` (
 --
 
 CREATE TABLE `rgstrd_users` (
-  `id` int(11) NOT NULL COMMENT 'System ID#',
-  `ru_name` text NOT NULL,
-  `ru_studentid` varchar(32) NOT NULL,
-  `ru_course` text NOT NULL,
-  `ru_email` varchar(64) NOT NULL
+  `id` int(3) NOT NULL COMMENT 'System ID#',
+  `ru_firstname` char(32) NOT NULL,
+  `ru_lastname` char(32) NOT NULL,
+  `ru_studentid` int(16) NOT NULL,
+  `ru_course` varchar(16) NOT NULL,
+  `ru_email` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `rgstrd_users`
+--
+
+INSERT INTO `rgstrd_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
+(1, 'Jorge Michael', 'Galang', 2000013822, 'BSCPE', 'jorgegalang21@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -94,9 +113,9 @@ ALTER TABLE `admin`
   ADD KEY `password_2` (`password`);
 
 --
--- Indexes for table `logs`
+-- Indexes for table `log`
 --
-ALTER TABLE `logs`
+ALTER TABLE `log`
   ADD PRIMARY KEY (`count`);
 
 --
@@ -116,24 +135,20 @@ ALTER TABLE `rgstrd_users`
 --
 
 --
--- AUTO_INCREMENT for table `logs`
+-- AUTO_INCREMENT for table `log`
 --
-ALTER TABLE `logs`
-  MODIFY `count` int(64) NOT NULL AUTO_INCREMENT;
-
+ALTER TABLE `log`
+  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'System ID#';
-
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#';
 --
 -- AUTO_INCREMENT for table `rgstrd_users`
 --
 ALTER TABLE `rgstrd_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=68;
-COMMIT;
-
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=68;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

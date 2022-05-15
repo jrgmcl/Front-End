@@ -5,10 +5,16 @@ include 'err.php';
 ?>
 
 
+<<<<<<< HEAD
 <!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+=======
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN”
+“http://www.w3.org/TR/html4/strict.dtd">
+>>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 <html>
 
 <head>
+<<<<<<< HEAD
 
 	<title> FaceCognition </title>
 
@@ -16,6 +22,10 @@ include 'err.php';
 	<link rel="stylesheet" type="text/css" href="login-reg-styles.css">
 
 	<!--JS FONTAWESOME -->
+=======
+	<title>FaceCognition</title>
+	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
+>>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!--JQUERY LINK -->
@@ -38,9 +48,27 @@ include 'err.php';
 			<form action="signup.php" id="form-id">
 				<h1>FaceCognition Registration</h1>
 
+<<<<<<< HEAD
 				<?php if (isset($_GET['error'])) { ?>
 					<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
 				<?php } ?>
+=======
+	<span>Make sure all the information is correct.</span>
+	
+	<input type="name" name="ru_firstname" value="<?php
+	if (empty($_GET['ru_firstname'])) {
+		echo "";
+	} else {
+		echo $_GET['ru_firstname'];
+	} ?>" placeholder="First Name">
+	
+	<input type="name" name="ru_lastname" value="<?php
+	if (empty($_GET['ru_lastname'])) {
+		echo "";
+	} else {
+		echo $_GET['ru_lastname'];
+	} ?>" placeholder="Last Name">
+>>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 
 				<span>Make sure all the information is correct.</span>
 
