@@ -1,18 +1,20 @@
 <?php
 include 'err.php';
-$ru_name = $_GET["ru_name"];
+session_start();
+$ru_firstname = $_GET["ru_firstname"];
+$ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
 ?>
 
 
-<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN”
-“http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC â€œ-//W3C//DTD HTML 4.01//ENâ€
+â€œhttp://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>FaceCognition</title>
-	<link rel="stylesheet" type="text/css" href="login-reg-styles.css">
+	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -32,13 +34,19 @@ $ru_email = $_GET["ru_email"];
 
 	<span>Please upload your picture to proceed the registration!</span>
 	
-	<input type="name" name="ru_name" value="<?php
-	if (empty($_GET['ru_name'])) {
+	<input type="name" name="ru_firstname" value="<?php
+	if (empty($_GET['ru_firstname'])) {
 		echo "";
-	}
-	else{
-		echo $_GET['ru_name'];
-	}?>" placeholder="Name" Disabled>
+	} else {
+		echo $_GET['ru_firstname'];
+	} ?>" placeholder="First Name" Disabled>
+	
+	<input type="name" name="ru_lastname" value="<?php
+	if (empty($_GET['ru_lastname'])) {
+		echo "";
+	} else {
+		echo $_GET['ru_lastname'];
+	} ?>" placeholder="Last Name" Disabled>
 
 	<input type="studentid" name="ru_studentid" value="<?php
 	if (empty($_GET['ru_studentid'])) {
@@ -109,7 +117,7 @@ $ru_email = $_GET["ru_email"];
 			<!-- Modal body -->
 			<div class="modal-body">
 				<!-- Form for file uploading -->
-				<form class="form-upload" action= "append_user.php<?php echo "?ru_name=".$ru_name."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email?>" method="POST" enctype="multipart/form-data">
+				<form class="form-upload" action= "append_user.php<?php echo "?ru_firstname=".$ru_firstname."&ru_lastname=".$ru_lastname."&ru_studentid=".$ru_studentid."&ru_course=".$ru_course."&ru_email=".$ru_email."&upload[]=".$_FILES['upload']['tmp_name'];?>" method="POST" enctype="multipart/form-data">
 					Choose File from PC: <input type="file" name="upload[]" multiple>
 					<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
 					<button class"button" type="submit" name="submit">Submit</button>

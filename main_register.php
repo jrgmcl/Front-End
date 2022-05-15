@@ -3,12 +3,12 @@ include 'err.php';
 ?>
 
 
-<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN”
-“http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC â€œ-//W3C//DTD HTML 4.01//ENâ€
+â€œhttp://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
 	<title>FaceCognition</title>
-	<link rel="stylesheet" type="text/css" href="login-reg-styles.css">
+	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -28,13 +28,19 @@ include 'err.php';
 
 	<span>Make sure all the information is correct.</span>
 	
-	<input type="name" name="ru_name" value="<?php
-	if (empty($_GET['ru_name'])) {
+	<input type="name" name="ru_firstname" value="<?php
+	if (empty($_GET['ru_firstname'])) {
 		echo "";
-	}
-	else{
-		echo $_GET['ru_name'];
-	}?>" placeholder="Name">
+	} else {
+		echo $_GET['ru_firstname'];
+	} ?>" placeholder="First Name">
+	
+	<input type="name" name="ru_lastname" value="<?php
+	if (empty($_GET['ru_lastname'])) {
+		echo "";
+	} else {
+		echo $_GET['ru_lastname'];
+	} ?>" placeholder="Last Name">
 
 	<input type="studentid" name="ru_studentid" value="<?php
 	if (empty($_GET['ru_studentid'])) {

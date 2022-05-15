@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-image: url("images/BGpic.jpg");
+	background-image: url("../images/BGpic.jpg");
 	background-position: center;
 	display: flex;
 	justify-content: center;
