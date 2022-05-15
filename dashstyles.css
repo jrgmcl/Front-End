@@ -36,9 +36,9 @@ header {
          background: #5db1b9;
          text-decoration: none;
          float: right;
-         margin-top: -18px;
+         margin-top: -30px;
          margin-right: 20px;
-         border-radius: 14px;
+         border-radius: 1px;
          font-size: 15px;
          font-weight: 600;
          color: #f2f8ee;
@@ -49,6 +49,19 @@ header {
 .logout_btn:hover {
   background: #555d5d;
 }
+
+.date_time span {
+
+  text-align: right;
+  color: white;
+  margin-left: 40rem;
+  margin-top: -30rem;
+  font-size: 19px;
+  }
+  
+  .date_time {
+  margin-top: -1.2rem;
+  }
 
 .sidebar {
   background: #555d5d;

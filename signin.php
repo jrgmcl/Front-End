@@ -10,31 +10,26 @@ $password_encrypted = sha1($password);
 
 
 if (empty($username) && empty($password)) {
-	header("Location: login.php?error=".$emptyuserpass_err."&username=".$username);
+	header("Location: login.php?error=" . $emptyuserpass_err . "&username=" . $username);
 	exit();
-}
-else if (empty($username)) {
-	header("Location: login.php?error=".$emptyusername_err."&username=".$username);
+} else if (empty($username)) {
+	header("Location: login.php?error=" . $emptyusername_err . "&username=" . $username);
 	exit();
-}
-else if(empty($password)){
-    header("Location: login.php?error=".$emptypassword_err."&username=".$username);
+} else if (empty($password)) {
+	header("Location: login.php?error=" . $emptypassword_err . "&username=" . $username);
 	exit();
 }
 
 
-$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '".$username."' and 
-	password = '".$password_encrypted."'");
+$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '" . $username . "' and 
+	password = '" . $password_encrypted . "'");
 
 $row = mysqli_fetch_array($sql);
 
-if($row["total"] > 0){
+if ($row["total"] > 0) {
 	header("Location: admin_page.php");
 	exit();
-}
-else{
-	header("Location: login.php?error=".$invalidcredentials_err."&username=".$username);
+} else {
+	header("Location: login.php?error=" . $invalidcredentials_err . "&username=" . $username);
 	exit();
 }
-
-?>
