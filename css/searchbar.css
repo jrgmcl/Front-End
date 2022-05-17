@@ -5,6 +5,7 @@
 	padding: 0; 
     box-sizing: border-box;
 	padding: 0; 
+	margin-left: 0rem;
 
 	
 }
@@ -14,15 +15,17 @@
 	margin: 0;
 	padding-top: 10px;
 	background: #5a9696;
-	padding-left: 8rem;
+	padding-left: 7rem;
 	align-items: center;;
-    padding-right: 8rem;
+    padding-right: 15rem;
+	margin-top: 2rem;
 }
 
 input{
 
 	padding: 5px;
-	margin-left: 2rem;
-	width:40rem;
+	margin-left:7rem;
+	width:26rem;
+
 }
 

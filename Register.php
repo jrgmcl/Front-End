@@ -43,13 +43,14 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 <html>
 
 <head>
-   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+
+   <!--BOOSTRAP -->
+
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+   <!--JS BUNDLE -->
+   <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
 </head>
 
 
@@ -57,313 +58,259 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 <body class="body">
    <meta charset="UTF-8">
    <link rel="stylesheet" type="text/css" href="style.css">
-   <title>Registration </title>
+   <title>Admin Dashboard </title>
 
 
    <!-- CSS FOR MAIN -->
 
    <style>
       body {
-
-         margin: 0;
-         padding: 0;
-         background-color: #f2f8ee;
-         position: relative;
-
-
-      }
-
-      header {
-         position: fixed;
-         background: #5a9696;
-         padding: 25px;
-         width: 100%;
-         height: 20px;
-         padding: 30px;
-         margin-bottom: 0;
-      }
-
-      .left_area h3 {
-         color: #f2f8ee;
-         margin-top: -20px;
-         text-transform: uppercase;
-         font-size: 22px;
-         font-weight: 900;
-         position: absolute;
-
-      }
-
-      .left_area span {
-         color: #555d5d;
-
-      }
-
-      .logout_btn {
-         padding: 5px 5px;
-         background: #5db1b9;
-         text-decoration: none;
-         float: right;
-         margin-top: -30px;
-         margin-right: 20px;
-         border-radius: 2px;
-         font-size: 15px;
-         font-weight: 600;
-         color: #f2f8ee;
-         transition-property: background;
-
-      }
-
-      .logout_btn:hover {
-         background: white;
-      }
-
-
-      .date_time span {
-
-         text-align: right;
-         color: white;
-         margin-left: 40rem;
-         margin-top: -30rem;
-         font-size: 19px;
-      }
-
-      .date_time {
-         margin-top: -1.2rem;
-      }
-
-      .sidebar {
-         background: #555d5d;
-         margin-top: 60px;
-         padding-top: 30px;
-         position: fixed;
-         left: 0;
-         width: 250px;
-         height: 100%;
-         transition: 0.5s;
-         transition-property: left;
-         border: solid;
-
-      }
-
-      .sidebar h4 {
-         color: #f2f8ee;
-         margin-bottom: 10px;
-         padding: 10px;
-         background: #555d5d;
-         margin-top: -30px;
-      }
-
-      .sidebar a {
-         color: #f2f8ee;
-         display: block;
-         width: 100%;
-         line-height: 60px;
-         text-decoration: none;
-         padding-left: 40px;
-         box-sizing: border-box;
-         transition: 0.5s;
-         transition-property: background;
-         font-size: 18px;
-
-      }
-
-      .sidebar a:hover {
-         background: #5db1b9;
-      }
-
-      .sidebar i {
-         padding-right: 10px;
-      }
-
-      label #sidebar_btn {
-         z-index: 1;
-         color: #f2f8ee;
-         margin-top: -6px;
-         position: absolute;
-         cursor: pointer;
-         left: 300px;
-         font-size: 20px;
-         margin-left: -20px;
-         transition: 0.5s;
-         transition-property: color;
-
-      }
-
-      label #sidebar_btn:hover {
-         color: #f2f8ee;
-      }
-
-      #check:checked~.sidebar {
-         left: -250px;
-      }
-
-      .content {
-         margin-left: 250px;
+         background-image: url("images/BGpic.jpg");
          background-position: center;
-         height: 100vh;
-         transition: 0.5s;
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         font-family: 'Montserrat', sans-serif;
+
       }
 
-      #check:checked~.content {
-         margin-left: 0;
+      .logout {
+         margin-right: 54rem;
       }
 
-      #check {
-         display: none;
+      a {
+         font-size: 18px;
+         font-weight: 600;
+      }
+
+      button {
+         font-weight: 600;
+         font-size: 18px;
+      }
+
+      .image {
+         margin-top: -2px;
+         margin-left: -35px;
+      }
+
+      li {
+         margin-top: 1.5rem;
+      }
+
+      .reg-container {
+
+         border-radius: 10px;
+         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+         position: relative;
+         overflow: hidden;
+         width: 50rem;
+         height: 550px;
+         margin-top: 50px;
+         margin-left: 21rem;
+         background-color: #fff;
+
+      }
+
+      h2 {
+         font-family: 'Montserrat', sans-serif;
+         text-align: center;
+         font-weight: 600;
+         padding: 10px;
+
+
+      }
+
+      form {
+         padding: 30px;
+
+      }
+
+      input {
+         background-color: #eee;
+         border: none;
+         border-radius: 15px;
+         padding: 12px 15px;
+         margin: 6px 0;
+         width: 100%;
+      }
+
+      select {
+         background-color: #eee;
+         border-radius: 15px;
+         padding: 12px 15px;
+         margin: 8px 0;
+         width: 100%;
+      }
+
+      select:after {}
+
+      select:hover {}
+
+      option {
+         background: #eee;
+         color: #000;
+         font-size: 14px;
+      }
+
+      button {
+         border-radius: 20px;
+         border: 1px solid #5DB1B9;
+         background-color: #5DB1B9;
+         color: #FFFFFF;
+         font-size: 12px;
+         font-weight: bold;
+         padding: 12px 45px;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         transition: transform 80ms ease-in;
+      }
+
+      button:active {
+         transform: scale(0.95);
+      }
+
+      button:focus {
+         outline: none;
+      }
+
+      button.ghost {
+         background-color: transparent;
+         border-color: #FFFFFF;
       }
    </style>
+
+
 
    <!-- CSS MAIN ENDS -->
 
    <body>
-      <!--Sidebar Toggle-->
-      <input type="checkbox" id="check">
 
       <header>
-         <label for="check">
-            <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
-         </label>
-         <div class="left_area">
-            <h3> STI College <span> Cubao</span></h3>
-         </div>
 
-         <div class="date_time">
-            <span>Date/Time:
-               <?php echo (strftime("%m/%d/%Y %H:%M")); ?></span>
+         <ul class=" nav justify-content-center bg-info p-1">
 
-         </div>
-
-         <div class="main">
-
-            <div class="right_area">
-               <a href="Logout.php" class="logout_btn">Log out</a>
+            <div class=" image">
+               <img src="images/logo.png" width="95" height="95">
             </div>
+
+            <li class="nav-item ">
+               <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white  " href="index.php">Records</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white  " href="Register.php">Register</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white " href="request.php">Requests</a>
+            </li>
+
+            <div class="logout"></div>
+            <li class="nav-item" id="#logout">
+               <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+            </li>
+            </div>
+         </ul>
+
+
+         </div>
       </header>
 
 
 
-      <div class="sidebar">
+      <!-- NAVIGATION ENDS -->
+      <!-- NAVIGATION ENDS -->
 
-         <center>
+
+      <div class="reg-container">
+
+         <h2 class="bg-info text-white"> User Registration </h2>
+
+         <form action="" method="post">
+
+            <?php if (isset($_GET['error'])) { ?>
+               <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+            <?php } ?>
+
+            <H5>Please enter the following details:</h5>
+
             <br>
+
+            <input type="name" name="ru_name" value="<?php
+                                                      if (empty($_GET['ru_name'])) {
+                                                         echo "";
+                                                      } else {
+                                                         echo $_GET['ru_name'];
+                                                      } ?>" placeholder="Name">
+
+            <input type="studentid" name="ru_studentid" value="<?php
+                                                               if (empty($_GET['ru_studentid'])) {
+                                                                  echo "";
+                                                               } else {
+                                                                  echo $_GET['ru_studentid'];
+                                                               } ?>" placeholder="Student ID number">
+
+            <input type="email" name="ru_email" value="<?php
+                                                         if (empty($_GET['ru_email'])) {
+                                                            echo "";
+                                                         } else {
+                                                            echo $_GET['ru_email'];
+                                                         } ?>" placeholder="Email">
+
+            <select name="ru_course" value="<?php
+                                             if (empty($_GET['ru_course'])) {
+                                                echo "";
+                                             } else {
+
+                                                echo $_GET['ru_course'];
+                                             } ?>" placeholder="Course">
+               <option disabled selected value>Select a Course</option>
+               <option value="ASCT">ASCT</option>
+               <option value="BSCPE">BSCPE</option>
+               <option value="BSIT">BSIT</option>
+               <option value="BSCS">BSCS</option>
+               <option value="BSBA">BSBA</option>
+               <option value="BSA">BSA</option>
+               <option value="BSTM">BSTM</option>
+               <option value="BMMA">BMMA</option>
+               <option value="BSHM">BSHM</option>
+               <option value="TOP">TOP</option>
+               <option value="GAS">GAS</option>
+               <option value="STEM">STEM</option>
+               <option value="Faculty Staff">Faculty Staff</option>
+            </select>
+
+
             <br>
-            <H4> Welcome, Admin! </h4>
+            <!-- Form for file uploading -->
+
+            <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
+               Upload Image: <input type="file" name="file" multiple>
+               <br>
+               <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+               <button class="button" type="submit" name="submit">Submit</button>
+
+
+
+            </form>
+
+
             <br>
-            <br>
-         </center>
 
-         <!--Menu Sidebar Items-->
-         <a href="dashboard.php">
-            <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
-            <span class="item">Dashboard </span></a>
 
-         <a href="index.php">
-            <span class="icon"><i class='fa-regular fa-address-book ' style='color:#fafcff'></i></span>
-            <span class="item">Records</span>
 
-            <a href="Register.php">
-               <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#fafcff'></i></span>
-               <span class="item"> Register</span </a>
+            </br>
 
-               <a href="request.php">
-                  <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#fafcff'></i></span>
-                  <span class="item">Request</span></a>
+      </div>
+      </div>
+
+
 
       </div>
 
-      <!-- NAVIGATION ENDS -->
-
-      <div class="gridcontainer">
-         <div class="row">
-            <div class="card" style="width: 40rem; height: 30rem;">
-               <div class="card-body" style="width: 50rem; height: 30rem; ">
-                  <h5 class="card-header"> Register User </h5>
-
-                  <div class="form-container">
-
-                     <form action="" id="form-id" method="post">
-
-                        <?php if (isset($_GET['error'])) { ?>
-                           <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-                        <?php } ?>
-
-                        <span>Provide the following.</span>
-
-                        <br>
-
-                        <input type="name" name="ru_name" value="<?php
-                                                                  if (empty($_GET['ru_name'])) {
-                                                                     echo "";
-                                                                  } else {
-                                                                     echo $_GET['ru_name'];
-                                                                  } ?>" placeholder="Name">
-
-                        <input type="studentid" name="ru_studentid" value="<?php
-                                                                           if (empty($_GET['ru_studentid'])) {
-                                                                              echo "";
-                                                                           } else {
-                                                                              echo $_GET['ru_studentid'];
-                                                                           } ?>" placeholder="Student ID number">
-
-                        <input type="email" name="ru_email" value="<?php
-                                                                     if (empty($_GET['ru_email'])) {
-                                                                        echo "";
-                                                                     } else {
-                                                                        echo $_GET['ru_email'];
-                                                                     } ?>" placeholder="Email">
-
-                        <select name="ru_course" value="<?php
-                                                         if (empty($_GET['ru_course'])) {
-                                                            echo "";
-                                                         } else {
-
-                                                            echo $_GET['ru_course'];
-                                                         } ?>" placeholder="Course">
-                           <option disabled selected value>Select a Course</option>
-                           <option value="ASCT">ASCT</option>
-                           <option value="BSCPE">BSCPE</option>
-                           <option value="BSIT">BSIT</option>
-                           <option value="BSCS">BSCS</option>
-                           <option value="BSBA">BSBA</option>
-                           <option value="BSA">BSA</option>
-                           <option value="BSTM">BSTM</option>
-                           <option value="BMMA">BMMA</option>
-                           <option value="BSHM">BSHM</option>
-                           <option value="TOP">TOP</option>
-                           <option value="GAS">GAS</option>
-                           <option value="STEM">STEM</option>
-                           <option value="Faculty Staff">Faculty Staff</option>
-                        </select>
-
-
-                        <br>
-                        <!-- Form for file uploading -->
-
-                        <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-                           Upload Image: <input type="file" name="file" multiple>
-                           <br>
-                           <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-                           <button class="button" type="submit" name="submit">Submit</button>
-
-
-
-                        </form>
-
-
-                        <br>
-
-
-
-                        </br>
-
-                  </div>
-               </div>
-
-
-
-            </div>
-
-         </div>
+      </div>
 
       </div>
       </div>

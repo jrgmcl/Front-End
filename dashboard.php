@@ -1,18 +1,14 @@
-<<<<<<< HEAD
 <!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 <head>
 
    <!--BOOSTRAP -->
+
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
    <!--JS BUNDLE -->
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
 </head>
 
 
@@ -20,334 +16,222 @@
 <body class="body">
    <meta charset="UTF-8">
    <link rel="stylesheet" type="text/css" href="style.css">
-   <title>Registration </title>
+   <title>Admin Dashboard </title>
 
 
    <!-- CSS FOR MAIN -->
 
    <style>
       body {
-
-         margin: 0;
-         padding: 0;
-         background-color: #f2f8ee;
-         position: relative;
-
-
-      }
-
-      header {
-         position: fixed;
-         background: #5a9696;
-         padding: 25px;
-         width: 100%;
-         height: 20px;
-         padding: 30px;
-         margin-bottom: 0;
-      }
-
-      .left_area h3 {
-         color: #f2f8ee;
-         margin-top: -20px;
-         text-transform: uppercase;
-         font-size: 22px;
-         font-weight: 900;
-         position: absolute;
-
-      }
-
-      .left_area span {
-         color: #555d5d;
-
-      }
-
-      .logout_btn {
-         padding: 5px 5px;
-         background: #5db1b9;
-         text-decoration: none;
-         float: right;
-         margin-top: -30px;
-         margin-right: 20px;
-         border-radius: 1px;
-         font-size: 15px;
-         font-weight: 600;
-         color: #f2f8ee;
-         transition-property: background;
-
-      }
-
-      .logout_btn:hover {
-         background: white;
-      }
-
-      .date_time span {
-
-         text-align: right;
-         color: white;
-         margin-left: 40rem;
-         margin-top: -30rem;
-         font-size: 19px;
-      }
-
-      .date_time {
-         margin-top: -1.2rem;
-      }
-
-      .sidebar {
-         background: #555d5d;
-         margin-top: 60px;
-         padding-top: 30px;
-         position: fixed;
-         left: 0;
-         width: 250px;
-         height: 100%;
-         transition: 0.5s;
-         transition-property: left;
-         border: solid;
-
-      }
-
-      .sidebar h4 {
-         color: #f2f8ee;
-         margin-bottom: 10px;
-         padding: 10px;
-         background: #555d5d;
-         margin-top: -30px;
-      }
-
-      .sidebar a {
-         color: #f2f8ee;
-         display: block;
-         width: 100%;
-         line-height: 60px;
-         text-decoration: none;
-         padding-left: 40px;
-         box-sizing: border-box;
-         transition: 0.5s;
-         transition-property: background;
-         font-size: 18px;
-
-      }
-
-      .sidebar a:hover {
-         background: #5db1b9;
-      }
-
-      .sidebar i {
-         padding-right: 10px;
-      }
-
-      label #sidebar_btn {
-         z-index: 1;
-         color: #f2f8ee;
-         margin-top: -6px;
-         position: absolute;
-         cursor: pointer;
-         left: 300px;
-         font-size: 20px;
-         margin-left: -20px;
-         transition: 0.5s;
-         transition-property: color;
-
-      }
-
-      label #sidebar_btn:hover {
-         color: #f2f8ee;
-      }
-
-      #check:checked~.sidebar {
-         left: -250px;
-      }
-
-      .content {
-         margin-left: 250px;
+         background-image: url("images/BGpic.jpg");
          background-position: center;
-         height: 100vh;
-         transition: 0.5s;
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         font-family: 'Montserrat', sans-serif;
+
       }
 
-      #check:checked~.content {
-         margin-left: 0;
+      .logout {
+         margin-right: 54rem;
       }
 
-      #check {
-         display: none;
+      a {
+         font-size: 18px;
+         font-weight: 600;
+      }
+
+      button {
+         font-weight: 600;
+         font-size: 18px;
+         background-color: ;
+      }
+
+      .image {
+         margin-top: -2px;
+         margin-left: -35px;
+      }
+
+      li {
+         margin-top: 1.5rem;
+      }
+
+
+      .container {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+         position: relative;
+         overflow: hidden;
+         width: 70rem;
+         height: 400px;
+         margin-top: 50px;
+      }
+
+      .card-header {
+
+         font-weight: 500;
+         font-family: 'Montserrat', sans-serif;
+         font-size: 25px;
+
+      }
+
+      .title-container {
+
+
+         border-radius: 10px;
+         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+            0 5px 5px rgba(0, 0, 0, 0.22);
+         position: relative;
+         overflow: hidden;
+         width: 70rem;
+         height: 400px;
+         margin-top: 50px;
+         margin-left: 13rem;
+      }
+
+
+      #title-page {
+
+         background-color: #008fb3;
+         border-radius: 10px;
+         position: relative;
+         width: 70rem;
+         height: 80px;
+         margin-top: 40px;
+      }
+
+      h1 {
+         font-family: 'Montserrat', sans-serif;
+         text-align: center;
+         font-weight: 700;
+         margin-top: 10px;
+         padding: 2px;
+         color: #fff;
+
+      }
+
+      button {
+         border-radius: 20px;
+         border: 1px solid #5DB1B9;
+         background-color: #5DB1B9;
+         color: #FFFFFF;
+         font-size: 12px;
+         font-weight: bold;
+         padding: 10px 30px;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         transition: transform 80ms ease-in;
+      }
+
+      button:active {
+         transform: scale(0.95);
+      }
+
+      button:focus {
+         outline: none;
+      }
+
+      button.ghost {
+         background-color: transparent;
+         border-color: #FFFFFF;
       }
    </style>
+
+
 
    <!-- CSS MAIN ENDS -->
 
    <body>
-      <!--Sidebar Toggle-->
-      <input type="checkbox" id="check">
 
       <header>
 
-         <label for="check">
-            <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
-         </label>
+         <ul class=" nav justify-content-center bg-info p-1">
 
-         <!--LOGO LOCATION-->
-         <div class="left_area">
-            <h3> STI College <span> Cubao</span></h3>
+            <div class=" image">
+               <img src="images/logo.png" width="95" height="95">
+            </div>
+
+            <li class="nav-item ">
+               <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white  " href="index.php">Records</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white  " href="Register.php">Register</a>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link text-white " href="request.php">Requests</a>
+            </li>
+
+            <div class="logout"></div>
+            <li class="nav-item" id="#logout">
+               <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+            </li>
+            </div>
+         </ul>
+
+
          </div>
-
-         <!--SHOWS CURRENT DATE AND TIME-->
-         <div class="date_time">
-            <span>Date/Time:
-               <?php echo (strftime("%m/%d/%Y %H:%M")); ?></span>
-
-         </div>
-
-         <!-- LOG OUT BUTTON-->
-         <div class="right_area">
-            <a href="Logout.php" class="logout_btn">Log out</a>
-         </div>
-
       </header>
 
 
-      <div class="sidebar">
+      <!-- NAVIGATION ENDS -->
+      <div class="title-container" id="title-page">
+         <h1> Welcome Back, Admin! </h1>
 
-         <center>
-            <br>
-            <br>
-            <H4> Welcome, Admin! </h4>
-            <br>
-            <br>
-         </center>
-
-         <!--Menu Sidebar Items-->
-         <a href="#dash" class="dash-board">
-            <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
-            <span class="item">Dashboard </span></a>
-
-         <a href="index.php">
-            <span class="icon"><i class='fa-regular fa-address-book ' style='color:#fafcff'></i></span>
-            <span class="item">Records</span> <br>
-
-            <a href="Register.php">
-               <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#fafcff'></i></span>
-               <span class="item"> Register</span </a> <br>
-
-               <a href="request.php">
-                  <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#fafcff'></i></span>
-                  <span class="item">Request</span></a>
 
       </div>
 
-      <!-- NAVIGATION ENDS -->
+      <div class="container" id="container">
 
-      <!-- CARD FACE RECOGNITION -->
-      <div class="card-container">
-         <div class=" card-deck">
-            <div class="card-group">
 
-               <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">FACE RECOGNITION:</h5>
-                     </a>
+         <!-- CARD FACE RECOGNITION -->
 
 
 
-                     <br>
-                     <p class="card-text" style=" color: #00ff00">ACTIVE</p>
+         <div class="card-group">
 
-                     <?php
+            <div class="card">
 
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
+               <div class="card-body">
+                  <div class="card-header text-white bg-dark">QR Code</div>
+                  <br>
+                  <h5 class="card-text"> Status:</h5>
+                  <p class="card-text"> Updated QR Code</p>
 
 
-                     ?>
 
-
-                     </br>
-                  </div>
                </div>
+            </div>
 
-               <div class="card bg-light mb-3" style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-                     <br>
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">Registered User</h5>
-                     </a>
+            <div class="card">
 
-
-
-                     <br>
-                     <p class="card-text">Total:</p>
-
-                     <?php
-
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
+               <div class="card-body">
+                  <div class="card-header text-white bg-info">Face Recognition</div>
+                  <br>
+                  <h5 class="card-text"> Status:</h5>
 
 
-                     ?>
+                  <?php
+
+                  require 'config.php';
 
 
-                     </br>
-                  </div>
+                  $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
+                  $query_run = mysqli_query($conn, $query);
+
+                  $row = mysqli_num_rows($query_run); //Fetch number of row
+
+                  echo '<p>' . $row . '</p>'; // To call rows inside <p>
+
+
+                  ?>
                </div>
-
-
-               <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-                     <br>
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">Requests:</h5>
-                     </a>
-
-
-
-                     <br>
-                     <p class="card-text">Total:</p>
-
-                     <?php
-
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
-
-
-                     ?>
-
-
-                     </br>
-                  </div>
-               </div>
-
-
-
-
             </div>
          </div>
-
-
-
-
-
-
 
       </div>
 
@@ -355,362 +239,4 @@
 
    </body>
 
-=======
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
-<html>
-
-<head>
-
-   <!--BOOSTRAP -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css ">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-   <!--JS BUNDLE -->
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-
-
-<body class="body">
-   <meta charset="UTF-8">
-   <link rel="stylesheet" type="text/css" href="style.css">
-   <title>Registration </title>
-
-
-   <!-- CSS FOR MAIN -->
-
-   <style>
-      body {
-
-         margin: 0;
-         padding: 0;
-         background-color: #f2f8ee;
-         position: relative;
-
-
-      }
-
-      header {
-         position: fixed;
-         background: #5a9696;
-         padding: 25px;
-         width: 100%;
-         height: 20px;
-         padding: 30px;
-         margin-bottom: 0;
-      }
-
-      .left_area h3 {
-         color: #f2f8ee;
-         margin-top: -20px;
-         text-transform: uppercase;
-         font-size: 22px;
-         font-weight: 900;
-         position: absolute;
-
-      }
-
-      .left_area span {
-         color: #555d5d;
-
-      }
-
-      .logout_btn {
-         padding: 5px 5px;
-         background: #5db1b9;
-         text-decoration: none;
-         float: right;
-         margin-top: -30px;
-         margin-right: 20px;
-         border-radius: 1px;
-         font-size: 15px;
-         font-weight: 600;
-         color: #f2f8ee;
-         transition-property: background;
-
-      }
-
-      .logout_btn:hover {
-         background: white;
-      }
-
-      .date_time span {
-
-         text-align: right;
-         color: white;
-         margin-left: 40rem;
-         margin-top: -30rem;
-         font-size: 19px;
-      }
-
-      .date_time {
-         margin-top: -1.2rem;
-      }
-
-      .sidebar {
-         background: #555d5d;
-         margin-top: 60px;
-         padding-top: 30px;
-         position: fixed;
-         left: 0;
-         width: 250px;
-         height: 100%;
-         transition: 0.5s;
-         transition-property: left;
-         border: solid;
-
-      }
-
-      .sidebar h4 {
-         color: #f2f8ee;
-         margin-bottom: 10px;
-         padding: 10px;
-         background: #555d5d;
-         margin-top: -30px;
-      }
-
-      .sidebar a {
-         color: #f2f8ee;
-         display: block;
-         width: 100%;
-         line-height: 60px;
-         text-decoration: none;
-         padding-left: 40px;
-         box-sizing: border-box;
-         transition: 0.5s;
-         transition-property: background;
-         font-size: 18px;
-
-      }
-
-      .sidebar a:hover {
-         background: #5db1b9;
-      }
-
-      .sidebar i {
-         padding-right: 10px;
-      }
-
-      label #sidebar_btn {
-         z-index: 1;
-         color: #f2f8ee;
-         margin-top: -6px;
-         position: absolute;
-         cursor: pointer;
-         left: 300px;
-         font-size: 20px;
-         margin-left: -20px;
-         transition: 0.5s;
-         transition-property: color;
-
-      }
-
-      label #sidebar_btn:hover {
-         color: #f2f8ee;
-      }
-
-      #check:checked~.sidebar {
-         left: -250px;
-      }
-
-      .content {
-         margin-left: 250px;
-         background-position: center;
-         height: 100vh;
-         transition: 0.5s;
-      }
-
-      #check:checked~.content {
-         margin-left: 0;
-      }
-
-      #check {
-         display: none;
-      }
-   </style>
-
-   <!-- CSS MAIN ENDS -->
-
-   <body>
-      <!--Sidebar Toggle-->
-      <input type="checkbox" id="check">
-
-      <header>
-
-         <label for="check">
-            <i class=" fa-solid fa-bars" id="sidebar_btn"></i>
-         </label>
-
-         <!--LOGO LOCATION-->
-         <div class="left_area">
-            <h3> STI College <span> Cubao</span></h3>
-         </div>
-
-         <!--SHOWS CURRENT DATE AND TIME-->
-         <div class="date_time">
-            <span>Date/Time:
-               <?php echo (strftime("%m/%d/%Y %H:%M")); ?></span>
-
-         </div>
-
-         <!-- LOG OUT BUTTON-->
-         <div class="right_area">
-            <a href="Logout.php" class="logout_btn">Log out</a>
-         </div>
-
-      </header>
-
-
-      <div class="sidebar">
-
-         <center>
-            <br>
-            <br>
-            <H4> Welcome, Admin! </h4>
-            <br>
-            <br>
-         </center>
-
-         <!--Menu Sidebar Items-->
-         <a href="#dash" class="dash-board">
-            <span class="icon"><i class='fa-solid fa-bars' style='color:#fafcff'></i></span>
-            <span class="item">Dashboard </span></a>
-
-         <a href="index.php">
-            <span class="icon"><i class='fa-regular fa-address-book ' style='color:#fafcff'></i></span>
-            <span class="item">Records</span> <br>
-
-            <a href="Register.php">
-               <span class="icon"><i class='fa-solid fa-user-plus ' style='color:#fafcff'></i></span>
-               <span class="item"> Register</span </a> <br>
-
-               <a href="request.php">
-                  <span class="icon"><i class='fa-solid fa-user-gear ' style='color:#fafcff'></i></span>
-                  <span class="item">Request</span></a>
-
-      </div>
-
-      <!-- NAVIGATION ENDS -->
-
-      <!-- CARD FACE RECOGNITION -->
-      <div class="card-container">
-         <div class=" card-deck">
-            <div class="card-group">
-
-               <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">FACE RECOGNITION:</h5>
-                     </a>
-
-
-
-                     <br>
-                     <p class="card-text" style=" color: #00ff00">ACTIVE</p>
-
-                     <?php
-
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
-
-
-                     ?>
-
-
-                     </br>
-                  </div>
-               </div>
-
-               <div class="card bg-light mb-3" style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-                     <br>
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">Registered User</h5>
-                     </a>
-
-
-
-                     <br>
-                     <p class="card-text">Total:</p>
-
-                     <?php
-
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
-
-
-                     ?>
-
-
-                     </br>
-                  </div>
-               </div>
-
-
-               <div class="card bg-light mb-3 " style="width:15rem; height: 15rem;">
-                  <div class="card-body">
-                     <br>
-                     <a href=" index.php">
-                        <h5 class="card-title" style=" color:#000">Requests:</h5>
-                     </a>
-
-
-
-                     <br>
-                     <p class="card-text">Total:</p>
-
-                     <?php
-
-                     require 'config.php';
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     echo '<p>' . $row . '</p>'; // To call rows inside <p>
-
-
-                     ?>
-
-
-                     </br>
-                  </div>
-               </div>
-
-
-
-
-            </div>
-         </div>
-
-
-
-
-
-
-
-      </div>
-
-      </div>
-
-   </body>
-
->>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
 </html>
