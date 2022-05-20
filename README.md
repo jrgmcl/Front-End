@@ -29,7 +29,7 @@
   - *sudo mysql_secure_installation*
 - **PHPMyAdmin** *sudo apt install phpmyadmin -y*
 
-## Database Info
+## Database Info (Raspberry Pi)
 **Host:** Localhost</br>
 **Username:** root</br>
 **Password:** frpi</br>

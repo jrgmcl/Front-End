@@ -9,8 +9,12 @@ $ru_email = $_GET["ru_email"];
 ?>
 
 
+<<<<<<< HEAD
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
+=======
 <!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN”
 “http://www.w3.org/TR/html4/strict.dtd">
+>>>>>>> 7c857540871ebeb22eb763c3f84ed561a2de00ad
 <html>
 <head>
 	<title>FaceCognition</title>
@@ -32,6 +36,27 @@ $ru_email = $_GET["ru_email"];
      	<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
     <?php } ?>
 
+<<<<<<< HEAD
+				<<<<<<< HEAD <?php if (isset($_GET['error'])) { ?> <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+				<?php } ?>
+				=======
+				<span>Please upload your picture to proceed the registration!</span>
+
+				<input type="name" name="ru_firstname" value="<?php
+																if (empty($_GET['ru_firstname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_firstname'];
+																} ?>" placeholder="First Name" Disabled>
+
+				<input type="name" name="ru_lastname" value="<?php
+																if (empty($_GET['ru_lastname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_lastname'];
+																} ?>" placeholder="Last Name" Disabled>
+				>>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
+=======
 	<span>Please upload your picture to proceed the registration!</span>
 	
 	<input type="name" name="ru_firstname" value="<?php
@@ -47,6 +72,7 @@ $ru_email = $_GET["ru_email"];
 	} else {
 		echo $_GET['ru_lastname'];
 	} ?>" placeholder="Last Name" Disabled>
+>>>>>>> 7c857540871ebeb22eb763c3f84ed561a2de00ad
 
 	<input type="studentid" name="ru_studentid" value="<?php
 	if (empty($_GET['ru_studentid'])) {
@@ -114,6 +140,48 @@ $ru_email = $_GET["ru_email"];
 			<a class="close" data-dismiss="modal"></a>
 			</div>
 
+<<<<<<< HEAD
+			<<<<<<< HEAD <!-- Popup Upload -->
+				<div class="modal" id="Upload">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							=======
+							<!-- Modal body -->
+							<div class="modal-body">
+								<!-- Form for file uploading -->
+								<form class="form-upload" action="append_user.php<?php echo "?ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . "&upload[]=" . $_FILES['upload']['tmp_name']; ?>" method="POST" enctype="multipart/form-data">
+									Choose File from PC: <input type="file" name="upload[]" multiple>
+									<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+									<button class"button" type="submit" name="submit">Submit</button>
+								</form>
+							</div>
+							>>>>>>> 5f5b14b61e94c55a9a23ed64613097463a6bfb08
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title">Upload 5 Face Images</h4>
+								<a class="close" data-dismiss="modal"></a>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								<!-- Form for file uploading -->
+								<form class="form-upload" action="append_user.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
+									Choose File from PC: <input type="file" name="upload[]" multiple>
+									<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+									<button class="button" type="submit" name="submit">Submit</button>
+								</form>
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+
+							</div>
+							</form>
+						</div>
+					</div>
+				</div>
+=======
 			<!-- Modal body -->
 			<div class="modal-body">
 				<!-- Form for file uploading -->
@@ -128,6 +196,7 @@ $ru_email = $_GET["ru_email"];
 			<div class="modal-footer">
 			
 			</div>
+>>>>>>> 7c857540871ebeb22eb763c3f84ed561a2de00ad
 
 		</div>
     </div>
