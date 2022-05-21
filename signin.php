@@ -9,11 +9,11 @@ $salt = "fr";
 $_SESSION["password_encrypted"] = sha1($password);
 
 
-if (empty($username) && empty($password)) {
+if (empty($_SESSION["username"]) && empty($password)) {
 	header("Location: login.php?error=".$emptyuserpass_err."&username=".$_SESSION["username"]);
 	exit();
 }
-else if (empty($username)) {
+else if (empty($_SESSION["username"])) {
 	header("Location: login.php?error=".$emptyusername_err."&username=".$_SESSION["username"]);
 	exit();
 }

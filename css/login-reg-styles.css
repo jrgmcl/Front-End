@@ -104,13 +104,14 @@ select {
 	margin: 8px 0;
 	width: 100%;
 }
-select:after{
-	
+
+/*
+select:after{	
 }
 
 select:hover{
-
 }
+*/
 
 option {
 	background: #eee;
