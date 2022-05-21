@@ -37,18 +37,18 @@ session_start();
 				<span>Make sure all the information is correct.</span>
 
 				<input type="name" name="ru_firstname" value="<?php
-															if (empty($_GET['ru_firstname'])) {
-																echo "";
-															} else {
-																echo $_GET['ru_firstname'];
-															} ?>" placeholder="First Name">
+																if (empty($_GET['ru_firstname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_firstname'];
+																} ?>" placeholder="First Name">
 
 				<input type="name" name="ru_lastname" value="<?php
-															if (empty($_GET['ru_lastname'])) {
-																echo "";
-															} else {
-																echo $_GET['ru_lastname'];
-															} ?>" placeholder="Last Name">
+																if (empty($_GET['ru_lastname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_lastname'];
+																} ?>" placeholder="Last Name">
 
 				<input type="studentid" name="ru_studentid" value="<?php
 																	if (empty($_GET['ru_studentid'])) {

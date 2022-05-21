@@ -177,7 +177,7 @@ $query = $conn->query($sel);
       0 5px 5px rgba(0, 0, 0, 0.22);
     position: relative;
     overflow: hidden;
-    width: 70rem;
+    width: 10rem;
     height: 400px;
     margin-top: 50px;
     margin-left: 13rem;
@@ -289,7 +289,7 @@ $query = $conn->query($sel);
             echo "
           <tr>
 
-          <td><input type ='checkbox'></td>
+          <td>" . $result['id'] . " </td>
           <td>" . $result['ru_name'] . " </td>
           <td>" . $result['ru_email'] . " </td>
           <td>" . $result['ru_studentid'] . " </td>
@@ -320,7 +320,7 @@ $query = $conn->query($sel);
       </tbody>
       </thead>
     </table>
-    <input type='button' value=</div>
+
 </body>
 
 <!-- JS FOR EXPORTING TO EXCEL -->

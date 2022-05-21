@@ -81,7 +81,7 @@
         font-weight: 700;
         margin-top: 10px;
         padding: 2px;
-        color: #black;
+        color: #000;
 
     }
 

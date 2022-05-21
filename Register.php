@@ -143,10 +143,6 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
          width: 100%;
       }
 
-      select:after {}
-
-      select:hover {}
-
       option {
          background: #eee;
          color: #000;
