@@ -205,7 +205,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
             <div class="logout"></div>
             <li class="nav-item" id="#logout">
-               <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+               <button class="nav-link bg-info text-white " a href="Logout.php">Logout</button>
             </li>
             </div>
          </ul>
