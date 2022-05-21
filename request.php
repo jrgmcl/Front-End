@@ -101,7 +101,7 @@
                <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-white  " href="index.php">Records</a>
+               <a class="nav-link text-white  " href="Records.php">Records</a>
             </li>
             <li class="nav-item">
                <a class="nav-link text-white  " href="Register.php">Register</a>
