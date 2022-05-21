@@ -10,29 +10,26 @@ $_SESSION["password_encrypted"] = sha1($password);
 
 
 if (empty($_SESSION["username"]) && empty($password)) {
-	header("Location: login.php?error=".$emptyuserpass_err."&username=".$_SESSION["username"]);
+	header("Location: index.php?error=" . $emptyuserpass_err . "&username=" . $_SESSION["username"]);
 	exit();
-}
-else if (empty($_SESSION["username"])) {
-	header("Location: login.php?error=".$emptyusername_err."&username=".$_SESSION["username"]);
+} else if (empty($_SESSION["username"])) {
+	header("Location: index.php?error=" . $emptyusername_err . "&username=" . $_SESSION["username"]);
 	exit();
-}
-else if(empty($password)){
-    header("Location: login.php?error=".$emptypassword_err."&username=".$_SESSION["username"]);
+} else if (empty($password)) {
+	header("Location: index.php?error=" . $emptypassword_err . "&username=" . $_SESSION["username"]);
 	exit();
 }
 
 
-$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '".$_SESSION["username"]."' and 
-	password = '".$_SESSION["password_encrypted"]."'");
+$sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username = '" . $_SESSION["username"] . "' and 
+	password = '" . $_SESSION["password_encrypted"] . "'");
 
 $row = mysqli_fetch_array($sql);
 
 if ($row["total"] > 0) {
 	header("Location: dashboard.php");
 	exit();
-}
-else{
-	header("Location: login.php?error=".$invalidcredentials_err."&username=".$_SESSION["username"]);
+} else {
+	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $_SESSION["username"]);
 	exit();
 }

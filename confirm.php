@@ -20,9 +20,7 @@ if($stmt = $mysqli->prepare("SELECT count(*) as total from admin WHERE username 
     header("LOCATION:index.php"); /* REDIRECT USER TO INDEX PAGE */
   }
   else { /* IF NO RESULT FOUND */
-    header("LOCATION:login.php"); /* REDIRECT USER TO LOGIN PAGE */
+    header("LOCATION:index.php"); /* REDIRECT USER TO LOGIN PAGE */
   }
 
 } /* END OF PREPARED STATEMENT */
-
-?>
