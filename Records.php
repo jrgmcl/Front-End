@@ -1,49 +1,45 @@
 <?php
+$host = "localhost";
+$username = "root";
+$password = "";
+$dbname = "fr";
 
-include 'config.php';
-error_reporting(0);
-
-$conn = new mysqli("localhost", "root", "", "fr");
-
-
-#Insert the user in the another table
-$ru_name = $_GETT["ru_name"];
-$ru_studentid = $_GET["ru_studentid"];
-$ru_course = $_GET["ru_course"];
-$ru_email = $_GET["ru_email"];
-$id = $_GET['id'];
-
-$total_count = count($id);
-
-#Count the rows in the rgstrd_users and increment it by one
-$count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
-$count_array = mysqli_fetch_array($count_id);
-$id = $count_array[0];
-$id = ++$id;
-
-#Check if the file is an Image
-for ($i = 0; $i < $total_count; $i++) {
-
-  if (empty($id['delete'])) {
-
-    $insert_query = mysqli_query($conn, "INSERT INTO `deact_users`
-      VALUES ('$ru_name', '$ru_studentid', '$ru_course', '$ru_email') SELECT * FROM `rgstrd_users` ");
-  } else {
-
-    $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `rgstrd_users` WHERE `id`= '$id'");
-    header('location:Records.php');
-  }
+$conn = new mysqli($host, $username, $password, $dbname);
+if ($conn->connect_error) {
+  die("Connection Failed!");
+} else {
+  echo 'Connected.';
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $location = mysqli_query($conn, "SELECT * FROM `rgstrd_users`");
+  $row = mysqli_fetch_assoc($location);
+  $firstname = $row['ru_firstname'];
+  $lastname = $row['ru_lastname'];
+  $course = $row['ru_course'];
+  $studentid = $row['ru_studentid'];
+  $email = $row['ru_email'];
 
-$sel = "SELECT * FROM rgstrd_users";
-$query = $conn->query($sel);
 
+  #Counter function
+  $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM pending_users");
+  $count_array = mysqli_fetch_array($count_id);
+  $count = $count_array[0];
 
+  for ($i = 0; $i < $count; $i++) {
+    $registered = mysqli_query($conn, "SELECT * FROM `pending_users` WHERE `id` = $i");
+    $row = mysqli_fetch_row($registered);
+    if (empty($row[1])) {
 
+      $destination = mysqli_query($conn, "REPLACE INTO `pending_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES ('$i','$firstname','$lastname','$studentid','$course','$email')");
+      if ($destination) {
+        $location = mysqli_query($conn, "DELETE FROM `rgstrd_users` WHERE `id` = $i");
+        echo "DELETED";
+      }
+    }
+  }
+}
 ?>
-
 
 
 
@@ -89,7 +85,7 @@ $query = $conn->query($sel);
   }
 
   .logout {
-    margin-right: 54rem;
+    margin-right: 40rem;
   }
 
   a {
@@ -213,8 +209,14 @@ $query = $conn->query($sel);
     <li class="nav-item ">
       <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link text-white  " href="Records.php">Records</a>
+    <li class="nav-item">
+      <a class="nav-link text-white " href="Records.php">Records</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-white " href="Logs.php">Logs</a>
     </li>
     <li class="nav-item">
       <a class="nav-link text-white  " href="Register.php">Register</a>
@@ -225,9 +227,11 @@ $query = $conn->query($sel);
 
     <div class="logout"></div>
     <li class="nav-item" id="#logout">
-      <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+      <form action="Logout.php" method="post">
+        <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
     </li>
     </div>
+    </form>
   </ul>
 
 
@@ -251,13 +255,13 @@ $query = $conn->query($sel);
       <thead>
         <tr>
           <th>No.</th>
-          <th>Name</th>
-          <th>Email </th>
+          <th>First Name</th>
+          <th>Last Name </th>
           <th>Student ID</th>
           <th>Course</th>
+          <th>Email</th>
 
-          <th>Time in </th>
-          <th>Time out </th>
+
           <th>Settings </th>
         </tr>
       <tbody>
@@ -282,6 +286,10 @@ $query = $conn->query($sel);
 
         <?php
 
+        #Fetch the data from database
+        $sel = "SELECT * FROM `rgstrd_users` ";
+        $query = $conn->query($sel);
+
         $num = mysqli_num_rows($query);
         if ($num > 0) {
           while ($result = $query->fetch_assoc()) {
@@ -289,20 +297,19 @@ $query = $conn->query($sel);
             echo "
           <tr>
 
-          <td>" . $result['id'] . " </td>
-          <td>" . $result['ru_name'] . " </td>
-          <td>" . $result['ru_email'] . " </td>
+          <td> " . $result['id'] . "</td>
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
           <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['time_out'] . " </td>
-          <td>" . $result['time_in'] . " </td>
-
-          
+          <td>" . $result['ru_email'] . " </td>
+         
+         
           <td>
-          <a href='Records.php?add=" . $result['id'] . "' class='btn bg-success' > Archive </a>
-          <a href='Records.php?delete=" . $result['id'] . "' class='btn bg-danger'> Delete </a>
+         
+          <button href='Records.php?id=" . $result['id'] . "' class='btn bg-danger'> Archive </button>
           </td>
-          
+     
           </tr> 
           
 
@@ -334,7 +341,7 @@ $query = $conn->query($sel);
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="file:///C:/XAMPP/htdocs/Front-Endold1/js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 

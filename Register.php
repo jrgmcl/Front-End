@@ -75,7 +75,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
       }
 
       .logout {
-         margin-right: 54rem;
+         margin-right: 40rem;
       }
 
       a {
@@ -121,7 +121,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
       }
 
-      form {
+      #reg_users {
          padding: 30px;
 
       }
@@ -191,23 +191,31 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
             </div>
 
             <li class="nav-item ">
-               <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
+               <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-white  " href="Records.php">Records</a>
+               <a class="nav-link text-white " href="Records.php">Records</a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link text-white " href="Logs.php">Logs</a>
             </li>
             <li class="nav-item">
                <a class="nav-link text-white  " href="Register.php">Register</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-white " href="request.php">Requests</a>
+               <a class="nav-link text-white " href="Request.php">Requests</a>
             </li>
 
+
             <div class="logout"></div>
+
             <li class="nav-item" id="#logout">
-               <button class="nav-link bg-info text-white " a href="Logout.php">Logout</button>
+               <form action="Logout.php" method="post" id=" form_logout">
+                  <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
             </li>
             </div>
+            </form>
          </ul>
 
 
@@ -224,7 +232,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
          <h2 class="bg-info text-white"> User Registration </h2>
 
-         <form action="" method="post">
+         <form action="" method="post" id="reg_users">
 
             <?php if (isset($_GET['error'])) { ?>
                <p class="regerror-msg"><?php echo $_GET['error']; ?></p>

@@ -34,7 +34,9 @@ if (!isset($_SESSION['admin_name'])) {
          <p>this is an admin page</p>
          <a href="index.php" class="btn">login</a>
          <a href="Register.php" class="btn">register</a>
-         <a href="Logout.php" class="btn">logout</a>
+         <form action="Logout.php" method="post">
+            <a href="Logout.php" class="btn">logout</a>
+         </form>
       </div>
 
    </div>

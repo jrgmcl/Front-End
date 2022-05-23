@@ -33,7 +33,7 @@
       }
 
       .logout {
-         margin-right: 54rem;
+         margin-right: 40rem;
       }
 
       a {
@@ -146,7 +146,6 @@
    <body>
 
       <header>
-
          <ul class=" nav justify-content-center bg-info p-1">
 
             <div class=" image">
@@ -154,25 +153,32 @@
             </div>
 
             <li class="nav-item ">
-               <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
+               <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-white  " href="Records.php">Records</a>
+               <a class="nav-link text-white " href="Records.php">Records</a>
+            </li>
+
+            <li class="nav-item">
+               <a class="nav-link text-white " href="Logs.php">Logs</a>
             </li>
             <li class="nav-item">
                <a class="nav-link text-white  " href="Register.php">Register</a>
             </li>
             <li class="nav-item">
-               <a class="nav-link text-white " href="request.php">Requests</a>
+               <a class="nav-link text-white " href="Request.php">Requests</a>
             </li>
+
 
             <div class="logout"></div>
+
             <li class="nav-item" id="#logout">
-               <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+               <form action="Logout.php" method="post">
+                  <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
             </li>
             </div>
+            </form>
          </ul>
-
 
          </div>
       </header>

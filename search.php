@@ -40,7 +40,7 @@
     }
 
     .logout {
-        margin-right: 54rem;
+        margin-right: 40rem;
     }
 
     a {
@@ -130,18 +130,23 @@
         <li class="nav-item">
             <a class="nav-link text-white  " href="Records.php">Records</a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link text-white " href="Logs.php">Logs</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link text-white  " href="Register.php">Register</a>
         </li>
         <li class="nav-item">
             <a class="nav-link text-white " href="request.php">Requests</a>
         </li>
-
-        <div class="logout"></div>
-        <li class="nav-item" id="#logout">
-            <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
-        </li>
-        </div>
+        <form action="Logout.php" method="post">
+            <div class="logout"></div>
+            <li class="nav-item" id="#logout">
+                <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
+            </li>
+            </div>
+        </form>
     </ul>
 
 

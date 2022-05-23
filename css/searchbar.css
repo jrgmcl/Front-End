@@ -21,11 +21,11 @@
 	margin-top: 2rem;
 }
 
-input{
+.search_bar_style input{
 
-	padding: 5px;
-	margin-left:7rem;
-	width:26rem;
+	padding: 0;
+	margin-left:5rem;
+	width:27rem;
 
 }
 
