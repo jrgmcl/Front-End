@@ -281,8 +281,8 @@ $query = $conn->query($sel);
           <td>
           
           
-          <a href='accept.php?id=" . $result['id'] . "' class='btn bg-success' > Archive </a> 
-          <a href='Request.php?id=" . $result['id'] . "' class='btn bg-danger'> Delete </a>
+          <a href='accept.php?id=" . $result['id'] . "' class='btn bg-success' > Accept </a> 
+          <a href='Request.php?id=" . $result['id'] . "' class='btn bg-danger'> Reject </a>
           </td>
           
           </tr> 

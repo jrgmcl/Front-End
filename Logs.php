@@ -223,15 +223,15 @@ $query = $conn->query($sel);
         <table id="example-table" class=" table ">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Name</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email </th>
                     <th>Student ID</th>
                     <th>Course</th>
 
                     <th>Time in </th>
                     <th>Time out </th>
-                    <th>Settings </th>
+
                 </tr>
             <tbody>
 
@@ -252,8 +252,10 @@ $query = $conn->query($sel);
                     </br>
                 </div>
 
-
                 <?php
+                #Fetch the data from database
+                $sel = "SELECT * FROM `log` ";
+                $query = $conn->query($sel);
 
                 $num = mysqli_num_rows($query);
                 if ($num > 0) {
@@ -262,20 +264,14 @@ $query = $conn->query($sel);
                         echo "
           <tr>
 
-          <td>" . $result['id'] . " </td>
-          <td>" . $result['ru_name'] . " </td>
-          <td>" . $result['ru_email'] . " </td>
+       
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
           <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['time_out'] . " </td>
-          <td>" . $result['time_in'] . " </td>
-
-          
-          <td>
-          
-          <a href='Records.php?add=" . $result['id'] . "' class='btn bg-success' > Archive </a>
-          <a href='Records.php?delete=" . $result['id'] . "' class='btn bg-danger'> Delete </a>
-          </td>
+          <td>" . $result['ru_email'] . " </td>
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
           
           </tr> 
           
