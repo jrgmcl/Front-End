@@ -22,7 +22,6 @@ include 'config.php';
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 <link rel="stylesheet" href="dashstyles.css" />
-<link rel="sytylesheet" type="text/css">
 
 <!-- CSS SEARCHBAR -->
 <link rel="stylesheet" href="css/searchbar.css">
@@ -274,7 +273,7 @@ include 'config.php';
          
         
           <td>
-          <a href='archived_users.php?id=" . $result['id'] . "' class='btn bg-success' > Accept </a> 
+          <a href='archived_users.php?id=" . $result['id'] . "' class='btn bg-secondary' > Archive </a> 
           </td>
           </tr> 
           

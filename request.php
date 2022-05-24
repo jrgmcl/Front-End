@@ -228,7 +228,7 @@ $query = $conn->query($sel);
    <!-- RECORDS TABLE HTML -->
 
    <div class="title-container" id="title-page">
-      <h1>STI College Records</h1>
+      <h1>Pending Request</h1>
    </div>
 
    <div class="table-container">
@@ -256,7 +256,7 @@ $query = $conn->query($sel);
 
                   <!-- To link for the search table in Search.php -->
                   <input type=" text" placeholder="search" name="search">
-                  <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
+                  <button name="submit"> SEARCH </button>
 
 
                </form>
@@ -312,15 +312,6 @@ $query = $conn->query($sel);
 
 </body>
 
-<!-- JS FOR EXPORTING TO EXCEL -->
-<script>
-   document.getElementById('downloadexcel').addEventListener('click', function() {
-
-      var table2excel = new Table2Excel();
-      table2excel.export(document.querySelectorAll("#example-table"));
-
-   });
-</script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>

@@ -1,34 +1,8 @@
 <?php
 
-
-@include 'config.php'; // connection to database via config.php
-
-if (isset($_POST['submit'])) { // declaration of variables ang assigning data from database
-
-   // declared name $ should be same from the database
-
-   #Grab input values
-   $ru_firstname = $_POST["ru_firstname"];
-   $ru_lastname = $_POST["ru_lastname"];
-   $ru_studentid = $_POST["ru_studentid"];
-   $ru_course = $_POST["ru_course"];
-   $ru_email = $_POST["ru_email"];
-   $id = 0;
-   // fetching the email and student id from database
-
-   $rs = mysqli_query($conn, $register);
-
-   if ($rs) {
-
-      $error[] = 'user already exist!';
-   } else {
-      $register = "INSERT INTO `rgstrd_users` (id, ru_name, ru_studentid, ru_course, ru_email) 
-        VALUES ('$id', '$ru_name', '$ru_studentid', '$ru_course', '$ru_email')";
-      $rs = mysqli_query($conn, $register);
-      header('location:Register.php'); // When registering, page will go back to Register.php
-
-   }
-}
+// connection to database via config.php
+@include 'config.php';
+include 'err.php';
 
 ?>
 
@@ -126,7 +100,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
          background-color: #eee;
          border: none;
          border-radius: 15px;
-         padding: 12px 15px;
+         padding: 8px 10px;
          margin: 6px 0;
          width: 100%;
       }
@@ -134,7 +108,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
       select {
          background-color: #eee;
          border-radius: 15px;
-         padding: 12px 15px;
+         padding: 8px 10px;
          margin: 8px 0;
          width: 100%;
       }
@@ -230,7 +204,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
          <h2 class="bg-info text-white"> User Registration </h2>
 
-         <form action="" method="post" id="reg_users">
+         <form action="reg_append.php" method="post" id="reg_users">
 
             <?php if (isset($_GET['error'])) { ?>
                <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
@@ -238,7 +212,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
             <H5>Please enter the following details:</h5>
 
-            <br>
+
 
 
             <input type="name" name="ru_firstname" value="<?php
@@ -296,19 +270,13 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
             <!-- Form for file uploading -->
 
             <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-               Upload Image: <input type="file" name="file" multiple>
+               Choose file from PC: <input type="file" name="register[]" multiple>
                <br>
                <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
                <button class="button" type="submit" name="submit">Submit</button>
-
-
-
             </form>
 
-
             <br>
-
-
 
             </br>
 
@@ -317,23 +285,16 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
 
 
-      </div>
-
-      </div>
-
-      </div>
-      </div>
-
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-      </div>
-
-      </div>
 
    </body>
+   <script>
+      $(document).ready(function() {
+         if ($('#msg').val() != "") {
+            alert($('#msg').val()); // or replace with a JQuery modal
+         }
+      });
+   </script>
+
 
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>

@@ -101,6 +101,7 @@ $query = $conn->query($sel);
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
+
     }
 
     button:active {
@@ -219,7 +220,7 @@ $query = $conn->query($sel);
     <!-- RECORDS TABLE HTML -->
 
     <div class="title-container" id="title-page">
-        <h1>STI College Records</h1>
+        <h1>STI College Logs</h1>
     </div>
 
     <div class="table-container">

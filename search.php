@@ -1,3 +1,11 @@
+<?php
+
+include 'config.php';
+
+?>
+
+
+
 <!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -14,11 +22,10 @@
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 <link rel="stylesheet" href="dashstyles.css" />
-<link rel="sytylesheet" type="text/css">
 
 <!-- CSS SEARCHBAR -->
-<link rel="stylesheet" href="searchbar.css">
-<link rel="stylesheet" href="search.css">
+<link rel="stylesheet" href="css/searchbar.css">
+<link rel="stylesheet" href="css/search.css">
 
 
 <!-- SCRIPT FOR EXCEL EXPORT-->
@@ -62,18 +69,7 @@
         margin-top: 1.5rem;
     }
 
-    .table-container {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-        position: relative;
-        overflow: hidden;
-        width: 70rem;
-        height: 400px;
-        margin-top: 50px;
-        margin-left: 13rem;
-    }
+
 
     h1 {
         font-family: 'Montserrat', sans-serif;
@@ -92,7 +88,7 @@
         color: #FFFFFF;
         font-size: 12px;
         font-weight: bold;
-        padding: 12px 45px;
+        padding: 10px 30px;
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
@@ -109,6 +105,54 @@
     button.ghost {
         background-color: transparent;
         border-color: #FFFFFF;
+    }
+
+    table-container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        position: relative;
+        margin-top: 50px;
+        margin-left: 13rem;
+    }
+
+    h1 {
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-weight: 700;
+        margin-top: 10px;
+        padding: 2px;
+        color: #fff;
+
+    }
+
+    .title-container {
+
+
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+            0 5px 5px rgba(0, 0, 0, 0.22);
+        position: relative;
+        overflow: hidden;
+        width: 10rem;
+        height: 400px;
+        margin-top: 50px;
+        margin-left: 13rem;
+    }
+
+    #title-page {
+
+        background-color: #008fb3;
+        border-radius: 10px;
+        position: relative;
+        width: 70rem;
+        height: 80px;
+        margin-top: 40px;
+    }
+
+    a {
+        color: white;
     }
 </style>
 
@@ -129,7 +173,7 @@
         </li>
 
         <li class="nav-item dropdown">
-            <a class="nav-link text-white  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
+            <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
             <ul class=" bg-info dropdown-menu">
                 <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
                 <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
@@ -162,34 +206,50 @@
     </header>
 
 
-    <!-- TABLE HTML -->
+
+
+    <!-- RECORDS TABLE HTML -->
+
+    <div class="title-container" id="title-page">
+        <h1>STI College Records</h1>
+    </div>
 
     <div class="table-container">
-        <h1 class="heading">STI College Records</h1>
-        <table class="table">
+
+
+        <!-- TABLE FOR EXCEL EXPORT -->
+        <table id="example-table" class=" table ">
             <thead>
                 <tr>
-
-                    <th>Name</th>
-                    <th>Email </th>
+                    <th>No.</th>
+                    <th>First Name</th>
+                    <th>Last Name </th>
                     <th>Student ID</th>
                     <th>Course</th>
+                    <th>Email</th>
 
-                    <th>Time in </th>
-                    <th>Time out </th>
+
+                    <th>Settings </th>
                 </tr>
-                </tbody>
+            <tbody>
 
-                <div class="search-container">
-                    <form action=" search.php" method="post" class="search-bar">
-                        <!-- To link for the search table in search.php -->
-                        <input type=" text" placeholder="search " name="search">
-                        <button name="submit"> SEARCH </button>
+                <div class="search-container bg-info">
+
+                    <form action=" Search.php" method="post" class="search-bar">
+
+                        <!-- To link for the search table in Search.php -->
+                        <input type=" text" placeholder="search" name="search">
+                        <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
+
+
                     </form>
+
+
 
                     <br>
                     </br>
                 </div>
+
 
                 <?php
                 error_reporting(0);
@@ -209,12 +269,14 @@
                 ?>
 
                         <tr>
-                            <td><?php echo $result->ru_name; ?></td>
+                            <td><?php echo $result->id; ?></td>
+                            <td><?php echo $result->ru_firstname; ?></td>
+                            <td><?php echo $result->ru_lastname; ?></td>
                             <td><?php echo $result->ru_email; ?></td>
                             <td><?php echo $result->ru_studentid; ?></td>
                             <td><?php echo $result->ru_course; ?></td>
-                            <td><?php echo $result->time_in; ?></td>
-                            <td><?php echo $result->time_out; ?></td>
+                            <td><a href='archived_users.php?id=<?php echo $result->id; ?>' class='btn bg-secondary'> Archive </a> </td>
+
                         </tr>
 
                 <?php
@@ -229,7 +291,7 @@
 
 
 
-                </tbody>
+            </tbody>
             </thead>
         </table>
     </div>
