@@ -8,7 +8,8 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
    // declared name $ should be same from the database
 
    #Grab input values
-   $ru_name = $_POST["ru_name"];
+   $ru_firstname = $_POST["ru_firstname"];
+   $ru_lastname = $_POST["ru_lastname"];
    $ru_studentid = $_POST["ru_studentid"];
    $ru_course = $_POST["ru_course"];
    $ru_email = $_POST["ru_email"];
@@ -26,11 +27,6 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
       $rs = mysqli_query($conn, $register);
       header('location:Register.php'); // When registering, page will go back to Register.php
 
-      if (performQuery($query)) {
-         echo "<script>alert('Your account request is now pending for approval! Please wait for confirmation. Thank you.')</script>";
-      } else {
-         echo "<script>alert('Unknown error occured.')</script>";
-      }
    }
 }
 
@@ -180,49 +176,51 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
    <!-- CSS MAIN ENDS -->
 
+
    <body>
 
-      <header>
+      <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
 
-         <ul class=" nav justify-content-center bg-info p-1">
-
-            <div class=" image">
-               <img src="images/logo.png" width="95" height="95">
-            </div>
-
-            <li class="nav-item ">
-               <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link text-white " href="Records.php">Records</a>
-            </li>
-
-            <li class="nav-item">
-               <a class="nav-link text-white " href="Logs.php">Logs</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link text-white  " href="Register.php">Register</a>
-            </li>
-            <li class="nav-item">
-               <a class="nav-link text-white " href="Request.php">Requests</a>
-            </li>
-
-
-            <div class="logout"></div>
-
-            <li class="nav-item" id="#logout">
-               <form action="Logout.php" method="post" id=" form_logout">
-                  <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
-            </li>
-            </div>
-            </form>
-         </ul>
-
-
+         <div class=" image">
+            <img src="images/logo.png" width="95" height="95">
          </div>
+
+         <li class="nav-item ">
+            <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
+         </li>
+
+         <li class="nav-item dropdown">
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
+            <ul class=" bg-info dropdown-menu">
+               <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
+               <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
+
+               <li>
+
+
+            </ul>
+
+         </li>
+
+         <li class="nav-item">
+            <a class="nav-link text-white  " href="Register.php">Register</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link text-white " href="Request.php">Requests</a>
+         </li>
+
+         <div class="logout"></div>
+         <li class="nav-item" id="#logout">
+            <form action="Logout.php" method="post">
+               <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
+         </li>
+         </div>
+         </form>
+      </ul>
+
+
+      </div>
       </header>
-
-
 
       <!-- NAVIGATION ENDS -->
       <!-- NAVIGATION ENDS -->
@@ -242,12 +240,20 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
 
             <br>
 
-            <input type="name" name="ru_name" value="<?php
-                                                      if (empty($_GET['ru_name'])) {
-                                                         echo "";
-                                                      } else {
-                                                         echo $_GET['ru_name'];
-                                                      } ?>" placeholder="Name">
+
+            <input type="name" name="ru_firstname" value="<?php
+                                                            if (empty($_GET['ru_firstname'])) {
+                                                               echo "";
+                                                            } else {
+                                                               echo $_GET['ru_firstname'];
+                                                            } ?>" placeholder="First Name">
+
+            <input type="name" name="ru_lastname" value="<?php
+                                                         if (empty($_GET['ru_lastname'])) {
+                                                            echo "";
+                                                         } else {
+                                                            echo $_GET['ru_lastname'];
+                                                         } ?>" placeholder="Last Name">
 
             <input type="studentid" name="ru_studentid" value="<?php
                                                                if (empty($_GET['ru_studentid'])) {
@@ -263,15 +269,14 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
                                                             echo $_GET['ru_email'];
                                                          } ?>" placeholder="Email">
 
-            <select name="ru_course" value="<?php
-                                             if (empty($_GET['ru_course'])) {
-                                                echo "";
-                                             } else {
-
-                                                echo $_GET['ru_course'];
-                                             } ?>" placeholder="Course">
+            <select class="select" name="ru_course" value="<?php
+                                                            if (empty($_GET['ru_course'])) {
+                                                               echo "";
+                                                            } else {
+                                                               echo $_GET['ru_course'];
+                                                            } ?>" placeholder="Course">
                <option disabled selected value>Select a Course</option>
-               <option value="ASCT">ASCT</option>
+               <option class="option" value="ASCT">ASCT</option>
                <option value="BSCPE">BSCPE</option>
                <option value="BSIT">BSIT</option>
                <option value="BSCS">BSCS</option>
@@ -287,7 +292,7 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
             </select>
 
 
-            <br>
+
             <!-- Form for file uploading -->
 
             <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
@@ -329,8 +334,8 @@ if (isset($_POST['submit'])) { // declaration of variables ang assigning data fr
       </div>
 
    </body>
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
 </html>

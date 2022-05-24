@@ -118,34 +118,42 @@
 
 <body>
 
-    <ul class=" nav justify-content-center bg-info p-1">
+    <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
 
         <div class=" image">
             <img src="images/logo.png" width="95" height="95">
         </div>
 
         <li class="nav-item ">
-            <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white  " href="Records.php">Records</a>
+            <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link text-white " href="Logs.php">Logs</a>
+        <li class="nav-item dropdown">
+            <a class="nav-link text-white  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
+            <ul class=" bg-info dropdown-menu">
+                <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
+                <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
+
+                <li>
+
+
+            </ul>
+
         </li>
+
         <li class="nav-item">
             <a class="nav-link text-white  " href="Register.php">Register</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white " href="request.php">Requests</a>
+            <a class="nav-link text-white " href="Request.php">Requests</a>
         </li>
-        <form action="Logout.php" method="post">
-            <div class="logout"></div>
-            <li class="nav-item" id="#logout">
-                <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
-            </li>
-            </div>
+
+        <div class="logout"></div>
+        <li class="nav-item" id="#logout">
+            <form action="Logout.php" method="post">
+                <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
+        </li>
+        </div>
         </form>
     </ul>
 
@@ -226,9 +234,8 @@
         </table>
     </div>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </head>
 
 </html>
