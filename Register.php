@@ -214,13 +214,16 @@ include 'err.php';
 
 
 
+            <div class="form-control">
+               <input type="name" name="ru_firstname" value="<?php
+                                                               if (empty($_GET['ru_firstname'])) {
+                                                                  echo "";
+                                                               } else {
+                                                                  echo $_GET['ru_firstname'];
+                                                               } ?>" placeholder="First Name">
 
-            <input type="name" name="ru_firstname" value="<?php
-                                                            if (empty($_GET['ru_firstname'])) {
-                                                               echo "";
-                                                            } else {
-                                                               echo $_GET['ru_firstname'];
-                                                            } ?>" placeholder="First Name">
+               <i class='fas fa-check-circle'></i>
+            </div>
 
             <input type="name" name="ru_lastname" value="<?php
                                                          if (empty($_GET['ru_lastname'])) {
