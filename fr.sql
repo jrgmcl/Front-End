@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 15, 2022 at 02:19 PM
--- Server version: 10.3.34-MariaDB-0+deb10u1
--- PHP Version: 7.3.31-1~deb10u1
+-- Host: 127.0.0.1
+-- Generation Time: May 26, 2022 at 12:09 AM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -41,19 +42,41 @@ INSERT INTO `admin` (`username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `archived`
+--
+
+CREATE TABLE `archived` (
+  `id` int(3) NOT NULL COMMENT 'System ID#',
+  `ru_firstname` char(32) DEFAULT NULL,
+  `ru_lastname` char(32) DEFAULT NULL,
+  `ru_studentid` char(16) DEFAULT NULL,
+  `ru_course` varchar(16) DEFAULT NULL,
+  `ru_email` varchar(32) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `archived`
+--
+
+INSERT INTO `archived` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
+(1, 'Jorge Michael', 'Galang', '2000013822', 'BSCPE', 'jorgegalang21@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `log`
 --
 
 CREATE TABLE `log` (
   `count` int(3) NOT NULL COMMENT 'System ID#',
-  `id` int(3) NOT NULL,
+  `id` int(3) DEFAULT NULL,
   `ru_firstname` char(32) NOT NULL,
-  `ru_lastname` char(32) NOT NULL,
-  `ru_studentid` int(16) NOT NULL,
-  `ru_course` varchar(16) NOT NULL,
-  `ru_email` varchar(32) NOT NULL,
-  `time_in` datetime(6) NOT NULL,
-  `time_out` datetime(6) NOT NULL
+  `ru_lastname` char(32) DEFAULT NULL,
+  `ru_studentid` int(16) DEFAULT NULL,
+  `ru_course` varchar(16) DEFAULT NULL,
+  `ru_email` varchar(32) DEFAULT NULL,
+  `time_in` datetime(6) DEFAULT NULL,
+  `time_out` datetime(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -71,12 +94,41 @@ INSERT INTO `log` (`count`, `id`, `ru_firstname`, `ru_lastname`, `ru_studentid`,
 
 CREATE TABLE `pending_users` (
   `id` int(3) NOT NULL COMMENT 'System ID#',
-  `ru_firstname` char(32) NOT NULL,
-  `ru_lastname` char(32) NOT NULL,
-  `ru_studentid` int(16) NOT NULL,
-  `ru_course` varchar(16) NOT NULL,
-  `ru_email` varchar(32) NOT NULL
+  `ru_firstname` char(32) DEFAULT NULL,
+  `ru_lastname` char(32) DEFAULT NULL,
+  `ru_studentid` int(16) DEFAULT NULL,
+  `ru_course` varchar(16) DEFAULT NULL,
+  `ru_email` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `pending_users`
+--
+
+INSERT INTO `pending_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
+(1, 'Jorge Michael', 'Galang', 200148555, 'BSCPE', 'jorgegalang21@gmail.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `qr_users`
+--
+
+CREATE TABLE `qr_users` (
+  `id` int(3) NOT NULL COMMENT 'System ID#',
+  `qr_firstname` char(32) DEFAULT NULL,
+  `qr_lastname` char(32) DEFAULT NULL,
+  `qr_number` char(16) DEFAULT NULL,
+  `qr_gender` varchar(255) DEFAULT NULL,
+  `qr_purpose` varchar(16) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `qr_users`
+--
+
+INSERT INTO `qr_users` (`id`, `qr_firstname`, `qr_lastname`, `qr_number`, `qr_gender`, `qr_purpose`) VALUES
+(1, 'Adele', 'Adele', '', 'female', 'Enrollment');
 
 -- --------------------------------------------------------
 
@@ -86,11 +138,11 @@ CREATE TABLE `pending_users` (
 
 CREATE TABLE `rgstrd_users` (
   `id` int(3) NOT NULL COMMENT 'System ID#',
-  `ru_firstname` char(32) NOT NULL,
-  `ru_lastname` char(32) NOT NULL,
-  `ru_studentid` int(16) NOT NULL,
-  `ru_course` varchar(16) NOT NULL,
-  `ru_email` varchar(32) NOT NULL
+  `ru_firstname` char(32) DEFAULT NULL,
+  `ru_lastname` char(32) DEFAULT NULL,
+  `ru_studentid` char(16) DEFAULT NULL,
+  `ru_course` varchar(16) DEFAULT NULL,
+  `ru_email` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -98,7 +150,7 @@ CREATE TABLE `rgstrd_users` (
 --
 
 INSERT INTO `rgstrd_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
-(1, 'Jorge Michael', 'Galang', 2000013822, 'BSCPE', 'jorgegalang21@gmail.com');
+(1, 'Jorge Michael', 'Galang', '2000013822	', 'BSCPE', 'jorgegalang21@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -113,6 +165,12 @@ ALTER TABLE `admin`
   ADD KEY `password_2` (`password`);
 
 --
+-- Indexes for table `archived`
+--
+ALTER TABLE `archived`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `log`
 --
 ALTER TABLE `log`
@@ -122,6 +180,12 @@ ALTER TABLE `log`
 -- Indexes for table `pending_users`
 --
 ALTER TABLE `pending_users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `qr_users`
+--
+ALTER TABLE `qr_users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -135,20 +199,36 @@ ALTER TABLE `rgstrd_users`
 --
 
 --
+-- AUTO_INCREMENT for table `archived`
+--
+ALTER TABLE `archived`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
+  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=48;
+
 --
 -- AUTO_INCREMENT for table `pending_users`
 --
 ALTER TABLE `pending_users`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#';
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `qr_users`
+--
+ALTER TABLE `qr_users`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `rgstrd_users`
 --
 ALTER TABLE `rgstrd_users`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=68;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=72;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
