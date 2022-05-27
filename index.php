@@ -1,290 +1,182 @@
 <?php
-
+include 'err.php';
 include 'config.php';
-error_reporting(0);
+session_start();
 
-
-$select = "SELECT * FROM rgstrd_users ";
-$query = mysqli_query($conn, $select);
 
 ?>
 
 
-
-
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
 
 <head>
-
-
-  <!--BOOSTRAP -->
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-  <!--JS BUNDLE -->
-  <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
+	<title>FaceCognition</title>
+	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="icon" href="images/logo.png">
+	<script src="js/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
 </head>
 
-<!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel="stylesheet" href="dashstyles.css" />
-<link rel="sytylesheet" type="text/css">
-
-<!-- CSS SEARCHBAR -->
-<link rel="stylesheet" href="css/searchbar.css">
-<link rel="stylesheet" href="css/search.css">
-
-
-<!-- SCRIPT FOR EXCEL EXPORT-->
-
-<script src="table2excel.js"></script>
-
-
-<!-- CSS FOR MAIN -->
-
-<style>
-  body {
-    background-image: url("images/BGpic.jpg");
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-
-  }
-
-  .logout {
-    margin-right: 54rem;
-  }
-
-  a {
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  button {
-    font-weight: 600;
-    font-size: 18px;
-  }
-
-  .image {
-    margin-top: -2px;
-    margin-left: -35px;
-  }
-
-  li {
-    margin-top: 1.5rem;
-  }
-
-
-
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 10px;
-    padding: 2px;
-    color: #black;
-
-  }
-
-  button {
-    border-radius: 20px;
-    border: 1px solid #5DB1B9;
-    background-color: #5DB1B9;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 10px 30px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
-  }
+<body class="body">
+
+	<!-- Register HTML -->
+
+	<div class="container" id="container">
+		<div class="form-container sign-up-container">
+
+			<form action="signup.php" id="form-id">
+				<h1>FaceCognition Registration</h1>
+
+				<?php if (isset($_GET['error'])) { ?>
+					<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+				<?php } ?>
+
+				<span>Make sure all the information is correct.</span>
+
+				<input type="name" name="ru_firstname" value="<?php
+																if (empty($_GET['ru_firstname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_firstname'];
+																} ?>" placeholder="First Name">
+
+				<input type="name" name="ru_lastname" value="<?php
+																if (empty($_GET['ru_lastname'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_lastname'];
+																} ?>" placeholder="Last Name">
+
+				<input type="studentid" name="ru_studentid" value="<?php
+																	if (empty($_GET['ru_studentid'])) {
+																		echo "";
+																	} else {
+																		echo $_GET['ru_studentid'];
+																	} ?>" placeholder="Student ID number">
+
+				<input type="email" name="ru_email" value="<?php
+															if (empty($_GET['ru_email'])) {
+																echo "";
+															} else {
+																echo $_GET['ru_email'];
+															} ?>" placeholder="Email">
+
+				<select class="select" name="ru_course" value="<?php
+																if (empty($_GET['ru_course'])) {
+																	echo "";
+																} else {
+																	echo $_GET['ru_course'];
+																} ?>" placeholder="Course">
+					<option disabled selected value>Select a Course</option>
+					<option class="option" value="ASCT">ASCT</option>
+					<option value="BSCPE">BSCPE</option>
+					<option value="BSIT">BSIT</option>
+					<option value="BSCS">BSCS</option>
+					<option value="BSBA">BSBA</option>
+					<option value="BSA">BSA</option>
+					<option value="BSTM">BSTM</option>
+					<option value="BMMA">BMMA</option>
+					<option value="BSHM">BSHM</option>
+					<option value="TOP">TOP</option>
+					<option value="GAS">GAS</option>
+					<option value="STEM">STEM</option>
+					<option value="Faculty Staff">Faculty Staff</option>
+				</select>
+
+
+				<button>Register</button>
+			</form>
+		</div>
+
+
+		<!-- LOG IN HTML -->
+
+
+		<div class="form-container sign-in-container">
+			<form action="signin.php">
+				<img src="images/logo.png" style="width:100px;height:100px;">
+				<h1>FaceCognition Admin Login</h1>
+
+				<?php
+				if (!empty($_GET['error'])) {
+					if (in_array($_GET['error'], $all_err)) {
+				?>
+						<p class="loginerror-msg">
+							<?php echo
+							$_GET['error'];
+							?>
+						</p>
+				<?php
+					}
+				}
+				?>
+
+				<span>Only authorized user can login here.</span>
+
+				<input type="username" name="username" value="<?php
+																if (empty($_GET['username'])) {
+																	echo "";
+																} else {
+																	echo $_GET['username'];
+																} ?>" placeholder="Username">
+
+				<input type="password" name="password" value="<?php
+																if (empty($_GET['password'])) {
+																	echo "";
+																} else {
+																	echo $_GET['password'];
+																} ?>" placeholder="Password">
+
+				<a href="#">Forgot Your Password?</a>
+				<button>Login</button>
+			</form>
+		</div>
+
+		<div class="overlay-container">
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Have administrative access?</h1>
+					<p>Please login in here if you have administrative access to the system!</p>
+					<button class="ghost" id="login">Login</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Want to register?</h1>
+					<p>If you are a student or faculty member, please register here to record your information to the system!</p>
+					<button class="ghost" id="register">Register</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		const signUpButton = document.getElementById('register');
+		const signInButton = document.getElementById('login');
+		const container = document.getElementById('container');
+
+
+		signUpButton.addEventListener('click', () => {
+			container.classList.add("right-panel-active");
+			clearErrors();
+		});
+
+		signInButton.addEventListener('click', () => {
+			container.classList.remove("right-panel-active");
+			clearErrors();
+		});
+
+		function clearErrors() {
+			Array.prototype.forEach.call(
+				document.getElementsByClassName("regerror-msg"),
+				function(el) {
+					el.style.display = "none";
+				}
+			);
+		}
+	</script>
 
-  button:active {
-    transform: scale(0.95);
-  }
-
-  button:focus {
-    outline: none;
-  }
-
-  button.ghost {
-    background-color: transparent;
-    border-color: #FFFFFF;
-  }
-
-  table-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px rgba(0, 0, 0, 0.22);
-    position: relative;
-    margin-top: 50px;
-    margin-left: 13rem;
-  }
-
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 10px;
-    padding: 2px;
-    color: #fff;
-
-  }
-
-  .title-container {
-
-
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
-      0 5px 5px rgba(0, 0, 0, 0.22);
-    position: relative;
-    overflow: hidden;
-    width: 70rem;
-    height: 400px;
-    margin-top: 50px;
-    margin-left: 13rem;
-  }
-
-  #title-page {
-
-    background-color: #008fb3;
-    border-radius: 10px;
-    position: relative;
-    width: 70rem;
-    height: 80px;
-    margin-top: 40px;
-  }
-</style>
-
-
-
-<!-- CSS MAIN ENDS -->
-
-<body>
-
-  <ul class=" nav justify-content-center bg-info p-1">
-
-    <div class=" image">
-      <img src="images/logo.png" width="95" height="95">
-    </div>
-
-    <li class="nav-item ">
-      <a class="nav-link text-white " href="dashboard.php">Dashboard</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white  " href="index.php">Records</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white  " href="Register.php">Register</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link text-white " href="request.php">Requests</a>
-    </li>
-
-    <div class="logout"></div>
-    <li class="nav-item" id="#logout">
-      <button class="nav-link bg-info text-white " href="Logout.php">Logout</button>
-    </li>
-    </div>
-  </ul>
-
-
-  </div>
-  </header>
-
-
-
-
-  <!-- RECORDS TABLE HTML -->
-
-  <div class="title-container" id="title-page">
-    <h1>STI College Records</h1>
-  </div>
-
-  <div class="table-container">
-
-
-    <!-- TABLE FOR EXCEL EXPORT -->
-    <table id="example-table" class=" table ">
-      <thead>
-        <tr>
-
-          <th>Name</th>
-          <th>Email </th>
-          <th>Student ID</th>
-          <th>Course</th>
-
-          <th>Time in </th>
-          <th>Time out </th>
-        </tr>
-      <tbody>
-
-        <div class="search-container bg-info">
-
-          <form action=" search.php" method="post" class="search-bar">
-
-            <!-- To link for the search table in search.php -->
-            <input type=" text" placeholder="search" name="search">
-            <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
-
-
-          </form>
-
-
-
-          <br>
-          </br>
-        </div>
-
-
-        <?php
-        $sel = "SELECT * FROM rgstrd_users";
-        $query = $conn->query($sel);
-        while ($result = $query->fetch_assoc()) {
-
-          echo "
-          <tr>
-
-         
-          <td>" . $result['ru_name'] . " </td>
-          <td>" . $result['ru_email'] . " </td>
-          <td>" . $result['ru_studentid'] . " </td>
-          <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['time_out'] . " </td>
-          <td>" . $result['time_in'] . " </td>
-
-
-        ";
-        }
-
-
-
-        ?>
-
-
-
-      </tbody>
-      </thead>
-    </table>
-  </div>
 </body>
-
-<!-- JS FOR EXPORTING TO EXCEL -->
-<script>
-  document.getElementById('downloadexcel').addEventListener('click', function() {
-
-    var table2excel = new Table2Excel();
-    table2excel.export(document.querySelectorAll("#example-table"));
-
-  });
-</script>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</head>
 
 </html>

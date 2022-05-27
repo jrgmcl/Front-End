@@ -51,7 +51,7 @@ if ($initiate) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 echo ("<script LANGUAGE='JavaScript'>
                     window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
-                    window.location.href='login.php';
+                    window.location.href='index.php';
                     </script>");
             }
         }
@@ -61,7 +61,6 @@ if ($initiate) {
 else {
     echo ("<script LANGUAGE='JavaScript'>
     window.alert('Something went wrong on the server! Please Try again later...');
-    window.location.href='login.php';
+    window.location.href='index.php';
     </script>");
-###
 }
