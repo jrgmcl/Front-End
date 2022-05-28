@@ -3,7 +3,7 @@
 // connection to database via config.php
 @include 'config.php';
 include 'err.php';
-
+session_start();
 ?>
 
 
@@ -293,18 +293,9 @@ include 'err.php';
 
 
 
-               <!-- Form for file uploading -->
+               <button>Register</button>
+            </form>
 
-               <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-                  Choose file from PC: <input type="file" name="register[]" multiple>
-                  <br>
-                  <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-                  <button class="button" type="submit" name="submit">Submit</button>
-               </form>
-
-               <br>
-
-               </br>
 
          </div>
       </div>
