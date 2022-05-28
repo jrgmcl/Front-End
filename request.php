@@ -35,8 +35,7 @@ $query = $conn->query($sel);
 </head>
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel="stylesheet" href="dashstyles.css" />
-<link rel="sytylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="css/design.css">
 
 <!-- CSS SEARCHBAR -->
 <link rel="stylesheet" href="css/searchbar.css">
@@ -188,14 +187,24 @@ $query = $conn->query($sel);
       </li>
 
       <li class="nav-item dropdown">
-         <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
+         <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
          <ul class=" bg-info dropdown-menu">
-            <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
-            <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
+            <center>
+               <li><a class="dropdown-item bg-info text-white" href="Records.php">Registered Users</a></li>
+            </center>
+         </ul>
 
-            <li>
+      </li>
 
+      <li class="nav-item dropdown">
+         <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Logs</a>
+         <ul class=" bg-info dropdown-menu">
+            <center>
+               <li><a class="dropdown-item bg-info text-white" href="Logs.php">Face Recognition Logs</a></li>
+               <li><a class="dropdown-item bg-info text-white" href="Logs_qr.php">Visitors Logs</a></li>
+               <li><a class="dropdown-item bg-info text-white" href="QR_Code_Users.php">QR User Logs</a></li>
 
+            </center>
          </ul>
 
       </li>
@@ -226,55 +235,55 @@ $query = $conn->query($sel);
 
 
    <!-- RECORDS TABLE HTML -->
+   <div class="fade-in-image">
+      <div class="title-container" id="title-page">
+         <h1>Pending Request</h1>
+      </div>
 
-   <div class="title-container" id="title-page">
-      <h1>Pending Request</h1>
-   </div>
-
-   <div class="table-container">
-
-
-      <!-- TABLE FOR EXCEL EXPORT -->
-      <table id="example-table" class=" table ">
-         <thead>
-            <tr>
-               <th>No.</th>
-               <th>First Name</th>
-               <th>Last Name </th>
-               <th>Student ID</th>
-               <th>Course</th>
-               <th>Email</th>
+      <div class="table-container">
 
 
-               <th>Settings </th>
-            </tr>
-         <tbody>
-
-            <div class="search-container bg-info">
-
-               <form action=" Search.php" method="post" class="search-bar">
-
-                  <!-- To link for the search table in Search.php -->
-                  <input type=" text" placeholder="search" name="search">
-                  <button name="submit"> SEARCH </button>
-
-
-               </form>
+         <!-- TABLE FOR EXCEL EXPORT -->
+         <table id="example-table" class=" table ">
+            <thead>
+               <tr>
+                  <th>No.</th>
+                  <th>First Name</th>
+                  <th>Last Name </th>
+                  <th>Student ID</th>
+                  <th>Course</th>
+                  <th>Email</th>
 
 
+                  <th>Settings </th>
+               </tr>
+            <tbody>
 
-               <br>
-               </br>
-            </div>
+               <div class="search-container bg-info">
+
+                  <form action=" Search.php" method="post" class="search-bar">
+
+                     <!-- To link for the search table in Search.php -->
+                     <input type=" text" placeholder="search" name="search">
+                     <button name="submit"> SEARCH </button>
 
 
-            <?php
+                  </form>
 
-            $num = mysqli_num_rows($query);
-            if ($num > 0) {
-               while ($result = $query->fetch_assoc()) {
 
-                  echo "
+
+                  <br>
+                  </br>
+               </div>
+
+
+               <?php
+
+               $num = mysqli_num_rows($query);
+               if ($num > 0) {
+                  while ($result = $query->fetch_assoc()) {
+
+                     echo "
           <tr>
 
           <td> " . $result['id'] . "</td>
@@ -297,18 +306,18 @@ $query = $conn->query($sel);
 
 
         ";
+                  }
                }
-            }
 
 
 
-            ?>
+               ?>
 
 
 
-         </tbody>
-         </thead>
-      </table>
+            </tbody>
+            </thead>
+         </table>
 
 </body>
 

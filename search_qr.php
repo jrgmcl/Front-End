@@ -2,7 +2,15 @@
 
 include 'config.php';
 
+
+#Fetch the data from database
+$sel = "SELECT * FROM qr_users";
+$query = $conn->query($sel);
+
+
+
 ?>
+
 
 
 
@@ -21,7 +29,6 @@ include 'config.php';
 </head>
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel="stylesheet" href="dashstyles.css" />
 <link rel="stylesheet" type="text/css" href="css/design.css">
 
 <!-- CSS SEARCHBAR -->
@@ -93,6 +100,7 @@ include 'config.php';
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
+
     }
 
     button:active {
@@ -161,6 +169,7 @@ include 'config.php';
 
 <!-- CSS MAIN ENDS -->
 
+
 <body>
 
     <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
@@ -172,6 +181,7 @@ include 'config.php';
         <li class="nav-item ">
             <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
         </li>
+
         <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
             <ul class=" bg-info dropdown-menu">
@@ -194,6 +204,7 @@ include 'config.php';
             </ul>
 
         </li>
+
         <li class="nav-item">
             <a class="nav-link text-white  " href="Register.php">Register</a>
         </li>
@@ -215,12 +226,10 @@ include 'config.php';
     </header>
 
 
-
-
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>STI College Records</h1>
+            <h1>Visitor Logs</h1>
         </div>
 
         <div class="table-container">
@@ -230,21 +239,20 @@ include 'config.php';
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>First Name</th>
-                        <th>Last Name </th>
-                        <th>Student ID</th>
-                        <th>Course</th>
-                        <th>Email</th>
+                        <th>id no.</th>
+                        <th>First Name </th>
+                        <th>Last Name</th>
+                        <th>Department</th>
+                        <th> Temp </th>
+                        <th>Time in </th>
+                        <th>Time out </th>
 
-
-                        <th>Settings </th>
                     </tr>
                 <tbody>
 
                     <div class="search-container bg-info">
 
-                        <form action=" Search.php" method="post" class="search-bar">
+                        <form action=" search_qr.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -259,38 +267,32 @@ include 'config.php';
                         </br>
                     </div>
 
-
                     <?php
                     error_reporting(0);
+                    #Fetch the data from database
+                    $sel = "SELECT * FROM `qr_users` ";
+                    $query = $conn->query($sel);
 
-                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
 
-                    if (isset($_POST["submit"])) {
-                        $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `rgstrd_users` WHERE ru_studentid = '$str'");
+                            echo "
+          <tr>
 
-                        $sth->setFetchMode(PDO::FETCH_OBJ);
-                        $sth->execute();
+          <td>" . $result['ru_studentid'] . " </td>
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
+          <td>" . $result['ru_course'] . " </td>
+          <td>" . $result['ru_temp'] . " </td>
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
+          
+          </tr> 
+          
 
-                        if ($result = $sth->fetch()) {
 
-
-                    ?>
-
-                            <tr>
-                                <td><?php echo $result->id; ?></td>
-                                <td><?php echo $result->ru_firstname; ?></td>
-                                <td><?php echo $result->ru_lastname; ?></td>
-                                <td><?php echo $result->ru_email; ?></td>
-                                <td><?php echo $result->ru_studentid; ?></td>
-                                <td><?php echo $result->ru_course; ?></td>
-                                <td><a href='archived_users.php?id=<?php echo $result->id; ?>' class='btn bg-secondary'> Archive </a> </td>
-
-                            </tr>
-
-                    <?php
-                        } else {
-                            echo "";
+        ";
                         }
                     }
 
@@ -303,8 +305,19 @@ include 'config.php';
                 </tbody>
                 </thead>
             </table>
-        </div>
+
 </body>
+</div>
+
+<!-- JS FOR EXPORTING TO EXCEL -->
+<script>
+    document.getElementById('downloadexcel').addEventListener('click', function() {
+
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("#example-table"));
+
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 </head>

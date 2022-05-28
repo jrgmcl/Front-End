@@ -8,8 +8,21 @@ include 'err.php';
 
 
 
+<!DOCTYPE html>
+<html lang="en">
 
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
 <html>
 
 <head>
@@ -27,7 +40,7 @@ include 'err.php';
 
 <body class="body">
    <meta charset="UTF-8">
-   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="css/design.css">
    <title>Admin Dashboard </title>
 
 
@@ -166,12 +179,22 @@ include 'err.php';
          <li class="nav-item dropdown">
             <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
             <ul class=" bg-info dropdown-menu">
-               <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
-               <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
+               <center>
+                  <li><a class="dropdown-item bg-info text-white" href="Records.php">Registered Users</a></li>
+               </center>
+            </ul>
 
-               <li>
+         </li>
 
+         <li class="nav-item dropdown">
+            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Logs</a>
+            <ul class=" bg-info dropdown-menu">
+               <center>
+                  <li><a class="dropdown-item bg-info text-white" href="Logs.php">Face Recognition Logs</a></li>
+                  <li><a class="dropdown-item bg-info text-white" href="Logs_qr.php">Visitors Logs</a></li>
+                  <li><a class="dropdown-item bg-info text-white" href="QR_Code_Users.php">QR User Logs</a></li>
 
+               </center>
             </ul>
 
          </li>
@@ -199,91 +222,91 @@ include 'err.php';
       <!-- NAVIGATION ENDS -->
       <!-- NAVIGATION ENDS -->
 
+      <div class="fade-in-image">
+         <div class="reg-container">
 
-      <div class="reg-container">
+            <h2 class="bg-info text-white"> User Registration </h2>
 
-         <h2 class="bg-info text-white"> User Registration </h2>
+            <form action="reg_append.php" method="post" id="reg_users">
 
-         <form action="reg_append.php" method="post" id="reg_users">
+               <?php if (isset($_GET['error'])) { ?>
+                  <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+               <?php } ?>
 
-            <?php if (isset($_GET['error'])) { ?>
-               <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-
-            <H5>Please enter the following details:</h5>
+               <H5>Please enter the following details:</h5>
 
 
 
-            <div class="form-control">
-               <input type="name" name="ru_firstname" value="<?php
-                                                               if (empty($_GET['ru_firstname'])) {
-                                                                  echo "";
-                                                               } else {
-                                                                  echo $_GET['ru_firstname'];
-                                                               } ?>" placeholder="First Name">
+               <div class="form">
+                  <input type="name" name="ru_firstname" value="<?php
+                                                                  if (empty($_GET['ru_firstname'])) {
+                                                                     echo "";
+                                                                  } else {
+                                                                     echo $_GET['ru_firstname'];
+                                                                  } ?>" placeholder="First Name">
 
-               <i class='fas fa-check-circle'></i>
-            </div>
+                  <i class='fas fa-check-circle'></i>
+               </div>
 
-            <input type="name" name="ru_lastname" value="<?php
-                                                         if (empty($_GET['ru_lastname'])) {
-                                                            echo "";
-                                                         } else {
-                                                            echo $_GET['ru_lastname'];
-                                                         } ?>" placeholder="Last Name">
-
-            <input type="studentid" name="ru_studentid" value="<?php
-                                                               if (empty($_GET['ru_studentid'])) {
-                                                                  echo "";
-                                                               } else {
-                                                                  echo $_GET['ru_studentid'];
-                                                               } ?>" placeholder="Student ID number">
-
-            <input type="email" name="ru_email" value="<?php
-                                                         if (empty($_GET['ru_email'])) {
-                                                            echo "";
-                                                         } else {
-                                                            echo $_GET['ru_email'];
-                                                         } ?>" placeholder="Email">
-
-            <select class="select" name="ru_course" value="<?php
-                                                            if (empty($_GET['ru_course'])) {
+               <input type="name" name="ru_lastname" value="<?php
+                                                            if (empty($_GET['ru_lastname'])) {
                                                                echo "";
                                                             } else {
-                                                               echo $_GET['ru_course'];
-                                                            } ?>" placeholder="Course">
-               <option disabled selected value>Select a Course</option>
-               <option class="option" value="ASCT">ASCT</option>
-               <option value="BSCPE">BSCPE</option>
-               <option value="BSIT">BSIT</option>
-               <option value="BSCS">BSCS</option>
-               <option value="BSBA">BSBA</option>
-               <option value="BSA">BSA</option>
-               <option value="BSTM">BSTM</option>
-               <option value="BMMA">BMMA</option>
-               <option value="BSHM">BSHM</option>
-               <option value="TOP">TOP</option>
-               <option value="GAS">GAS</option>
-               <option value="STEM">STEM</option>
-               <option value="Faculty Staff">Faculty Staff</option>
-            </select>
+                                                               echo $_GET['ru_lastname'];
+                                                            } ?>" placeholder="Last Name">
+
+               <input type="studentid" name="ru_studentid" value="<?php
+                                                                  if (empty($_GET['ru_studentid'])) {
+                                                                     echo "";
+                                                                  } else {
+                                                                     echo $_GET['ru_studentid'];
+                                                                  } ?>" placeholder="Student ID number">
+
+               <input type="email" name="ru_email" value="<?php
+                                                            if (empty($_GET['ru_email'])) {
+                                                               echo "";
+                                                            } else {
+                                                               echo $_GET['ru_email'];
+                                                            } ?>" placeholder="Email">
+
+               <select class="select" name="ru_course" value="<?php
+                                                               if (empty($_GET['ru_course'])) {
+                                                                  echo "";
+                                                               } else {
+                                                                  echo $_GET['ru_course'];
+                                                               } ?>" placeholder="Course">
+                  <option disabled selected value>Select a Course</option>
+                  <option class="option" value="ASCT">ASCT</option>
+                  <option value="BSCPE">BSCPE</option>
+                  <option value="BSIT">BSIT</option>
+                  <option value="BSCS">BSCS</option>
+                  <option value="BSBA">BSBA</option>
+                  <option value="BSA">BSA</option>
+                  <option value="BSTM">BSTM</option>
+                  <option value="BMMA">BMMA</option>
+                  <option value="BSHM">BSHM</option>
+                  <option value="TOP">TOP</option>
+                  <option value="GAS">GAS</option>
+                  <option value="STEM">STEM</option>
+                  <option value="Faculty Staff">Faculty Staff</option>
+               </select>
 
 
 
-            <!-- Form for file uploading -->
+               <!-- Form for file uploading -->
 
-            <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-               Choose file from PC: <input type="file" name="register[]" multiple>
+               <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
+                  Choose file from PC: <input type="file" name="register[]" multiple>
+                  <br>
+                  <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+                  <button class="button" type="submit" name="submit">Submit</button>
+               </form>
+
                <br>
-               <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-               <button class="button" type="submit" name="submit">Submit</button>
-            </form>
 
-            <br>
+               </br>
 
-            </br>
-
-      </div>
+         </div>
       </div>
 
 
