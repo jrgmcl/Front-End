@@ -6,23 +6,16 @@ include 'config.php';
 
 
 
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML ">
 <html>
 
 <head>
 
-
-    <!--BOOSTRAP -->
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!--JS BUNDLE -->
-    <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
-</head>
-
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel="stylesheet" href="dashstyles.css" />
-<link rel="stylesheet" type="text/css" href="css/design.css">
+
+<link rel=" stylesheet" type="text/css" href="css/design.css">
+
+<link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->
 <link rel="stylesheet" href="css/searchbar.css">
@@ -48,8 +41,10 @@ include 'config.php';
     }
 
     .logout {
-        margin-right: 40rem;
+        margin-right: 2rem;
+        float: right;
     }
+
 
     a {
         font-size: 18px;
@@ -116,6 +111,7 @@ include 'config.php';
         position: relative;
         margin-top: 50px;
         margin-left: 13rem;
+        text-align: center;
     }
 
     h1 {
@@ -136,10 +132,10 @@ include 'config.php';
             0 5px 5px rgba(0, 0, 0, 0.22);
         position: relative;
         overflow: hidden;
-        width: 10rem;
+        width: 15rem;
         height: 400px;
         margin-top: 50px;
-        margin-left: 13rem;
+        margin-left: 22rem;
     }
 
     #title-page {
@@ -155,6 +151,17 @@ include 'config.php';
     a {
         color: white;
     }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #DDD;
+    }
+
+    tr:hover {
+        background-color: #D6EEEE;
+    }
 </style>
 
 
@@ -163,56 +170,45 @@ include 'config.php';
 
 <body>
 
-    <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
+    <div class="w3-bar w3-cyan">
+        <center>
+            <div class=" image">
+                <img src="images/logo.png" width="110" height="110">
+            </div>
+        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
-        <div class=" image">
-            <img src="images/logo.png" width="95" height="95">
+        <div class="w3-dropdown-hover">
+            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+            </div>
         </div>
 
-        <li class="nav-item ">
-            <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
-            <ul class=" bg-info dropdown-menu">
-                <center>
-                    <li><a class="dropdown-item bg-info text-white" href="Records.php">Registered Users</a></li>
-                </center>
-            </ul>
+        <div class="w3-dropdown-hover">
+            <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
+                <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+                <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+            </div>
+        </div>
 
-        </li>
+        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
 
-        <li class="nav-item dropdown">
-            <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Logs</a>
-            <ul class=" bg-info dropdown-menu">
-                <center>
-                    <li><a class="dropdown-item bg-info text-white" href="Logs.php">Face Recognition Logs</a></li>
-                    <li><a class="dropdown-item bg-info text-white" href="Logs_qr.php">Visitors Logs</a></li>
-                    <li><a class="dropdown-item bg-info text-white" href="QR_Code_Users.php">QR User Logs</a></li>
+        <a href=" Request.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
 
-                </center>
-            </ul>
-
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white  " href="Register.php">Register</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white " href="Request.php">Requests</a>
-        </li>
-
-        <div class="logout"></div>
-        <li class="nav-item" id="#logout">
+        <div class="logout">
             <form action="Logout.php" method="post">
-                <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
-        </li>
+                <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+            </form>
         </div>
-        </form>
-    </ul>
+    </div>
+
 
 
     </div>
     </header>
+
 
 
 
@@ -305,8 +301,7 @@ include 'config.php';
             </table>
         </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
 </head>
 
 </html>

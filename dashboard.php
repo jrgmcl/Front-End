@@ -1,21 +1,21 @@
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML ">
 <html>
 
 <head>
 
    <!--BOOSTRAP -->
 
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-   <!--JS BUNDLE -->
-   <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
-</head>
+   <link rel=" stylesheet" href="css/bootstrap.min.css">
 
 
 
 <body class="body">
    <meta charset="UTF-8">
    <link rel="stylesheet" type="text/css" href="css/design.css">
+   <link rel="stylesheet" type="text/css" href="css/w3.css">
+   <script src="js/jquery.slim.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
    <title>Admin Dashboard </title>
 
 
@@ -33,12 +33,17 @@
       }
 
       .logout {
-         margin-right: 40rem;
+         margin-right: 2rem;
+         float: right;
+
+
       }
 
       a {
          font-size: 18px;
-         font-weight: 600;
+         font-weight: 800;
+         font-family: 'Montserrat', sans-serif;
+
       }
 
       button {
@@ -54,6 +59,7 @@
 
       li {
          margin-top: 1.5rem;
+
       }
 
 
@@ -106,7 +112,7 @@
       button {
          border-radius: 20px;
          border: 1px solid #5DB1B9;
-         background-color: #5DB1B9;
+         background-color: #008fb3;
          color: #FFFFFF;
          font-size: 12px;
          font-weight: bold;
@@ -145,6 +151,20 @@
          font-family: 'Montserrat', sans-serif;
          background-color: #008fb3;
       }
+
+      ul {
+         background-color: #008fb3;
+      }
+
+      .card-header {
+         background-color: #008fb3;
+      }
+
+      .w3-bar {
+         font-family: 'Montserrat', sans-serif;
+         text-align: center;
+
+      }
    </style>
 
 
@@ -153,57 +173,45 @@
 
    <body>
 
-      <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
 
-         <div class=" image">
-            <img src="images/logo.png" width="95" height="95">
+      <div class="w3-bar w3-cyan">
+         <center>
+            <div class=" image">
+               <img src="images/logo.png" width="110" height="110">
+            </div>
+         </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+
+         <div class="w3-dropdown-hover">
+            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+               <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+            </div>
          </div>
 
-         <li class="nav-item ">
-            <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
-         </li>
+         <div class="w3-dropdown-hover">
+            <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+               <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
+               <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+               <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+            </div>
+         </div>
 
-         <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
-            <ul class=" bg-info dropdown-menu">
-               <center>
-                  <li><a class="dropdown-item bg-info text-white" href="Records.php">Registered Users</a></li>
-               </center>
-            </ul>
+         <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
 
-         </li>
+         <a href=" Request.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
 
-         <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Logs</a>
-            <ul class=" bg-info dropdown-menu">
-               <center>
-                  <li><a class="dropdown-item bg-info text-white" href="Logs.php">Face Recognition Logs</a></li>
-                  <li><a class="dropdown-item bg-info text-white" href="Logs_qr.php">Visitors Logs</a></li>
-                  <li><a class="dropdown-item bg-info text-white" href="QR_Code_Users.php">QR User Logs</a></li>
-
-               </center>
-            </ul>
-
-         </li>
-
-         <li class="nav-item">
-            <a class="nav-link text-white  " href="Register.php">Register</a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link text-white " href="Request.php">Requests</a>
-         </li>
-
-         <div class="logout"></div>
-         <li class="nav-item" id="#logout">
+         <div class="logout">
             <form action="Logout.php" method="post">
-               <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
-         </li>
+               <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+            </form>
          </div>
-         </form>
-      </ul>
-
-
       </div>
+
+
+
+
+
       </header>
 
 
@@ -242,7 +250,7 @@
                <div class="card">
 
                   <div class="card-body text-dark">
-                     <div class="card-header text-white bg-dark">QR Code</div>
+                     <div class="card-header text-white ">QR Code</div>
                      <br>
                      <center>
                         <img src="images/frame.png" width="200px" height="200px">
@@ -254,7 +262,7 @@
                <div class=" card ">
 
                   <div class="card-body text-dark ">
-                     <div class="card-header text-white bg-info">Face Recognition</div>
+                     <div class="card-header text-white ">Face Recognition</div>
                      <br>
 
                      <h5> Status:</h5>
@@ -310,8 +318,8 @@
          //-->
       </script>
 
-      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+      <script src="/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="js/bootstrap.min.js"></script>
    </body>
 
-</html>
+   </html>
