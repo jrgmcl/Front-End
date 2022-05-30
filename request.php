@@ -199,8 +199,10 @@ $query = $conn->query($sel);
          <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
          <div class=" w3-dropdown-content w3-bar-block w3-card-4">
             <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+            <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
          </div>
       </div>
+
 
       <div class="w3-dropdown-hover">
          <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
@@ -241,7 +243,7 @@ $query = $conn->query($sel);
          <table id="example-table" class=" table ">
             <thead>
                <tr>
-                  <th>No.</th>
+
                   <th>First Name</th>
                   <th>Last Name </th>
                   <th>Student ID</th>
@@ -255,7 +257,7 @@ $query = $conn->query($sel);
 
                <div class="search-container bg-info">
 
-                  <form action=" Search.php" method="post" class="search-bar">
+                  <form action=" search_req.php" method="post" class="search-bar">
 
                      <!-- To link for the search table in Search.php -->
                      <input type=" text" placeholder="search" name="search">
@@ -280,10 +282,9 @@ $query = $conn->query($sel);
                      echo "
           <tr>
 
-          <td> " . $result['id'] . "</td>
+          <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_firstname'] . " </td>
           <td>" . $result['ru_lastname'] . " </td>
-          <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
           <td>" . $result['ru_email'] . " </td>
          

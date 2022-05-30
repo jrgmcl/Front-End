@@ -162,8 +162,10 @@ $ru_email = $_GET["ru_email"];
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
                 <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+                <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
             </div>
         </div>
+
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
@@ -287,7 +289,7 @@ $ru_email = $_GET["ru_email"];
 
                             <!-- Form for file uploading -->
 
-                            <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
+                            <form class="form-upload" action="reg_append.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
                                 Choose file from PC: <input type="file" name="register[]" multiple>
                                 <br>
                                 <!-- Direct to fileupload.php to put the file selected to a PHP variable -->

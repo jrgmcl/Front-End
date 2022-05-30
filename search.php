@@ -181,6 +181,7 @@ include 'config.php';
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
                 <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+                <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
             </div>
         </div>
 
@@ -226,7 +227,7 @@ include 'config.php';
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>No.</th>
+
                         <th>First Name</th>
                         <th>Last Name </th>
                         <th>Student ID</th>
@@ -274,15 +275,21 @@ include 'config.php';
                     ?>
 
                             <tr>
-                                <td><?php echo $result->id; ?></td>
+                                <td><?php echo $result->ru_studentid; ?></td>
                                 <td><?php echo $result->ru_firstname; ?></td>
                                 <td><?php echo $result->ru_lastname; ?></td>
-                                <td><?php echo $result->ru_email; ?></td>
-                                <td><?php echo $result->ru_studentid; ?></td>
                                 <td><?php echo $result->ru_course; ?></td>
-                                <td><a href='archived_users.php?id=<?php echo $result->id; ?>' class='btn bg-secondary'> Archive </a> </td>
+                                <td><?php echo $result->ru_email; ?></td>
+
+
+                                <td>
+                                    <a href='archived_users.php?id=' <?php echo $result->id; ?> class=' w3-button w3-gray w3-text-white w3-hover-cyan'> Archive </a>
+                                </td>
 
                             </tr>
+
+
+
 
                     <?php
                         } else {

@@ -185,6 +185,7 @@
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+               <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
             </div>
          </div>
 

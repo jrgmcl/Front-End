@@ -2,15 +2,7 @@
 
 include 'config.php';
 
-
-#Fetch the data from database
-$sel = "SELECT * FROM log_qr";
-$query = $conn->query($sel);
-
-
-
 ?>
-
 
 
 
@@ -19,10 +11,10 @@ $query = $conn->query($sel);
 
 <head>
 
+
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 
 <link rel=" stylesheet" type="text/css" href="css/design.css">
-
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->
@@ -184,6 +176,7 @@ $query = $conn->query($sel);
                 <img src="images/logo.png" width="110" height="110">
             </div>
         </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+
         <div class="w3-dropdown-hover">
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -191,6 +184,7 @@ $query = $conn->query($sel);
                 <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
             </div>
         </div>
+
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
@@ -207,7 +201,7 @@ $query = $conn->query($sel);
 
         <div class="logout">
             <form action="Logout.php" method="post">
-                <a href="Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+                <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
             </form>
         </div>
     </div>
@@ -217,10 +211,14 @@ $query = $conn->query($sel);
     </div>
     </header>
 
+
+
+
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
+
         <div class="title-container" id="title-page">
-            <h1>QR User Logs</h1>
+            <h1>STI College Records</h1>
         </div>
 
         <div class="table-container">
@@ -230,20 +228,20 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>Department</th>
-                        <th> Temp </th>
-                        <th>Time in </th>
-                        <th>Time out </th>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name </th>
+                        <th>Course</th>
+                        <th>Email</th>
 
+
+                        <th>Settings </th>
                     </tr>
                 <tbody>
 
                     <div class="search-container bg-info">
 
-                        <form action="search_qr_code_user.php" method="post" class="search-bar">
+                        <form action=" search_deact.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -258,10 +256,11 @@ $query = $conn->query($sel);
                         </br>
                     </div>
 
+
                     <?php
-                    error_reporting(0);
+
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `log_qr` ";
+                    $sel = "SELECT * FROM `archived` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -270,16 +269,17 @@ $query = $conn->query($sel);
 
                             echo "
           <tr>
-          
-          <td>" . $result['qr_studentid'] . " </td>
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
 
-          <td> " . $result['qr_time_in'] . "</td>
-          <td> " . $result['qr_time_out'] . "</td>
-          
+          <td>" . $result['ru_studentid'] . " </td>
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
+          <td>" . $result['ru_course'] . " </td>
+          <td>" . $result['ru_email'] . " </td>
+         
+        
+          <td>
+          <a href='retrieve_users.php?id=" . $result['id'] . "' class='w3-button w3-green w3-text-white w3-hover-cyan' > Activate </a> 
+          </td>
           </tr> 
           
 
@@ -299,7 +299,6 @@ $query = $conn->query($sel);
             </table>
 
 </body>
-</div>
 
 <!-- JS FOR EXPORTING TO EXCEL -->
 <script>
@@ -310,8 +309,8 @@ $query = $conn->query($sel);
 
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
+
 </head>
 
 </html>

@@ -3,10 +3,16 @@
 include 'config.php';
 
 
-#Fetch the data from database
-$sel = "SELECT * FROM log";
-$query = $conn->query($sel);
+#Reject the reuqest from the database
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $delete = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = '$id'");
+}
 
+
+#Fetch the data from database
+$sel = "SELECT * FROM `pending_users` ";
+$query = $conn->query($sel);
 
 
 ?>
@@ -14,7 +20,7 @@ $query = $conn->query($sel);
 
 
 
-<!DOCTYPE html">
+<!DOCTYPE HTML">
 <html>
 
 <head>
@@ -23,10 +29,17 @@ $query = $conn->query($sel);
     <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel=" stylesheet" type="text/css" href="css/design.css">
     <link rel="stylesheet" type="text/css" href="css/w3.css">
+
+
     <!-- CSS SEARCHBAR -->
     <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="css/search.css">
 
+
+
+    <!-- CSS SEARCHBAR -->
+    <link rel="stylesheet" href="css/searchbar.css">
+    <link rel="stylesheet" href="css/search.css">
 
 
     <!-- SCRIPT FOR EXCEL EXPORT-->
@@ -51,7 +64,6 @@ $query = $conn->query($sel);
             margin-right: 2rem;
             float: right;
         }
-
 
         a {
             font-size: 18px;
@@ -95,7 +107,6 @@ $query = $conn->query($sel);
             letter-spacing: 1px;
             text-transform: uppercase;
             transition: transform 80ms ease-in;
-
         }
 
         button:active {
@@ -159,7 +170,6 @@ $query = $conn->query($sel);
             color: white;
         }
 
-
         th,
         td {
             padding: 8px;
@@ -175,7 +185,6 @@ $query = $conn->query($sel);
 
 
     <!-- CSS MAIN ENDS -->
-
 
 <body>
 
@@ -217,10 +226,14 @@ $query = $conn->query($sel);
     </header>
 
 
+
+
+
+
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>Face Recognition Logs</h1>
+            <h1>Pending Request</h1>
         </div>
 
         <div class="table-container">
@@ -230,24 +243,25 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>Department</th>
-                        <th> Temp </th>
-                        <th>Time in </th>
-                        <th>Time out </th>
+                        <th>No.</th>
+                        <th>First Name</th>
+                        <th>Last Name </th>
+                        <th>Student ID</th>
+                        <th>Course</th>
+                        <th>Email</th>
 
+
+                        <th>Settings </th>
                     </tr>
                 <tbody>
 
                     <div class="search-container bg-info">
 
-                        <form action=" search_fr.php" method="post" class="search-bar">
+                        <form action="search_req.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
-                            <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
+                            <button name="submit"> SEARCH </button>
 
 
                         </form>
@@ -258,11 +272,8 @@ $query = $conn->query($sel);
                         </br>
                     </div>
 
+
                     <?php
-                    error_reporting(0);
-                    #Fetch the data from database
-                    $sel = "SELECT * FROM `log` ";
-                    $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
                     if ($num > 0) {
@@ -271,13 +282,20 @@ $query = $conn->query($sel);
                             echo "
           <tr>
 
-          <td>" . $result['ru_studentid'] . " </td>
+          <td> " . $result['id'] . "</td>
           <td>" . $result['ru_firstname'] . " </td>
           <td>" . $result['ru_lastname'] . " </td>
+          <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['ru_temp'] . " </td>
-          <td> " . $result['time_in'] . "</td>
-          <td> " . $result['time_out'] . "</td>
+          <td>" . $result['ru_email'] . " </td>
+         
+         
+          <td>
+          
+          
+          <a href='accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='Request.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          </td>
           
           </tr> 
           
@@ -298,17 +316,8 @@ $query = $conn->query($sel);
             </table>
 
 </body>
-</div>
 
-<!-- JS FOR EXPORTING TO EXCEL -->
-<script>
-    document.getElementById('downloadexcel').addEventListener('click', function() {
 
-        var table2excel = new Table2Excel();
-        table2excel.export(document.querySelectorAll("#example-table"));
-
-    });
-</script>
 
 </head>
 

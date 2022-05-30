@@ -30,7 +30,7 @@ if (empty($ru_firstname)) {
 }
 
 #Compare Input email and student ID from the database
-$select = mysqli_query($conn, "SELECT * FROM pending_users WHERE ru_email = '$ru_email' OR ru_studentid = '$ru_studentid'");
+$select = mysqli_query($conn, "SELECT * FROM `pending_users` WHERE ru_email = '$ru_email' OR ru_studentid = '$ru_studentid'");
 
 #If email add and student ID exists on the database
 if (!$select || mysqli_num_rows($select) > 0) {
