@@ -19,7 +19,7 @@ session_start();
 
 
    <!-- CSS FOR SIDE BAR and NAVBAR -->
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+
    <link rel=" stylesheet" type="text/css" href="css/design.css">
    <link rel="stylesheet" type="text/css" href="css/w3.css">
    <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -199,7 +199,7 @@ session_start();
 
          <h2 class="w3-cyan w3-text-white"> User Registration </h2>
 
-         <form action="reg_append.php" method="post" id="reg_users">
+         <form action="Register_signup.php" method="post" id="reg_users">
 
             <?php if (isset($_GET['error'])) { ?>
                <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
@@ -209,16 +209,16 @@ session_start();
 
 
 
-            <div class="form">
-               <input type="name" name="ru_firstname" value="<?php
-                                                               if (empty($_GET['ru_firstname'])) {
-                                                                  echo "";
-                                                               } else {
-                                                                  echo $_GET['ru_firstname'];
-                                                               } ?>" placeholder="First Name">
 
-               <i class='fas fa-check-circle'></i>
-            </div>
+            <input type="name" name="ru_firstname" value="<?php
+                                                            if (empty($_GET['ru_firstname'])) {
+                                                               echo "";
+                                                            } else {
+                                                               echo $_GET['ru_firstname'];
+                                                            } ?>" placeholder="First Name">
+
+
+
 
             <input type="name" name="ru_lastname" value="<?php
                                                          if (empty($_GET['ru_lastname'])) {
@@ -285,7 +285,5 @@ session_start();
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
 </html>

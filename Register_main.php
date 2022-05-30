@@ -9,7 +9,7 @@ $ru_email = $_GET["ru_email"];
 ?>
 
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -196,13 +196,14 @@ $ru_email = $_GET["ru_email"];
     <div class="fade-in-image">
         <div class="reg-container">
 
-            <h2 class="bg-info text-white"> User Registration </h2>
+            <h2 class="w3-cyan text-white"> User Registration </h2>
 
-            <form action="Register_signup.php" method="post" id="reg_users">
+            <form>
+                <center> <?php if (isset($_GET['error'])) { ?>
+                        <p class="regerror-msg w3-text-red"><?php echo $_GET['error']; ?></p>
+                    <?php } ?>
+                </center>
 
-                <?php if (isset($_GET['error'])) { ?>
-                    <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-                <?php } ?>
 
                 <H5>Please enter the following details:</h5>
 
@@ -269,6 +270,14 @@ $ru_email = $_GET["ru_email"];
                     <option value="Faculty Staff">Faculty Staff</option>
                 </select>
 
+                <!-- Form for file uploading -->
+
+                <form class="form-upload" action="reg_append.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
+                    Choose file from PC: <input type="file" name="register[]" multiple>
+                    <br>
+                    <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+                    <button class="button" type="submit" name="submit">Submit</button>
+                </form>
                 <!-- Button for Popup Upload -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload Images</button>
             </form>
@@ -287,14 +296,6 @@ $ru_email = $_GET["ru_email"];
                         <!-- Modal body -->
                         <div class="modal-body">
 
-                            <!-- Form for file uploading -->
-
-                            <form class="form-upload" action="reg_append.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-                                Choose file from PC: <input type="file" name="register[]" multiple>
-                                <br>
-                                <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-                                <button class="button" type="submit" name="submit">Submit</button>
-                            </form>
                             <!-- Modal footer -->
                             <div class="modal-footer">
                                 <br>
@@ -317,7 +318,6 @@ $ru_email = $_GET["ru_email"];
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include 'config.php';
 include 'err.php';
 
@@ -13,19 +13,16 @@ $ru_email = $_GET["ru_email"];
 $id = 0;
 
 if (empty($ru_firstname)) {
-    header("Location: Register_premain.php?error=" . $emptyfirstname_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
-    exit();
-} else if (empty($ru_lastname)) {
-    header("Location: Register_premain.php?error=" . $emptylastname_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
+    header("Location: Register_premain.php?error=" . $emptyname_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . '&filename=' . $filename);
     exit();
 } else if (empty($ru_studentid)) {
-    header("Location: Register_premain.php?error=" . $emptystudentid_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
+    header("Location: Register_premain.php?error=" . $emptystudentid_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . '&filename=' . $filename);
     exit();
 } else if (empty($ru_course)) {
-    header("Location: Register_premain.php?error=" . $emptycourse_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
+    header("Location: Register_premain.php?error=" . $emptycourse_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . '&filename=' . $filename);
     exit();
 } else if (empty($ru_email)) {
-    header("Location: Register_premain..php?error=" . $emptyemail_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
+    header("Location: Register_premain.php?error=" . $emptyemail_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . '&filename=' . $filename);
     exit();
 }
 
@@ -34,7 +31,7 @@ $select = mysqli_query($conn, "SELECT * FROM rgstrd_users WHERE ru_email = '$ru_
 
 #If email add and student ID exists on the database
 if (!$select || mysqli_num_rows($select) > 0) {
-    header("Location: Register_premain.php?error=" . $userexist_err . "&ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
+    header("Location: Register_premain.php?error=" . $userexist_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email);
     exit();
 }
 

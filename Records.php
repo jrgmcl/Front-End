@@ -1,6 +1,7 @@
 <?php
 
 include 'config.php';
+session_start();
 
 ?>
 
@@ -219,6 +220,25 @@ include 'config.php';
     <div class="title-container" id="title-page">
       <h1>STI College Records</h1>
     </div>
+
+
+    <!-- Validation for Successful Registration -->
+    <?php
+
+    if (isset($_SESSION['status'])) {
+    ?>
+
+      <div class="w3-panel w3-blue">
+        <h3> Hi, Admin!</h3>
+        <p><?php echo $_SESSION['status']; ?></p>
+      </div>
+
+    <?php
+
+      unset($_SESSION['status']);
+    }
+
+    ?>
 
     <div class="table-container">
 

@@ -1,13 +1,12 @@
 <?php
 
 // connection to database via config.php
-@include 'config.php';
 include 'err.php';
-session_start();
+
 ?>
 
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,9 +17,15 @@ session_start();
 
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
+
+
+    <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel=" stylesheet" type="text/css" href="css/design.css">
     <link rel="stylesheet" type="text/css" href="css/w3.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+</head>
 
 </head>
 
@@ -196,15 +201,16 @@ session_start();
     <div class="fade-in-image">
         <div class="reg-container">
 
-            <h2 class="bg-info text-white"> User Registration </h2>
+            <h2 class="w3-cyan text-white"> User Registration </h2>
 
             <form action="Register_signup.php" method="post" id="reg_users">
 
-                <?php if (isset($_GET['error'])) { ?>
-                    <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-                <?php } ?>
+                <center> <?php if (isset($_GET['error'])) { ?>
+                        <p class="regerror-msg w3-text-red"><?php echo $_GET['error']; ?></p>
+                    <?php } ?>
+                </center>
 
-                <H5>Please enter the following details:</h5>
+                <H5 class=" w3-text-black">Please enter the following details:</h5>
 
 
 
@@ -216,74 +222,60 @@ session_start();
                                                                 } ?>" placeholder="First Name">
 
 
-        </div>
 
-        <input type="name" name="ru_lastname" value="<?php
-                                                        if (empty($_GET['ru_lastname'])) {
-                                                            echo "";
-                                                        } else {
-                                                            echo $_GET['ru_lastname'];
-                                                        } ?>" placeholder="Last Name">
 
-        <input type="studentid" name="ru_studentid" value="<?php
-                                                            if (empty($_GET['ru_studentid'])) {
+                <input type="name" name="ru_lastname" value="<?php
+                                                                if (empty($_GET['ru_lastname'])) {
+                                                                    echo "";
+                                                                } else {
+                                                                    echo $_GET['ru_lastname'];
+                                                                } ?>" placeholder="Last Name">
+
+                <input type="studentid" name="ru_studentid" value="<?php
+                                                                    if (empty($_GET['ru_studentid'])) {
+                                                                        echo "";
+                                                                    } else {
+                                                                        echo $_GET['ru_studentid'];
+                                                                    } ?>" placeholder="Student ID number">
+
+                <input type="email" name="ru_email" value="<?php
+                                                            if (empty($_GET['ru_email'])) {
                                                                 echo "";
                                                             } else {
-                                                                echo $_GET['ru_studentid'];
-                                                            } ?>" placeholder="Student ID number">
+                                                                echo $_GET['ru_email'];
+                                                            } ?>" placeholder="Email">
 
-        <input type="email" name="ru_email" value="<?php
-                                                    if (empty($_GET['ru_email'])) {
-                                                        echo "";
-                                                    } else {
-                                                        echo $_GET['ru_email'];
-                                                    } ?>" placeholder="Email">
-
-        <select class="select" name="ru_course" value="<?php
-                                                        if (empty($_GET['ru_course'])) {
-                                                            echo "";
-                                                        } else {
-                                                            echo $_GET['ru_course'];
-                                                        } ?>" placeholder="Course">
-            <option disabled selected value>Select a Course</option>
-            <option class="option" value="ASCT">ASCT</option>
-            <option value="BSCPE">BSCPE</option>
-            <option value="BSIT">BSIT</option>
-            <option value="BSCS">BSCS</option>
-            <option value="BSBA">BSBA</option>
-            <option value="BSA">BSA</option>
-            <option value="BSTM">BSTM</option>
-            <option value="BMMA">BMMA</option>
-            <option value="BSHM">BSHM</option>
-            <option value="TOP">TOP</option>
-            <option value="GAS">GAS</option>
-            <option value="STEM">STEM</option>
-            <option value="Faculty Staff">Faculty Staff</option>
-        </select>
+                <select class="select" name="ru_course" value="<?php
+                                                                if (empty($_GET['ru_course'])) {
+                                                                    echo "";
+                                                                } else {
+                                                                    echo $_GET['ru_course'];
+                                                                } ?>" placeholder="Course">
+                    <option disabled selected value>Select a Course</option>
+                    <option class="option" value="ASCT">ASCT</option>
+                    <option value="BSCPE">BSCPE</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="BSBA">BSBA</option>
+                    <option value="BSA">BSA</option>
+                    <option value="BSTM">BSTM</option>
+                    <option value="BMMA">BMMA</option>
+                    <option value="BSHM">BSHM</option>
+                    <option value="TOP">TOP</option>
+                    <option value="GAS">GAS</option>
+                    <option value="STEM">STEM</option>
+                    <option value="Faculty Staff">Faculty Staff</option>
+                </select>
 
 
 
-        <button>Register</button>
-        </form>
+                <button>Register</button>
+            </form>
 
 
+        </div>
     </div>
-    </div>
-
-
-
 
 </body>
-<script>
-    $(document).ready(function() {
-        if ($('#msg').val() != "") {
-            alert($('#msg').val()); // or replace with a JQuery modal
-        }
-    });
-</script>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
 </html>
