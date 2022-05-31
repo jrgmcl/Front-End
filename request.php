@@ -20,203 +20,208 @@ $query = $conn->query($sel);
 
 
 
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML">
 <html>
 
 <head>
 
 
-   <!--BOOSTRAP -->
-
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-   <!--JS BUNDLE -->
-   <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel="stylesheet" href="dashstyles.css" />
-<link rel="sytylesheet" type="text/css">
-
-<!-- CSS SEARCHBAR -->
-<link rel="stylesheet" href="css/searchbar.css">
-<link rel="stylesheet" href="css/search.css">
+   <!-- CSS FOR SIDE BAR and NAVBAR -->
+   <link rel=" stylesheet" type="text/css" href="css/design.css">
+   <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 
-<!-- SCRIPT FOR EXCEL EXPORT-->
-
-<script src="table2excel.js"></script>
-
-
-<!-- CSS FOR MAIN -->
-
-<style>
-   body {
-      background-image: url("images/BGpic.jpg");
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      font-family: 'Montserrat', sans-serif;
-
-   }
-
-   .logout {
-      margin-right: 40rem;
-   }
-
-   a {
-      font-size: 18px;
-      font-weight: 600;
-   }
-
-   button {
-      font-weight: 600;
-      font-size: 18px;
-   }
-
-   .image {
-      margin-top: -2px;
-      margin-left: -35px;
-   }
-
-   li {
-      margin-top: 1.5rem;
-   }
+   <!-- CSS SEARCHBAR -->
+   <link rel="stylesheet" href="css/searchbar.css">
+   <link rel="stylesheet" href="css/search.css">
 
 
 
-   h1 {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      font-weight: 700;
-      margin-top: 10px;
-      padding: 2px;
-      color: #000;
-
-   }
-
-   button {
-      border-radius: 20px;
-      border: 1px solid #5DB1B9;
-      background-color: #5DB1B9;
-      color: #FFFFFF;
-      font-size: 12px;
-      font-weight: bold;
-      padding: 10px 30px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: transform 80ms ease-in;
-   }
-
-   button:active {
-      transform: scale(0.95);
-   }
-
-   button:focus {
-      outline: none;
-   }
-
-   button.ghost {
-      background-color: transparent;
-      border-color: #FFFFFF;
-   }
-
-   table-container {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-         0 10px 10px rgba(0, 0, 0, 0.22);
-      position: relative;
-      margin-top: 50px;
-      margin-left: 13rem;
-   }
-
-   h1 {
-      font-family: 'Montserrat', sans-serif;
-      text-align: center;
-      font-weight: 700;
-      margin-top: 10px;
-      padding: 2px;
-      color: #fff;
-
-   }
-
-   .title-container {
+   <!-- CSS SEARCHBAR -->
+   <link rel="stylesheet" href="css/searchbar.css">
+   <link rel="stylesheet" href="css/search.css">
 
 
-      border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
-         0 5px 5px rgba(0, 0, 0, 0.22);
-      position: relative;
-      overflow: hidden;
-      width: 10rem;
-      height: 400px;
-      margin-top: 50px;
-      margin-left: 13rem;
-   }
+   <!-- SCRIPT FOR EXCEL EXPORT-->
 
-   #title-page {
+   <script src="table2excel.js"></script>
 
-      background-color: #008fb3;
-      border-radius: 10px;
-      position: relative;
-      width: 70rem;
-      height: 80px;
-      margin-top: 40px;
-   }
 
-   a {
-      color: white;
-   }
-</style>
+   <!-- CSS FOR MAIN -->
+
+   <style>
+      body {
+         background-image: url("images/BGpic.jpg");
+         background-position: center;
+         display: flex;
+         justify-content: center;
+         flex-direction: column;
+         font-family: 'Montserrat', sans-serif;
+
+      }
+
+      .logout {
+         margin-right: 2rem;
+         float: right;
+      }
+
+      a {
+         font-size: 18px;
+         font-weight: 600;
+      }
+
+      button {
+         font-weight: 600;
+         font-size: 18px;
+      }
+
+      .image {
+         margin-top: -2px;
+         margin-left: -35px;
+      }
+
+      li {
+         margin-top: 1.5rem;
+      }
 
 
 
-<!-- CSS MAIN ENDS -->
+      h1 {
+         font-family: 'Montserrat', sans-serif;
+         text-align: center;
+         font-weight: 700;
+         margin-top: 10px;
+         padding: 2px;
+         color: #000;
+
+      }
+
+      button {
+         border-radius: 20px;
+         border: 1px solid #5DB1B9;
+         background-color: #5DB1B9;
+         color: #FFFFFF;
+         font-size: 12px;
+         font-weight: bold;
+         padding: 10px 30px;
+         letter-spacing: 1px;
+         text-transform: uppercase;
+         transition: transform 80ms ease-in;
+      }
+
+      button:active {
+         transform: scale(0.95);
+      }
+
+      button:focus {
+         outline: none;
+      }
+
+      button.ghost {
+         background-color: transparent;
+         border-color: #FFFFFF;
+      }
+
+      table-container {
+         background-color: #fff;
+         border-radius: 10px;
+         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+         position: relative;
+         margin-top: 50px;
+         margin-left: 13rem;
+      }
+
+      h1 {
+         font-family: 'Montserrat', sans-serif;
+         text-align: center;
+         font-weight: 700;
+         margin-top: 10px;
+         padding: 2px;
+         color: #fff;
+
+      }
+
+      .title-container {
+
+
+         border-radius: 10px;
+         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+            0 5px 5px rgba(0, 0, 0, 0.22);
+         position: relative;
+         overflow: hidden;
+         width: 15rem;
+         height: 400px;
+         margin-top: 50px;
+         margin-left: 22rem;
+      }
+
+      #title-page {
+
+         background-color: #008fb3;
+         border-radius: 10px;
+         position: relative;
+         width: 70rem;
+         height: 80px;
+         margin-top: 40px;
+      }
+
+      a {
+         color: white;
+      }
+
+      th,
+      td {
+         padding: 8px;
+         text-align: center;
+         border-bottom: 1px solid #DDD;
+      }
+
+      tr:hover {
+         background-color: #D6EEEE;
+      }
+   </style>
+
+
+
+   <!-- CSS MAIN ENDS -->
 
 <body>
 
-   <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
+   <div class="w3-bar w3-cyan">
+      <center>
+         <div class=" image">
+            <img src="images/logo.png" width="110" height="110">
+         </div>
+      </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
-      <div class=" image">
-         <img src="images/logo.png" width="95" height="95">
+      <div class="w3-dropdown-hover">
+         <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
+         <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+            <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
+         </div>
       </div>
 
-      <li class="nav-item ">
-         <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
-      </li>
 
-      <li class="nav-item dropdown">
-         <a class="nav-link  dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
-         <ul class=" bg-info dropdown-menu">
-            <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
-            <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
+      <div class="w3-dropdown-hover">
+         <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+         <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
+            <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+            <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+         </div>
+      </div>
 
-            <li>
+      <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
 
+      <a href=" Request.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
 
-         </ul>
-
-      </li>
-
-      <li class="nav-item">
-         <a class="nav-link text-white  " href="Register.php">Register</a>
-      </li>
-      <li class="nav-item">
-         <a class="nav-link text-white " href="Request.php">Requests</a>
-      </li>
-
-      <div class="logout"></div>
-      <li class="nav-item" id="#logout">
+      <div class="logout">
          <form action="Logout.php" method="post">
-            <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
-      </li>
+            <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+         </form>
       </div>
-      </form>
-   </ul>
-
-
    </div>
    </header>
 
@@ -226,61 +231,60 @@ $query = $conn->query($sel);
 
 
    <!-- RECORDS TABLE HTML -->
+   <div class="fade-in-image">
+      <div class="title-container" id="title-page">
+         <h1>Pending Request</h1>
+      </div>
 
-   <div class="title-container" id="title-page">
-      <h1>Pending Request</h1>
-   </div>
-
-   <div class="table-container">
-
-
-      <!-- TABLE FOR EXCEL EXPORT -->
-      <table id="example-table" class=" table ">
-         <thead>
-            <tr>
-               <th>No.</th>
-               <th>First Name</th>
-               <th>Last Name </th>
-               <th>Student ID</th>
-               <th>Course</th>
-               <th>Email</th>
+      <div class="table-container">
 
 
-               <th>Settings </th>
-            </tr>
-         <tbody>
+         <!-- TABLE FOR EXCEL EXPORT -->
+         <table id="example-table" class=" table ">
+            <thead>
+               <tr>
 
-            <div class="search-container bg-info">
-
-               <form action=" Search.php" method="post" class="search-bar">
-
-                  <!-- To link for the search table in Search.php -->
-                  <input type=" text" placeholder="search" name="search">
-                  <button name="submit"> SEARCH </button>
-
-
-               </form>
+                  <th>First Name</th>
+                  <th>Last Name </th>
+                  <th>Student ID</th>
+                  <th>Course</th>
+                  <th>Email</th>
 
 
+                  <th>Settings </th>
+               </tr>
+            <tbody>
 
-               <br>
-               </br>
-            </div>
+               <div class="search-container bg-info">
+
+                  <form action=" search_req.php" method="post" class="search-bar">
+
+                     <!-- To link for the search table in Search.php -->
+                     <input type=" text" placeholder="search" name="search">
+                     <button name="submit"> SEARCH </button>
 
 
-            <?php
+                  </form>
 
-            $num = mysqli_num_rows($query);
-            if ($num > 0) {
-               while ($result = $query->fetch_assoc()) {
 
-                  echo "
+
+                  <br>
+                  </br>
+               </div>
+
+
+               <?php
+
+               $num = mysqli_num_rows($query);
+               if ($num > 0) {
+                  while ($result = $query->fetch_assoc()) {
+
+                     echo "
           <tr>
 
-          <td> " . $result['id'] . "</td>
+          <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_firstname'] . " </td>
           <td>" . $result['ru_lastname'] . " </td>
-          <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
           <td>" . $result['ru_email'] . " </td>
          
@@ -288,8 +292,8 @@ $query = $conn->query($sel);
           <td>
           
           
-          <a href='accept.php?id=" . $result['id'] . "' class='btn bg-success' > Accept </a> 
-          <a href='Request.php?id=" . $result['id'] . "' class='btn bg-danger'> Reject </a>
+          <a href='accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='Request.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
           </td>
           
           </tr> 
@@ -297,24 +301,23 @@ $query = $conn->query($sel);
 
 
         ";
+                  }
                }
-            }
 
 
 
-            ?>
+               ?>
 
 
 
-         </tbody>
-         </thead>
-      </table>
+            </tbody>
+            </thead>
+         </table>
 
 </body>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
 </head>
 
 </html>

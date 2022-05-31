@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2022 at 12:09 AM
+-- Generation Time: May 28, 2022 at 02:20 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -70,7 +70,7 @@ INSERT INTO `archived` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru
 CREATE TABLE `log` (
   `count` int(3) NOT NULL COMMENT 'System ID#',
   `id` int(3) DEFAULT NULL,
-  `ru_firstname` char(32) NOT NULL,
+  `ru_firstname` char(32) DEFAULT NULL,
   `ru_lastname` char(32) DEFAULT NULL,
   `ru_studentid` int(16) DEFAULT NULL,
   `ru_course` varchar(16) DEFAULT NULL,
@@ -85,6 +85,30 @@ CREATE TABLE `log` (
 
 INSERT INTO `log` (`count`, `id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`, `time_in`, `time_out`) VALUES
 (1, 1, 'Jorge Michael', 'Galang', 2000013822, 'BSCPE', 'jorgegalang21@gmail.com', '2022-05-15 14:19:32.000000', '2022-05-15 19:49:19.000000');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `log_qr`
+--
+
+CREATE TABLE `log_qr` (
+  `count` int(3) NOT NULL COMMENT 'System ID#',
+  `id` int(3) DEFAULT NULL,
+  `qr_firstname` char(32) DEFAULT NULL,
+  `qr_lastname` char(32) DEFAULT NULL,
+  `qr_studentid` int(16) DEFAULT NULL,
+  `qr_course` varchar(16) DEFAULT NULL,
+  `qr_time_in` datetime(6) DEFAULT NULL,
+  `qr_time_out` datetime(6) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `log_qr`
+--
+
+INSERT INTO `log_qr` (`count`, `id`, `qr_firstname`, `qr_lastname`, `qr_studentid`, `qr_course`, `qr_time_in`, `qr_time_out`) VALUES
+(1, 1, 'Mary Adelaine', 'Diola', 200015448, 'BSCPE', '2022-05-13 02:14:49.000000', '2022-05-13 02:14:49.000000');
 
 -- --------------------------------------------------------
 
@@ -120,15 +144,17 @@ CREATE TABLE `qr_users` (
   `qr_lastname` char(32) DEFAULT NULL,
   `qr_number` char(16) DEFAULT NULL,
   `qr_gender` varchar(255) DEFAULT NULL,
-  `qr_purpose` varchar(16) DEFAULT NULL
+  `qr_purpose` varchar(16) DEFAULT NULL,
+  `visit_time_in` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `visit_time_out` datetime(6) NOT NULL DEFAULT current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `qr_users`
 --
 
-INSERT INTO `qr_users` (`id`, `qr_firstname`, `qr_lastname`, `qr_number`, `qr_gender`, `qr_purpose`) VALUES
-(1, 'Adele', 'Adele', '', 'female', 'Enrollment');
+INSERT INTO `qr_users` (`id`, `qr_firstname`, `qr_lastname`, `qr_number`, `qr_gender`, `qr_purpose`, `visit_time_in`, `visit_time_out`) VALUES
+(1, 'Adele', 'Adele', '', 'female', 'Enrollment', '2022-05-28 02:14:02.593434', '2022-05-28 02:14:33.493093');
 
 -- --------------------------------------------------------
 
@@ -177,6 +203,12 @@ ALTER TABLE `log`
   ADD PRIMARY KEY (`count`);
 
 --
+-- Indexes for table `log_qr`
+--
+ALTER TABLE `log_qr`
+  ADD PRIMARY KEY (`count`);
+
+--
 -- Indexes for table `pending_users`
 --
 ALTER TABLE `pending_users`
@@ -209,6 +241,12 @@ ALTER TABLE `archived`
 --
 ALTER TABLE `log`
   MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=48;
+
+--
+-- AUTO_INCREMENT for table `log_qr`
+--
+ALTER TABLE `log_qr`
+  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pending_users`

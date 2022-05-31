@@ -11,7 +11,8 @@ $ru_email = $_POST["ru_email"];
 $id = 0;
 $newfilename = $ru_firstname . "." . $ru_lastname;
 
-$dataset = "C:/Users/Adele Diola/OneDrive - STI College Cubao/Desktop/THESIS/test/";
+
+$dataset = "/var/www/html/datasets/";
 $file_name = $_FILES['register']['name'];
 $temp_path = $_FILES['register']['tmp_name'];
 $destination_path = $temp_path . $file_name;
@@ -43,7 +44,6 @@ for ($i = 0; $i < $total; $i++) {
 $register = "REPLACE INTO `rgstrd_users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course, ru_email) 
         VALUES (NULL, '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course', '$ru_email')";
 $rs = mysqli_query($conn, $register);
-header('location:Register.php');
 
 
 #Alert if success or not
@@ -57,16 +57,13 @@ if ($initiate) {
 
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
-                echo ("<script LANGUAGE='JavaScript'>
-                    window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
-                    window.location.href='Register.php';
-                    </script>");
+
+                #Sessuib ti throw validation
+                $_SESSION['status'] = "Successfully Registered!";
+                header('location: Records.php');
             }
-        } else {
-            echo ("<script LANGUAGE='JavaScript'>
-            window.alert('Something went wrong on the server! Please Try again later...');
-            window.location.href='Register.php';
-            </script>");
         }
     }
+} else {
+    echo "Error has occured.";
 }

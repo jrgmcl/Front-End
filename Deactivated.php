@@ -11,10 +11,10 @@ include 'config.php';
 
 <head>
 
+
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 
 <link rel=" stylesheet" type="text/css" href="css/design.css">
-
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->
@@ -185,6 +185,7 @@ include 'config.php';
             </div>
         </div>
 
+
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -213,9 +214,9 @@ include 'config.php';
 
 
 
-
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
+
         <div class="title-container" id="title-page">
             <h1>STI College Records</h1>
         </div>
@@ -227,10 +228,9 @@ include 'config.php';
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
+                        <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name </th>
-                        <th>Student ID</th>
                         <th>Course</th>
                         <th>Email</th>
 
@@ -241,7 +241,7 @@ include 'config.php';
 
                     <div class="search-container bg-info">
 
-                        <form action=" Search.php" method="post" class="search-bar">
+                        <form action=" search_deact.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -258,42 +258,33 @@ include 'config.php';
 
 
                     <?php
-                    error_reporting(0);
 
-                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
+                    #Fetch the data from database
+                    $sel = "SELECT * FROM `archived` ";
+                    $query = $conn->query($sel);
 
-                    if (isset($_POST["submit"])) {
-                        $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `rgstrd_users` WHERE ru_studentid = '$str'");
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
 
-                        $sth->setFetchMode(PDO::FETCH_OBJ);
-                        $sth->execute();
+                            echo "
+          <tr>
 
-                        if ($result = $sth->fetch()) {
-
-
-                    ?>
-
-                            <tr>
-                                <td><?php echo $result->ru_studentid; ?></td>
-                                <td><?php echo $result->ru_firstname; ?></td>
-                                <td><?php echo $result->ru_lastname; ?></td>
-                                <td><?php echo $result->ru_course; ?></td>
-                                <td><?php echo $result->ru_email; ?></td>
-
-
-                                <td>
-                                    <a href='archived_users.php?id=' <?php echo $result->id; ?> class=' w3-button w3-gray w3-text-white w3-hover-cyan'> Archive </a>
-                                </td>
-
-                            </tr>
+          <td>" . $result['ru_studentid'] . " </td>
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
+          <td>" . $result['ru_course'] . " </td>
+          <td>" . $result['ru_email'] . " </td>
+         
+        
+          <td>
+          <a href='retrieve_users.php?id=" . $result['id'] . "' class='w3-button w3-green w3-text-white w3-hover-cyan' > Activate </a> 
+          </td>
+          </tr> 
+          
 
 
-
-
-                    <?php
-                        } else {
-                            echo "";
+        ";
                         }
                     }
 
@@ -306,8 +297,19 @@ include 'config.php';
                 </tbody>
                 </thead>
             </table>
-        </div>
+
 </body>
+
+<!-- JS FOR EXPORTING TO EXCEL -->
+<script>
+    document.getElementById('downloadexcel').addEventListener('click', function() {
+
+        var table2excel = new Table2Excel();
+        table2excel.export(document.querySelectorAll("#example-table"));
+
+    });
+</script>
+
 
 </head>
 

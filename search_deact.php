@@ -185,6 +185,7 @@ include 'config.php';
             </div>
         </div>
 
+
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -264,7 +265,7 @@ include 'config.php';
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `rgstrd_users` WHERE ru_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `archived` WHERE ru_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -283,7 +284,7 @@ include 'config.php';
 
 
                                 <td>
-                                    <a href='archived_users.php?id=' <?php echo $result->id; ?> class=' w3-button w3-gray w3-text-white w3-hover-cyan'> Archive </a>
+                                    <a href='retrieve_users.php?id=' <?php echo $result->id; ?> class=' w3-button w3-green w3-text-white w3-hover-cyan'> Activate </a>
                                 </td>
 
                             </tr>

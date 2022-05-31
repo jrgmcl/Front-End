@@ -3,227 +3,222 @@
 // connection to database via config.php
 @include 'config.php';
 include 'err.php';
-
+session_start();
 ?>
 
 
 
-
-<!DOCTYPE HTML PUBLIC �-//W3C//DTD HTML 4.01//EN� �http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Registration</title>
 
 
-   <!--BOOSTRAP -->
+   <!-- CSS FOR SIDE BAR and NAVBAR -->
 
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   <link rel=" stylesheet" type="text/css" href="css/design.css">
+   <link rel="stylesheet" type="text/css" href="css/w3.css">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
 
-   <!--JS BUNDLE -->
-   <script src="file:///C:/XAMPP/htdocs/Front-End/js/bootstrap.bundle.min.js"></script>
 </head>
 
 
+<!-- CSS FOR MAIN -->
 
-<body class="body">
-   <meta charset="UTF-8">
-   <link rel="stylesheet" type="text/css" href="style.css">
-   <title>Admin Dashboard </title>
+<style>
+   body {
+      background-image: url("images/BGpic.jpg");
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
 
+   }
 
-   <!-- CSS FOR MAIN -->
+   .logout {
+      margin-right: 2rem;
+      float: right;
+   }
 
-   <style>
-      body {
-         background-image: url("images/BGpic.jpg");
-         background-position: center;
-         display: flex;
-         justify-content: center;
-         flex-direction: column;
-         font-family: 'Montserrat', sans-serif;
+   a {
+      font-size: 18px;
+      font-weight: 600;
+   }
 
-      }
+   button {
+      font-weight: 600;
+      font-size: 18px;
+      margin-top: 15px;
+   }
 
-      .logout {
-         margin-right: 40rem;
-      }
+   .image {
+      margin-top: -2px;
+      margin-left: -35px;
+   }
 
-      a {
-         font-size: 18px;
-         font-weight: 600;
-      }
+   li {
+      margin-top: 1.5rem;
+   }
 
-      button {
-         font-weight: 600;
-         font-size: 18px;
-      }
+   .reg-container {
 
-      .image {
-         margin-top: -2px;
-         margin-left: -35px;
-      }
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+         0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      width: 50rem;
+      height: 500px;
+      margin-top: 50px;
+      margin-left: 31rem;
+      background-color: #fff;
 
-      li {
-         margin-top: 1.5rem;
-      }
+   }
 
-      .reg-container {
-
-         border-radius: 10px;
-         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-         position: relative;
-         overflow: hidden;
-         width: 50rem;
-         height: 550px;
-         margin-top: 50px;
-         margin-left: 21rem;
-         background-color: #fff;
-
-      }
-
-      h2 {
-         font-family: 'Montserrat', sans-serif;
-         text-align: center;
-         font-weight: 600;
-         padding: 10px;
+   h2 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      font-weight: 600;
+      padding: 10px;
 
 
-      }
+   }
 
-      #reg_users {
-         padding: 30px;
+   #reg_users {
+      padding: 30px;
 
-      }
+   }
 
-      input {
-         background-color: #eee;
-         border: none;
-         border-radius: 15px;
-         padding: 8px 10px;
-         margin: 6px 0;
-         width: 100%;
-      }
+   input {
+      background-color: #eee;
+      border: none;
+      border-radius: 15px;
+      padding: 8px 10px;
+      margin: 6px 0;
+      width: 100%;
+   }
 
-      select {
-         background-color: #eee;
-         border-radius: 15px;
-         padding: 8px 10px;
-         margin: 8px 0;
-         width: 100%;
-      }
+   select {
+      background-color: #eee;
+      border-radius: 15px;
+      padding: 8px 10px;
+      margin: 8px 0;
+      width: 100%;
+   }
 
-      option {
-         background: #eee;
-         color: #000;
-         font-size: 14px;
-      }
+   option {
+      background: #eee;
+      color: #000;
+      font-size: 14px;
+   }
 
-      button {
-         border-radius: 20px;
-         border: 1px solid #5DB1B9;
-         background-color: #5DB1B9;
-         color: #FFFFFF;
-         font-size: 12px;
-         font-weight: bold;
-         padding: 12px 45px;
-         letter-spacing: 1px;
-         text-transform: uppercase;
-         transition: transform 80ms ease-in;
-      }
+   button {
+      border-radius: 20px;
+      border: 1px solid #5DB1B9;
+      background-color: #5DB1B9;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+   }
 
-      button:active {
-         transform: scale(0.95);
-      }
+   button:active {
+      transform: scale(0.95);
+   }
 
-      button:focus {
-         outline: none;
-      }
+   button:focus {
+      outline: none;
+   }
 
-      button.ghost {
-         background-color: transparent;
-         border-color: #FFFFFF;
-      }
-   </style>
+   button.ghost {
+      background-color: transparent;
+      border-color: #FFFFFF;
+   }
+</style>
 
 
 
-   <!-- CSS MAIN ENDS -->
+<!-- CSS MAIN ENDS -->
 
 
-   <body>
+<body>
 
-      <ul class=" nav   nav-tabs justify-content-center bg-info p-1">
-
+   <div class="w3-bar w3-cyan">
+      <center>
          <div class=" image">
-            <img src="images/logo.png" width="95" height="95">
+            <img src="images/logo.png" width="110" height="110">
          </div>
+      </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
-         <li class="nav-item ">
-            <a class="nav-link text-white " href="Dashboard.php">Dashboard</a>
-         </li>
-
-         <li class="nav-item dropdown">
-            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Records</a>
-            <ul class=" bg-info dropdown-menu">
-               <li><a class="dropdown-item bg-info text-white" href="Records.php">User Record</a></li>
-               <li><a class="dropdown-item bg-info text-white" href="Logs.php">Logs</a></li>
-
-               <li>
-
-
-            </ul>
-
-         </li>
-
-         <li class="nav-item">
-            <a class="nav-link text-white  " href="Register.php">Register</a>
-         </li>
-         <li class="nav-item">
-            <a class="nav-link text-white " href="Request.php">Requests</a>
-         </li>
-
-         <div class="logout"></div>
-         <li class="nav-item" id="#logout">
-            <form action="Logout.php" method="post">
-               <a class="nav-link bg-info text-white " href="Logout.php">Logout</a>
-         </li>
+      <div class="w3-dropdown-hover">
+         <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
+         <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+            <a href="Deactivated.php" class="w3-bar-item w3-hover-cyan  w3-button">Archive</a>
          </div>
-         </form>
-      </ul>
-
-
       </div>
-      </header>
-
-      <!-- NAVIGATION ENDS -->
-      <!-- NAVIGATION ENDS -->
 
 
+      <div class="w3-dropdown-hover">
+         <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+         <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
+            <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+            <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+         </div>
+      </div>
+
+      <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
+
+      <a href=" Request.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
+
+      <div class="logout">
+         <form action="Logout.php" method="post">
+            <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+         </form>
+      </div>
+   </div>
+
+
+
+   </div>
+   </header>
+
+   <!-- NAVIGATION ENDS -->
+
+   <div class="fade-in-image">
       <div class="reg-container">
 
-         <h2 class="bg-info text-white"> User Registration </h2>
+         <h2 class="w3-cyan w3-text-white"> User Registration </h2>
 
-         <form action="reg_append.php" method="post" id="reg_users">
+         <form action="Register_signup.php" method="post" id="reg_users">
 
             <?php if (isset($_GET['error'])) { ?>
                <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
             <?php } ?>
 
-            <H5>Please enter the following details:</h5>
+            <H5 class="w3-text-black">Please enter the following details:</h5>
 
 
 
-            <div class="form-control">
-               <input type="name" name="ru_firstname" value="<?php
-                                                               if (empty($_GET['ru_firstname'])) {
-                                                                  echo "";
-                                                               } else {
-                                                                  echo $_GET['ru_firstname'];
-                                                               } ?>" placeholder="First Name">
 
-               <i class='fas fa-check-circle'></i>
-            </div>
+            <input type="name" name="ru_firstname" value="<?php
+                                                            if (empty($_GET['ru_firstname'])) {
+                                                               echo "";
+                                                            } else {
+                                                               echo $_GET['ru_firstname'];
+                                                            } ?>" placeholder="First Name">
+
+
+
 
             <input type="name" name="ru_lastname" value="<?php
                                                          if (empty($_GET['ru_lastname'])) {
@@ -270,36 +265,25 @@ include 'err.php';
 
 
 
-            <!-- Form for file uploading -->
+            <button>Register</button>
+         </form>
 
-            <form class="form-upload" action="fileupload.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-               Choose file from PC: <input type="file" name="register[]" multiple>
-               <br>
-               <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-               <button class="button" type="submit" name="submit">Submit</button>
-            </form>
-
-            <br>
-
-            </br>
 
       </div>
-      </div>
+   </div>
 
 
 
 
-   </body>
-   <script>
-      $(document).ready(function() {
-         if ($('#msg').val() != "") {
-            alert($('#msg').val()); // or replace with a JQuery modal
-         }
-      });
-   </script>
+</body>
+<script>
+   $(document).ready(function() {
+      if ($('#msg').val() != "") {
+         alert($('#msg').val()); // or replace with a JQuery modal
+      }
+   });
+</script>
 
 
-   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
 
 </html>
