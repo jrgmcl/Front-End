@@ -19,10 +19,18 @@ $ru_email = $_GET["ru_email"];
     <title>Registration</title>
 
 
+
+
     <!-- CSS FOR SIDE BAR and NAVBAR -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel=" stylesheet" type="text/css" href="css/design.css">
-    <link rel="stylesheet" type="text/css" href="css/w3.css">
+    <link rel=" stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/design.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="icon" href="images/logo.png">
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -142,11 +150,19 @@ $ru_email = $_GET["ru_email"];
         background-color: transparent;
         border-color: #FFFFFF;
     }
+
+    .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        position: relative;
+        overflow: hidden;
+        width: 50rem;
+        height: 500px;
+        margin-top: 50px;
+    }
 </style>
-
-
-
-<!-- CSS MAIN ENDS -->
 
 
 <body>
@@ -193,22 +209,23 @@ $ru_email = $_GET["ru_email"];
     </header>
     <!-- NAVIGATION ENDS -->
 
-    <div class="fade-in-image">
-        <div class="reg-container">
+    <body class="body">
 
-            <h2 class="w3-cyan text-white"> User Registration </h2>
+        <div class="container">
 
+            <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
+
+
+            <br>
+            <br>
             <form>
-                <center> <?php if (isset($_GET['error'])) { ?>
-                        <p class="regerror-msg w3-text-red"><?php echo $_GET['error']; ?></p>
-                    <?php } ?>
-                </center>
 
 
-                <H5>Please enter the following details:</h5>
+                <?php if (isset($_GET['error'])) { ?>
+                    <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
+                <?php } ?>
 
-
-
+                <h4> Please fill in the following: </h4>
 
                 <input type="name" name="ru_firstname" value="<?php
                                                                 if (empty($_GET['ru_firstname'])) {
@@ -270,16 +287,8 @@ $ru_email = $_GET["ru_email"];
                     <option value="Faculty Staff">Faculty Staff</option>
                 </select>
 
-                <!-- Form for file uploading -->
-
-                <form class="form-upload" action="reg_append.php<?php echo "?ru_name=" . $ru_name . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email ?>" method="POST" enctype="multipart/form-data">
-                    Choose file from PC: <input type="file" name="register[]" multiple>
-                    <br>
-                    <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-                    <button class="button" type="submit" name="submit">Submit</button>
-                </form>
                 <!-- Button for Popup Upload -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload Images</button>
+                <button type="button" class="btn w3-cyan w3-text-white w3-hover-white" data-toggle="modal" data-target="#Upload">Upload Images</button>
             </form>
 
             <!-- Popup Upload -->
@@ -295,29 +304,52 @@ $ru_email = $_GET["ru_email"];
 
                         <!-- Modal body -->
                         <div class="modal-body">
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <br>
-
-                                </br>
-
-                            </div>
+                            <!-- Form for file uploading -->
+                            <form class="form-upload" action="reg_append.php" method="POST" enctype="multipart/form-data">
+                                Choose File from PC: <input type="file" name="fileupload[]" multiple>
+                                <!-- Direct to fileupload.php to put the file selected to a PHP variable -->
+                                <button>Submit</button>
+                            </form>
                         </div>
 
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
 
 
+        <script type="text/javascript">
+            const signUpButton = document.getElementById('register');
+            const signInButton = document.getElementById('login');
+            const container = document.getElementById('container');
 
-</body>
-<script>
-    $(document).ready(function() {
-        if ($('#msg').val() != "") {
-            alert($('#msg').val()); // or replace with a JQuery modal
-        }
-    });
-</script>
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+                clearErrors();
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+                clearErrors();
+            });
+
+            function clearErrors() {
+                Array.prototype.forEach.call(
+                    document.getElementsByClassName("loginerror-msg"),
+                    function(el) {
+                        el.style.display = "none";
+                    }
+                );
+            }
+        </script>
 
 
-
+    </body>
 
 </html>

@@ -16,16 +16,17 @@ include 'err.php';
     <title>Registration</title>
 
 
-    <!-- CSS FOR SIDE BAR and NAVBAR -->
-
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel=" stylesheet" type="text/css" href="css/design.css">
-    <link rel="stylesheet" type="text/css" href="css/w3.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-
-</head>
+    <link rel=" stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/design.css">
+    <link rel="stylesheet" href="css/w3.css">
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="icon" href="images/logo.png">
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -145,6 +146,18 @@ include 'err.php';
         background-color: transparent;
         border-color: #FFFFFF;
     }
+
+    .container {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+            0 10px 10px rgba(0, 0, 0, 0.22);
+        position: relative;
+        overflow: hidden;
+        width: 50rem;
+        height: 500px;
+        margin-top: 50px;
+    }
 </style>
 
 
@@ -198,20 +211,23 @@ include 'err.php';
     <!-- NAVIGATION ENDS -->
 
 
-    <div class="fade-in-image">
-        <div class="reg-container">
+    <body class="body">
 
-            <h2 class="w3-cyan text-white"> User Registration </h2>
 
-            <form action="Register_signup.php" method="post" id="reg_users">
+        <div class="container">
+            <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
 
-                <center> <?php if (isset($_GET['error'])) { ?>
-                        <p class="regerror-msg w3-text-red"><?php echo $_GET['error']; ?></p>
-                    <?php } ?>
-                </center>
 
-                <H5 class=" w3-text-black">Please enter the following details:</h5>
+            <br>
 
+            <form action="Register_signup.php">
+
+
+                <?php if (isset($_GET['error'])) { ?>
+                    <p class=" regerror-msg"><?php echo $_GET['error']; ?></p>
+                <?php } ?>
+
+                <h4> Please fill in the following: </h4>
 
 
                 <input type="name" name="ru_firstname" value="<?php
@@ -220,9 +236,6 @@ include 'err.php';
                                                                 } else {
                                                                     echo $_GET['ru_firstname'];
                                                                 } ?>" placeholder="First Name">
-
-
-
 
                 <input type="name" name="ru_lastname" value="<?php
                                                                 if (empty($_GET['ru_lastname'])) {
@@ -245,14 +258,14 @@ include 'err.php';
                                                                 echo $_GET['ru_email'];
                                                             } ?>" placeholder="Email">
 
-                <select class="select" name="ru_course" value="<?php
-                                                                if (empty($_GET['ru_course'])) {
-                                                                    echo "";
-                                                                } else {
-                                                                    echo $_GET['ru_course'];
-                                                                } ?>" placeholder="Course">
+                <select name="ru_course" value="<?php
+                                                if (empty($_GET['ru_course'])) {
+                                                    echo "";
+                                                } else {
+                                                    echo $_GET['ru_course'];
+                                                } ?>" placeholder="Course">
                     <option disabled selected value>Select a Course</option>
-                    <option class="option" value="ASCT">ASCT</option>
+                    <option value="ASCT">ASCT</option>
                     <option value="BSCPE">BSCPE</option>
                     <option value="BSIT">BSIT</option>
                     <option value="BSCS">BSCS</option>
@@ -268,14 +281,36 @@ include 'err.php';
                 </select>
 
 
-
                 <button>Register</button>
             </form>
-
-
         </div>
-    </div>
 
-</body>
+
+
+        <script type="text/javascript">
+            const container = document.getElementById('container');
+
+
+            signUpButton.addEventListener('click', () => {
+                container.classList.add("right-panel-active");
+                clearErrors();
+            });
+
+            signInButton.addEventListener('click', () => {
+                container.classList.remove("right-panel-active");
+                clearErrors();
+            });
+
+            function clearErrors() {
+                Array.prototype.forEach.call(
+                    document.getElementsByClassName("loginerror-msg"),
+                    function(el) {
+                        el.style.display = "none";
+                    }
+                );
+            }
+        </script>
+
+    </body>
 
 </html>

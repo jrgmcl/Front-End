@@ -16,13 +16,19 @@ session_start();
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Registration</title>
+   <link rel="icon" href="images/logo.png">
 
 
    <!-- CSS FOR SIDE BAR and NAVBAR -->
-
-   <link rel=" stylesheet" type="text/css" href="css/design.css">
-   <link rel="stylesheet" type="text/css" href="css/w3.css">
-   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel=" stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/design.css">
+   <link rel="stylesheet" href="css/w3.css">
+   <script src="js/bootstrap.bundle.min.js"></script>
+   <link rel="stylesheet" href="css/font-awesome.min.css">
+   <link rel="icon" href="images/logo.png">
+   <script src="js/jquery.slim.min.js"></script>
+   <script src="js/popper.min.js"></script>
+   <script src="js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -142,6 +148,18 @@ session_start();
       background-color: transparent;
       border-color: #FFFFFF;
    }
+
+   .container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+         0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      width: 50rem;
+      height: 500px;
+      margin-top: 50px;
+   }
 </style>
 
 
@@ -182,7 +200,7 @@ session_start();
 
       <div class="logout">
          <form action="Logout.php" method="post">
-            <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+            <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white ">Logout</a>
          </form>
       </div>
    </div>
@@ -194,96 +212,101 @@ session_start();
 
    <!-- NAVIGATION ENDS -->
 
-   <div class="fade-in-image">
-      <div class="reg-container">
 
-         <h2 class="w3-cyan w3-text-white"> User Registration </h2>
-
-         <form action="Register_signup.php" method="post" id="reg_users">
-
-            <?php if (isset($_GET['error'])) { ?>
-               <p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-            <?php } ?>
-
-            <H5 class="w3-text-black">Please enter the following details:</h5>
+   <div class="container">
+      <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
+      <br>
+      <form action="Register_signup.php" ">
+   
+         <?php if (isset($_GET['error'])) { ?>
+            <p class=" regerror-msg"><?php echo $_GET['error']; ?></p>
+      <?php } ?>
 
 
+      <h4> Please fill in the following: </h4>
 
+      <input type="name" name="ru_firstname" value="<?php
+                                                      if (empty($_GET['ru_firstname'])) {
+                                                         echo "";
+                                                      } else {
+                                                         echo $_GET['ru_firstname'];
+                                                      } ?>" placeholder="First Name">
 
-            <input type="name" name="ru_firstname" value="<?php
-                                                            if (empty($_GET['ru_firstname'])) {
-                                                               echo "";
-                                                            } else {
-                                                               echo $_GET['ru_firstname'];
-                                                            } ?>" placeholder="First Name">
+      <input type="name" name="ru_lastname" value="<?php
+                                                   if (empty($_GET['ru_lastname'])) {
+                                                      echo "";
+                                                   } else {
+                                                      echo $_GET['ru_lastname'];
+                                                   } ?>" placeholder="Last Name">
 
-
-
-
-            <input type="name" name="ru_lastname" value="<?php
-                                                         if (empty($_GET['ru_lastname'])) {
+      <input type="studentid" name="ru_studentid" value="<?php
+                                                         if (empty($_GET['ru_studentid'])) {
                                                             echo "";
                                                          } else {
-                                                            echo $_GET['ru_lastname'];
-                                                         } ?>" placeholder="Last Name">
+                                                            echo $_GET['ru_studentid'];
+                                                         } ?>" placeholder="Student ID number">
 
-            <input type="studentid" name="ru_studentid" value="<?php
-                                                               if (empty($_GET['ru_studentid'])) {
-                                                                  echo "";
-                                                               } else {
-                                                                  echo $_GET['ru_studentid'];
-                                                               } ?>" placeholder="Student ID number">
+      <input type="email" name="ru_email" value="<?php
+                                                   if (empty($_GET['ru_email'])) {
+                                                      echo "";
+                                                   } else {
+                                                      echo $_GET['ru_email'];
+                                                   } ?>" placeholder="Email">
 
-            <input type="email" name="ru_email" value="<?php
-                                                         if (empty($_GET['ru_email'])) {
-                                                            echo "";
-                                                         } else {
-                                                            echo $_GET['ru_email'];
-                                                         } ?>" placeholder="Email">
-
-            <select class="select" name="ru_course" value="<?php
-                                                            if (empty($_GET['ru_course'])) {
-                                                               echo "";
-                                                            } else {
-                                                               echo $_GET['ru_course'];
-                                                            } ?>" placeholder="Course">
-               <option disabled selected value>Select a Course</option>
-               <option class="option" value="ASCT">ASCT</option>
-               <option value="BSCPE">BSCPE</option>
-               <option value="BSIT">BSIT</option>
-               <option value="BSCS">BSCS</option>
-               <option value="BSBA">BSBA</option>
-               <option value="BSA">BSA</option>
-               <option value="BSTM">BSTM</option>
-               <option value="BMMA">BMMA</option>
-               <option value="BSHM">BSHM</option>
-               <option value="TOP">TOP</option>
-               <option value="GAS">GAS</option>
-               <option value="STEM">STEM</option>
-               <option value="Faculty Staff">Faculty Staff</option>
-            </select>
+      <select class="select" name="ru_course" value="<?php
+                                                      if (empty($_GET['ru_course'])) {
+                                                         echo "";
+                                                      } else {
+                                                         echo $_GET['ru_course'];
+                                                      } ?>" placeholder="Course">
+         <option disabled selected value>Select a Course</option>
+         <option class="option" value="ASCT">ASCT</option>
+         <option value="BSCPE">BSCPE</option>
+         <option value="BSIT">BSIT</option>
+         <option value="BSCS">BSCS</option>
+         <option value="BSBA">BSBA</option>
+         <option value="BSA">BSA</option>
+         <option value="BSTM">BSTM</option>
+         <option value="BMMA">BMMA</option>
+         <option value="BSHM">BSHM</option>
+         <option value="TOP">TOP</option>
+         <option value="GAS">GAS</option>
+         <option value="STEM">STEM</option>
+         <option value="Faculty Staff">Faculty Staff</option>
+      </select>
 
 
-
-            <button>Register</button>
-         </form>
-
-
-      </div>
+      <button>Register</button>
+      </form>
    </div>
 
 
 
+   <script type="text/javascript">
+      const signUpButton = document.getElementById('register');
+      const container = document.getElementById('container');
+
+
+      signUpButton.addEventListener('click', () => {
+         container.classList.add("right-panel-active");
+         clearErrors();
+      });
+
+      signInButton.addEventListener('click', () => {
+         container.classList.remove("right-panel-active");
+         clearErrors();
+      });
+
+      function clearErrors() {
+         Array.prototype.forEach.call(
+            document.getElementsByClassName("regerror-msg"),
+            function(el) {
+               el.style.display = "none";
+            }
+         );
+      }
+   </script>
 
 </body>
-<script>
-   $(document).ready(function() {
-      if ($('#msg').val() != "") {
-         alert($('#msg').val()); // or replace with a JQuery modal
-      }
-   });
-</script>
-
-
 
 </html>
