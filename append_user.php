@@ -40,7 +40,7 @@ $initiate = mysqli_query($conn, $register);
 
 #Alert if success or not
 if ($initiate) {
-    $dbid = sprintf("%03d.", $id);
+    $dbid = sprintf($id);
     mkdir($dataset.$dbid.$newfilename, 0777, true);
     
     for ($i = '0'; $i < $total; $i++) {
@@ -49,10 +49,12 @@ if ($initiate) {
 
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
+                session_abort();
                 echo ("<script LANGUAGE='JavaScript'>
                     window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
                     window.location.href='index.php';
                     </script>");
+                    
             }
         }
     }

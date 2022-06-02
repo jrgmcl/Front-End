@@ -24,15 +24,9 @@ for ($i = 0; $i < $count; $i++) {
         $destination = mysqli_query($conn, "REPLACE INTO `rgstrd_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES ('$i','$firstname','$lastname','$studentid','$course','$email')");
         if ($destination) {
             $delete_pending = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = $pending_id");
-            if($delete_pending){
-                echo "<script LANGUAGE='JavaScript'>
-                    window.alert('Accepted '.$firstname.' '.$lastname.'!');
-                    window.location.href='Request.php';
-                    </script>";
+            if ($delete_pending) {
+                header("location: Request.php");
             }
-            
         }
     }
 }
-
-?>

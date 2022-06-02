@@ -13,8 +13,8 @@ $newfilename = $ru_firstname . "." . $ru_lastname;
 
 
 $dataset = "/var/www/html/datasets/";
-$file_name = $_FILES['register']['name'];
-$temp_path = $_FILES['register']['tmp_name'];
+$file_name = $_FILES['fileupload']['name'];
+$temp_path = $_FILES['fileupload']['tmp_name'];
 $destination_path = $temp_path . $file_name;
 $total = count($file_name);
 $imageFileType = strtolower(pathinfo($destination_path, PATHINFO_EXTENSION));
@@ -43,7 +43,7 @@ for ($i = 0; $i < $total; $i++) {
 #Replace to insert a data to dropped indexes
 $register = "REPLACE INTO `rgstrd_users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course, ru_email) 
         VALUES (NULL, '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course', '$ru_email')";
-$rs = mysqli_query($conn, $register);
+$initiate = mysqli_query($conn, $register);
 
 
 #Alert if success or not

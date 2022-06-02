@@ -14,7 +14,6 @@ session_start();
 	<title>FaceCognition</title>
 	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
 	<link rel="stylesheet" href="css/font-awesome.min.css">
-
 	<link rel="icon" href="images/logo.png">
 	<script src="js/jquery.slim.min.js"></script>
 	<script src="js/popper.min.js"></script>

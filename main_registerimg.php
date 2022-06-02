@@ -1,26 +1,28 @@
 <?php
 include 'err.php';
-session_start();
+
 $ru_firstname = $_GET["ru_firstname"];
 $ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
+session_start();
+
 ?>
 
 
-<!DOCTYPE HTML ">
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
 <html>
-<head>
-<title>FaceCognition</title>
-	<link rel=" stylesheet" type="text/css" href="css/login-reg-styles.css">
-<link rel="stylesheet" href="css/font-awesome.min.css">
-<link rel="stylesheet" href="css/w3.css">
-<link rel="icon" href="images/logo.png">
-<script src="js/jquery.slim.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.bundle.min.js"></script>
 
+<head>
+	<title>FaceCognition</title>
+	<link rel="stylesheet" type="text/css" href="css/login-reg-styles.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="icon" href="images/logo.png">
+	<script src="js/jquery.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
+	<!-- <link rel="css/bootstrap.min.css"> -->
 </head>
 
 <body class="body">
@@ -77,11 +79,11 @@ $ru_email = $_GET["ru_email"];
 									} else {
 										echo $_GET['ru_course'];
 									} ?>" disabled selected value>"<?php
-																	if (empty($_GET['ru_course'])) {
-																		echo "";
-																	} else {
-																		echo $_GET['ru_course'];
-																	} ?>"</option>
+										if (empty($_GET['ru_course'])) {
+											echo "";
+										} else {
+											echo $_GET['ru_course'];
+										} ?>"</option>
 					<option value="ASCT">ASCT</option>
 					<option value="BSCPE">BSCPE</option>
 					<option value="BSIT">BSIT</option>
@@ -98,32 +100,32 @@ $ru_email = $_GET["ru_email"];
 				</select>
 
 				<!-- Button for Popup Upload -->
-				<button type="button" class="w3-btn" data-toggle="w3-modal" data-target="modal">Upload Images</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Upload">Upload Images</button>
 			</form>
 
 			<!-- Popup Upload -->
-			<div class="w3-modal" id="#Upload">
-				<div class="w3-modal-dialog">
-					<div class="w3-modal-content w3-animate-right">
+			<div class="modal" id="Upload">
+				<div class="modal-dialog">
+					<div class="modal-content">
 
 						<!-- Modal Header -->
-						<div class="w3-modal-header">
-							<h4 class="w3-modal-title">Upload 5 Face Images</h4>
-							<a class="w3-button" data-dismiss="w3-modal"></a>
+						<div class="modal-header">
+							<h4 class="modal-title">Upload 5 Face Images</h4>
+							<a class="close" data-dismiss="modal"></a>
 						</div>
 
 						<!-- Modal body -->
-						<div class="w3-modal-body">
+						<div class="modal-body">
 							<!-- Form for file uploading -->
-							<form class="form-upload" action="append_user.php<?php echo "?ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email . "&upload[]=" . $_FILES['upload']['tmp_name']; ?>" method="POST" enctype="multipart/form-data">
+							<form class="form-upload" action="append_user.php<?php echo strval("?&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email); ?>" method="POST" enctype="multipart/form-data">
 								Choose File from PC: <input type="file" name="upload[]" multiple>
 								<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
-								<button class="w3-button" type="submit" name="submit">Submit</button>
+								<button>Submit</button>
 							</form>
 						</div>
 
 						<!-- Modal footer -->
-						<div class="w3-modal-footer">
+						<div class="modal-footer">
 
 						</div>
 
