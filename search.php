@@ -13,6 +13,7 @@ include 'config.php';
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 
+<link rel=" icon" href="images/logo.png">
 <link rel=" stylesheet" type="text/css" href="css/design.css">
 
 <link rel="stylesheet" type="text/css" href="css/w3.css">
@@ -196,14 +197,22 @@ include 'config.php';
 
         <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
 
-        <a href=" Request.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
 
+        <div class="w3-dropdown-hover">
+            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Register Users</a>
+                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Request</a>
+            </div>
+
+        </div>
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
             </form>
         </div>
     </div>
+
 
 
 
