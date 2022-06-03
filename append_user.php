@@ -11,6 +11,7 @@ $newfilename = $ru_firstname.".".$ru_lastname;
 $dataset = "/var/www/html/datasets/";
 $file_name = $_FILES['upload']['name'];
 $temp_path = $_FILES['upload']['tmp_name'];
+echo $temp_path;
 $destination_path = $temp_path.$file_name;
 $total = count($file_name);
 $imageFileType = strtolower(pathinfo($destination_path,PATHINFO_EXTENSION));
@@ -40,7 +41,7 @@ $initiate = mysqli_query($conn, $register);
 
 #Alert if success or not
 if ($initiate) {
-    mkdir($dataset.$dbid.'.'.$newfilename, 0777, true);
+    mkdir($dataset.$newfilename, 0777, true);
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
         $target_path = $dataset.$newfilename.'/'.$id.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
