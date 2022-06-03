@@ -40,12 +40,10 @@ $initiate = mysqli_query($conn, $register);
 
 #Alert if success or not
 if ($initiate) {
-    $dbid = sprintf($id);
-    mkdir($dataset.$dbid.$newfilename, 0777, true);
-    
+    mkdir($dataset.$dbid.'.'.$newfilename, 0777, true);
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
-        $target_path = $dataset.$newfilename.'/'.$dbid.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
+        $target_path = $dataset.$newfilename.'/'.$id.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
 
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
