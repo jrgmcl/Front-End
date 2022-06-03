@@ -117,7 +117,7 @@ session_start();
 						<!-- Modal body -->
 						<div class="modal-body">
 							<!-- Form for file uploading -->
-							<form class="form-upload" action="append_user.php<?php echo strval("?&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email); ?>" method="POST" enctype="multipart/form-data">
+							<form class="form-upload" action="append_user.php<?php echo "?&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course . "&ru_email=" . $ru_email."&upload[]=".$_FILES['upload']; ?>" method="POST" enctype="multipart/form-data">
 								Choose File from PC: <input type="file" name="upload[]" multiple>
 								<!-- Direct to fileupload.php to put the file selected to a PHP variable -->
 								<button>Submit</button>

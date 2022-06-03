@@ -7,11 +7,11 @@ $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
 $newfilename = $ru_firstname.".".$ru_lastname;
-
-$dataset = "/var/www/html/datasets/";
+$dataset = "/home/pi/Desktop/facerecognitionsystem-backend/datasets/";
+#$dataset = "/var/www/html/datasets/";
 $file_name = $_FILES['upload']['name'];
 $temp_path = $_FILES['upload']['tmp_name'];
-echo $temp_path;
+echo $file_name;
 $destination_path = $temp_path.$file_name;
 $total = count($file_name);
 $imageFileType = strtolower(pathinfo($destination_path,PATHINFO_EXTENSION));
@@ -47,8 +47,9 @@ if ($initiate) {
         $target_path = $dataset.$newfilename.'/'.$id.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
 
         if (!empty($file_name[$i])) {
+            
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
-                session_abort();
+                
                 echo ("<script LANGUAGE='JavaScript'>
                     window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
                     window.location.href='index.php';

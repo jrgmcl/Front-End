@@ -27,7 +27,7 @@ $sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username =
 $row = mysqli_fetch_array($sql);
 
 if ($row["total"] > 0) {
-	header("Location: dashboard.php");
+	header("Location: Dashboard.php");
 	exit();
 } else {
 	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $_SESSION["username"]);
