@@ -301,7 +301,7 @@ $query = $conn->query($sel);
           
           
           <a href='accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
-          <a href='Request.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          <a href='request.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
           </td>
           
           </tr> 

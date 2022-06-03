@@ -1,6 +1,5 @@
 <?php
 include 'config.php';
-
 $from = mysqli_query($conn, "SELECT * FROM `pending_users`");
 $from_row = mysqli_fetch_assoc($from);
 $pending_id = $from_row['id'];
@@ -20,13 +19,23 @@ for ($i = 0; $i < $count; $i++) {
     $registered = mysqli_query($conn, "SELECT * FROM `rgstrd_users` WHERE `id` = $i");
     $row = mysqli_fetch_row($registered);
     if (empty($row[1])) {
+       $id = $i;
+       break;
+    }
+    elseif (($i+1) == $count){
+        $id = $i + 1;
+    }
+}
 
-        $destination = mysqli_query($conn, "REPLACE INTO `rgstrd_users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES ('$i','$firstname','$lastname','$studentid','$course','$email')");
-        if ($destination) {
-            $delete_pending = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = $pending_id");
-            if ($delete_pending) {
-                header("location: Request.php");
-            }
-        }
+$accept = "REPLACE INTO `rgstrd_users` (id, ru_firstname, ru_lastname, ru_studentid, ru_course, ru_email) 
+VALUES ('$id', '$firstname','$lastname', '$studentid', '$course', '$email')";
+$initiate = mysqli_query($conn, $accept);
+if ($initiate){
+    $delete_pending = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = '$pending_id'");
+    if ($delete_pending) {
+        echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Successfully accepted the user!');
+        window.location.href='request.php';
+        </script>");
     }
 }
