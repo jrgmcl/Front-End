@@ -7,7 +7,7 @@ $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
 $newfilename = $ru_firstname.".".$ru_lastname;
-$dataset = "/home/pi/Desktop/facerecognitionsystem-backend/datasets/";
+$dataset = "/home/pi/Desktop/facerecognitionsystem-backend/pending/";
 #$dataset = "/var/www/html/datasets/";
 $file_name = $_FILES['upload']['name'];
 $temp_path = $_FILES['upload']['tmp_name'];
@@ -17,7 +17,7 @@ $total = count($file_name);
 $imageFileType = strtolower(pathinfo($destination_path,PATHINFO_EXTENSION));
 
 #Count the rows in the rgstrd_users and increment it by one
-$count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
+$count_id = mysqli_query($conn, "SELECT COUNT(*) FROM pending_users");
 $count_array = mysqli_fetch_array($count_id);
 $id = $count_array[0];
 $id = ++$id;
@@ -34,7 +34,7 @@ for ($i = 0; $i < $total; $i++) {
 }
 
 #Replace to insert a data to dropped indexes
-$register = "REPLACE INTO `rgstrd_users` (id, ru_firstname, ru_lastname, ru_studentid, ru_course, ru_email) 
+$register = "REPLACE INTO `pending_users` (id, ru_firstname, ru_lastname, ru_studentid, ru_course, ru_email) 
 VALUES ('$id', '$ru_firstname', '$ru_lastname', '$ru_studentid', '$ru_course', '$ru_email')";
 $initiate = mysqli_query($conn, $register);
 
@@ -44,14 +44,14 @@ if ($initiate) {
     mkdir($dataset.$newfilename, 0777, true);
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
-        $target_path = $dataset.$newfilename.'/'.$id.'.'.$newfilename.'_'.$i.'.'.$imageFileType;
+        $target_path = $dataset.$newfilename.'/'.$newfilename.'_'.$i.'.'.$imageFileType;
 
         if (!empty($file_name[$i])) {
             
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 
                 echo ("<script LANGUAGE='JavaScript'>
-                    window.alert('Succesfully Registered! Recorded ' . $total . ' images.');
+                    window.alert('Succesfully Registered! Recorded " . $total . " images.');
                     window.location.href='index.php';
                     </script>");
                     

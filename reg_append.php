@@ -8,7 +8,6 @@ $ru_lastname = $_POST["ru_lastname"];
 $ru_studentid = $_POST["ru_studentid"];
 $ru_course = $_POST["ru_course"];
 $ru_email = $_POST["ru_email"];
-$id = 0;
 $newfilename = $ru_firstname . "." . $ru_lastname;
 
 
@@ -23,8 +22,20 @@ $imageFileType = strtolower(pathinfo($destination_path, PATHINFO_EXTENSION));
 #Count the rows in the rgstrd_users and increment it by one
 $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
 $count_array = mysqli_fetch_array($count_id);
-$id = $count_array[0];
-$id = ++$id;
+$no = $count_array[0];
+
+for ($o = 0; $o < $no; $o++){
+    $read = mysqli_query($conn, "SELECT * FROM rgstrd_users where id = $o");
+    $checker = mysqli_fetch_array($read);
+ 
+    if ($checker['ru_firstname'] == NULL){
+       $id = $o;
+       break;
+    }
+    elseif (($o+1) == $no){
+       $id = $o + 1;
+    }
+ }
 
 #Check if the file is an Image
 for ($i = 0; $i < $total; $i++) {
@@ -40,16 +51,16 @@ for ($i = 0; $i < $total; $i++) {
 }
 
 
+
 #Replace to insert a data to dropped indexes
 $register = "REPLACE INTO `rgstrd_users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course, ru_email) 
-        VALUES (NULL, '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course', '$ru_email')";
+        VALUES ('$id', '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course', '$ru_email')";
 $initiate = mysqli_query($conn, $register);
 
 
 #Alert if success or not
 if ($initiate) {
-    $dbid = sprintf("%03d.", $id);
-    mkdir($dataset . $dbid . $newfilename, 0777, true);
+    mkdir($dataset . $id . $newfilename, 0777, true);
 
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
