@@ -252,7 +252,7 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
+                        <th>STUDENT ID</th>
                         <th>First Name </th>
                         <th>Last Name</th>
                         <th>Department</th>

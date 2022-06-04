@@ -80,8 +80,9 @@ include 'err.php';
          position: relative;
          overflow: hidden;
          width: 70rem;
-         height: 350px;
+         height: 380px;
          margin-top: 50px;
+         margin-bottom: 3rem;
       }
 
       .card-header {
@@ -277,79 +278,108 @@ include 'err.php';
                <div class="card">
 
                   <div class="card-body text-dark">
-                     <div class="card-header text-white ">QR Code Entrance</div>
-                     <br>
                      <center>
-                        <img src="images/frame.png" width="200px" height="200px">
+                        <div class="card-header text-white ">QR CODE</div>
+                        <br>
+
+                        <img src="images/frame.png" width="100px" height="100px">
+                        <p> Entrance </p>
+                        <img src="images/frame.png" width="100px" height="100px">
+                        <p> Exit </p>
 
                      </center>
                   </div>
                </div>
 
-               <div class=" card ">
 
-                  <div class="card-body text-dark ">
-                     <div class="card-header text-white ">QR Code Exit</div>
-                     <br>
-                     <center>
-                        <img src="images/frame.png" width="200px" height="200px">
+               <div class="card">
 
-                     </center>
-                     <!--    <h5> Status:</h5> -->
+                  <center>
+                     <div class="card-body text-dark">
+                        <div class="card-header text-white ">REQUESTS</div>
 
-                     <!--            <?php
+                        <center>
+                           <?php
 
-                                       require 'config.php';
+                           require 'config.php';
 
 
-                                       $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                                       $query_run = mysqli_query($conn, $query);
+                           $query = "SELECT id FROM qr_pending ORDER BY id"; // To fetch data throough id
+                           $query_run = mysqli_query($conn, $query);
 
-                                       $row = mysqli_num_rows($query_run); //Fetch number of row
+                           $row = mysqli_num_rows($query_run); //Fetch number of row
 
-                                       echo '<p>' . $row . '</p>'; // To call rows inside <p>
+                           ?>
+                           <?php
+
+                           require 'config.php';
 
 
-                                       ?>
-                  </div>
-               </div>
-            </div> --->
-                  </div>
+                           $q = "SELECT id FROM reg_qr ORDER BY id"; // To fetch data throough id
+                           $query_ran = mysqli_query($conn, $q);
+
+                           $raw = mysqli_num_rows($query_ran); //Fetch number of row
+
+                           ?>
+                           <br>
+                           <?php
+
+                           require 'config.php';
+
+
+                           $qu = "SELECT id FROM pending_users ORDER BY id"; // To fetch data throough id
+                           $query_rann = mysqli_query($conn, $qu);
+
+                           $raww = mysqli_num_rows($query_rann); //Fetch number of row
+
+                           ?>
+                           <br>
+                           <h2 class="bg-info"> QR REQUESTS </h2>
+                           <h3> QR Visitor Requests: <?php echo " $row "; ?> </h3>
+                           <h3> QR Registered Users: <?php echo "$raw"; ?> </h3>
+                           <br>
+                           <h2 class="bg-info"> FaceCognition REQUESTS </h2>
+                           <h3> FaceCognition Pending: <?php echo " $raww "; ?> </h3>
+
+                        </center>
+                     </div>
                </div>
 
             </div>
+         </div>
+      </div>
 
-            <script>
-               // <!--/. tells about the time  -->
-               function show2() {
-                  if (!document.all && !document.getElementById)
-                     return
-                  thelement = document.getElementById ? document.getElementById("tick2") : document.all.tick2
-                  var Digital = new Date()
-                  var hours = Digital.getHours()
-                  var minutes = Digital.getMinutes()
-                  var seconds = Digital.getSeconds()
-                  var dn = "PM"
-                  if (hours < 12)
-                     dn = "AM"
-                  if (hours > 12)
-                     hours = hours - 12
-                  if (hours == 0)
-                     hours = 12
-                  if (minutes <= 9)
-                     minutes = "0" + minutes
-                  if (seconds <= 9)
-                     seconds = "0" + seconds
-                  var ctime = hours + ":" + minutes + ":" + seconds + " " + dn
-                  thelement.innerHTML = ctime
-                  setTimeout("show2()", 1000)
-               }
-               window.onload = show2
-               //-->
-            </script>
+      <script>
+         // <!--/. tells about the time  -->
+         function show2() {
+            if (!document.all && !document.getElementById)
+               return
+            thelement = document.getElementById ? document.getElementById("tick2") : document.all.tick2
+            var Digital = new Date()
+            var hours = Digital.getHours()
+            var minutes = Digital.getMinutes()
+            var seconds = Digital.getSeconds()
+            var dn = "PM"
+            if (hours < 12)
+               dn = "AM"
+            if (hours > 12)
+               hours = hours - 12
+            if (hours == 0)
+               hours = 12
+            if (minutes <= 9)
+               minutes = "0" + minutes
+            if (seconds <= 9)
+               seconds = "0" + seconds
+            var ctime = hours + ":" + minutes + ":" + seconds + " " + dn
+            thelement.innerHTML = ctime
+            setTimeout("show2()", 1000)
+         }
+         window.onload = show2
+         //-->
+      </script>
 
-            <script src="/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-            <script src="js/bootstrap.min.js"></script>
+      <script src="/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+      <script src="js/bootstrap.min.js"></script>
    </body>
 
    </html>

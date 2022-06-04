@@ -73,6 +73,7 @@
             width: 70rem;
             height: 360px;
             margin-top: 50px;
+            margin-bottom: 5rem;
         }
 
         .card-header {

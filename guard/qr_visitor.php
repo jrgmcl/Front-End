@@ -264,7 +264,7 @@ $query = $conn->query($sel);
                         <th>Number</th>
                         <th>Gender</th>
                         <th>Purpose</th>
-                        <th> Pin</th>
+
 
 
                         <th>Settings </th>
@@ -303,7 +303,7 @@ $query = $conn->query($sel);
           <td>" . $result['qr_number'] . " </td>
           <td>" . $result['qr_gender'] . " </td>
           <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_pin'] . " </td>
+        
          
          
           <td>

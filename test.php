@@ -11,6 +11,6 @@ if ($conn->connect_error) {
 echo ("<script LANGUAGE='JavaScript'>
 window.location.href='Front-End/index.php';
 window.alert('Error on reading the selected file! Please check your file if it is an ".$host."image file.');
-</script>");
+</script>"); 
 ?>
 
