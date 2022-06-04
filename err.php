@@ -14,6 +14,7 @@ $emptyusername_err = 'Please enter your Username!';
 $emptypassword_err = 'Please enter your Password!';
 $emptyuserpass_err = 'Please enter your Username and Password!';
 $invalidcredentials_err = 'Username/Password is incorrect!';
+$nocredentials_err = 'Please login to access the dashboard';
 
 $all_err = array($emptyusername_err,
 					$emptypassword_err,
@@ -26,7 +27,8 @@ $all_err = array($emptyusername_err,
 					$emptyemail_err,
 					$emptyfile_err,
 					$userexist_err,
-					$emailvalid_err);
+					$emailvalid_err,
+					$nocredentials_err);
 
 
 ?>
