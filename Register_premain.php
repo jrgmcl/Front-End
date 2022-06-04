@@ -1,5 +1,5 @@
 <?php
-
+include 'session_checker.php';
 // connection to database via config.php
 include 'err.php';
 

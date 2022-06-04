@@ -1,7 +1,7 @@
 <?php
-
+include 'session_checker.php';
 include 'config.php';
-session_start();
+include 'err.php';
 
 ?>
 

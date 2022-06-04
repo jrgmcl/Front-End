@@ -1,8 +1,6 @@
 <?php
 include 'err.php';
 include 'config.php';
-session_start();
-
 
 
 ?>

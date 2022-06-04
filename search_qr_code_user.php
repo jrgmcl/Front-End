@@ -1,8 +1,8 @@
 <?php
-
+include 'err.php';
 include 'config.php';
 
-
+include 'session_checker.php';
 #Fetch the data from database
 $sel = "SELECT * FROM log_qr";
 $query = $conn->query($sel);

@@ -1,6 +1,6 @@
 <?php
 include 'err.php';
-session_start();
+include 'session_checker.php';
 $ru_firstname = $_GET["ru_firstname"];
 $ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];

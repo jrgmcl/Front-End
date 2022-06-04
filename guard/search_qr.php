@@ -1,5 +1,6 @@
 <?php
-
+include 'err.php';
+include '../session_checker.php';
 include 'config.php';
 
 

@@ -3,7 +3,7 @@
 // connection to database via config.php
 @include 'config.php';
 include 'err.php';
-session_start();
+include 'session_checker.php';
 ?>
 
 
