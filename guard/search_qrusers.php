@@ -1,17 +1,25 @@
 <?php
 
 include 'config.php';
-
+error_reporting(0);
 
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `reg_qr` WHERE `id` = '$id'");
+
+    if ($delete) {
+
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Successfully registered the user!');
+    window.location.href='Register.php';
+    </script>");;
+    }
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_pending` ";
+$sel = "SELECT * FROM `reg_qr` ";
 $query = $conn->query($sel);
 
 
@@ -27,6 +35,7 @@ $query = $conn->query($sel);
 
 <head>
 
+    <link rel=" icon" href="images/logo.png">
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel=" stylesheet" type="text/css" href="css/design.css">
@@ -190,37 +199,19 @@ $query = $conn->query($sel);
 
 <body>
 
+
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
                 <img src="images/logo.png" width="110" height="110">
             </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
-        </div>
+        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -232,6 +223,8 @@ $query = $conn->query($sel);
             </div>
 
         </div>
+
+
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
@@ -242,17 +235,13 @@ $query = $conn->query($sel);
 
 
 
-    </header>
-
-
-
 
 
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>QR Visitor</h1>
+            <h1>QR Registered Request</h1>
         </div>
 
         <div class="table-container">
@@ -262,22 +251,20 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
-                        <th>First Name</th>
-                        <th>Last Name </th>
-                        <th>Number</th>
-                        <th>Gender</th>
-                        <th>Purpose</th>
-                        <th> Pin</th>
-
-
+                        <th>id no.</th>
+                        <th>First Name </th>
+                        <th>Last Name</th>
+                        <th>Department</th>
+                        <th> Temp </th>
+                        <th>Time in </th>
+                        <th>Time out </th>
                         <th>Settings </th>
                     </tr>
                 <tbody>
 
                     <div class="search-container bg-info">
 
-                        <form action=" search_visitor.php" method="post" class="search-bar">
+                        <form action=" reg_qr_users.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -291,7 +278,6 @@ $query = $conn->query($sel);
                         <br>
                         </br>
                     </div>
-
                     <?php
                     error_reporting(0);
 
@@ -299,7 +285,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_pending` WHERE qr_number = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `reg_qr` WHERE qr_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -313,9 +299,11 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->id; ?></td>
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
-                                <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
-                                <td><?php echo $result->qr_purpose; ?></td>
+                                <td><?php echo $result->qr_studentid; ?></td>
+                                <td><?php echo $result->qr_course; ?></td>
+                                <td><?php echo $result->qr_temp; ?></td>
+                                <td><?php echo $result->qr_time_in; ?></td>
+                                <td><?php echo $result->qr_time_out; ?></td>
                                 <td><?php echo $result->qr_pin; ?></td>
 
 
@@ -342,6 +330,46 @@ $query = $conn->query($sel);
 
                     ?>
 
+
+
+                    <?php
+
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
+
+                            echo "
+          <tr>
+
+          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['qr_firstname'] . " </td>
+          <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_course'] . " </td>
+          <td>" . $result['qr_temp'] . " </td>
+
+          <td> " . $result['qr_time_in'] . "</td>
+          <td> " . $result['qr_time_out'] . "</td>
+                            
+         
+         
+          <td>
+          
+          
+          <a href='reg_qr_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='reg_qr_users.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          </td>
+          
+          </tr> 
+          
+
+
+        ";
+                        }
+                    }
+
+
+
+                    ?>
 
 
 

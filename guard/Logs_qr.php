@@ -186,32 +186,13 @@ $query = $conn->query($sel);
             <div class=" image">
                 <img src="images/logo.png" width="110" height="110">
             </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
-        </div>
+        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -223,12 +204,17 @@ $query = $conn->query($sel);
             </div>
 
         </div>
+
+
+
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
             </form>
         </div>
     </div>
+
+
 
 
 

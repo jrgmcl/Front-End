@@ -7,6 +7,13 @@ include 'config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+
+    if ($delete) {
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Successfully registered the user!');
+    window.location.href='Register.php';
+    </script>");;
+    }
 }
 
 
@@ -27,6 +34,7 @@ $query = $conn->query($sel);
 
 <head>
 
+    <link rel=" icon" href="images/logo.png">
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel=" stylesheet" type="text/css" href="css/design.css">
@@ -190,37 +198,19 @@ $query = $conn->query($sel);
 
 <body>
 
+
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
                 <img src="images/logo.png" width="110" height="110">
             </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
-        </div>
+        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -232,6 +222,9 @@ $query = $conn->query($sel);
             </div>
 
         </div>
+
+
+
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
@@ -242,7 +235,10 @@ $query = $conn->query($sel);
 
 
 
-    </header>
+
+
+
+
 
 
 
@@ -292,56 +288,42 @@ $query = $conn->query($sel);
                         </br>
                     </div>
 
-                    <?php
-                    error_reporting(0);
-
-                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
-
-                    if (isset($_POST["submit"])) {
-                        $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_pending` WHERE qr_number = '$str'");
-
-                        $sth->setFetchMode(PDO::FETCH_OBJ);
-                        $sth->execute();
-
-                        if ($result = $sth->fetch()) {
-                    ?>
-
-
-
-                            <tr>
-                                <td><?php echo $result->id; ?></td>
-                                <td><?php echo $result->qr_firstname; ?></td>
-                                <td><?php echo $result->qr_lastname; ?></td>
-                                <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
-                                <td><?php echo $result->qr_purpose; ?></td>
-                                <td><?php echo $result->qr_pin; ?></td>
-
-
-
-                                <td>
-
-
-                                    <a href='visitor_accept.php?id=" <?php echo $result->id; ?>"' class='w3-button  w3-green'> Accept </a>
-                                    <a href='qr_visitor.php?id=" <?php echo $result->id; ?> "' class='w3-button w3-red'> Reject </a>
-                                </td>
-
-                            </tr>
-
-                            </tr>
-
 
                     <?php
-                        } else {
-                            echo "";
+
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
+
+                            echo "
+          <tr>
+
+          <td>" . $result['qr_firstname'] . " </td>
+          <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_number'] . " </td>
+          <td>" . $result['qr_gender'] . " </td>
+          <td>" . $result['qr_purpose'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
+         
+         
+          <td>
+          
+          
+          <a href='visitor_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='qr_visitor.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          </td>
+          
+          </tr> 
+          
+
+
+        ";
                         }
                     }
 
 
 
                     ?>
-
 
 
 

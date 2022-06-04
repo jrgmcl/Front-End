@@ -1,3 +1,12 @@
+<?php
+session_start();
+include 'config.php';
+include 'err.php';
+
+
+
+?>
+
 <!DOCTYPE HTML ">
 <html>
 
@@ -7,7 +16,7 @@
 
    <link rel=" stylesheet" href="css/bootstrap.min.css">
 
-<link rel="icon" href="images/logo.png">
+
 
 <body class="body">
    <meta charset="UTF-8">
@@ -71,7 +80,7 @@
          position: relative;
          overflow: hidden;
          width: 70rem;
-         height: 370px;
+         height: 350px;
          margin-top: 50px;
       }
 
@@ -180,7 +189,7 @@
                <img src="images/logo.png" width="110" height="110">
             </div>
          </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
+         <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
          <div class="w3-dropdown-hover">
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -198,14 +207,21 @@
             </div>
          </div>
 
-         <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
+
 
 
          <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
+            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-               <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Register Users</a>
-               <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Request</a>
+               <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
+            </div>
+         </div>
+
+         <div class="w3-dropdown-hover">
+            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+               <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+               <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
             </div>
 
          </div>
@@ -215,6 +231,9 @@
             </form>
          </div>
       </div>
+
+
+
 
 
 
@@ -258,158 +277,79 @@
                <div class="card">
 
                   <div class="card-body text-dark">
-                     <center>
-                        <div class="card-header text-white ">QR CODE </div>
-                     </center>
+                     <div class="card-header text-white ">QR Code Entrance</div>
                      <br>
                      <center>
-                        <img src="images/frame.png" width="100px" height="100px">
-                        <p> ENTRANCE </p>
-                        <img src="images/frame.png" width="100px" height="100px">
-                        <p> EXIT </p>
-                     </center>
-                  </div>
-               </div>
-               <div class="card">
+                        <img src="images/frame.png" width="200px" height="200px">
 
-                  <div class="card-body text-dark">
-                     <center>
-                        <div class="card-header text-white "> USERS </div>
-                     </center>
-                     <br>
-                     <center>
-
-                     </center>
-                     <?php
-
-                     require 'config.php';
-
-
-                     $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
-                     $query_run = mysqli_query($conn, $query);
-
-                     $row = mysqli_num_rows($query_run); //Fetch number of row
-
-                     // To call rows inside <p>
-
-
-                     ?>
-
-
-                     <?php
-                     // VISITORS FETCH
-
-                     require 'config.php';
-
-
-                     $qu = "SELECT id FROM qr_users ORDER BY id"; // To fetch data throough id
-                     $qu_run = mysqli_query($conn, $qu);
-
-                     $raw = mysqli_num_rows($qu_run); //Fetch number of row
-
-                     // To call rows inside <p>
-
-
-                     ?>
-                     <?php
-                     // VISITORS PENDING FOR APPROVAL
-
-                     require 'config.php';
-
-
-                     $q = "SELECT id FROM qr_pending ORDER BY id"; // To fetch data throough id
-                     $q_run = mysqli_query($conn, $q);
-
-                     $roww = mysqli_num_rows($q_run); //Fetch number of row
-
-                     // To call rows inside <p>
-
-
-                     ?>
-                     <?php
-                     // REGISTRATION USER REQUEST
-
-                     require 'config.php';
-
-
-                     $que = "SELECT id FROM pending_users ORDER BY id"; // To fetch data throough id
-                     $que_run = mysqli_query($conn, $que);
-
-                     $raww = mysqli_num_rows($qu_run); //Fetch number of row
-
-                     // To call rows inside <p>
-
-
-                     ?>
-                     <h2 class="w3-green w3-text-white">Registered Users: <?php echo " $row"; ?></h2>
-                     <h2 class="w3-blue w3-text-white">Visitor: <?php echo " $raw"; ?></h2>
-                     <h2 class="w3-pink w3-text-white">Request Visitor: <?php echo " $roww"; ?></h2>
-                     <h2 class="w3-red w3-text-white">Request Visitor: <?php echo " $raww"; ?></h2>
-
-
-
-
-                  </div>
-               </div>
-               <div class="card">
-
-                  <div class="card-body text-dark">
-                     <div class="card-header text-white ">QR Code </div>
-                     <br>
-                     <center>
-                        <?php
-                        $dbhost = 'localhost:3036';
-                        $dbuser = 'root';
-                        $dbpass = 'rootpassword';
-
-                        $backup_file = $dbname . date("Y-m-d-H-i-s") . '.gz';
-                        $command = "mysqldump --opt -h $dbhost -u $dbuser -p $dbpass " . "test_db | gzip > $backup_file";
-
-                        system($command);
-                        ?>
                      </center>
                   </div>
                </div>
 
+               <div class=" card ">
+
+                  <div class="card-body text-dark ">
+                     <div class="card-header text-white ">QR Code Exit</div>
+                     <br>
+                     <center>
+                        <img src="images/frame.png" width="200px" height="200px">
+
+                     </center>
+                     <!--    <h5> Status:</h5> -->
+
+                     <!--            <?php
+
+                                       require 'config.php';
+
+
+                                       $query = "SELECT id FROM rgstrd_users ORDER BY id"; // To fetch data throough id
+                                       $query_run = mysqli_query($conn, $query);
+
+                                       $row = mysqli_num_rows($query_run); //Fetch number of row
+
+                                       echo '<p>' . $row . '</p>'; // To call rows inside <p>
+
+
+                                       ?>
+                  </div>
+               </div>
+            </div> --->
+                  </div>
+               </div>
 
             </div>
-         </div>
-      </div>
-      </div>
 
-      </div>
+            <script>
+               // <!--/. tells about the time  -->
+               function show2() {
+                  if (!document.all && !document.getElementById)
+                     return
+                  thelement = document.getElementById ? document.getElementById("tick2") : document.all.tick2
+                  var Digital = new Date()
+                  var hours = Digital.getHours()
+                  var minutes = Digital.getMinutes()
+                  var seconds = Digital.getSeconds()
+                  var dn = "PM"
+                  if (hours < 12)
+                     dn = "AM"
+                  if (hours > 12)
+                     hours = hours - 12
+                  if (hours == 0)
+                     hours = 12
+                  if (minutes <= 9)
+                     minutes = "0" + minutes
+                  if (seconds <= 9)
+                     seconds = "0" + seconds
+                  var ctime = hours + ":" + minutes + ":" + seconds + " " + dn
+                  thelement.innerHTML = ctime
+                  setTimeout("show2()", 1000)
+               }
+               window.onload = show2
+               //-->
+            </script>
 
-      <script>
-         // <!--/. tells about the time  -->
-         function show2() {
-            if (!document.all && !document.getElementById)
-               return
-            thelement = document.getElementById ? document.getElementById("tick2") : document.all.tick2
-            var Digital = new Date()
-            var hours = Digital.getHours()
-            var minutes = Digital.getMinutes()
-            var seconds = Digital.getSeconds()
-            var dn = "PM"
-            if (hours < 12)
-               dn = "AM"
-            if (hours > 12)
-               hours = hours - 12
-            if (hours == 0)
-               hours = 12
-            if (minutes <= 9)
-               minutes = "0" + minutes
-            if (seconds <= 9)
-               seconds = "0" + seconds
-            var ctime = hours + ":" + minutes + ":" + seconds + " " + dn
-            thelement.innerHTML = ctime
-            setTimeout("show2()", 1000)
-         }
-         window.onload = show2
-         //-->
-      </script>
-
-      <script src="/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-      <script src="js/bootstrap.min.js"></script>
+            <script src="/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+            <script src="js/bootstrap.min.js"></script>
    </body>
 
    </html>

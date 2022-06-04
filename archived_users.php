@@ -14,7 +14,9 @@ $destination = mysqli_query($conn, "REPLACE INTO `archived` (`id`, `ru_firstname
 if ($destination) {
     $delete_pending = mysqli_query($conn, "DELETE FROM `rgstrd_users` WHERE `id` = $archived_id");
     if ($delete_pending) {
-
-        header('location: Records.php');
+        echo ("<script LANGUAGE='JavaScript'>
+        window.alert('Successfully disabled the user!');
+        window.location.href='Records.php';
+        </script>");
     }
 }

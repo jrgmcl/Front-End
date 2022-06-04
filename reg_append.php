@@ -24,18 +24,17 @@ $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
 $count_array = mysqli_fetch_array($count_id);
 $no = $count_array[0];
 
-for ($o = 0; $o < $no; $o++){
+for ($o = 0; $o < $no; $o++) {
     $read = mysqli_query($conn, "SELECT * FROM rgstrd_users where id = $o");
     $checker = mysqli_fetch_array($read);
- 
-    if ($checker['ru_firstname'] == NULL){
-       $id = $o;
-       break;
+
+    if ($checker['ru_firstname'] == NULL) {
+        $id = $o;
+        break;
+    } elseif (($o + 1) == $no) {
+        $id = $o + 1;
     }
-    elseif (($o+1) == $no){
-       $id = $o + 1;
-    }
- }
+}
 
 #Check if the file is an Image
 for ($i = 0; $i < $total; $i++) {
@@ -70,8 +69,10 @@ if ($initiate) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
 
                 #Sessuib ti throw validation
-                $_SESSION['status'] = "Successfully Registered!";
-                header('location: Records.php');
+                echo ("<script LANGUAGE='JavaScript'>
+                window.alert('Successfully registered the user!');
+                window.location.href='Register.php';
+                </script>");;
             }
         }
     }

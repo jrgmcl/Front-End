@@ -4,7 +4,7 @@ include 'config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM log_qr";
 $query = $conn->query($sel);
 
 
@@ -20,11 +20,10 @@ $query = $conn->query($sel);
 <head>
 
 <link rel=" icon" href="images/logo.png">
-</head>
-
 <!-- CSS FOR SIDE BAR and NAVBAR -->
 <link rel=" stylesheet" type="text/css" href="css/design.css">
 <link rel="stylesheet" type="text/css" href="css/w3.css">
+
 
 <!-- CSS SEARCHBAR -->
 <link rel="stylesheet" href="css/searchbar.css">
@@ -160,8 +159,6 @@ $query = $conn->query($sel);
         color: white;
     }
 
-
-
     th,
     td {
         padding: 8px;
@@ -181,37 +178,19 @@ $query = $conn->query($sel);
 
 <body>
 
+
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
                 <img src="images/logo.png" width="110" height="110">
             </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
-        </div>
+        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -223,6 +202,9 @@ $query = $conn->query($sel);
             </div>
 
         </div>
+
+
+
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
@@ -234,10 +216,18 @@ $query = $conn->query($sel);
 
 
 
+
+
+
+
+
+    </header>
+
+
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>Visitor Logs</h1>
+            <h1>QR User Log</h1>
         </div>
 
         <div class="table-container">
@@ -247,11 +237,10 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
+                        <th>id no.</th>
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Mobile No.</th>
-                        <th>Purpose</th>
+                        <th>Department</th>
                         <th> Temp </th>
                         <th>Time in </th>
                         <th>Time out </th>
@@ -261,7 +250,7 @@ $query = $conn->query($sel);
 
                     <div class="search-container bg-info">
 
-                        <form action=" search_qr.php" method="post" class="search-bar">
+                        <form action="search_qr_code_user.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -279,7 +268,7 @@ $query = $conn->query($sel);
                     <?php
                     error_reporting(0);
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_users` ";
+                    $sel = "SELECT * FROM `log_qr` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -289,14 +278,14 @@ $query = $conn->query($sel);
                             echo "
           <tr>
 
+          <td>" . $result['qr_studentid'] . " </td>
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_number'] . " </td>
-          <td>" . $result['qr_purpose'] . " </td>
+          <td>" . $result['qr_course'] . " </td>
           <td>" . $result['qr_temp'] . " </td>
 
-          <td> " . $result['visit_time_in'] . "</td>
-          <td> " . $result['visit_time_out'] . "</td>
+          <td> " . $result['qr_time_in'] . "</td>
+          <td> " . $result['qr_time_out'] . "</td>
           
           </tr> 
           
@@ -328,8 +317,7 @@ $query = $conn->query($sel);
 
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+
 </head>
 
 </html>

@@ -1,17 +1,25 @@
 <?php
 
 include 'config.php';
-
+error_reporting(0);
 
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `reg_qr` WHERE `id` = '$id'");
+
+    if ($delete) {
+
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Successfully registered the user!');
+    window.location.href='Register.php';
+    </script>");;
+    }
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_pending` ";
+$sel = "SELECT * FROM `reg_qr` ";
 $query = $conn->query($sel);
 
 
@@ -27,6 +35,7 @@ $query = $conn->query($sel);
 
 <head>
 
+    <link rel=" icon" href="images/logo.png">
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel=" stylesheet" type="text/css" href="css/design.css">
@@ -242,17 +251,13 @@ $query = $conn->query($sel);
 
 
 
-    </header>
-
-
-
 
 
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>QR Visitor</h1>
+            <h1>QR Registered Request</h1>
         </div>
 
         <div class="table-container">
@@ -262,22 +267,20 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
-                        <th>First Name</th>
-                        <th>Last Name </th>
-                        <th>Number</th>
-                        <th>Gender</th>
-                        <th>Purpose</th>
-                        <th> Pin</th>
-
-
+                        <th>id no.</th>
+                        <th>First Name </th>
+                        <th>Last Name</th>
+                        <th>Department</th>
+                        <th> Temp </th>
+                        <th>Time in </th>
+                        <th>Time out </th>
                         <th>Settings </th>
                     </tr>
                 <tbody>
 
                     <div class="search-container bg-info">
 
-                        <form action=" search_visitor.php" method="post" class="search-bar">
+                        <form action=" search_qrusers.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -292,56 +295,45 @@ $query = $conn->query($sel);
                         </br>
                     </div>
 
-                    <?php
-                    error_reporting(0);
-
-                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
-
-                    if (isset($_POST["submit"])) {
-                        $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_pending` WHERE qr_number = '$str'");
-
-                        $sth->setFetchMode(PDO::FETCH_OBJ);
-                        $sth->execute();
-
-                        if ($result = $sth->fetch()) {
-                    ?>
-
-
-
-                            <tr>
-                                <td><?php echo $result->id; ?></td>
-                                <td><?php echo $result->qr_firstname; ?></td>
-                                <td><?php echo $result->qr_lastname; ?></td>
-                                <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
-                                <td><?php echo $result->qr_purpose; ?></td>
-                                <td><?php echo $result->qr_pin; ?></td>
-
-
-
-                                <td>
-
-
-                                    <a href='visitor_accept.php?id=" <?php echo $result->id; ?>"' class='w3-button  w3-green'> Accept </a>
-                                    <a href='qr_visitor.php?id=" <?php echo $result->id; ?> "' class='w3-button w3-red'> Reject </a>
-                                </td>
-
-                            </tr>
-
-                            </tr>
-
 
                     <?php
-                        } else {
-                            echo "";
+
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
+
+                            echo "
+          <tr>
+
+          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['qr_firstname'] . " </td>
+          <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_course'] . " </td>
+          <td>" . $result['qr_temp'] . " </td>
+
+          <td> " . $result['qr_time_in'] . "</td>
+          <td> " . $result['qr_time_out'] . "</td>
+                            
+         
+         
+          <td>
+          
+          
+          <a href='reg_qr_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='reg_qr_users.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          </td>
+          
+          </tr> 
+          
+
+
+        ";
                         }
                     }
 
 
 
                     ?>
-
 
 
 

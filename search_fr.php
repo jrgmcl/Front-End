@@ -144,7 +144,7 @@ $query = $conn->query($sel);
         width: 15rem;
         height: 400px;
         margin-top: 50px;
-        margin-left: 22rem;
+        margin-left: 16rem;
     }
 
     #title-page {
@@ -185,7 +185,7 @@ $query = $conn->query($sel);
                 <img src="images/logo.png" width="110" height="110">
             </div>
         </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
+        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
         <div class="w3-dropdown-hover">
             <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -203,14 +203,21 @@ $query = $conn->query($sel);
             </div>
         </div>
 
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
+
 
 
         <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
+            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Register Users</a>
-                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Request</a>
+                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
+            </div>
+        </div>
+
+        <div class="w3-dropdown-hover">
+            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
             </div>
 
         </div>
@@ -220,6 +227,8 @@ $query = $conn->query($sel);
             </form>
         </div>
     </div>
+
+
 
 
     </div>
@@ -270,33 +279,39 @@ $query = $conn->query($sel);
                         <br>
                         </br>
                     </div>
-
                     <?php
                     error_reporting(0);
-                    #Fetch the data from database
-                    $sel = "SELECT * FROM `log` ";
-                    $query = $conn->query($sel);
 
-                    $num = mysqli_num_rows($query);
-                    if ($num > 0) {
-                        while ($result = $query->fetch_assoc()) {
+                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
 
-                            echo "
-          <tr>
+                    if (isset($_POST["submit"])) {
+                        $str = $_POST["search"];
+                        $sth = $conn->prepare("SELECT * FROM `log` WHERE ru_studentid = '$str'");
 
-          <td>" . $result['ru_studentid'] . " </td>
-          <td>" . $result['ru_firstname'] . " </td>
-          <td>" . $result['ru_lastname'] . " </td>
-          <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['ru_temp'] . " </td>
-          <td> " . $result['time_in'] . "</td>
-          <td> " . $result['time_out'] . "</td>
-          
-          </tr> 
-          
+                        $sth->setFetchMode(PDO::FETCH_OBJ);
+                        $sth->execute();
+
+                        if ($result = $sth->fetch()) {
+                    ?>
 
 
-        ";
+
+                            <tr>
+                                <td><?php echo $result->ru_studentid; ?></td>
+                                <td><?php echo $result->ru_firstname; ?></td>
+                                <td><?php echo $result->ru_lastname; ?></td>
+                                <td><?php echo $result->ru_course; ?></td>
+                                <td><?php echo $result->ru_temp; ?></td>
+                                <td><?php echo $result->time_in; ?></td>
+                                <td><?php echo $result->time_out; ?></td>
+
+
+                            </tr>
+
+
+                    <?php
+                        } else {
+                            echo "";
                         }
                     }
 

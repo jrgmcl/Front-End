@@ -4,7 +4,7 @@ include 'config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM log_qr";
 $query = $conn->query($sel);
 
 
@@ -19,11 +19,11 @@ $query = $conn->query($sel);
 
 <head>
 
-<link rel=" icon" href="images/logo.png">
-</head>
-
 <!-- CSS FOR SIDE BAR and NAVBAR -->
+
+<link rel=" icon" href="images/logo.png">
 <link rel=" stylesheet" type="text/css" href="css/design.css">
+
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->
@@ -53,6 +53,7 @@ $query = $conn->query($sel);
         margin-right: 2rem;
         float: right;
     }
+
 
     a {
         font-size: 18px;
@@ -96,7 +97,6 @@ $query = $conn->query($sel);
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
-
     }
 
     button:active {
@@ -120,6 +120,7 @@ $query = $conn->query($sel);
         position: relative;
         margin-top: 50px;
         margin-left: 13rem;
+        text-align: center;
     }
 
     h1 {
@@ -160,8 +161,6 @@ $query = $conn->query($sel);
         color: white;
     }
 
-
-
     th,
     td {
         padding: 8px;
@@ -178,40 +177,21 @@ $query = $conn->query($sel);
 
 <!-- CSS MAIN ENDS -->
 
-
 <body>
+
 
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
                 <img src="images/logo.png" width="110" height="110">
             </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
-        </div>
+        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
 
         <div class="w3-dropdown-hover">
             <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -223,6 +203,9 @@ $query = $conn->query($sel);
             </div>
 
         </div>
+
+
+
         <div class="logout">
             <form action="Logout.php" method="post">
                 <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
@@ -230,14 +213,12 @@ $query = $conn->query($sel);
         </div>
     </div>
 
-
-
-
+    </header>
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
         <div class="title-container" id="title-page">
-            <h1>Visitor Logs</h1>
+            <h1>QR User Logs</h1>
         </div>
 
         <div class="table-container">
@@ -247,11 +228,10 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
+                        <th>id no.</th>
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Mobile No.</th>
-                        <th>Purpose</th>
+                        <th>Department</th>
                         <th> Temp </th>
                         <th>Time in </th>
                         <th>Time out </th>
@@ -261,7 +241,7 @@ $query = $conn->query($sel);
 
                     <div class="search-container bg-info">
 
-                        <form action=" search_qr.php" method="post" class="search-bar">
+                        <form action="search_qr_code_user.php" method="post" class="search-bar">
 
                             <!-- To link for the search table in Search.php -->
                             <input type=" text" placeholder="search" name="search">
@@ -278,37 +258,45 @@ $query = $conn->query($sel);
 
                     <?php
                     error_reporting(0);
-                    #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_users` ";
-                    $query = $conn->query($sel);
 
-                    $num = mysqli_num_rows($query);
-                    if ($num > 0) {
-                        while ($result = $query->fetch_assoc()) {
+                    $conn = new PDO("mysql:host=localhost;dbname=fr", 'root', '');
 
-                            echo "
-          <tr>
+                    if (isset($_POST["submit"])) {
+                        $str = $_POST["search"];
+                        $sth = $conn->prepare("SELECT * FROM `log_qr` WHERE qr_studentid = '$str'");
 
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_number'] . " </td>
-          <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
+                        $sth->setFetchMode(PDO::FETCH_OBJ);
+                        $sth->execute();
 
-          <td> " . $result['visit_time_in'] . "</td>
-          <td> " . $result['visit_time_out'] . "</td>
-          
-          </tr> 
-          
+                        if ($result = $sth->fetch()) {
+                    ?>
 
 
-        ";
+
+                            <tr>
+                                <td><?php echo $result->qr_studentid; ?></td>
+                                <td><?php echo $result->qr_firstname; ?></td>
+                                <td><?php echo $result->qr_lastname; ?></td>
+                                <td><?php echo $result->qr_course; ?></td>
+                                <td><?php echo $result->qr_temp; ?></td>
+                                <td><?php echo $result->qr_time_in; ?></td>
+                                <td><?php echo $result->qr_time_out; ?></td>
+                                <td><?php echo $result->qr_pin; ?></td>
+
+
+                            </tr>
+
+
+                    <?php
+                        } else {
+                            echo "";
                         }
                     }
 
 
 
                     ?>
+
 
 
 

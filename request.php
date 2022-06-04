@@ -7,6 +7,14 @@ include 'config.php';
 if (isset($_GET['id'])) {
    $id = $_GET['id'];
    $delete = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = '$id'");
+
+   if ($delete) {
+
+      echo ("<script LANGUAGE='JavaScript'>
+   window.alert('Successfully registered the user!');
+   window.location.href='Register.php';
+   </script>");;
+   }
 }
 
 
@@ -153,7 +161,7 @@ $query = $conn->query($sel);
          width: 15rem;
          height: 400px;
          margin-top: 50px;
-         margin-left: 22rem;
+         margin-left: 16rem;
       }
 
       #title-page {
@@ -194,7 +202,7 @@ $query = $conn->query($sel);
             <img src="images/logo.png" width="110" height="110">
          </div>
       </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
+      <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
       <div class="w3-dropdown-hover">
          <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
          <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -212,14 +220,21 @@ $query = $conn->query($sel);
          </div>
       </div>
 
-      <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
+
 
 
       <div class="w3-dropdown-hover">
-         <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">Request</a>
+         <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
          <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-            <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Register Users</a>
-            <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Request</a>
+            <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
+         </div>
+      </div>
+
+      <div class="w3-dropdown-hover">
+         <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+         <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+            <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
          </div>
 
       </div>
@@ -230,6 +245,14 @@ $query = $conn->query($sel);
       </div>
    </div>
 
+
+
+
+   </div>
+
+
+
+   </div>
 
    </header>
 
