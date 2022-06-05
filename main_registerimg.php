@@ -6,7 +6,7 @@ $ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
 $ru_email = $_GET["ru_email"];
-include 'session_checker.php';
+
 ?>
 
 

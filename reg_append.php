@@ -3,11 +3,11 @@ include 'config.php'; // connection to database via config.php
 
 
 #Grab input values
-$ru_firstname = $_POST["ru_firstname"];
-$ru_lastname = $_POST["ru_lastname"];
-$ru_studentid = $_POST["ru_studentid"];
-$ru_course = $_POST["ru_course"];
-$ru_email = $_POST["ru_email"];
+$ru_firstname = $_GET["ru_firstname"];
+$ru_lastname = $_GET["ru_lastname"];
+$ru_studentid = $_GET["ru_studentid"];
+$ru_course = $_GET["ru_course"];
+$ru_email = $_GET["ru_email"];
 $newfilename = $ru_firstname . "." . $ru_lastname;
 
 $pickle = "/home/pi/Desktop/facerecognitionsystem-backend/pickle/datasets.pickle";
@@ -59,11 +59,11 @@ $initiate = mysqli_query($conn, $register);
 
 #Alert if success or not
 if ($initiate) {
-    mkdir($dataset . $id . $newfilename, 0777, true);
+    mkdir($dataset . $id . ' ' . $newfilename, 0777, true);
 
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
-        $target_path = $dataset . $newfilename . '/' . $dbid . '.' . $newfilename . '_' . $i . '.' . $imageFileType;
+        $target_path = $dataset . $newfilename . '/' . $id . '.' . $newfilename . '_' . $i . '.' . $imageFileType;
 
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
