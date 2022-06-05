@@ -1,5 +1,5 @@
 <?php
-
+$session_start();
 include 'config.php';
 include 'err.php';
 include 'session_checker.php';
