@@ -1,7 +1,6 @@
 <?php
 include 'err.php';
-include '../session_checker.php';
-include 'config.php';
+include '../config.php';
 
 
 #Reject the reuqest from the database

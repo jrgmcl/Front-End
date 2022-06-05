@@ -1,8 +1,7 @@
 <?php
 include 'err.php';
-include '../session_checker.php';
-include 'config.php';
-error_reporting(0);
+include '../config.php';
+
 
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {

@@ -1,7 +1,6 @@
 <?php
 include 'err.php';
-include '../session_checker.php';
-include 'config.php';
+include '../config.php';
 
 
 #Fetch the data from database

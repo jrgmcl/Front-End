@@ -35,3 +35,4 @@ if ($row["total"] > 0) {
 	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $username);
 	exit();
 }
+?>
