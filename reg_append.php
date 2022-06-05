@@ -10,7 +10,7 @@ $ru_course = $_POST["ru_course"];
 $ru_email = $_POST["ru_email"];
 $newfilename = $ru_firstname . "." . $ru_lastname;
 
-
+$pickle = "/home/pi/Desktop/facerecognitionsystem-backend/pickle/datasets.pickle";
 $dataset = "/var/www/html/datasets/";
 $file_name = $_FILES['fileupload']['name'];
 $temp_path = $_FILES['fileupload']['tmp_name'];
@@ -69,10 +69,12 @@ if ($initiate) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
 
                 #Sessuib ti throw validation
+                $deletepickle = unlink($pickle);
                 echo ("<script LANGUAGE='JavaScript'>
                 window.alert('Successfully registered the user!');
                 window.location.href='Register.php';
-                </script>");;
+                </script>");
+
             }
         }
     }

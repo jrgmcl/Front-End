@@ -282,9 +282,9 @@ include 'session_checker.php';
                         <div class="card-header text-white ">QR CODE</div>
                         <br>
 
-                        <img src="images/frame.png" width="100px" height="100px">
+                        <img src="images/entryqr.png" width="100px" height="100px">
                         <p> Entrance </p>
-                        <img src="images/frame.png" width="100px" height="100px">
+                        <img src="images/exitqr.png" width="100px" height="100px">
                         <p> Exit </p>
 
                      </center>

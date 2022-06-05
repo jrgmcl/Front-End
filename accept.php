@@ -11,6 +11,8 @@ $email = $from_row['ru_email'];
 
 
 #Counter function
+$pickle = "/home/pi/Desktop/facerecognitionsystem-backend/pickle/datasets.pickle";
+
 $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
 $count_array = mysqli_fetch_array($count_id);
 $count = $count_array[0];
@@ -33,6 +35,7 @@ $initiate = mysqli_query($conn, $accept);
 if ($initiate){
     $delete_pending = mysqli_query($conn, "DELETE FROM `pending_users` WHERE `id` = '$pending_id'");
     if ($delete_pending) {
+        $deletepickle = unlink($pickle);
         echo ("<script LANGUAGE='JavaScript'>
         window.alert('Successfully accepted the user!');
         window.location.href='request.php';
