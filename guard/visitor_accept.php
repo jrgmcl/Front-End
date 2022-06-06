@@ -1,4 +1,6 @@
 <?php
+include '../err.php';
+include '../session_checker.php';
 include '../config.php';
 
 $from = mysqli_query($conn, "SELECT * FROM `qr_pending`");
@@ -34,7 +36,3 @@ for ($i = 0; $i < $count; $i++) {
 		}
 	}
 }
-
-
-?>
-

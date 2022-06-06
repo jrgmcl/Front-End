@@ -1,7 +1,8 @@
 <?php
-
+include '../err.php';
+include '../session_checker.php';
 include '../config.php';
-include 'err.php';
+
 
 $username = $_GET["username"];
 $password = $_GET["password"];

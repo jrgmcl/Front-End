@@ -1,8 +1,7 @@
 <?php
-include 'err.php';
+include '../err.php';
 
 include '../config.php';
-
 
 ?>
 
@@ -29,6 +28,7 @@ include '../config.php';
     <title>Admin Dashboard </title>
 
 
+
     <!-- CSS FOR MAIN -->
 
     <style>
@@ -43,8 +43,9 @@ include '../config.php';
         }
 
         .logout {
-            margin-right: 2rem;
+            margin-right: rem;
             float: right;
+
 
 
         }
@@ -174,7 +175,13 @@ include '../config.php';
         .w3-bar {
             font-family: 'Montserrat', sans-serif;
             text-align: center;
+            background-color: #008fb3;
 
+        }
+
+        .container-navbar {
+            background-color: #008fb3;
+            text-align: center;
         }
     </style>
 
@@ -185,44 +192,47 @@ include '../config.php';
     <body>
 
 
-        <div class="w3-bar w3-cyan">
+        <div class="w3-bar >
             <center>
                 <div class=" image">
-                    <img src="images/logo.png" width="110" height="110">
-                </div>
-            </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
-            <div class="w3-dropdown-hover">
-                <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
-                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
-                    <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-                </div>
-            </div>
-
-            <div class="w3-dropdown-hover">
-                <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
-                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
-                    <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
-                </div>
-
-            </div>
-
-
-            <div class="logout">
-                <form action="Logout.php" method="post">
-                    <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
-                </form>
-            </div>
+            <img src="images/logo.png" width="110" height="110">
         </div>
+        </center>
+
+        <center>
+            <div class="container-navbar">
+                <a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+
+                <div class="w3-dropdown-hover">
+                    <a href="Logs_qr.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+                    <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+                        <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+                    </div>
+                </div>
+
+                <div class="w3-dropdown-hover">
+                    <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+                    <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                        <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+                        <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
+                    </div>
+
+                </div>
 
 
+                <div class="logout">
+                    <form action="Logout.php" method="post">
+                        <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+                    </form>
+                </div>
+            </div>
+            </div>
 
+        </center>
 
 
         </header>
-
 
         <!-- NAVIGATION ENDS -->
         <div class="fade-in-image">

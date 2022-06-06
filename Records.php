@@ -47,7 +47,6 @@ include 'err.php';
     float: right;
   }
 
-
   a {
     font-size: 18px;
     font-weight: 600;
@@ -69,16 +68,6 @@ include 'err.php';
 
 
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 10px;
-    padding: 2px;
-    color: #000;
-
-  }
-
   button {
     border-radius: 20px;
     border: 1px solid #5DB1B9;
@@ -90,6 +79,7 @@ include 'err.php';
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: transform 80ms ease-in;
+
   }
 
   button:active {
@@ -111,10 +101,7 @@ include 'err.php';
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
       0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
-    margin-top: 50px;
     margin-left: auto;
-    margin-right: auto;
-    text-align: center;
   }
 
   h1 {
@@ -122,8 +109,6 @@ include 'err.php';
     text-align: center;
     font-weight: 700;
     margin-top: 10px;
-    padding: 2px;
-    color: #fff;
 
   }
 
@@ -136,27 +121,18 @@ include 'err.php';
     position: relative;
     overflow: hidden;
     width: 15rem;
-    height: 400px;
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+
   }
 
-  #title-page {
 
-    background-color: #008fb3;
-    border-radius: 10px;
-    position: relative;
-    width: 70rem;
-    height: 80px;
-    margin-top: 40px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+
 
   a {
     color: white;
   }
+
+
 
   th,
   td {
@@ -165,13 +141,10 @@ include 'err.php';
     border-bottom: 1px solid #DDD;
   }
 
-
   tr:hover {
     background-color: #D6EEEE;
   }
 </style>
-
-
 
 <!-- CSS MAIN ENDS -->
 
@@ -201,16 +174,6 @@ include 'err.php';
       </div>
     </div>
 
-
-
-
-    <div class="w3-dropdown-hover">
-      <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-      <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-      </div>
-    </div>
-
     <div class="w3-dropdown-hover">
       <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
       <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -233,6 +196,9 @@ include 'err.php';
 
 
 
+
+
+
   </div>
   </header>
 
@@ -241,10 +207,6 @@ include 'err.php';
 
   <!-- RECORDS TABLE HTML -->
   <div class="fade-in-image">
-
-    <div class="title-container" id="title-page">
-      <h1>STI College Records</h1>
-    </div>
 
 
     <!-- Validation for Successful Registration -->
@@ -266,6 +228,7 @@ include 'err.php';
     ?>
 
     <div class="table-container">
+      <h1 class="w3-cyan w3-text-white">STI College Records</h1>
 
 
       <!-- TABLE FOR EXCEL EXPORT -->
@@ -275,8 +238,7 @@ include 'err.php';
             <th>Student ID</th>
             <th>First Name</th>
             <th>Last Name </th>
-            <th>Course</th>
-            <th>Email</th>
+            <th>Department</th>
 
 
             <th>Settings </th>
@@ -318,7 +280,7 @@ include 'err.php';
           <td>" . $result['ru_firstname'] . " </td>
           <td>" . $result['ru_lastname'] . " </td>
           <td>" . $result['ru_course'] . " </td>
-          <td>" . $result['ru_email'] . " </td>
+       
          
         
           <td>

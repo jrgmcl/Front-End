@@ -28,7 +28,7 @@ include '../config.php';
 
         <form action="signin.php">
             <img src="images/logo.png" style="width:100px;height:100px;">
-            <h1>FaceCognition Admin Login</h1>
+            <h1>FaceCognition Security Login</h1>
 
             <?php
             if (!empty($_GET['error'])) {

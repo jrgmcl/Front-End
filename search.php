@@ -151,7 +151,6 @@ include 'config.php';
 <!-- CSS MAIN ENDS -->
 
 <body>
-
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
@@ -176,16 +175,6 @@ include 'config.php';
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -200,6 +189,8 @@ include 'config.php';
             </form>
         </div>
     </div>
+
+
 
 
 
@@ -260,7 +251,7 @@ include 'config.php';
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `rgstrd_users` WHERE ru_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `fr_registered-users` WHERE ru_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -271,9 +262,10 @@ include 'config.php';
                     ?>
 
                             <tr>
-                                <td><?php echo $result->ru_studentid; ?></td>
+
                                 <td><?php echo $result->ru_firstname; ?></td>
                                 <td><?php echo $result->ru_lastname; ?></td>
+                                <td><?php echo $result->ru_studentid; ?></td>
                                 <td><?php echo $result->ru_course; ?></td>
                                 <td><?php echo $result->ru_email; ?></td>
 

@@ -4,7 +4,7 @@ include 'config.php';
 include 'session_checker.php';
 
 #Fetch the data from database
-$sel = "SELECT * FROM log_qr";
+$sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
 
 
@@ -183,16 +183,6 @@ $query = $conn->query($sel);
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -207,6 +197,9 @@ $query = $conn->query($sel);
             </form>
         </div>
     </div>
+
+
+
 
 
 
@@ -228,11 +221,12 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
+                        <th></th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th>Student ID</th>
                         <th>Department</th>
-                        <th> Temp </th>
+                        <th> Pin </th>
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -259,7 +253,7 @@ $query = $conn->query($sel);
                     <?php
                     error_reporting(0);
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `log_qr` ";
+                    $sel = "SELECT * FROM `qr_logs-users` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -269,14 +263,16 @@ $query = $conn->query($sel);
                             echo "
           <tr>
 
-          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['count'] . " </td>
+          
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_studentid'] . " </td>
           <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
 
-          <td> " . $result['qr_time_in'] . "</td>
-          <td> " . $result['qr_time_out'] . "</td>
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
           
           </tr> 
           

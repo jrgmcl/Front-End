@@ -7,12 +7,12 @@ include 'config.php';
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_logs-visitors` WHERE `id` = '$id'");
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_pending` ";
+$sel = "SELECT * FROM `qr_logs-visitors` ";
 $query = $conn->query($sel);
 
 
@@ -172,7 +172,6 @@ $query = $conn->query($sel);
     <!-- CSS MAIN ENDS -->
 
 <body>
-
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
@@ -197,16 +196,6 @@ $query = $conn->query($sel);
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -221,6 +210,8 @@ $query = $conn->query($sel);
             </form>
         </div>
     </div>
+
+
 
 
 
@@ -281,7 +272,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_pending` WHERE qr_number = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `qr_logs-visitors` WHERE qr_number = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -296,7 +287,6 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
                                 <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
                                 <td><?php echo $result->qr_purpose; ?></td>
                                 <td><?php echo $result->qr_pin; ?></td>
 

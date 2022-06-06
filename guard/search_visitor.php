@@ -1,5 +1,6 @@
 <?php
-include 'err.php';
+include '../err.php';
+include '../session_checker.php';
 include '../config.php';
 
 
@@ -7,6 +8,13 @@ include '../config.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+
+    if ($delete) {
+        echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Successfully registered the user!');
+    window.location.href='Register.php';
+    </script>");;
+    }
 }
 
 
@@ -27,6 +35,7 @@ $query = $conn->query($sel);
 
 <head>
 
+    <link rel=" icon" href="images/logo.png">
 
     <!-- CSS FOR SIDE BAR and NAVBAR -->
     <link rel=" stylesheet" type="text/css" href="css/design.css">
@@ -50,7 +59,6 @@ $query = $conn->query($sel);
 
 
     <!-- CSS FOR MAIN -->
-
     <style>
         body {
             background-image: url("images/BGpic.jpg");
@@ -63,18 +71,24 @@ $query = $conn->query($sel);
         }
 
         .logout {
-            margin-right: 2rem;
+            margin-right: rem;
             float: right;
+
+
+
         }
 
         a {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 800;
+            font-family: 'Montserrat', sans-serif;
+
         }
 
         button {
             font-weight: 600;
             font-size: 18px;
+
         }
 
         .image {
@@ -84,24 +98,61 @@ $query = $conn->query($sel);
 
         li {
             margin-top: 1.5rem;
+
+        }
+
+
+        .container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 70rem;
+            height: 360px;
+            margin-top: 50px;
+            margin-bottom: 5rem;
+        }
+
+        .card-header {
+
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 25px;
+
+        }
+
+        .title-container {
+
+
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+                0 5px 5px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 70rem;
+            height: 350px;
+            margin-top: 50px;
+            margin-left: 13rem;
         }
 
 
 
-        h1 {
+        h2 {
             font-family: 'Montserrat', sans-serif;
             text-align: center;
             font-weight: 700;
             margin-top: 10px;
-            padding: 2px;
-            color: #000;
+            padding: px;
+            color: #fff;
 
         }
 
         button {
             border-radius: 20px;
             border: 1px solid #5DB1B9;
-            background-color: #5DB1B9;
+            background-color: #008fb3;
             color: #FFFFFF;
             font-size: 12px;
             font-weight: bold;
@@ -124,63 +175,41 @@ $query = $conn->query($sel);
             border-color: #FFFFFF;
         }
 
-        table-container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-                0 10px 10px rgba(0, 0, 0, 0.22);
+
+        #datetime {
+
+            padding: 0;
             position: relative;
-            margin-top: 50px;
-            margin-left: 13rem;
+            box-sizing: border-box;
+            width: 35rem;
+            height: 10rem;
+            align-items: center;
+            text-align: center;
+            margin-bottom: -1rem;
+            font-size: 19px;
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #008fb3;
         }
 
-        h1 {
+        ul {
+            background-color: #008fb3;
+        }
+
+        .card-header {
+            background-color: #008fb3;
+        }
+
+        .w3-bar {
             font-family: 'Montserrat', sans-serif;
             text-align: center;
-            font-weight: 700;
-            margin-top: 10px;
-            padding: 2px;
-            color: #fff;
-
-        }
-
-        .title-container {
-
-
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
-                0 5px 5px rgba(0, 0, 0, 0.22);
-            position: relative;
-            overflow: hidden;
-            width: 15rem;
-            height: 400px;
-            margin-top: 50px;
-            margin-left: 16rem;
-        }
-
-        #title-page {
-
             background-color: #008fb3;
-            border-radius: 10px;
-            position: relative;
-            width: 70rem;
-            height: 80px;
-            margin-top: 40px;
+
         }
 
-        a {
-            color: white;
-        }
-
-        th,
-        td {
-            padding: 8px;
+        .container-navbar {
+            background-color: #008fb3;
             text-align: center;
-            border-bottom: 1px solid #DDD;
-        }
-
-        tr:hover {
-            background-color: #D6EEEE;
         }
     </style>
 
@@ -191,43 +220,44 @@ $query = $conn->query($sel);
 <body>
 
 
-    <div class="w3-bar w3-cyan">
-        <center>
-            <div class=" image">
-                <img src="images/logo.png" width="110" height="110">
-            </div>
-        </center><a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
-        <div class="w3-dropdown-hover">
-            <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
-                <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
-                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
-            </div>
-
-        </div>
-
-
-        <div class="logout">
-            <form action="Logout.php" method="post">
-                <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
-            </form>
-        </div>
+    <div class="w3-bar >
+            <center>
+                <div class=" image">
+        <img src="images/logo.png" width="110" height="110">
     </div>
+    </center>
+
+    <center>
+        <div class="container-navbar">
+            <a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+
+            <div class="w3-dropdown-hover">
+                <a href="Logs_qr.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+                    <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
+                </div>
+            </div>
+
+            <div class="w3-dropdown-hover">
+                <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+                    <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+                    <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
+                </div>
+
+            </div>
 
 
+            <div class="logout">
+                <form action="Logout.php" method="post">
+                    <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+                </form>
+            </div>
+        </div>
+        </div>
 
-
-    </header>
-
+    </center>
 
 
 
@@ -235,12 +265,17 @@ $query = $conn->query($sel);
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
-        <div class="title-container" id="title-page">
-            <h1>QR Visitor</h1>
-        </div>
+
+
+
 
         <div class="table-container">
 
+            <center>
+                <b>
+                    <h1 class="w3-cyan w3-text-white">QR Visitor</h1>
+                </b>
+            </center>
 
             <!-- TABLE FOR EXCEL EXPORT -->
             <table id="example-table" class=" table ">
@@ -275,7 +310,6 @@ $query = $conn->query($sel);
                         <br>
                         </br>
                     </div>
-
                     <?php
                     error_reporting(0);
 
@@ -283,7 +317,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_pending` WHERE qr_number = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `reg_qr` WHERE qr_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -297,9 +331,11 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->id; ?></td>
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
-                                <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
-                                <td><?php echo $result->qr_purpose; ?></td>
+                                <td><?php echo $result->qr_studentid; ?></td>
+                                <td><?php echo $result->qr_course; ?></td>
+                                <td><?php echo $result->qr_temp; ?></td>
+                                <td><?php echo $result->qr_time_in; ?></td>
+                                <td><?php echo $result->qr_time_out; ?></td>
                                 <td><?php echo $result->qr_pin; ?></td>
 
 
@@ -326,6 +362,43 @@ $query = $conn->query($sel);
 
                     ?>
 
+
+
+                    <?php
+
+                    $num = mysqli_num_rows($query);
+                    if ($num > 0) {
+                        while ($result = $query->fetch_assoc()) {
+
+                            echo "
+          <tr>
+
+          <td>" . $result['qr_firstname'] . " </td>
+          <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_number'] . " </td>
+          <td>" . $result['qr_gender'] . " </td>
+          <td>" . $result['qr_purpose'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
+         
+         
+          <td>
+          
+          
+          <a href='visitor_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='qr_visitor.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          </td>
+          
+          </tr> 
+          
+
+
+        ";
+                        }
+                    }
+
+
+
+                    ?>
 
 
 

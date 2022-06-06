@@ -5,7 +5,7 @@ include 'config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM fr_logs";
 $query = $conn->query($sel);
 
 
@@ -188,16 +188,6 @@ $query = $conn->query($sel);
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -232,11 +222,12 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
+                        <th></th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th>Student ID</th>
                         <th>Department</th>
-                        <th> Temp </th>
+                        <th> Email </th>
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -267,7 +258,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `log` WHERE ru_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `fr_logs` WHERE ru_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -278,11 +269,12 @@ $query = $conn->query($sel);
 
 
                             <tr>
-                                <td><?php echo $result->ru_studentid; ?></td>
+                                <td><?php echo $result->count; ?></td>
                                 <td><?php echo $result->ru_firstname; ?></td>
                                 <td><?php echo $result->ru_lastname; ?></td>
+                                <td><?php echo $result->ru_studentid; ?></td>
                                 <td><?php echo $result->ru_course; ?></td>
-                                <td><?php echo $result->ru_temp; ?></td>
+                                <td><?php echo $result->ru_email; ?></td>
                                 <td><?php echo $result->time_in; ?></td>
                                 <td><?php echo $result->time_out; ?></td>
 

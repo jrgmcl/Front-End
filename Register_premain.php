@@ -165,161 +165,152 @@ include 'config.php';
 <!-- CSS MAIN ENDS -->
 
 
-<body>
-    <div class="w3-bar w3-cyan">
-        <center>
-            <div class=" image">
-                <img src="images/logo.png" width="110" height="110">
-            </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
-
-            </div>
+<div class="w3-bar w3-cyan">
+    <center>
+        <div class=" image">
+            <img src="images/logo.png" width="110" height="110">
         </div>
-
-        <div class="w3-dropdown-hover">
-            <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
-                <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
-                <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
-                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
-            </div>
+    </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+    <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
+    <div class="w3-dropdown-hover">
+        <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
+        <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
 
         </div>
-        <div class="logout">
-            <form action="Logout.php" method="post">
-                <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
-            </form>
+    </div>
+
+    <div class="w3-dropdown-hover">
+        <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
+        <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
+            <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
+            <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
         </div>
+    </div>
+
+    <div class="w3-dropdown-hover">
+        <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
+        <div class=" w3-dropdown-content w3-bar-block w3-card-4">
+            <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
+            <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
+        </div>
+
+    </div>
+    <div class="logout">
+        <form action="Logout.php" method="post">
+            <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+</div>
+</header>
+</header>
+
+<!-- NAVIGATION ENDS -->
+
+
+<body class="body">
+
+
+    <div class="container">
+        <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
+
+
+        <br>
+
+        <form action="Register_signup.php">
+
+
+            <?php if (isset($_GET['error'])) { ?>
+                <p class=" regerror-msg"><?php echo $_GET['error']; ?></p>
+            <?php } ?>
+
+            <h4> Please fill in the following: </h4>
+
+
+            <input type="name" name="ru_firstname" value="<?php
+                                                            if (empty($_GET['ru_firstname'])) {
+                                                                echo "";
+                                                            } else {
+                                                                echo $_GET['ru_firstname'];
+                                                            } ?>" placeholder="First Name">
+
+            <input type="name" name="ru_lastname" value="<?php
+                                                            if (empty($_GET['ru_lastname'])) {
+                                                                echo "";
+                                                            } else {
+                                                                echo $_GET['ru_lastname'];
+                                                            } ?>" placeholder="Last Name">
+
+            <input type="studentid" name="ru_studentid" value="<?php
+                                                                if (empty($_GET['ru_studentid'])) {
+                                                                    echo "";
+                                                                } else {
+                                                                    echo $_GET['ru_studentid'];
+                                                                } ?>" placeholder="Student ID number">
+
+            <select name="ru_course" value="<?php
+                                            if (empty($_GET['ru_course'])) {
+                                                echo "";
+                                            } else {
+                                                echo $_GET['ru_course'];
+                                            } ?>" placeholder="Course">
+                <option disabled selected value>Select a Course</option>
+                <option value="ASCT">ASCT</option>
+                <option value="BSCPE">BSCPE</option>
+                <option value="BSIT">BSIT</option>
+                <option value="BSCS">BSCS</option>
+                <option value="BSBA">BSBA</option>
+                <option value="BSA">BSA</option>
+                <option value="BSTM">BSTM</option>
+                <option value="BMMA">BMMA</option>
+                <option value="BSHM">BSHM</option>
+                <option value="TOP">TOP</option>
+                <option value="GAS">GAS</option>
+                <option value="STEM">STEM</option>
+                <option value="Faculty Staff">Faculty Staff</option>
+            </select>
+
+
+            <button>Register</button>
+        </form>
     </div>
 
 
 
+    <script type="text/javascript">
+        const container = document.getElementById('container');
 
 
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+            clearErrors();
+        });
 
-    </div>
-    </header>
-    </header>
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+            clearErrors();
+        });
 
-    <!-- NAVIGATION ENDS -->
+        function clearErrors() {
+            Array.prototype.forEach.call(
+                document.getElementsByClassName("loginerror-msg"),
+                function(el) {
+                    el.style.display = "none";
+                }
+            );
+        }
+    </script>
 
-
-    <body class="body">
-
-
-        <div class="container">
-            <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
-
-
-            <br>
-
-            <form action="Register_signup.php">
-
-
-                <?php if (isset($_GET['error'])) { ?>
-                    <p class=" regerror-msg"><?php echo $_GET['error']; ?></p>
-                <?php } ?>
-
-                <h4> Please fill in the following: </h4>
-
-
-                <input type="name" name="ru_firstname" value="<?php
-                                                                if (empty($_GET['ru_firstname'])) {
-                                                                    echo "";
-                                                                } else {
-                                                                    echo $_GET['ru_firstname'];
-                                                                } ?>" placeholder="First Name">
-
-                <input type="name" name="ru_lastname" value="<?php
-                                                                if (empty($_GET['ru_lastname'])) {
-                                                                    echo "";
-                                                                } else {
-                                                                    echo $_GET['ru_lastname'];
-                                                                } ?>" placeholder="Last Name">
-
-                <input type="studentid" name="ru_studentid" value="<?php
-                                                                    if (empty($_GET['ru_studentid'])) {
-                                                                        echo "";
-                                                                    } else {
-                                                                        echo $_GET['ru_studentid'];
-                                                                    } ?>" placeholder="Student ID number">
-
-                <select name="ru_course" value="<?php
-                                                if (empty($_GET['ru_course'])) {
-                                                    echo "";
-                                                } else {
-                                                    echo $_GET['ru_course'];
-                                                } ?>" placeholder="Course">
-                    <option disabled selected value>Select a Course</option>
-                    <option value="ASCT">ASCT</option>
-                    <option value="BSCPE">BSCPE</option>
-                    <option value="BSIT">BSIT</option>
-                    <option value="BSCS">BSCS</option>
-                    <option value="BSBA">BSBA</option>
-                    <option value="BSA">BSA</option>
-                    <option value="BSTM">BSTM</option>
-                    <option value="BMMA">BMMA</option>
-                    <option value="BSHM">BSHM</option>
-                    <option value="TOP">TOP</option>
-                    <option value="GAS">GAS</option>
-                    <option value="STEM">STEM</option>
-                    <option value="Faculty Staff">Faculty Staff</option>
-                </select>
-
-
-                <button>Register</button>
-            </form>
-        </div>
-
-
-
-        <script type="text/javascript">
-            const container = document.getElementById('container');
-
-
-            signUpButton.addEventListener('click', () => {
-                container.classList.add("right-panel-active");
-                clearErrors();
-            });
-
-            signInButton.addEventListener('click', () => {
-                container.classList.remove("right-panel-active");
-                clearErrors();
-            });
-
-            function clearErrors() {
-                Array.prototype.forEach.call(
-                    document.getElementsByClassName("loginerror-msg"),
-                    function(el) {
-                        el.style.display = "none";
-                    }
-                );
-            }
-        </script>
-
-    </body>
+</body>
 
 </html>

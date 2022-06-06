@@ -1,6 +1,8 @@
 <?php
+include '../err.php';
+include '../session_checker.php';
 include '../config.php';
-include 'err.php';
+
 
 $from = mysqli_query($conn, "SELECT * FROM `reg_qr`");
 $from_row = mysqli_fetch_assoc($from);

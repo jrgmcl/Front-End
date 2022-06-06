@@ -194,16 +194,6 @@ $ru_email = $_GET["ru_email"];
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -218,6 +208,8 @@ $ru_email = $_GET["ru_email"];
             </form>
         </div>
     </div>
+
+
 
 
 

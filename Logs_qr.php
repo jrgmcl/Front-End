@@ -5,7 +5,7 @@ include 'config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
 
 
@@ -15,12 +15,12 @@ $query = $conn->query($sel);
 
 
 
-<!DOCTYPE HTML ">
+<!DOCTYPE HTML>
 <html>
 
 <head>
 
-<link rel=" icon" href="images/logo.png">
+    <link rel=" icon" href="images/logo.png">
 </head>
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
@@ -185,16 +185,6 @@ $query = $conn->query($sel);
             </div>
         </div>
 
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-        </div>
-
         <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -209,6 +199,11 @@ $query = $conn->query($sel);
             </form>
         </div>
     </div>
+
+
+
+
+
 
 
 
@@ -229,11 +224,12 @@ $query = $conn->query($sel);
                 <thead>
                     <tr>
 
+                        <th></th>
                         <th>First Name </th>
                         <th>Last Name</th>
                         <th>Mobile No.</th>
                         <th>Purpose</th>
-                        <th> Temp </th>
+
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -260,7 +256,7 @@ $query = $conn->query($sel);
                     <?php
                     error_reporting(0);
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_users` ";
+                    $sel = "SELECT * FROM `qr_logs-visitors` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -269,15 +265,15 @@ $query = $conn->query($sel);
 
                             echo "
           <tr>
+          <td>" . $result['id'] . " </td>
 
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
           <td>" . $result['qr_number'] . " </td>
           <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
-
-          <td> " . $result['visit_time_in'] . "</td>
-          <td> " . $result['visit_time_out'] . "</td>
+        
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
           
           </tr> 
           

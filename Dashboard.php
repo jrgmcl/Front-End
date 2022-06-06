@@ -206,16 +206,6 @@ include 'config.php';
             </div>
          </div>
 
-
-
-
-         <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-               <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
-            </div>
-         </div>
-
          <div class="w3-dropdown-hover">
             <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
             <div class=" w3-dropdown-content w3-bar-block w3-card-4">
@@ -302,7 +292,7 @@ include 'config.php';
                            require 'config.php';
 
 
-                           $query = "SELECT id FROM qr_pending ORDER BY id"; // To fetch data throough id
+                           $query = "SELECT id FROM `qr_pending-visitors` ORDER BY id"; // To fetch data throough id
                            $query_run = mysqli_query($conn, $query);
 
                            $row = mysqli_num_rows($query_run); //Fetch number of row
@@ -313,38 +303,88 @@ include 'config.php';
                            require 'config.php';
 
 
-                           $q = "SELECT id FROM reg_qr ORDER BY id"; // To fetch data throough id
+                           $q = "SELECT count FROM `qr_pending-users` ORDER BY count"; // To fetch data throough id
                            $query_ran = mysqli_query($conn, $q);
 
                            $raw = mysqli_num_rows($query_ran); //Fetch number of row
 
                            ?>
                            <br>
-                           <?php
 
-                           require 'config.php';
-
-
-                           $qu = "SELECT id FROM pending_users ORDER BY id"; // To fetch data throough id
-                           $query_rann = mysqli_query($conn, $qu);
-
-                           $raww = mysqli_num_rows($query_rann); //Fetch number of row
-
-                           ?>
                            <br>
-                           <h2 class="bg-info"> QR REQUESTS </h2>
+                           <h3 class="bg-info"> PENDING REQUESTS </h3>
                            <h3> QR Visitor Requests: <?php echo " $row "; ?> </h3>
                            <h3> QR Registered Users: <?php echo "$raw"; ?> </h3>
                            <br>
-                           <h2 class="bg-info"> FaceCognition REQUESTS </h2>
-                           <h3> FaceCognition Pending: <?php echo " $raww "; ?> </h3>
 
-                        </center>
                      </div>
                </div>
 
+
+               <div class="card">
+
+                  <?php
+
+                  require 'config.php';
+
+
+                  $q = "SELECT count FROM `qr_logs-users` ORDER BY count"; // To fetch data throough id
+                  $query_ran = mysqli_query($conn, $q);
+
+                  $row_1 = mysqli_num_rows($query_ran); //Fetch number of row
+
+                  ?>
+
+                  <?php
+
+                  require 'config.php';
+
+
+                  $quer = "SELECT count FROM `qr_logs-visitors` ORDER BY count"; // To fetch data throough id
+                  $query_runn = mysqli_query($conn, $q);
+
+                  $row_2 = mysqli_num_rows($query_runn); //Fetch number of row
+
+                  ?>
+
+                  <?php
+
+                  require 'config.php';
+
+
+                  $querr = "SELECT count FROM `fr-logs` ORDER BY count"; // To fetch data throough id
+                  $query_runn1 = mysqli_query($conn, $q);
+
+                  $row_3 = mysqli_num_rows($query_runn1); //Fetch number of row
+
+                  ?>
+
+                  <div class="card-body text-dark">
+                     <center>
+                        <div class="card-header text-white ">Live Count Logs</div>
+                        <br>
+                        <h4>QR Visitors: <?php echo " $row_2 "; ?></h4>
+                        <h3></h3>
+                        <br>
+                        <h4>QR Registered Users: <?php echo " $row_1 "; ?> </h4>
+                        <h3></h3>
+                        <br>
+                        <h4>FaceCognition Users: <?php echo " $row_3 "; ?></h4>
+                        <h3></h3>
+
+
+
+                  </div>
+               </div>
+               </center>
             </div>
          </div>
+         </center>
+      </div>
+      </div>
+
+      </div>
+      </div>
       </div>
 
       <script>

@@ -20,12 +20,12 @@ $imageFileType = strtolower(pathinfo($destination_path, PATHINFO_EXTENSION));
 
 
 #Count the rows in the rgstrd_users and increment it by one
-$count_id = mysqli_query($conn, "SELECT COUNT(*) FROM rgstrd_users");
+$count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `fr_registered-users`");
 $count_array = mysqli_fetch_array($count_id);
 $no = $count_array[0];
 
 for ($o = 0; $o < $no; $o++) {
-    $read = mysqli_query($conn, "SELECT * FROM rgstrd_users where id = $o");
+    $read = mysqli_query($conn, "SELECT * FROM `fr_registered-users` where id = $o");
     $checker = mysqli_fetch_array($read);
 
     if ($checker['ru_firstname'] == NULL) {
@@ -52,7 +52,7 @@ for ($i = 0; $i < $total; $i++) {
 
 
 #Replace to insert a data to dropped indexes
-$register = "REPLACE INTO `rgstrd_users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course, ru_email) 
+$register = "REPLACE INTO `fr_registered-users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course, ru_email) 
         VALUES ('$id', '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course', '$ru_email')";
 $initiate = mysqli_query($conn, $register);
 
@@ -74,7 +74,6 @@ if ($initiate) {
                 window.alert('Successfully registered the user!');
                 window.location.href='Register.php';
                 </script>");
-
             }
         }
     }

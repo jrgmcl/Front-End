@@ -8,7 +8,7 @@ error_reporting(0);
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `reg_qr` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `id` = '$id'");
 
     if ($delete) {
 
@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `reg_qr` ";
+$sel = "SELECT * FROM `qr_pending-users` ";
 $query = $conn->query($sel);
 
 
@@ -180,7 +180,6 @@ $query = $conn->query($sel);
     <!-- CSS MAIN ENDS -->
 
 <body>
-
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
@@ -202,16 +201,6 @@ $query = $conn->query($sel);
                 <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
                 <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
                 <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
-
-
-
-
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">FaceCognition</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Request.php" class="w3-bar-item w3-hover-cyan  w3-button">Pending Users</a>
             </div>
         </div>
 
@@ -247,13 +236,13 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>Student ID</th>
+                        <th></th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th>Student ID</th>
                         <th>Department</th>
-                        <th> Temp </th>
-                        <th>Time in </th>
-                        <th>Time out </th>
+                        <th>Pin</th>
+
                         <th>Settings </th>
                     </tr>
                 <tbody>
@@ -285,21 +274,19 @@ $query = $conn->query($sel);
                             echo "
           <tr>
 
-          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['count'] . " </td>
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_studentid'] . " </td>
           <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
-
-          <td> " . $result['qr_time_in'] . "</td>
-          <td> " . $result['qr_time_out'] . "</td>
+          <td>" . $result['qr_pin'] . " </td>
                             
          
          
           <td>
           
           
-          <a href='reg_qr_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='reg_qr_accept.php?count=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
           <a href='reg_qr_users.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
           </td>
           
