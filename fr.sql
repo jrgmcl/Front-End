@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2022 at 02:04 PM
+-- Generation Time: Jun 06, 2022 at 02:27 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 7.4.27
 
@@ -86,6 +86,13 @@ CREATE TABLE `fr_pending-users` (
   `ru_studentid` int(16) DEFAULT NULL,
   `ru_course` varchar(16) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='All PENDING users has facial recognition records here.';
+
+--
+-- Dumping data for table `fr_pending-users`
+--
+
+INSERT INTO `fr_pending-users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`) VALUES
+(9, 'Jorge Michael', 'Galang', 123456, 'BSCPE');
 
 -- --------------------------------------------------------
 
@@ -245,46 +252,10 @@ ALTER TABLE `qr_pending-visitors`
 --
 
 --
--- AUTO_INCREMENT for table `fr_dropped-users`
---
-ALTER TABLE `fr_dropped-users`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT for table `fr_logs`
 --
 ALTER TABLE `fr_logs`
   MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `fr_pending-users`
---
-ALTER TABLE `fr_pending-users`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `qr_logs-users`
---
-ALTER TABLE `qr_logs-users`
-  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#';
-
---
--- AUTO_INCREMENT for table `qr_logs-visitors`
---
-ALTER TABLE `qr_logs-visitors`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `qr_pending-users`
---
-ALTER TABLE `qr_pending-users`
-  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `qr_pending-visitors`
---
-ALTER TABLE `qr_pending-visitors`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

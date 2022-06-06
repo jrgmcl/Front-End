@@ -112,7 +112,8 @@ include 'err.php';
       0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
     margin-top: 50px;
-    margin-left: 13rem;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
   }
 
@@ -137,7 +138,8 @@ include 'err.php';
     width: 15rem;
     height: 400px;
     margin-top: 50px;
-    margin-left: 16rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   #title-page {
@@ -148,6 +150,8 @@ include 'err.php';
     width: 70rem;
     height: 80px;
     margin-top: 40px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   a {
@@ -160,6 +164,7 @@ include 'err.php';
     text-align: center;
     border-bottom: 1px solid #DDD;
   }
+
 
   tr:hover {
     background-color: #D6EEEE;
@@ -299,7 +304,7 @@ include 'err.php';
           <?php
 
           #Fetch the data from database
-          $sel = "SELECT * FROM `rgstrd_users` ";
+          $sel = "SELECT * FROM `fr_registered-users` ";
           $query = $conn->query($sel);
 
           $num = mysqli_num_rows($query);
@@ -317,7 +322,7 @@ include 'err.php';
          
         
           <td>
-          <a href='archived_users.php?id=" . $result['id'] . "' class='w3-button w3-gray w3-text-white w3-hover-cyan' > Archive </a> 
+          <a href='drop_users.php?id=" . $result['id'] . "' class='w3-button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
           </td>
           </tr> 
           
