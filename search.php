@@ -1,7 +1,8 @@
 <?php
+include 'err.php';
 include 'session_checker.php';
 include 'config.php';
-include 'err.php';
+
 ?>
 
 
@@ -29,7 +30,6 @@ include 'err.php';
 
 
 <!-- CSS FOR MAIN -->
-
 <style>
     body {
         background-image: url("images/BGpic.jpg");
@@ -45,7 +45,6 @@ include 'err.php';
         margin-right: 2rem;
         float: right;
     }
-
 
     a {
         font-size: 18px;
@@ -68,16 +67,6 @@ include 'err.php';
 
 
 
-    h1 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
-        font-weight: 700;
-        margin-top: 10px;
-        padding: 2px;
-        color: #000;
-
-    }
-
     button {
         border-radius: 20px;
         border: 1px solid #5DB1B9;
@@ -89,6 +78,7 @@ include 'err.php';
         letter-spacing: 1px;
         text-transform: uppercase;
         transition: transform 80ms ease-in;
+
     }
 
     button:active {
@@ -110,9 +100,7 @@ include 'err.php';
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.22);
         position: relative;
-        margin-top: 50px;
-        margin-left: 13rem;
-        text-align: center;
+        margin-left: auto;
     }
 
     h1 {
@@ -120,8 +108,6 @@ include 'err.php';
         text-align: center;
         font-weight: 700;
         margin-top: 10px;
-        padding: 2px;
-        color: #fff;
 
     }
 
@@ -134,24 +120,18 @@ include 'err.php';
         position: relative;
         overflow: hidden;
         width: 15rem;
-        height: 400px;
-        margin-top: 50px;
-        margin-left: 16rem;
+        height: auto;
+
     }
 
-    #title-page {
 
-        background-color: #008fb3;
-        border-radius: 10px;
-        position: relative;
-        width: 70rem;
-        height: 80px;
-        margin-top: 40px;
-    }
+
 
     a {
         color: white;
     }
+
+
 
     th,
     td {
@@ -164,6 +144,7 @@ include 'err.php';
         background-color: #D6EEEE;
     }
 </style>
+
 
 
 
@@ -234,12 +215,9 @@ include 'err.php';
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
-        <div class="title-container" id="title-page">
-            <h1>STI College Records</h1>
-        </div>
 
         <div class="table-container">
-
+            <h1 class="w3-cyan w3-text-white">STI College Records</h1>
 
             <!-- TABLE FOR EXCEL EXPORT -->
             <table id="example-table" class=" table ">

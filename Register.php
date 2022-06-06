@@ -1,9 +1,9 @@
 <?php
 
-// connection to database via config.php
-@include 'config.php';
 include 'err.php';
 include 'session_checker.php';
+include 'config.php';
+
 ?>
 
 
@@ -262,34 +262,49 @@ include 'session_checker.php';
                                                             echo $_GET['ru_studentid'];
                                                          } ?>" placeholder="Student ID number">
 
-      <input type="email" name="ru_email" value="<?php
-                                                   if (empty($_GET['ru_email'])) {
-                                                      echo "";
-                                                   } else {
-                                                      echo $_GET['ru_email'];
-                                                   } ?>" placeholder="Email">
 
-      <select class="select" name="ru_course" value="<?php
-                                                      if (empty($_GET['ru_course'])) {
-                                                         echo "";
-                                                      } else {
-                                                         echo $_GET['ru_course'];
-                                                      } ?>" placeholder="Course">
-         <option disabled selected value>Select a Course</option>
-         <option class="option" value="ASCT">ASCT</option>
-         <option value="BSCPE">BSCPE</option>
-         <option value="BSIT">BSIT</option>
-         <option value="BSCS">BSCS</option>
-         <option value="BSBA">BSBA</option>
-         <option value="BSA">BSA</option>
-         <option value="BSTM">BSTM</option>
-         <option value="BMMA">BMMA</option>
-         <option value="BSHM">BSHM</option>
-         <option value="TOP">TOP</option>
-         <option value="GAS">GAS</option>
-         <option value="STEM">STEM</option>
-         <option value="Faculty Staff">Faculty Staff</option>
+      <label> Select if: </label><select name="select" id="select" value=" <?php
+                                                                           if (empty($_GET['ru_course'])) {
+                                                                              echo "";
+                                                                           } else {
+                                                                              echo $_GET['ru_course'];
+                                                                           } ?>" placeholder="select">
+
+
+
+         <option disabled selected value>select</option>
+         <optgroup label="Tertiary">
+            <option value="BSA">BSA</option>
+            <option value="BSBA">BSBA</option>
+            <option value="BSCPE">BSCPE</option>
+            <option value="BSCS">BSCS</option>
+            <option value="BSIT">BSIT</option>
+            <option value="BMMA">BMMA</option>
+            <option value="BSHM">BSHM</option>
+            <option value="BSTM">BSTM</option>
+
+         </optgroup>
+         <optgroup label="Senior Highschool">
+            <option value="GAS">GAS</option>
+            <option value="HUMSS">HUMSS</option>
+            <option value="TOP">TOP</option>
+            <option value="STEM">STEM</option>
+
+         </optgroup>
+         <optgroup label="Employee">
+
+            <option value="FTFACULTY>Full-time Faculty Staff</option>
+						<option value=" PTFACULTY">Part-time Faculty Staff</option>
+            <option value="NTP">Non Teaching Personnel</option>
+            <option value="RD">Registration Department</option>
+            <option value="AD">Administration Department</option>
+         </optgroup>
       </select>
+
+
+
+      <br>
+
 
 
       <button>Register</button>

@@ -1,7 +1,8 @@
 <?php
+include 'err.php';
 include 'session_checker.php';
 include 'config.php';
-include 'err.php';
+
 
 #Fetch the data from database
 $sel = "SELECT * FROM logs";
@@ -75,16 +76,6 @@ $query = $conn->query($sel);
 
 
 
-    h1 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
-        font-weight: 700;
-        margin-top: 10px;
-        padding: 2px;
-        color: #000;
-
-    }
-
     button {
         border-radius: 20px;
         border: 1px solid #5DB1B9;
@@ -118,8 +109,7 @@ $query = $conn->query($sel);
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
             0 10px 10px rgba(0, 0, 0, 0.22);
         position: relative;
-        margin-top: 50px;
-        margin-left: 13rem;
+        margin-left: auto;
     }
 
     h1 {
@@ -127,8 +117,6 @@ $query = $conn->query($sel);
         text-align: center;
         font-weight: 700;
         margin-top: 10px;
-        padding: 2px;
-        color: #fff;
 
     }
 
@@ -141,20 +129,12 @@ $query = $conn->query($sel);
         position: relative;
         overflow: hidden;
         width: 15rem;
-        height: 400px;
-        margin-top: 50px;
-        margin-left: 16rem;
+        height: auto;
+
     }
 
-    #title-page {
 
-        background-color: #008fb3;
-        border-radius: 10px;
-        position: relative;
-        width: 70rem;
-        height: 80px;
-        margin-top: 40px;
-    }
+
 
     a {
         color: white;
@@ -236,15 +216,16 @@ $query = $conn->query($sel);
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
-        <div class="title-container" id="title-page">
-            <h1>Visitor Logs</h1>
-        </div>
+
 
         <div class="table-container">
 
 
+            <h1 class="w3-cyan w3-text-white">Visitor Logs</h1>
+
             <!-- TABLE FOR EXCEL EXPORT -->
             <table id="example-table" class=" table ">
+
                 <thead>
                     <tr>
 

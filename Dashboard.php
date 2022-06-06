@@ -1,8 +1,7 @@
 <?php
-
-include 'config.php';
 include 'err.php';
 include 'session_checker.php';
+include 'config.php';
 
 ?>
 
@@ -78,10 +77,10 @@ include 'session_checker.php';
             0 10px 10px rgba(0, 0, 0, 0.22);
          position: relative;
          overflow: hidden;
-         width: 70rem;
-         height: 380px;
+         width: 150vh;
+         height: 50vh;
          margin-top: 50px;
-         margin-bottom: 3rem;
+         margin-bottom: 3vh;
       }
 
       .card-header {
@@ -100,10 +99,10 @@ include 'session_checker.php';
             0 5px 5px rgba(0, 0, 0, 0.22);
          position: relative;
          overflow: hidden;
-         width: 70rem;
-         height: 350px;
+         width: 70vh;
+         height: 350vh;
          margin-top: 50px;
-         margin-left: 13rem;
+         margin-left: auto;
       }
 
 

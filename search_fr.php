@@ -1,7 +1,8 @@
 <?php
 include 'err.php';
-include 'config.php';
 include 'session_checker.php';
+include 'config.php';
+
 
 #Fetch the data from database
 $sel = "SELECT * FROM logs";
@@ -14,171 +15,155 @@ $query = $conn->query($sel);
 
 
 
-<!DOCTYPE HTML ">
+
+
+<!DOCTYPE html">
 <html>
 
 <head>
 
-<!-- CSS FOR SIDE BAR and NAVBAR -->
-
-<link rel=" icon" href="images/logo.png">
-<link rel=" stylesheet" type="text/css" href="css/design.css">
-
-<link rel="stylesheet" type="text/css" href="css/w3.css">
-
-<!-- CSS SEARCHBAR -->
-<link rel="stylesheet" href="css/searchbar.css">
-<link rel="stylesheet" href="css/search.css">
 
 
-<!-- SCRIPT FOR EXCEL EXPORT-->
-
-<script src="table2excel.js"></script>
-
-
-<!-- CSS FOR MAIN -->
-
-<style>
-    body {
-        background-image: url("images/BGpic.jpg");
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        font-family: 'Montserrat', sans-serif;
-
-    }
-
-    .logout {
-        margin-right: 2rem;
-        float: right;
-    }
-
-
-    a {
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    button {
-        font-weight: 600;
-        font-size: 18px;
-    }
-
-    .image {
-        margin-top: -2px;
-        margin-left: -35px;
-    }
-
-    li {
-        margin-top: 1.5rem;
-    }
+    <link rel=" icon" href="images/logo.png">
+    <!-- CSS FOR SIDE BAR and NAVBAR -->
+    <link rel=" stylesheet" type="text/css" href="css/design.css">
+    <link rel="stylesheet" type="text/css" href="css/w3.css">
+    <!-- CSS SEARCHBAR -->
+    <link rel="stylesheet" href="css/searchbar.css">
+    <link rel="stylesheet" href="css/search.css">
 
 
 
-    h1 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
-        font-weight: 700;
-        margin-top: 10px;
-        padding: 2px;
-        color: #000;
+    <!-- SCRIPT FOR EXCEL EXPORT-->
 
-    }
-
-    button {
-        border-radius: 20px;
-        border: 1px solid #5DB1B9;
-        background-color: #5DB1B9;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 10px 30px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-    }
-
-    button:active {
-        transform: scale(0.95);
-    }
-
-    button:focus {
-        outline: none;
-    }
-
-    button.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-    }
-
-    table-container {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-        position: relative;
-        margin-top: 50px;
-        margin-left: 13rem;
-        text-align: center;
-    }
-
-    h1 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
-        font-weight: 700;
-        margin-top: 10px;
-        padding: 2px;
-        color: #fff;
-
-    }
-
-    .title-container {
+    <script src="table2excel.js"></script>
 
 
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
-            0 5px 5px rgba(0, 0, 0, 0.22);
-        position: relative;
-        overflow: hidden;
-        width: 15rem;
-        height: 400px;
-        margin-top: 50px;
-        margin-left: 16rem;
-    }
+    <!-- CSS FOR MAIN -->
 
-    #title-page {
 
-        background-color: #008fb3;
-        border-radius: 10px;
-        position: relative;
-        width: 70rem;
-        height: 80px;
-        margin-top: 40px;
-    }
+    <style>
+        body {
+            background-image: url("images/BGpic.jpg");
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Montserrat', sans-serif;
 
-    a {
-        color: white;
-    }
+        }
 
-    th,
-    td {
-        padding: 8px;
-        text-align: center;
-        border-bottom: 1px solid #DDD;
-    }
+        .logout {
+            margin-right: 2rem;
+            float: right;
+        }
 
-    tr:hover {
-        background-color: #D6EEEE;
-    }
-</style>
+        a {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        button {
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .image {
+            margin-top: -2px;
+            margin-left: -35px;
+        }
+
+        li {
+            margin-top: 1.5rem;
+        }
 
 
 
-<!-- CSS MAIN ENDS -->
+        button {
+            border-radius: 20px;
+            border: 1px solid #5DB1B9;
+            background-color: #5DB1B9;
+            color: #FFFFFF;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 10px 30px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button.ghost {
+            background-color: transparent;
+            border-color: #FFFFFF;
+        }
+
+        table-container {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+            position: relative;
+            margin-left: auto;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 10px;
+
+        }
+
+        .title-container {
+
+
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+                0 5px 5px rgba(0, 0, 0, 0.22);
+            position: relative;
+            overflow: hidden;
+            width: 15rem;
+            height: auto;
+
+        }
+
+
+
+
+        a {
+            color: white;
+        }
+
+
+
+        th,
+        td {
+            padding: 8px;
+            text-align: center;
+            border-bottom: 1px solid #DDD;
+        }
+
+        tr:hover {
+            background-color: #D6EEEE;
+        }
+    </style>
+
+
+
+
+    <!-- CSS MAIN ENDS -->
+
 
 <body>
-
     <div class="w3-bar w3-cyan">
         <center>
             <div class=" image">
@@ -231,21 +216,16 @@ $query = $conn->query($sel);
 
 
 
-    </div>
 
-
-
-    </div>
     </header>
 
 
     <!-- RECORDS TABLE HTML -->
     <div class="fade-in-image">
-        <div class="title-container" id="title-page">
-            <h1>Face Recognition Logs</h1>
-        </div>
+
 
         <div class="table-container">
+            <h1 class="w3-cyan w3-text-white">FaceCognition Logs</h1>
 
 
             <!-- TABLE FOR EXCEL EXPORT -->
@@ -262,6 +242,7 @@ $query = $conn->query($sel);
 
                     </tr>
                 <tbody>
+
 
                     <div class="search-container bg-info">
 

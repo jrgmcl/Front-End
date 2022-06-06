@@ -1,7 +1,8 @@
 <?php
-include 'config.php';
 include 'err.php';
 include 'session_checker.php';
+include 'config.php';
+
 $ru_firstname = $_GET["ru_firstname"];
 $ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];
@@ -267,14 +268,6 @@ $ru_email = $_GET["ru_email"];
                                                                     } else {
                                                                         echo $_GET['ru_studentid'];
                                                                     } ?>" placeholder="Student ID number" Disabled>
-
-                <input type="email" name="ru_email" value="<?php
-                                                            if (empty($_GET['ru_email'])) {
-                                                                echo "";
-                                                            } else {
-                                                                echo $_GET['ru_email'];
-                                                            } ?>" placeholder="Email" Disabled>
-
                 <select name="ru_course" value="<?php
                                                 if (empty($_GET['ru_course'])) {
                                                     echo "";
