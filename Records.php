@@ -1,7 +1,8 @@
 <?php
+include 'err.php';
 include 'session_checker.php';
 include 'config.php';
-include 'err.php';
+
 
 ?>
 
@@ -247,7 +248,7 @@ include 'err.php';
 
           <div class="search-container bg-info">
 
-            <form action=" Search.php" method="post" class="search-bar">
+            <form action="search.php" method="post" class="search-bar">
 
               <!-- To link for the search table in Search.php -->
               <input type=" text" placeholder="search" name="search">

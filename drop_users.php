@@ -1,6 +1,6 @@
 <?php
 include 'config.php';
-$selected_id = intval($result['id']);
+$selected_id = intval($_GET['id']);
 $from = mysqli_query($conn, "SELECT * FROM `fr_registered-users` WHERE `id` = '$selected_id'");
 $from_row = mysqli_fetch_assoc($from);
 $drop_id = intval($from_row['id']);
@@ -18,11 +18,11 @@ $destination = mysqli_query($conn, "REPLACE INTO `fr_dropped-users` (`id`, `ru_f
                                             VALUES ('$id','$firstname','$lastname','$studentid','$course')");
 
 if ($destination) {
-    $delete_pending = mysqli_query($conn, "DELETE FROM `fr_registered-users` WHERE `id` = '$drop_id'");
+    $delete_pending = mysqli_query($conn, "UPDATE `fr_registered-users` SET `ru_firstname` = NULL, `ru_lastname` = NULL, `ru_studentid` = NULL, `ru_course` = NULL WHERE `id` = '$drop_id'");
 
     if ($delete_pending) {
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Successfully disabled the user!');
+        window.alert('Successfully disabled $firstname $lastname.');
         window.location.href='Records.php';
         </script>");
     }
