@@ -1,5 +1,4 @@
 <?php
-
 include 'config.php';
 include 'err.php';
 
@@ -9,7 +8,7 @@ $ru_firstname = $_GET["ru_firstname"];
 $ru_lastname = $_GET["ru_lastname"];
 $ru_studentid = $_GET["ru_studentid"];
 $ru_course = $_GET["ru_course"];
-$id = 0;
+
 
 if (empty($ru_firstname)) {
     header("Location: Register_premain.php?error=" . $emptyname_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course);
@@ -37,3 +36,5 @@ else {
     header("Location: Register_main.php?&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course);
     exit();
 }
+
+?>

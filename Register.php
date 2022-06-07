@@ -1,5 +1,4 @@
 <?php
-
 include 'err.php';
 include 'session_checker.php';
 include 'config.php';
@@ -93,13 +92,10 @@ include 'config.php';
       text-align: center;
       font-weight: 600;
       padding: 10px;
-
-
    }
 
    #reg_users {
       padding: 30px;
-
    }
 
    input {
@@ -155,13 +151,15 @@ include 'config.php';
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-         0 10px 10px rgba(0, 0, 0, 0.22);
+                  0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       overflow: hidden;
-      width: 50rem;
-      height: 500px;
-      margin-top: 50px;
+      width: 35vw;
+      height: 72vh;
+      margin-top: 5vh;
+      margin-bottom: 10vh;
    }
+
 </style>
 
 
@@ -252,19 +250,21 @@ include 'config.php';
                                                             echo "";
                                                          } else {
                                                             echo $_GET['ru_studentid'];
-                                                         } ?>" placeholder="Student ID number">
+                                                         } ?>" placeholder="Student ID number (For student only)">
 
 
-      <label> Select if: </label><select name="select" id="select" value=" <?php
-                                                                           if (empty($_GET['ru_course'])) {
-                                                                              echo "";
-                                                                           } else {
-                                                                              echo $_GET['ru_course'];
-                                                                           } ?>" placeholder="select">
+      <label> Select if: </label>
+      <select name="ru_course" id="select" value=" <?php
+                                                   if (empty($_GET['ru_course'])) {
+                                                      echo "";
+                                                   } else {
+                                                      echo $_GET['ru_course'];
+                                                   } ?>" placeholder="Program/Strand/Position">
 
 
 
-         <option disabled selected value>select</option>
+         <option disabled selected value>Program/Strand/Position</option>
+
          <optgroup label="Tertiary">
             <option value="BSA">BSA</option>
             <option value="BSBA">BSBA</option>
@@ -274,19 +274,18 @@ include 'config.php';
             <option value="BMMA">BMMA</option>
             <option value="BSHM">BSHM</option>
             <option value="BSTM">BSTM</option>
-
          </optgroup>
-         <optgroup label="Senior Highschool">
+
+         <optgroup label="Senior High School">
             <option value="GAS">GAS</option>
             <option value="HUMSS">HUMSS</option>
             <option value="TOP">TOP</option>
             <option value="STEM">STEM</option>
-
          </optgroup>
-         <optgroup label="Employee">
 
-            <option value="FTFACULTY>Full-time Faculty Staff</option>
-						<option value=" PTFACULTY">Part-time Faculty Staff</option>
+         <optgroup label="Employee">
+            <option value="FTFACULTY">Full-time Faculty Staff</option>
+				<option value="PTFACULTY">Part-time Faculty Staff</option>
             <option value="NTP">Non Teaching Personnel</option>
             <option value="RD">Registration Department</option>
             <option value="AD">Administration Department</option>

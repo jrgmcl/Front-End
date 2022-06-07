@@ -36,130 +36,129 @@ include 'config.php';
 <!-- CSS FOR MAIN -->
 
 <style>
-    body {
-        background-image: url("images/BGpic.jpg");
-        background-position: center;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        font-family: 'Montserrat', sans-serif;
+body {
+      background-image: url("images/BGpic.jpg");
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
 
-    }
+   }
 
-    .logout {
-        margin-right: 2rem;
-        float: right;
-    }
+   .logout {
+      margin-right: 2rem;
+      float: right;
+   }
 
-    a {
-        font-size: 18px;
-        font-weight: 600;
-    }
+   a {
+      font-size: 18px;
+      font-weight: 600;
+   }
 
-    button {
-        font-weight: 600;
-        font-size: 18px;
-        margin-top: 15px;
-    }
+   button {
+      font-weight: 600;
+      font-size: 18px;
+      margin-top: 15px;
+   }
 
-    .image {
-        margin-top: -2px;
-        margin-left: -35px;
-    }
+   .image {
+      margin-top: -2px;
+      margin-left: -35px;
+   }
 
-    li {
-        margin-top: 1.5rem;
-    }
+   li {
+      margin-top: 1.5rem;
+   }
 
-    .reg-container {
+   .reg-container {
 
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-        position: relative;
-        overflow: hidden;
-        width: 50rem;
-        height: 500px;
-        margin-top: 50px;
-        margin-left: 31rem;
-        background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+         0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      width: 50rem;
+      height: 500px;
+      margin-top: 50px;
+      margin-left: 31rem;
+      background-color: #fff;
 
-    }
+   }
 
-    h2 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
-        font-weight: 600;
-        padding: 10px;
+   h2 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      font-weight: 600;
+      padding: 10px;
+   }
 
+   #reg_users {
+      padding: 30px;
+   }
 
-    }
+   input {
+      background-color: #eee;
+      border: none;
+      border-radius: 15px;
+      padding: 8px 10px;
+      margin: 6px 0;
+      width: 100%;
+   }
 
-    #reg_users {
-        padding: 30px;
+   select {
+      background-color: #eee;
+      border-radius: 15px;
+      padding: 8px 10px;
+      margin: 8px 0;
+      width: 100%;
+   }
 
-    }
+   option {
+      background: #eee;
+      color: #000;
+      font-size: 14px;
+   }
 
-    input {
-        background-color: #eee;
-        border: none;
-        border-radius: 15px;
-        padding: 8px 10px;
-        margin: 6px 0;
-        width: 100%;
-    }
+   button {
+      border-radius: 20px;
+      border: 1px solid #5DB1B9;
+      background-color: #5DB1B9;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 12px 45px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
+   }
 
-    select {
-        background-color: #eee;
-        border-radius: 15px;
-        padding: 8px 10px;
-        margin: 8px 0;
-        width: 100%;
-    }
+   button:active {
+      transform: scale(0.95);
+   }
 
-    option {
-        background: #eee;
-        color: #000;
-        font-size: 14px;
-    }
+   button:focus {
+      outline: none;
+   }
 
-    button {
-        border-radius: 20px;
-        border: 1px solid #5DB1B9;
-        background-color: #5DB1B9;
-        color: #FFFFFF;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 12px 45px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        transition: transform 80ms ease-in;
-    }
+   button.ghost {
+      background-color: transparent;
+      border-color: #FFFFFF;
+   }
 
-    button:active {
-        transform: scale(0.95);
-    }
+   .container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                  0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      width: 35vw;
+      height: 72vh;
+      margin-top: 5vh;
+      margin-bottom: 10vh;
+   }
 
-    button:focus {
-        outline: none;
-    }
-
-    button.ghost {
-        background-color: transparent;
-        border-color: #FFFFFF;
-    }
-
-    .container {
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-            0 10px 10px rgba(0, 0, 0, 0.22);
-        position: relative;
-        overflow: hidden;
-        width: 50rem;
-        height: 500px;
-        margin-top: 50px;
-    }
 </style>
 
 <!-- CSS MAIN ENDS -->
@@ -167,10 +166,10 @@ include 'config.php';
 
 <div class="w3-bar w3-cyan">
     <center>
-        <div class=" image">
+        <div class="image">
             <img src="images/logo.png" width="110" height="110">
         </div>
-    </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
+    </center><a href="Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
     <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
     <div class="w3-dropdown-hover">
         <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
@@ -256,28 +255,40 @@ include 'config.php';
                                                                     echo "";
                                                                 } else {
                                                                     echo $_GET['ru_studentid'];
-                                                                } ?>" placeholder="Student ID number">
+                                                                } ?>" placeholder="Student ID number (For student only)">
 
             <select name="ru_course" value="<?php
                                             if (empty($_GET['ru_course'])) {
                                                 echo "";
                                             } else {
                                                 echo $_GET['ru_course'];
-                                            } ?>" placeholder="Course">
-                <option disabled selected value>Select a Course</option>
-                <option value="ASCT">ASCT</option>
-                <option value="BSCPE">BSCPE</option>
-                <option value="BSIT">BSIT</option>
-                <option value="BSCS">BSCS</option>
-                <option value="BSBA">BSBA</option>
-                <option value="BSA">BSA</option>
-                <option value="BSTM">BSTM</option>
-                <option value="BMMA">BMMA</option>
-                <option value="BSHM">BSHM</option>
-                <option value="TOP">TOP</option>
-                <option value="GAS">GAS</option>
-                <option value="STEM">STEM</option>
-                <option value="Faculty Staff">Faculty Staff</option>
+                                            } ?>" placeholder="Program/Strand/Position">
+                <option disabled selected value>Program/Strand/Position</option>
+                <optgroup label="Tertiary">
+                    <option value="BSA">BSA</option>
+                    <option value="BSBA">BSBA</option>
+                    <option value="BSCPE">BSCPE</option>
+                    <option value="BSCS">BSCS</option>
+                    <option value="BSIT">BSIT</option>
+                    <option value="BMMA">BMMA</option>
+                    <option value="BSHM">BSHM</option>
+                    <option value="BSTM">BSTM</option>
+                </optgroup>
+
+                <optgroup label="Senior High School">
+                    <option value="GAS">GAS</option>
+                    <option value="HUMSS">HUMSS</option>
+                    <option value="TOP">TOP</option>
+                    <option value="STEM">STEM</option>
+                </optgroup>
+
+                <optgroup label="Employee">
+                    <option value="FTFACULTY">Full-time Faculty Staff</option>
+                        <option value="PTFACULTY">Part-time Faculty Staff</option>
+                    <option value="NTP">Non Teaching Personnel</option>
+                    <option value="RD">Registration Department</option>
+                    <option value="AD">Administration Department</option>
+                </optgroup>
             </select>
 
 
