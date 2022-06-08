@@ -16,7 +16,7 @@ $file_name = $_FILES['fileupload']['name'];
 $temp_path = $_FILES['fileupload']['tmp_name'];
 $destination_path = $temp_path . $file_name;
 $total = count($file_name);
-$imageFileType = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
 
 
 #Count the rows in the rgstrd_users and increment it by one
@@ -42,9 +42,10 @@ for ($o = 0; $o < $no; $o++) {
 
 #Check if the file is an Image
 for ($i = 0; $i < $total; $i++) {
+    $imageFileType = strtolower(pathinfo($file_name[$i], PATHINFO_EXTENSION));
     if (
-        $imageFileType[$i] != "jpg" && $imageFileType[$i] != "png" && $imageFileType[$i] != "jpeg"
-        && $imageFileType[$i] != "gif"
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
     ) {
         #Error for wrong file type
         echo ("<script LANGUAGE='JavaScript'>
@@ -57,22 +58,25 @@ $newfilename = $id.".".$ru_firstname.".".$ru_lastname;
 
 #Replace to insert a data to dropped indexes
 $register = mysqli_query($conn, "REPLACE INTO `fr_registered-users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course) 
-                                         VALUES ('$id', '$ru_firstname','$ru_firstname', '$ru_studentid', '$ru_course')");
+                                         VALUES ('$id', '$ru_firstname','$ru_lastname', '$ru_studentid', '$ru_course')");
 
 
 #Alert if success or not
 if ($register) {
-    mkdir($dataset.$newfilename, octdec(0777));
-    mkdir($dataset.$newfilename."/RAW", octdec(0777));
+    mkdir($dataset.$newfilename, 0777);
+    mkdir($dataset.$newfilename."/RAW", 0777);
 
-    for ($i = '0'; $i < $total; $i++) {
-        $tmp_singlepath = $temp_path[$i];
-        $target_path = $dataset.$newfilename.'/RAW/'.$newfilename.'_'.$i.'.'.$imageFileType;
+    for ($p = 0; $p < $total; $p++) {
+        $imageFileType = strtolower(pathinfo($file_name[$p], PATHINFO_EXTENSION));
+        $tmp_singlepath = $temp_path[$p];
+        $target_path = $dataset.$newfilename.'/RAW/'.$newfilename.'_'.$p.'.'.$imageFileType;
 
-        if (!empty($file_name[$i])) {
+        if (!empty($file_name[$p])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 #Sessuib ti throw validation
-                chmod($target_path, octdec(777));
+                chmod($target_path, 0777);
+                chmod($dataset.$newfilename, 0777);
+                chmod($dataset.$newfilename."/RAW", 0777);
                 $deletepickle = unlink($pickle);
                 echo ("<script LANGUAGE='JavaScript'>
                 window.alert('Successfully registered the user!');
