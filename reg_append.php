@@ -16,7 +16,7 @@ $file_name = $_FILES['fileupload']['name'];
 $temp_path = $_FILES['fileupload']['tmp_name'];
 $destination_path = $temp_path . $file_name;
 $total = count($file_name);
-$imageFileType = strtolower(pathinfo($destination_path, PATHINFO_EXTENSION));
+$imageFileType = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
 
 
 #Count the rows in the rgstrd_users and increment it by one
@@ -62,8 +62,8 @@ $register = mysqli_query($conn, "REPLACE INTO `fr_registered-users` (id, ru_firs
 
 #Alert if success or not
 if ($register) {
-    mkdir($dataset.$newfilename, 0777);
-    mkdir($dataset.$newfilename."/RAW", 0777);
+    mkdir($dataset.$newfilename, octdec(0777));
+    mkdir($dataset.$newfilename."/RAW", octdec(0777));
 
     for ($i = '0'; $i < $total; $i++) {
         $tmp_singlepath = $temp_path[$i];
@@ -72,6 +72,7 @@ if ($register) {
         if (!empty($file_name[$i])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 #Sessuib ti throw validation
+                chmod($target_path, octdec(777));
                 $deletepickle = unlink($pickle);
                 echo ("<script LANGUAGE='JavaScript'>
                 window.alert('Successfully registered the user!');
