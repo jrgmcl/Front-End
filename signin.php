@@ -29,10 +29,13 @@ $row = mysqli_fetch_array($sql);
 if ($row["total"] > 0) {
 	session_start();
 	$_SESSION['username'] = $username;
-	header("Location: Dashboard.php");
+	echo  ("<script LANGUAGE='JavaScript'>
+	window.alert('Welcome back, Admin!');
+	window.location.href='Dashboard.php';
+	</script>");
+	
 	exit();
 } else {
 	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $username);
 	exit();
 }
-?>

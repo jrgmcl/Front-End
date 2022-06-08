@@ -1,13 +1,13 @@
 <?php
 include '../err.php';
-include '../session_checker.php';
+
 include '../config.php';
 
 
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_logs-visitors` WHERE `id` = '$id'");
 
     if ($delete) {
         echo ("<script LANGUAGE='JavaScript'>
@@ -101,6 +101,10 @@ $query = $conn->query($sel);
 
         }
 
+        h1 {
+
+            background-color: #008fb3;
+        }
 
         .container {
             background-color: #fff;
@@ -273,7 +277,7 @@ $query = $conn->query($sel);
 
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">QR Visitor</h1>
+                    <h1 class=" w3-text-white">QR Visitor</h1>
                 </b>
             </center>
 
@@ -317,7 +321,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `reg_qr` WHERE qr_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `qr_logs-visitors` WHERE qr_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();

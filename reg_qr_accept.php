@@ -9,7 +9,6 @@ $qr_firstname = $from_row['qr_firstname'];
 $qr_lastname = $from_row['qr_lastname'];
 $qr_studentid = $from_row['qr_studentid'];
 $qr_course = $from_row['qr_course'];
-
 $qr_pin = $from_row['qr_pin'];
 
 
@@ -23,7 +22,7 @@ for ($i = 0; $i < $count; $i++) {
     $row = mysqli_fetch_row($registered);
     if (empty($row[1])) {
 
-        $destination = mysqli_query($conn, "REPLACE INTO `qr_logs-users` (`count`, `qr_firstname`, `qr_lastname`, `qr_studentid`, `qr_course`, `qr_pin`) VALUES ('pending_id','$qr_firstname','$qr_lastname','$qr_studentid','$qr_course', '$pin')");
+        $destination = mysqli_query($conn, "REPLACE INTO `qr_logs-users` (`count`, `qr_firstname`, `qr_lastname`, `qr_studentid`, `qr_course`, `qr_pin`) VALUES ('$pending_id','$qr_firstname','$qr_lastname','$qr_studentid','$qr_course', '$pin')");
         if ($destination) {
             $delete_pending = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `count` = $pending_id");
             if ($delete_pending) {

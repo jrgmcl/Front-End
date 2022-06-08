@@ -1,5 +1,5 @@
 <?php
-include 'err.php';
+include '../err.php';
 include '../config.php';
 
 

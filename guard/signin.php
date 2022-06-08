@@ -28,7 +28,12 @@ $sql = mysqli_query($conn, "SELECT count(*) as total from admin WHERE username =
 $row = mysqli_fetch_array($sql);
 
 if ($row["total"] > 0) {
-	header("Location: guard_dashboard.php");
+	session_start();
+	$_SESSION['username'] = $username;
+	echo ("<script LANGUAGE='JavaScript'>
+	window.alert('Welcome back, Guard!');
+	window.location.href='guard_dashboard.php';
+	</script>");
 	exit();
 } else {
 	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $username);

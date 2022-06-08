@@ -18,13 +18,19 @@ include 'config.php';
 
 <body class="body">
    <meta charset="UTF-8">
+
    <link rel="stylesheet" type="text/css" href="css/design.css">
    <link rel="stylesheet" type="text/css" href="css/w3.css">
    <script src="js/jquery.slim.min.js"></script>
    <script src="js/popper.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <title>Admin Dashboard </title>
-
+   <script>
+      function autoRefresh() {
+         window.location = window.location.href;
+      }
+      setInterval('autoRefresh()', 2000);
+   </script>
 
    <!-- CSS FOR MAIN -->
 

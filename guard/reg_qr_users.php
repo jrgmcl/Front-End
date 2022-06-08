@@ -1,27 +1,30 @@
 <?php
 include '../err.php';
-include '../session_checker.php';
+
 include '../config.php';
 error_reporting(0);
 
 
+
+error_reporting(0);
+
 #Reject the reuqest from the database
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `reg_qr` WHERE `id` = '$id'");
+if (isset($_GET['count'])) {
+    $count = $_GET['count'];
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `count` = '$count'");
 
     if ($delete) {
 
         echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully registered the user!');
-    window.location.href='Register.php';
-    </script>");;
+    window.alert('Successfully rejected the user!');
+    window.location.href='reg_qr_users.php';
+    </script>");
     }
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `reg_qr` ";
+$sel = "SELECT * FROM `qr_pending-users` ";
 $query = $conn->query($sel);
 
 
@@ -47,7 +50,12 @@ $query = $conn->query($sel);
     <!-- CSS SEARCHBAR -->
     <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="css/search.css">
-
+    <script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 2000);
+    </script>
 
 
     <!-- CSS SEARCHBAR -->
@@ -117,6 +125,11 @@ $query = $conn->query($sel);
             height: 360px;
             margin-top: 50px;
             margin-bottom: 5rem;
+        }
+
+        h1 {
+
+            background-color: #008fb3;
         }
 
         .card-header {
@@ -276,7 +289,7 @@ $query = $conn->query($sel);
 
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">QR Registered Requests</h1>
+                    <h1 class="w3-text-white">QR Registered Requests</h1>
                 </b>
             </center>
             <!-- TABLE FOR EXCEL EXPORT -->
@@ -371,31 +384,29 @@ $query = $conn->query($sel);
                         while ($result = $query->fetch_assoc()) {
 
                             echo "
-          <tr>
+<tr>
 
-          <td>" . $result['qr_studentid'] . " </td>
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
-
-          <td> " . $result['qr_time_in'] . "</td>
-          <td> " . $result['qr_time_out'] . "</td>
-                            
-         
-         
-          <td>
-          
-          
-          <a href='reg_qr_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
-          <a href='reg_qr_users.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
-          </td>
-          
-          </tr> 
-          
+<td>" . $result['count'] . " </td>
+<td>" . $result['qr_firstname'] . " </td>
+<td>" . $result['qr_lastname'] . " </td>
+<td>" . $result['qr_studentid'] . " </td>
+<td>" . $result['qr_course'] . " </td>
+<td>" . $result['qr_pin'] . " </td>
+        
 
 
-        ";
+<td>
+
+
+<a href='reg_qr_accept.php?count=" . $result['count'] . "' class='w3-button  w3-green' > Accept </a> 
+<a href='reg_qr_users.php?count=" . $result['count'] . "' class='w3-button w3-red'> Reject </a>
+</td>
+
+</tr> 
+
+
+
+";
                         }
                     }
 

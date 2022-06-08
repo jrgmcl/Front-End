@@ -1,11 +1,11 @@
 <?php
 include '../err.php';
-include '../session_checker.php';
+
 include '../config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM `qr_pending-visitors`";
 $query = $conn->query($sel);
 
 
@@ -117,7 +117,10 @@ $query = $conn->query($sel);
         margin-left: 13rem;
     }
 
+    h1 {
 
+        background-color: #008fb3;
+    }
 
     h2 {
         font-family: 'Montserrat', sans-serif;
@@ -267,7 +270,6 @@ $query = $conn->query($sel);
                         <th>Last Name</th>
                         <th>Mobile No.</th>
                         <th>Purpose</th>
-                        <th> Temp </th>
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -298,7 +300,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_users` WHERE qr_number = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `qr_pending-visitors` WHERE qr_number = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -313,11 +315,10 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
                                 <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_gender; ?></td>
                                 <td><?php echo $result->qr_purpose; ?></td>
 
-                                <td><?php echo $result->visit_time_in; ?></td>
-                                <td><?php echo $result->visit_time_out; ?></td>
+                                <td><?php echo $result->time_in; ?></td>
+                                <td><?php echo $result->time_out; ?></td>
 
 
 

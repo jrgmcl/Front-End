@@ -6,19 +6,19 @@ include 'config.php';
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_logs-visitors` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-visitors` WHERE `id` = '$id'");
 
     if ($delete) {
         echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully registered the user!');
-    window.location.href='Register.php';
+    window.alert('Successfully rehected the user!');
+    window.location.href='qr_visitor.php';
     </script>");;
     }
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_logs-visitors` ";
+$sel = "SELECT * FROM `qr_pending-visitors` ";
 $query = $conn->query($sel);
 
 
@@ -55,7 +55,12 @@ $query = $conn->query($sel);
     <!-- SCRIPT FOR EXCEL EXPORT-->
 
     <script src="table2excel.js"></script>
-
+    <script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 2000);
+    </script>
 
     <!-- CSS FOR MAIN -->
     <style>
@@ -245,7 +250,7 @@ $query = $conn->query($sel);
                         <th>Last Name </th>
                         <th>Number</th>
                         <th>Purpose</th>
-                        <th> Pin</th>
+
 
 
                         <th>Settings </th>
@@ -283,7 +288,7 @@ $query = $conn->query($sel);
           <td>" . $result['qr_lastname'] . " </td>
           <td>" . $result['qr_number'] . " </td>
           <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_pin'] . " </td>
+         
          
          
           <td>

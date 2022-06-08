@@ -6,16 +6,16 @@ include 'config.php';
 error_reporting(0);
 
 #Reject the reuqest from the database
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `id` = '$id'");
+if (isset($_GET['count'])) {
+    $count = $_GET['count'];
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `count` = '$count'");
 
     if ($delete) {
 
         echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully registered the user!');
-    window.location.href='Register.php';
-    </script>");;
+    window.alert('Successfully rejected the user!');
+    window.location.href='reg_qr_users.php';
+    </script>");
     }
 }
 
@@ -59,7 +59,12 @@ $query = $conn->query($sel);
 
     <script src="table2excel.js"></script>
 
-
+    <script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 2000);
+    </script>
     <!-- CSS FOR MAIN -->
     <style>
         body {
@@ -286,8 +291,8 @@ $query = $conn->query($sel);
           <td>
           
           
-          <a href='reg_qr_accept.php?count=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
-          <a href='reg_qr_users.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+          <a href='reg_qr_accept.php?count=" . $result['count'] . "' class='w3-button  w3-green' > Accept </a> 
+          <a href='reg_qr_users.php?count=" . $result['count'] . "' class='w3-button w3-red'> Reject </a>
           </td>
           
           </tr> 

@@ -1,6 +1,6 @@
 <?php
 include '../err.php';
-
+include '../session_checker.php';
 include '../config.php';
 
 ?>
@@ -27,7 +27,12 @@ include '../config.php';
     <script src="js/bootstrap.bundle.min.js"></script>
     <title>Admin Dashboard </title>
 
-
+    <script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 2000);
+    </script>
 
     <!-- CSS FOR MAIN -->
 
@@ -292,31 +297,32 @@ include '../config.php';
                                 <center>
                                     <?php
 
-                                    require 'config.php';
+                                    include '../config.php';
 
+                                    $q = "SELECT count FROM `qr_pending-users` ORDER BY count"; // To fetch data throough id
+                                    $query_ran = mysqli_query($conn, $q);
 
-                                    $query = "SELECT id FROM qr_pending ORDER BY id"; // To fetch data throough id
-                                    $query_run = mysqli_query($conn, $query);
-
-                                    $row = mysqli_num_rows($query_run); //Fetch number of row
+                                    $row_1 = mysqli_num_rows($query_ran); //Fetch number of row
 
                                     ?>
 
                                     <?php
 
-                                    require 'config.php';
+                                    include '../config.php';
 
 
-                                    $q = "SELECT id FROM reg_qr ORDER BY id"; // To fetch data throough id
-                                    $query_ran = mysqli_query($conn, $q);
+                                    $quer = "SELECT count FROM `qr_pending-visitors` ORDER BY count"; // To fetch data throough id
+                                    $query_runn = mysqli_query($conn, $q);
 
-                                    $raw = mysqli_num_rows($query_ran); //Fetch number of row
+                                    $row_2 = mysqli_num_rows($query_runn); //Fetch number of row
 
                                     ?>
                                     <br>
-                                    <h3> Visitor Requests: <?php echo " $row "; ?> </h3>
-                                    <h3> Registered Users: <?php echo "$raw"; ?> </h3>
-
+                                    <h4>QR Visitors: <?php echo " $row_2 "; ?></h4>
+                                    <h3></h3>
+                                    <br>
+                                    <h4>QR Registered Users: <?php echo " $row_1 "; ?> </h4>
+                                    <h3></h3>
                                 </center>
                             </div>
                     </div>

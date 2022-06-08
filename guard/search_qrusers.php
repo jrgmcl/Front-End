@@ -1,6 +1,6 @@
 <?php
 include '../err.php';
-include '../session_checker.php';
+
 include '../config.php';
 error_reporting(0);
 
@@ -8,7 +8,7 @@ error_reporting(0);
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `reg_qr` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `id` = '$id'");
 
     if ($delete) {
 
@@ -97,6 +97,11 @@ $query = $conn->query($sel);
         .image {
             margin-top: -2px;
             margin-left: -35px;
+        }
+
+        h1 {
+
+            background-color: #008fb3;
         }
 
         li {
@@ -276,7 +281,7 @@ $query = $conn->query($sel);
 
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">QR Registered Request</h1>
+                    <h1 class=" w3-text-white">QR Registered Request</h1>
                 </b>
             </center>
             <!-- TABLE FOR EXCEL EXPORT -->
@@ -317,7 +322,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `reg_qr` WHERE qr_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `qr_pending-users` WHERE qr_studentid = '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();

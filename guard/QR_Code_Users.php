@@ -5,13 +5,12 @@ include '../config.php';
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM log_qr";
+$sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
 
 
 
 ?>
-
 
 
 
@@ -75,7 +74,12 @@ $query = $conn->query($sel);
 <!-- SCRIPT FOR EXCEL EXPORT-->
 
 <script src="table2excel.js"></script>
-
+<script>
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+    setInterval('autoRefresh()', 2000);
+</script>
 <!-- CSS FOR MAIN -->
 
 <style>
@@ -156,7 +160,10 @@ $query = $conn->query($sel);
         margin-left: 13rem;
     }
 
+    h1 {
 
+        background-color: #008fb3;
+    }
 
     h2 {
         font-family: 'Montserrat', sans-serif;
@@ -295,18 +302,19 @@ $query = $conn->query($sel);
         <div class="table-container">
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">QR Users Log</h1>
+                    <h1 class=" w3-text-white">QR Users Log</h1>
                 </b>
             </center>
             <!-- TABLE FOR EXCEL EXPORT -->
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>id no.</th>
+                        <th></th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th>Student ID</th>
                         <th>Department</th>
-                        <th> Temp </th>
+                        <th> Pin </th>
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -333,7 +341,7 @@ $query = $conn->query($sel);
                     <?php
                     error_reporting(0);
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `log_qr` ";
+                    $sel = "SELECT * FROM `qr_logs-users` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -342,18 +350,18 @@ $query = $conn->query($sel);
 
                             echo "
           <tr>
-
-          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['count'] . " </td>
+          
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_studentid'] . " </td>
           <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
 
-          <td> " . $result['qr_time_in'] . "</td>
-          <td> " . $result['qr_time_out'] . "</td>
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
           
           </tr> 
-          
 
 
         ";
@@ -363,6 +371,8 @@ $query = $conn->query($sel);
 
 
                     ?>
+
+
 
 
 

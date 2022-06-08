@@ -4,14 +4,14 @@ include '../err.php';
 include '../config.php';
 
 
+
 #Fetch the data from database
-$sel = "SELECT * FROM logs";
+$sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
 
 
 
 ?>
-
 
 
 
@@ -36,7 +36,12 @@ $query = $conn->query($sel);
 
 <script src="table2excel.js"></script>
 
-
+<script>
+    function autoRefresh() {
+        window.location = window.location.href;
+    }
+    setInterval('autoRefresh()', 2000);
+</script>
 <!-- CSS FOR MAIN -->
 
 <style>
@@ -115,6 +120,7 @@ $query = $conn->query($sel);
         height: 350px;
         margin-top: 50px;
         margin-left: 13rem;
+        background-color: #008fb3;
     }
 
 
@@ -191,6 +197,11 @@ $query = $conn->query($sel);
         background-color: #008fb3;
         text-align: center;
     }
+
+    h1 {
+
+        background-color: #008fb3;
+    }
 </style>
 
 
@@ -252,7 +263,7 @@ $query = $conn->query($sel);
 
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">Visitor Logs</h1>
+                    <h1 class=" w3-text-white">Visitor Logs</h1>
                 </b>
             </center>
 
@@ -290,10 +301,11 @@ $query = $conn->query($sel);
                         </br>
                     </div>
 
+
                     <?php
                     error_reporting(0);
                     #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_users` ";
+                    $sel = "SELECT * FROM `qr_logs-visitors` ";
                     $query = $conn->query($sel);
 
                     $num = mysqli_num_rows($query);
@@ -302,15 +314,15 @@ $query = $conn->query($sel);
 
                             echo "
           <tr>
+          <td>" . $result['id'] . " </td>
 
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
           <td>" . $result['qr_number'] . " </td>
           <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_temp'] . " </td>
-
-          <td> " . $result['visit_time_in'] . "</td>
-          <td> " . $result['visit_time_out'] . "</td>
+        
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
           
           </tr> 
           

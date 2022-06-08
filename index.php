@@ -24,171 +24,49 @@ include 'config.php';
 	<!-- Register HTML -->
 
 	<div class="container" id="container">
-		<div class="form-container sign-up-container">
 
-			<form action="signup.php" id="form-id">
-				<h1>FaceCognition Registration</h1>
 
-				<?php if (isset($_GET['error'])) { ?>
-					<p class="regerror-msg"><?php echo $_GET['error']; ?></p>
-				<?php } ?>
+		<form action="signin.php">
+			<img src="images/logo.png" style="width:100px;height:100px;">
+			<h1>FaceCognition
+				<br>Admin Login
+			</h1>
 
-				<span>Make sure all the information is correct.</span>
+			<?php
+			if (!empty($_GET['error'])) {
+				if (in_array($_GET['error'], $all_err)) {
+			?>
+					<p class="loginerror-msg">
+						<?php echo
+						$_GET['error'];
+						?>
+					</p>
+			<?php
+				}
+			}
+			?>
 
-				<input type="name" name="ru_firstname" value="<?php
-																if (empty($_GET['ru_firstname'])) {
-																	echo "";
-																} else {
-																	echo $_GET['ru_firstname'];
-																} ?>" placeholder="First Name">
+			<span>Only authorized user can login here.</span>
 
-				<input type="name" name="ru_lastname" value="<?php
-																if (empty($_GET['ru_lastname'])) {
-																	echo "";
-																} else {
-																	echo $_GET['ru_lastname'];
-																} ?>" placeholder="Last Name">
-
-				<input type="studentid" name="ru_studentid" value="<?php
-																	if (empty($_GET['ru_studentid'])) {
-																		echo "";
-																	} else {
-																		echo $_GET['ru_studentid'];
-																	} ?>" placeholder="Student ID number">
-
-				<input type="email" name="ru_email" value="<?php
-															if (empty($_GET['ru_email'])) {
+			<input type="username" name="username" value="<?php
+															if (empty($_GET['username'])) {
 																echo "";
 															} else {
-																echo $_GET['ru_email'];
-															} ?>" placeholder="Email">
+																echo $_GET['username'];
+															} ?>" placeholder="Username">
 
-				<label> Select if: </label><select name="select" id="select" value=" <?php
-																						if (empty($_GET['ru_course'])) {
-																							echo "";
-																						} else {
-																							echo $_GET['ru_course'];
-																						} ?>" placeholder="select">
+			<input type="password" name="password" value="<?php
+															if (empty($_GET['password'])) {
+																echo "";
+															} else {
+																echo $_GET['password'];
+															} ?>" placeholder="Password">
 
-					<option disabled selected value>select</option>
-					<optgroup label="Tertiary">
-						<option value="BSA">BSA</option>
-						<option value="BSBA">BSBA</option>
-						<option value="BSCPE">BSCPE</option>
-						<option value="BSCS">BSCS</option>
-						<option value="BSIT">BSIT</option>
-						<option value="BMMA">BMMA</option>
-						<option value="BSHM">BSHM</option>
-						<option value="BSTM">BSTM</option>
-
-					</optgroup>
-					<optgroup label="Senior Highschool">
-						<option value="GAS">GAS</option>
-						<option value="HUMSS">HUMSS</option>
-						<option value="TOP">TOP</option>
-						<option value="STEM">STEM</option>
-
-					</optgroup>
-					<optgroup label="Employee">
-
-						<option value="FTFACULTY>Full-time Faculty Staff</option>
-						<option value=" PTFACULTY">Part-time Faculty Staff</option>
-						<option value="NTP">Non Teaching Personnel</option>
-						<option value="RD">Registration Department</option>
-						<option value="AD">Administration Department</option>
-					</optgroup>
-				</select>
-
-
-				<button>Register</button>
-			</form>
-		</div>
-
-
-		<!-- LOG IN HTML -->
-
-
-		<div class="form-container sign-in-container">
-			<form action="signin.php">
-				<img src="images/logo.png" style="width:100px;height:100px;">
-				<h1>FaceCognition Admin Login</h1>
-
-				<?php
-				if (!empty($_GET['error'])) {
-					if (in_array($_GET['error'], $all_err)) {
-				?>
-						<p class="loginerror-msg">
-							<?php echo
-							$_GET['error'];
-							?>
-						</p>
-				<?php
-					}
-				}
-				?>
-
-				<span>Only authorized user can login here.</span>
-
-				<input type="username" name="username" value="<?php
-																if (empty($_GET['username'])) {
-																	echo "";
-																} else {
-																	echo $_GET['username'];
-																} ?>" placeholder="Username">
-
-				<input type="password" name="password" value="<?php
-																if (empty($_GET['password'])) {
-																	echo "";
-																} else {
-																	echo $_GET['password'];
-																} ?>" placeholder="Password">
-
-				<a href="#">Forgot Your Password?</a>
-				<button>Login</button>
-			</form>
-		</div>
-
-		<div class="overlay-container">
-			<div class="overlay">
-				<div class="overlay-panel overlay-left">
-					<h1>Have administrative access?</h1>
-					<p>Please login in here if you have administrative access to the system!</p>
-					<button class="ghost" id="login">Login</button>
-				</div>
-				<div class="overlay-panel overlay-right">
-					<h1>Want to register?</h1>
-					<p>If you are a student or faculty member, please register here to record your information to the system!</p>
-					<button class="ghost" id="register">Register</button>
-				</div>
-			</div>
-		</div>
+			<a href="#">Forgot Your Password?</a>
+			<button>Login</button>
+		</form>
 	</div>
 
-	<script type="text/javascript">
-		const signUpButton = document.getElementById('register');
-		const signInButton = document.getElementById('login');
-		const container = document.getElementById('container');
-
-
-		signUpButton.addEventListener('click', () => {
-			container.classList.add("right-panel-active");
-			clearErrors();
-		});
-
-		signInButton.addEventListener('click', () => {
-			container.classList.remove("right-panel-active");
-			clearErrors();
-		});
-
-		function clearErrors() {
-			Array.prototype.forEach.call(
-				document.getElementsByClassName("regerror-msg"),
-				function(el) {
-					el.style.display = "none";
-				}
-			);
-		}
-	</script>
 
 </body>
 

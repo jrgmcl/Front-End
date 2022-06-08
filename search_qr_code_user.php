@@ -4,7 +4,7 @@ include 'session_checker.php';
 include 'config.php';
 
 #Fetch the data from database
-$sel = "SELECT * FROM log_qr";
+$sel = "SELECT * FROM`qr_logs-users`";
 $query = $conn->query($sel);
 
 

@@ -7,19 +7,19 @@ include '../config.php';
 #Reject the reuqest from the database
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending` WHERE `id` = '$id'");
+    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-visitors` WHERE `id` = '$id'");
 
     if ($delete) {
         echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully registered the user!');
-    window.location.href='Register.php';
-    </script>");;
+    window.alert('Successfully rejected the user!');
+    window.location.href='qr_visitor.php';
+    </script>");
     }
 }
 
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_pending` ";
+$sel = "SELECT * FROM `qr_pending-visitors` ";
 $query = $conn->query($sel);
 
 
@@ -56,7 +56,12 @@ $query = $conn->query($sel);
     <!-- SCRIPT FOR EXCEL EXPORT-->
 
     <script src="table2excel.js"></script>
-
+    <script>
+        function autoRefresh() {
+            window.location = window.location.href;
+        }
+        setInterval('autoRefresh()', 2000);
+    </script>
 
     <!-- CSS FOR MAIN -->
     <style>
@@ -76,6 +81,11 @@ $query = $conn->query($sel);
 
 
 
+        }
+
+        h1 {
+
+            background-color: #008fb3;
         }
 
         a {
@@ -271,20 +281,20 @@ $query = $conn->query($sel);
 
             <center>
                 <b>
-                    <h1 class="w3-cyan w3-text-white">QR Visitors</h1>
+                    <h1 class=" w3-text-white">QR Visitors</h1>
                 </b>
             </center>
             <!-- TABLE FOR EXCEL EXPORT -->
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
+                        <th></th>
                         <th>First Name</th>
                         <th>Last Name </th>
                         <th>Number</th>
-                        <th>Gender</th>
+
                         <th>Purpose</th>
-                        <th> Pin</th>
+
 
 
                         <th>Settings </th>
@@ -307,8 +317,6 @@ $query = $conn->query($sel);
                         <br>
                         </br>
                     </div>
-
-
                     <?php
 
                     $num = mysqli_num_rows($query);
@@ -316,35 +324,33 @@ $query = $conn->query($sel);
                         while ($result = $query->fetch_assoc()) {
 
                             echo "
-          <tr>
-
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_number'] . " </td>
-          <td>" . $result['qr_gender'] . " </td>
-          <td>" . $result['qr_purpose'] . " </td>
-          <td>" . $result['qr_pin'] . " </td>
-         
-         
-          <td>
-          
-          
-          <a href='visitor_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
-          <a href='qr_visitor.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
-          </td>
-          
-          </tr> 
-          
+<tr>
+<td>" . $result['id'] . " </td>
+<td>" . $result['qr_firstname'] . " </td>
+<td>" . $result['qr_lastname'] . " </td>
+<td>" . $result['qr_number'] . " </td>
+<td>" . $result['qr_purpose'] . " </td>
 
 
-        ";
+
+<td>
+
+
+<a href='visitor_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
+<a href='qr_visitor.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
+</td>
+
+</tr> 
+
+
+
+";
                         }
                     }
 
 
 
                     ?>
-
 
 
                 </tbody>
