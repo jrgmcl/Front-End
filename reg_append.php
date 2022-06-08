@@ -53,7 +53,7 @@ for ($i = 0; $i < $total; $i++) {
     }
 }
 
-$newfilename = $id.$ru_firstname.".".$ru_lastname;
+$newfilename = $id.".".$ru_firstname.".".$ru_lastname;
 
 #Replace to insert a data to dropped indexes
 $register = mysqli_query($conn, "REPLACE INTO `fr_registered-users` (id, ru_firstname,ru_lastname, ru_studentid, ru_course) 
