@@ -51,10 +51,7 @@ $query = $conn->query($sel);
     <link rel="stylesheet" href="css/searchbar.css">
     <link rel="stylesheet" href="css/search.css">
     <script>
-        function autoRefresh() {
-            window.location = window.location.href;
-        }
-        setInterval('autoRefresh()', 2000);
+
     </script>
 
 

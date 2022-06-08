@@ -25,12 +25,7 @@ include 'config.php';
    <script src="js/popper.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <title>Admin Dashboard </title>
-   <script>
-      function autoRefresh() {
-         window.location = window.location.href;
-      }
-      setInterval('autoRefresh()', 2000);
-   </script>
+
 
    <!-- CSS FOR MAIN -->
 

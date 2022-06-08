@@ -35,12 +35,7 @@ $query = $conn->query($sel);
 <!-- SCRIPT FOR EXCEL EXPORT-->
 
 <script src="table2excel.js"></script>
-<script>
-    function autoRefresh() {
-        window.location = window.location.href;
-    }
-    setInterval('autoRefresh()', 2000);
-</script>
+
 
 <!-- CSS FOR MAIN -->
 
