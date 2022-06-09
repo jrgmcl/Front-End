@@ -1,29 +1,14 @@
 <?php
-include '../err.php';
-
-include '../config.php';
-
-
-#Reject the reuqest from the database
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $delete = mysqli_query($conn, "DELETE FROM `qr_pending-visitors` WHERE `id` = '$id'");
-
-    if ($delete) {
-        echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully rejected the user!');
-    window.location.href='qr_visitor.php';
-    </script>");
-    }
-}
-
 
 #Fetch the data from database
-$sel = "SELECT * FROM `qr_pending-visitors` ";
+$sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
 
 
+
 ?>
+
+
 
 
 
@@ -56,11 +41,51 @@ $query = $conn->query($sel);
     <!-- SCRIPT FOR EXCEL EXPORT-->
 
     <script src="table2excel.js"></script>
+
+    <script type="text/JavaScript">
+        <!--
+            function AutoRefresh( t ) {
+               setTimeout("location.reload(true);", t);
+            }
+         //-->
+    </script>
+
+</head>
+
+<body onload="JavaScript:AutoRefresh(5000);">
+
+    <!-- CSS FOR MAIN -->
+
+
+
+
+
+
+    <!DOCTYPE HTML ">
+<html>
+
+<head>
+
+<link rel=" icon" href="images/logo.png">
+    </head>
+
+    <!-- CSS FOR SIDE BAR and NAVBAR -->
+    <link rel=" stylesheet" type="text/css" href="css/design.css">
+    <link rel="stylesheet" type="text/css" href="css/w3.css">
+
+    <!-- CSS SEARCHBAR -->
+    <link rel="stylesheet" href="css/searchbar.css">
+    <link rel="stylesheet" href="css/search.css">
+
+
+    <!-- SCRIPT FOR EXCEL EXPORT-->
+
+    <script src="table2excel.js"></script>
     <script>
 
     </script>
-
     <!-- CSS FOR MAIN -->
+
     <style>
         body {
             background-image: url("images/BGpic.jpg");
@@ -78,11 +103,6 @@ $query = $conn->query($sel);
 
 
 
-        }
-
-        h1 {
-
-            background-color: #008fb3;
         }
 
         a {
@@ -144,7 +164,10 @@ $query = $conn->query($sel);
             margin-left: 13rem;
         }
 
+        h1 {
 
+            background-color: #008fb3;
+        }
 
         h2 {
             font-family: 'Montserrat', sans-serif;
@@ -224,140 +247,109 @@ $query = $conn->query($sel);
 
     <!-- CSS MAIN ENDS -->
 
-<body>
-
-
-    <div class="w3-bar >
-            <center>
-                <div class=" image">
-        <img src="images/logo.png" width="110" height="110">
-    </div>
-    </center>
-
-    <center>
-        <div class="container-navbar">
-            <a href=" guard_dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-
-            <div class="w3-dropdown-hover">
-                <a href="Logs_qr.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
-                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
-                    <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-                </div>
-            </div>
-
-            <div class="w3-dropdown-hover">
-                <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
-                <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                    <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
-                    <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
-                </div>
-
-            </div>
-
-
-            <div class="logout">
-                <form action="Logout.php" method="post">
-                    <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
-                </form>
-            </div>
-        </div>
-        </div>
-
-    </center>
+    <body>
 
 
 
-    <!-- RECORDS TABLE HTML -->
-    <div class="fade-in-image">
+        <!-- RECORDS TABLE HTML -->
+        <div class="fade-in-image">
 
 
 
+            <div class="table-container">
+                <center>
+                    <b>
+                        <h1 class=" w3-text-white">QR Users Log</h1>
+                    </b>
+                </center>
+                <!-- TABLE FOR EXCEL EXPORT -->
+                <table id="example-table" class=" table ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name </th>
+                            <th>Last Name</th>
+                            <th>ID No.</th>
+                            <th>Department</th>
+                            <th> Pin </th>
+                            <th>Time in </th>
+                            <th>Time out </th>
 
-        <div class="table-container">
+                        </tr>
+                    <tbody>
 
-            <center>
-                <b>
-                    <h1 class=" w3-text-white">QR Visitors</h1>
-                </b>
-            </center>
-            <!-- TABLE FOR EXCEL EXPORT -->
-            <table id="example-table" class=" table ">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name </th>
-                        <th>Number</th>
+                        <div class="search-container bg-info">
 
-                        <th>Purpose</th>
+                            <form action="search_qr_code_user.php" method="post" class="search-bar">
 
-
-
-                        <th>Settings </th>
-                    </tr>
-                <tbody>
-
-                    <div class="search-container bg-info">
-
-                        <form action=" search_visitor.php" method="post" class="search-bar">
-
-                            <!-- To link for the search table in Search.php -->
-                            <input type=" text" placeholder="search" name="search">
-                            <button name="submit"> SEARCH </button>
+                                <!-- To link for the search table in Search.php -->
+                                <input type=" text" placeholder="search" name="search">
+                                <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
 
 
-                        </form>
+                            </form>
 
 
 
-                        <br>
-                        </br>
-                    </div>
-                    <?php
+                            <br>
+                            </br>
+                        </div>
 
-                    $num = mysqli_num_rows($query);
-                    if ($num > 0) {
-                        while ($result = $query->fetch_assoc()) {
+                        <?php
+                        error_reporting(0);
+                        #Fetch the data from database
+                        $sel = "SELECT * FROM `qr_logs-users` ";
+                        $query = $conn->query($sel);
 
-                            echo "
-<tr>
-<td>" . $result['id'] . " </td>
-<td>" . $result['qr_firstname'] . " </td>
-<td>" . $result['qr_lastname'] . " </td>
-<td>" . $result['qr_number'] . " </td>
-<td>" . $result['qr_purpose'] . " </td>
+                        $num = mysqli_num_rows($query);
+                        if ($num > 0) {
+                            while ($result = $query->fetch_assoc()) {
+
+                                echo "
+          <tr>
+          <td>" . $result['count'] . " </td>
+          
+          <td>" . $result['qr_firstname'] . " </td>
+          <td>" . $result['qr_lastname'] . " </td>
+          <td>" . $result['qr_studentid'] . " </td>
+          <td>" . $result['qr_course'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
+
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
+          
+          </tr> 
 
 
-
-<td>
-
-
-<a href='visitor_accept.php?id=" . $result['id'] . "' class='w3-button  w3-green' > Accept </a> 
-<a href='qr_visitor.php?id=" . $result['id'] . "' class='w3-button w3-red'> Reject </a>
-</td>
-
-</tr> 
-
-
-
-";
+        ";
+                            }
                         }
-                    }
 
 
 
-                    ?>
-
-
-                </tbody>
-                </thead>
-            </table>
-
-</body>
+                        ?>
 
 
 
-</head>
+
+
+                    </tbody>
+                    </thead>
+                </table>
+
+    </body>
+    </div>
+
+    <!-- JS FOR EXPORTING TO EXCEL -->
+    <script>
+        document.getElementById('downloadexcel').addEventListener('click', function() {
+
+            var table2excel = new Table2Excel();
+            table2excel.export(document.querySelectorAll("#example-table"));
+
+        });
+    </script>
+
+    </head>
 
 </html>

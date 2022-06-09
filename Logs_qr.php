@@ -4,6 +4,7 @@ include 'session_checker.php';
 include 'config.php';
 
 
+
 #Fetch the data from database
 $sel = "SELECT * FROM `qr_logs-users`";
 $query = $conn->query($sel);
@@ -202,111 +203,9 @@ $query = $conn->query($sel);
 
 
 
-
-
-
-
-
-
-
-    <!-- RECORDS TABLE HTML -->
-    <div class="fade-in-image">
-
-
-        <div class="table-container">
-
-
-            <h1 class="w3-cyan w3-text-white">Visitor Logs</h1>
-
-            <!-- TABLE FOR EXCEL EXPORT -->
-            <table id="example-table" class=" table ">
-
-                <thead>
-                    <tr>
-
-                        <th></th>
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>Mobile No.</th>
-                        <th>Purpose</th>
-
-                        <th>Time in </th>
-                        <th>Time out </th>
-
-                    </tr>
-                <tbody>
-
-                    <div class="search-container bg-info">
-
-                        <form action=" search_qr.php" method="post" class="search-bar">
-
-                            <!-- To link for the search table in Search.php -->
-                            <input type=" text" placeholder="search" name="search">
-                            <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
-
-
-                        </form>
-
-
-
-                        <br>
-                        </br>
-                    </div>
-
-                    <?php
-                    error_reporting(0);
-                    #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_logs-visitors` ";
-                    $query = $conn->query($sel);
-
-                    $num = mysqli_num_rows($query);
-                    if ($num > 0) {
-                        while ($result = $query->fetch_assoc()) {
-
-                            echo "
-          <tr>
-          <td>" . $result['id'] . " </td>
-
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_number'] . " </td>
-          <td>" . $result['qr_purpose'] . " </td>
-        
-          <td> " . $result['time_in'] . "</td>
-          <td> " . $result['time_out'] . "</td>
-          
-          </tr> 
-          
-
-
-        ";
-                        }
-                    }
-
-
-
-                    ?>
-
-
-
-                </tbody>
-                </thead>
-            </table>
-
+    <?php
+    include 'table_Logs_qr.php';
+    ?>
 </body>
-</div>
-
-<!-- JS FOR EXPORTING TO EXCEL -->
-<script>
-    document.getElementById('downloadexcel').addEventListener('click', function() {
-
-        var table2excel = new Table2Excel();
-        table2excel.export(document.querySelectorAll("#example-table"));
-
-    });
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-</head>
 
 </html>

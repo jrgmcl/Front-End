@@ -1,8 +1,4 @@
 <?php
-include 'err.php';
-include 'session_checker.php';
-include 'config.php';
-
 #Fetch the data from database
 $sel = "SELECT * FROM fr_logs";
 $query = $conn->query($sel);
@@ -35,6 +31,17 @@ $query = $conn->query($sel);
 
     <script src="table2excel.js"></script>
 
+    <script type="text/JavaScript">
+        <!--
+            function AutoRefresh( t ) {
+               setTimeout("location.reload(true);", t);
+            }
+         //-->
+    </script>
+
+</head>
+
+<body onload="JavaScript:AutoRefresh(5000);">
 
 
     <style>
@@ -158,60 +165,100 @@ $query = $conn->query($sel);
     <!-- CSS MAIN ENDS -->
 
 
-<body>
-    <div class="w3-bar w3-cyan">
-        <center>
-            <div class=" image">
-                <img src="images/logo.png" width="110" height="110">
-            </div>
-        </center><a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Dashboard</a>
-        <a href=" Register.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Register</a>
-        <div class="w3-dropdown-hover">
-            <a class="w3-bar-item w3-text-white w3-button w3-hover-white">Records</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Records.php" class="w3-bar-item w3-hover-cyan  w3-button">Registered Users</a>
+    <body>
 
-            </div>
-        </div>
 
-        <div class="w3-dropdown-hover">
-            <a href=" Dashboard.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logs</a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="Logs.php" class="w3-bar-item w3-hover-cyan  w3-button">Face Recognition Logs</a>
-                <a href="Logs_qr.php" class="w3-bar-item w3-hover-cyan  w3-button">Visitor Logs</a>
-                <a href="QR_Code_Users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR User Logs</a>
-            </div>
-        </div>
+        <!-- RECORDS TABLE HTML -->
+        <div class="fade-in-image">
 
-        <div class="w3-dropdown-hover">
-            <a href="" class="w3-bar-item w3-text-white w3-button w3-hover-white">QR Code </a>
-            <div class=" w3-dropdown-content w3-bar-block w3-card-4">
-                <a href="reg_qr_users.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Registered Request</a>
-                <a href="qr_visitor.php" class="w3-bar-item w3-hover-cyan  w3-button">QR Visitor Request</a>
-            </div>
 
-        </div>
-        <div class="logout">
-            <form action="Logout.php" method="post">
-                <a href=" Logout.php" class="w3-bar-item w3-text-white w3-button w3-hover-white">Logout</a>
-            </form>
-        </div>
+            <div class="table-container">
+                <h1 class="w3-cyan w3-text-white">FaceCognition Logs</h1>
+
+
+                <!-- TABLE FOR EXCEL EXPORT -->
+                <table id="example-table" class=" table ">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>First Name </th>
+                            <th>Last Name</th>
+                            <th>ID No.</th>
+                            <th>Department</th>
+                            <th>Time in </th>
+                            <th>Time out </th>
+
+                        </tr>
+                    <tbody>
+
+                        <div class="search-container bg-info">
+
+                            <form action=" search_fr.php" method="post" class="search-bar">
+
+                                <!-- To link for the search table in Search.php -->
+                                <input type=" text" placeholder="search" name="search">
+                                <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
+
+
+                            </form>
+
+
+
+                            <br>
+                            </br>
+                        </div>
+
+                        <?php
+                        error_reporting(0);
+                        #Fetch the data from database
+                        $sel = "SELECT * FROM `fr_logs` ";
+                        $query = $conn->query($sel);
+
+                        $num = mysqli_num_rows($query);
+                        if ($num > 0) {
+                            while ($result = $query->fetch_assoc()) {
+
+                                echo "
+          <tr>
+          <td>" . $result['count'] . " </td>
+          <td>" . $result['ru_firstname'] . " </td>
+          <td>" . $result['ru_lastname'] . " </td>
+          <td>" . $result['ru_studentid'] . " </td>
+          <td>" . $result['ru_course'] . " </td>
+          <td> " . $result['time_in'] . "</td>
+          <td> " . $result['time_out'] . "</td>
+          
+          </tr> 
+          
+
+
+        ";
+                            }
+                        }
+
+
+
+                        ?>
+
+
+
+                    </tbody>
+                    </thead>
+                </table>
+
+    </body>
     </div>
 
+    <!-- JS FOR EXPORTING TO EXCEL -->
+    <script>
+        document.getElementById('downloadexcel').addEventListener('click', function() {
 
+            var table2excel = new Table2Excel();
+            table2excel.export(document.querySelectorAll("#example-table"));
 
+        });
+    </script>
 
-    <?php
-    include 'table_Logs.php';
-
-    ?>
-
-
-
-
-
-    </header>
-
-</body>
+    </head>
 
 </html>

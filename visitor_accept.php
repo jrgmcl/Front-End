@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+include 'date_format.php';
 
 $from = mysqli_query($conn, "SELECT * FROM `qr_pending-visitors`");
 $from_row = mysqli_fetch_assoc($from);
@@ -10,10 +11,13 @@ $number = $from_row['qr_number'];
 $purpose = $from_row['qr_purpose'];
 
 
+
 #Counter function
 $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `qr_logs-visitors`");
 $count_array = mysqli_fetch_array($count_id);
 $count = $count_array[0];
+
+
 
 for ($i = 0; $i < $count; $i++) {
     $registered = mysqli_query($conn, "SELECT * FROM `qr_logs-visitors` WHERE `id` = $pending_id");

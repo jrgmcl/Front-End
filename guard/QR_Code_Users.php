@@ -285,111 +285,15 @@ $query = $conn->query($sel);
 
 
 
+    <?php
 
+    include 'table_guard_QR_Code.php';
+
+    ?>
 
 
     </header>
 
-
-    <!-- RECORDS TABLE HTML -->
-    <div class="fade-in-image">
-
-
-
-        <div class="table-container">
-            <center>
-                <b>
-                    <h1 class=" w3-text-white">QR Users Log</h1>
-                </b>
-            </center>
-            <!-- TABLE FOR EXCEL EXPORT -->
-            <table id="example-table" class=" table ">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>First Name </th>
-                        <th>Last Name</th>
-                        <th>Student ID</th>
-                        <th>Department</th>
-                        <th> Pin </th>
-                        <th>Time in </th>
-                        <th>Time out </th>
-
-                    </tr>
-                <tbody>
-
-                    <div class="search-container bg-info">
-
-                        <form action="search_qr_code_user.php" method="post" class="search-bar">
-
-                            <!-- To link for the search table in Search.php -->
-                            <input type=" text" placeholder="search" name="search">
-                            <button name="submit"> SEARCH </button><button id="downloadexcel"> EXPORT </button>
-
-
-                        </form>
-
-
-
-                        <br>
-                        </br>
-                    </div>
-
-                    <?php
-                    error_reporting(0);
-                    #Fetch the data from database
-                    $sel = "SELECT * FROM `qr_logs-users` ";
-                    $query = $conn->query($sel);
-
-                    $num = mysqli_num_rows($query);
-                    if ($num > 0) {
-                        while ($result = $query->fetch_assoc()) {
-
-                            echo "
-          <tr>
-          <td>" . $result['count'] . " </td>
-          
-          <td>" . $result['qr_firstname'] . " </td>
-          <td>" . $result['qr_lastname'] . " </td>
-          <td>" . $result['qr_studentid'] . " </td>
-          <td>" . $result['qr_course'] . " </td>
-          <td>" . $result['qr_pin'] . " </td>
-
-          <td> " . $result['time_in'] . "</td>
-          <td> " . $result['time_out'] . "</td>
-          
-          </tr> 
-
-
-        ";
-                        }
-                    }
-
-
-
-                    ?>
-
-
-
-
-
-                </tbody>
-                </thead>
-            </table>
-
-</body>
-</div>
-
-<!-- JS FOR EXPORTING TO EXCEL -->
-<script>
-    document.getElementById('downloadexcel').addEventListener('click', function() {
-
-        var table2excel = new Table2Excel();
-        table2excel.export(document.querySelectorAll("#example-table"));
-
-    });
-</script>
-
-</head>
+    </head>
 
 </html>

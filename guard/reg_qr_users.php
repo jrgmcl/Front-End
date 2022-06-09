@@ -293,13 +293,13 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>STUDENT ID</th>
+                        <th>#</th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th>ID No.</th>
                         <th>Department</th>
-                        <th> Temp </th>
-                        <th>Time in </th>
-                        <th>Time out </th>
+                        <th>Pin</th>
+
                         <th>Settings </th>
                     </tr>
                 <tbody>
@@ -345,15 +345,10 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->qr_studentid; ?></td>
                                 <td><?php echo $result->qr_course; ?></td>
                                 <td><?php echo $result->qr_temp; ?></td>
-                                <td><?php echo $result->qr_time_in; ?></td>
-                                <td><?php echo $result->qr_time_out; ?></td>
+
                                 <td><?php echo $result->qr_pin; ?></td>
 
-
-
                                 <td>
-
-
                                     <a href='visitor_accept.php?id=" <?php echo $result->id; ?>"' class='w3-button  w3-green'> Accept </a>
                                     <a href='qr_visitor.php?id=" <?php echo $result->id; ?> "' class='w3-button w3-red'> Reject </a>
                                 </td>
