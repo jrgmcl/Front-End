@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+#include "config.php";
 
 /*
 $drop_id = intval(0);
@@ -13,6 +13,38 @@ if ($delete_pending) {
 }
 */
 
-rename ("/home/pi/Desktop/facerecognitionsystem-backend/datasets/0.Nesha.Sorita", "/home/pi/Desktop/facerecognitionsystem-backend/dropped/Nesha.Sorita");
+#rename ("/home/pi/Desktop/facerecognitionsystem-backend/datasets/0.Nesha.Sorita", "/home/pi/Desktop/facerecognitionsystem-backend/dropped/Nesha.Sorita");
+
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+body { background:gray; }
+.first{
+    position:absolute; /* fixed also works */
+    background:red;
+    top:30px;
+    left:30px;
+    right:30px;
+    bottom:30px;
+}
+iframe{
+    width: 50vw;
+    height: 50vh;
+    margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+
+
+</head>
+<body>
+<center>
+<iframe src="index.php" name="page"></iframe>
+</center>
+</body>
+</html>
