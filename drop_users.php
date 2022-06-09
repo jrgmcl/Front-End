@@ -1,5 +1,8 @@
 <?php
+include 'err.php';
+include 'session_checker.php';
 include 'config.php';
+
 
 $pickle = "/home/pi/Desktop/facerecognitionsystem-backend/pickle/datasets.pickle";
 
