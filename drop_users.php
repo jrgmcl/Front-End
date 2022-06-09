@@ -29,7 +29,7 @@ if ($destination) {
     $delete_pending = mysqli_query($conn, "UPDATE `fr_registered-users` SET `ru_firstname` = NULL, `ru_lastname` = NULL, `ru_studentid` = NULL, `ru_course` = NULL WHERE `id` = '$drop_id'");
 
     if ($delete_pending) {
-        rename ("/home/pi/Desktop/facerecognitionsystem-backend/datasets/".$oldname$, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$new_name);
+        rename ("/home/pi/Desktop/facerecognitionsystem-backend/datasets/".$old_name, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$new_name);
         $deletepickle = unlink($pickle);
         echo ("<script LANGUAGE='JavaScript'>
         window.alert('Successfully disabled $firstname $lastname.');

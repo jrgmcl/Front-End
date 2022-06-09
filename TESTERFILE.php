@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+
+/*
 $drop_id = intval(0);
 
 
@@ -9,5 +11,8 @@ $delete_pending = mysqli_query($conn, "UPDATE `fr_registered-users`
 if ($delete_pending) {
     echo "Deleted!";
 }
+*/
+
+rename ("/home/pi/Desktop/facerecognitionsystem-backend/datasets/0.Nesha.Sorita", "/home/pi/Desktop/facerecognitionsystem-backend/dropped/Nesha.Sorita");
 
 ?>
