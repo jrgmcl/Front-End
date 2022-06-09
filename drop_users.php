@@ -17,7 +17,7 @@ $new_name = $firstname.".".$lastname;
 #Count the rows in the rgstrd_users and increment it by one
 $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `fr_dropped-users`");
 $count_array = mysqli_fetch_array($count_id);
-$id = $count_array[0];
+$id = intval($count_array[0]);
 
 $destination = mysqli_query($conn, "REPLACE INTO `fr_dropped-users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`)
                                             VALUES ('$id','$firstname','$lastname','$studentid','$course')");
