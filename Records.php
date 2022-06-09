@@ -8,7 +8,7 @@ include 'config.php';
 
 
 
-<!DOCTYPE HTML ">
+<!DOCTYPE HTML PUBLIC “-//W3C//DTD HTML 4.01//EN” “http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
 <head>
@@ -285,7 +285,7 @@ include 'config.php';
          
         
           <td>
-          <a href="drop_users.php?id= <?php echo $result['id'];?>" class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
+          <a href='drop_users.php?id=$result['id']' class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
           </td>
           </tr> 
           
