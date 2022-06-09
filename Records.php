@@ -285,7 +285,7 @@ include 'config.php';
          
         
           <td>
-          <a href='drop_users.php?id=$result['id']' class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
+          <a href='drop_users.php?id=".$result['id']."' class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
           </td>
           </tr> 
           
