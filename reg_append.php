@@ -70,13 +70,13 @@ if ($register) {
         $imageFileType = strtolower(pathinfo($file_name[$p], PATHINFO_EXTENSION));
         $tmp_singlepath = $temp_path[$p];
         $target_path = $dataset.$newfilename.'/RAW/'.$newfilename.'_'.$p.'.'.$imageFileType;
-
+        chmod($target_path, 0777);
+        chmod($dataset.$newfilename, 0777);
+        chmod($dataset.$newfilename."/RAW", 0777);
         if (!empty($file_name[$p])) {
             if (move_uploaded_file($tmp_singlepath, $target_path)) {
                 #Sessuib ti throw validation
-                chmod($target_path, 0777);
-                chmod($dataset.$newfilename, 0777);
-                chmod($dataset.$newfilename."/RAW", 0777);
+                
                 $deletepickle = unlink($pickle);
                 echo ("<script LANGUAGE='JavaScript'>
                 window.alert('Successfully registered the user!');
