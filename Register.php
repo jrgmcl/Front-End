@@ -151,15 +151,14 @@ include 'config.php';
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-                  0 10px 10px rgba(0, 0, 0, 0.22);
+         0 10px 10px rgba(0, 0, 0, 0.22);
       position: relative;
       overflow: hidden;
       width: 35vw;
-      height: 72vh;
+      height: 60vh;
       margin-top: 5vh;
       margin-bottom: 10vh;
    }
-
 </style>
 
 
@@ -250,7 +249,7 @@ include 'config.php';
                                                             echo "";
                                                          } else {
                                                             echo $_GET['ru_studentid'];
-                                                         } ?>" placeholder="Student ID number (For student only)">
+                                                         } ?>" placeholder="ID No.">
 
 
       <label> Select if: </label>
@@ -285,7 +284,7 @@ include 'config.php';
 
          <optgroup label="Employee">
             <option value="FTFACULTY">Full-time Faculty Staff</option>
-				<option value="PTFACULTY">Part-time Faculty Staff</option>
+            <option value="PTFACULTY">Part-time Faculty Staff</option>
             <option value="NTP">Non Teaching Personnel</option>
             <option value="RD">Registration Department</option>
             <option value="AD">Administration Department</option>
