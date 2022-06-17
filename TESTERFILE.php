@@ -1,6 +1,9 @@
 <?php
-$drop_dir = "/home/pi/Desktop/facerecognitionsystem-backend/dropped";
-$fi = iterator_count(new FilesystemIterator($drop_dir, FilesystemIterator::SKIP_DOTS));
-echo $fi;
+include 'config.php';
+
+$selected_id = '0';
+$from = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `qr_pending-users` WHERE `count` = '$selected_id'"));
+print_r ($from);
+echo $from['approve'];
 
 ?>
