@@ -249,7 +249,7 @@ include 'config.php';
                                                             echo "";
                                                          } else {
                                                             echo $_GET['ru_studentid'];
-                                                         } ?>" placeholder="ID No.">
+                                                         } ?>" placeholder="ID No. (Student Only)">
 
 
       <label> Select if: </label>

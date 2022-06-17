@@ -257,7 +257,7 @@ $ru_course = $_GET["ru_course"];
                                                                         echo "";
                                                                     } else {
                                                                         echo $_GET['ru_studentid'];
-                                                                    } ?>" placeholder="Student ID number (For student only)" Disabled>
+                                                                    } ?>" placeholder="ID No. (Student Only)" Disabled>
                 <select name="ru_course" value="<?php
                                                 if (empty($_GET['ru_course'])) {
                                                     echo "";

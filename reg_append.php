@@ -24,6 +24,13 @@ $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `fr_registered-users`");
 $count_array = mysqli_fetch_array($count_id);
 $no = $count_array[0];
 
+if ($total > 5) {
+    echo ("<script LANGUAGE='JavaScript'>
+    window.alert('Image count exceeded. Please upload five (5) images only.');
+    window.location.href='Register.php';
+    </script>");
+}
+
 if ($no == 0) {
     $id = intval(0);
 }
@@ -49,7 +56,7 @@ for ($i = 0; $i < $total; $i++) {
     ) {
         #Error for wrong file type
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Error on reading the selected file! Please check your file if it's an image file.');
+        window.alert('Error on reading the selected file, please check your file if it's an image file.');
         </script>");
     }
 }
@@ -79,7 +86,7 @@ if ($register) {
                 
                 $deletepickle = unlink($pickle);
                 echo ("<script LANGUAGE='JavaScript'>
-                window.alert('Successfully registered the user!');
+                window.alert('Successfully registered $ru_firstname $ru_lastname.');
                 window.location.href='Register.php';
                 </script>");
             }
@@ -87,7 +94,7 @@ if ($register) {
     }
 } else {
     echo ("<script LANGUAGE='JavaScript'>
-            window.alert('Registration failed. Please try again.');
+            window.alert('Registration failed, please try again.');
             window.location.href='Register.php';
            </script>");
 }

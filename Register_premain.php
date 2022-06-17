@@ -255,7 +255,7 @@ body {
                                                                     echo "";
                                                                 } else {
                                                                     echo $_GET['ru_studentid'];
-                                                                } ?>" placeholder="Student ID number (For student only)">
+                                                                } ?>" placeholder="ID No. (Student Only)">
 
             <select name="ru_course" value="<?php
                                             if (empty($_GET['ru_course'])) {

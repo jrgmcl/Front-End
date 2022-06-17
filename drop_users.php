@@ -22,6 +22,10 @@ $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `fr_dropped-users`");
 $count_array = mysqli_fetch_array($count_id);
 $id = intval($count_array[0]);
 
+#Count folders in dropped folder
+$drop_dir = "/home/pi/Desktop/facerecognitionsystem-backend/dropped";
+$drop_count = iterator_count(new FilesystemIterator($drop_dir, FilesystemIterator::SKIP_DOTS));
+
 $destination = mysqli_query($conn, "REPLACE INTO `fr_dropped-users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`)
                                             VALUES ('$id','$firstname','$lastname','$studentid','$course')");
 
@@ -29,7 +33,8 @@ if ($destination) {
     $delete_pending = mysqli_query($conn, "DELETE FROM `fr_registered-users` WHERE `id` = '$drop_id'");
 
     if ($delete_pending) {
-        rename("/home/pi/Desktop/facerecognitionsystem-backend/datasets/" . $old_name, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/" . $new_name);
+        rename("/home/pi/Desktop/facerecognitionsystem-backend/datasets/".$old_name, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$drop_count."_".$new_name);
+        chmod("/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$drop_count."_".$new_name, 0777);
         $deletepickle = unlink($pickle);
         echo ("<script LANGUAGE='JavaScript'>
         window.alert('Successfully disabled $firstname $lastname.');

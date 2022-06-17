@@ -13,7 +13,7 @@ $ru_course = $_GET["ru_course"];
 if (empty($ru_firstname)) {
     header("Location: Register_premain.php?error=" . $emptyname_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course);
     exit();
-} else if (empty($ru_studentid)) {
+} else if (empty($ru_lastname)) {
     header("Location: Register_premain.php?error=" . $emptystudentid_err . "&ru_firstname=" . $ru_firstname . "&ru_lastname=" . $ru_lastname . "&ru_studentid=" . $ru_studentid . "&ru_course=" . $ru_course);
     exit();
 } else if (empty($ru_course)) {
