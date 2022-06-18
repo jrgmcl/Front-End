@@ -219,10 +219,10 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Student ID</th>
+                        <th>ID no.</th>
                         <th>Department</th>
                         <th> Pin </th>
                         <th>Time in </th>

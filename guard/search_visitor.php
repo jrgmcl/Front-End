@@ -286,12 +286,13 @@ $query = $conn->query($sel);
                 <thead>
                     <tr>
 
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name </th>
-                        <th>Number</th>
-                        <th>Gender</th>
+                        <th>Mobile No.</th>
+
                         <th>Purpose</th>
-                        <th> Pin</th>
+
 
 
                         <th>Settings </th>
@@ -321,7 +322,7 @@ $query = $conn->query($sel);
 
                     if (isset($_POST["submit"])) {
                         $str = $_POST["search"];
-                        $sth = $conn->prepare("SELECT * FROM `qr_logs-visitors` WHERE qr_studentid = '$str'");
+                        $sth = $conn->prepare("SELECT * FROM `qr_logs-visitors` WHERE qr_number= '$str'");
 
                         $sth->setFetchMode(PDO::FETCH_OBJ);
                         $sth->execute();
@@ -335,12 +336,11 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->id; ?></td>
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
-                                <td><?php echo $result->qr_studentid; ?></td>
-                                <td><?php echo $result->qr_course; ?></td>
-                                <td><?php echo $result->qr_temp; ?></td>
+                                <td><?php echo $result->qr_number; ?></td>
+                                <td><?php echo $result->qr_pin; ?></td>
                                 <td><?php echo $result->qr_time_in; ?></td>
                                 <td><?php echo $result->qr_time_out; ?></td>
-                                <td><?php echo $result->qr_pin; ?></td>
+
 
 
 

@@ -289,11 +289,12 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th>STUDENT ID</th>
+                        <th>#</th>
                         <th>First Name </th>
                         <th>Last Name</th>
+                        <th> ID no. </th>
                         <th>Department</th>
-                        <th> Temp </th>
+                        <th>Pin</th>
                         <th>Time in </th>
                         <th>Time out </th>
                         <th>Settings </th>
@@ -335,14 +336,15 @@ $query = $conn->query($sel);
 
 
                             <tr>
-                                <td><?php echo $result->qr_studentid; ?></td>
+                                <td><?php echo $result->id; ?></td>
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
+                                <td><?php echo $result->qr_studentid; ?></td>
                                 <td><?php echo $result->qr_course; ?></td>
-                                <td><?php echo $result->qr_temp; ?></td>
+                                <td><?php echo $result->qr_pin; ?></td>
                                 <td><?php echo $result->qr_time_in; ?></td>
                                 <td><?php echo $result->qr_time_out; ?></td>
-                                <td><?php echo $result->qr_pin; ?></td>
+
 
 
                             </tr>

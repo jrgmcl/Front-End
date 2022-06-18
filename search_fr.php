@@ -222,12 +222,12 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Student ID</th>
+                        <th>ID no.</th>
                         <th>Department</th>
-                        <th> Email </th>
+                        <th>Temp</th>
                         <th>Time in </th>
                         <th>Time out </th>
 
@@ -274,7 +274,7 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->ru_lastname; ?></td>
                                 <td><?php echo $result->ru_studentid; ?></td>
                                 <td><?php echo $result->ru_course; ?></td>
-                                <td><?php echo $result->ru_email; ?></td>
+                                <td><?php echo $result->ru_temp; ?></td>
                                 <td><?php echo $result->time_in; ?></td>
                                 <td><?php echo $result->time_out; ?></td>
 

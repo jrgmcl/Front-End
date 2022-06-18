@@ -242,12 +242,12 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>First Name </th>
                         <th>Last Name</th>
-                        <th>Student ID</th>
+                        <th> ID no.</th>
                         <th>Department</th>
-                        <th>PIN</th>
+                        <th> Pin</th>
                         <th>Time in </th>
                         <th>Time out </th>
                         <th>Settings </th>
@@ -288,7 +288,7 @@ $query = $conn->query($sel);
 
 
                             <tr>
-                                <td><?php echo $result->count; ?></td>
+                                <td><?php echo $result->id; ?></td>
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
                                 <td><?php echo $result->qr_studentid; ?></td>

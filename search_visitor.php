@@ -236,15 +236,17 @@ $query = $conn->query($sel);
                 <thead>
                     <tr>
 
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name </th>
-                        <th>Number</th>
-                        <th>Gender</th>
+                        <th>Mobile No.</th>
+
                         <th>Purpose</th>
-                        <th> Pin</th>
+
 
 
                         <th>Settings </th>
+                    </tr>
                     </tr>
                 <tbody>
 
@@ -287,8 +289,9 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->qr_firstname; ?></td>
                                 <td><?php echo $result->qr_lastname; ?></td>
                                 <td><?php echo $result->qr_number; ?></td>
-                                <td><?php echo $result->qr_purpose; ?></td>
                                 <td><?php echo $result->qr_pin; ?></td>
+                                <td><?php echo $result->qr_time_in; ?></td>
+                                <td><?php echo $result->qr_time_out; ?></td>
 
 
 

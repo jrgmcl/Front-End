@@ -240,7 +240,7 @@ $query = $conn->query($sel);
             <table id="example-table" class=" table ">
                 <thead>
                     <tr>
-
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name </th>
                         <th>Mobile No.</th>
@@ -278,7 +278,7 @@ $query = $conn->query($sel);
 
                             echo "
           <tr>
-
+          <td>" . $result['id'] . " </td>
           <td>" . $result['qr_firstname'] . " </td>
           <td>" . $result['qr_lastname'] . " </td>
           <td>" . $result['qr_number'] . " </td>

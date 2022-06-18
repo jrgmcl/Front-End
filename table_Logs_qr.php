@@ -186,6 +186,7 @@ $query = $conn->query($sel);
                         <th>Last Name</th>
                         <th>Mobile No.</th>
                         <th>Purpose</th>
+                        <th>Pin</th>
 
                         <th>Time in </th>
                         <th>Time out </th>
@@ -236,6 +237,7 @@ $query = $conn->query($sel);
           <td>" . $result['qr_lastname'] . " </td>
           <td>" . $result['qr_number'] . " </td>
           <td>" . $result['qr_purpose'] . " </td>
+          <td>" . $result['qr_pin'] . " </td>
         
           <td> " . $timein . "</td>
           <td> " . $timeout . "</td>
