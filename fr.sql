@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb5
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jun 18, 2022 at 03:40 PM
--- Server version: 10.3.34-MariaDB-0+deb10u1
--- PHP Version: 7.3.31-1~deb10u1
+-- Host: 127.0.0.1
+-- Generation Time: Jun 18, 2022 at 08:37 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -53,26 +54,6 @@ CREATE TABLE `fr_dropped-users` (
   `ru_course` varchar(16) DEFAULT NULL,
   `ru_email` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `fr_dropped-users`
---
-
-INSERT INTO `fr_dropped-users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`, `ru_email`) VALUES
-(0, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(1, 'Jorge Michael', 'Galang', '02000013822', 'BSCPE', NULL),
-(2, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(3, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(4, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(5, 'Baby Marie', 'Menorca', '0200004546', 'BSBA', NULL),
-(6, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(7, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(8, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(9, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(10, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(11, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(12, 'Nesha', 'Sorita', '020000123456', 'BSCPE', NULL),
-(13, 'Baby Marie', 'Menorca', '02000012345', 'BSCPE', NULL);
 
 -- --------------------------------------------------------
 
@@ -125,8 +106,8 @@ CREATE TABLE `fr_registered-users` (
 --
 
 INSERT INTO `fr_registered-users` (`id`, `ru_firstname`, `ru_lastname`, `ru_studentid`, `ru_course`) VALUES
-(0, NULL, NULL, NULL, NULL),
-(1, NULL, NULL, NULL, NULL);
+(0, 'Adel', 'Diola', '02000012345', 'BSCPE'),
+(1, 'Baby', 'Menorca', '12345', 'BSCPE');
 
 -- --------------------------------------------------------
 
@@ -142,8 +123,8 @@ CREATE TABLE `qr_logs-users` (
   `qr_course` varchar(16) DEFAULT NULL,
   `imgpath` varchar(128) DEFAULT NULL,
   `qr_pin` varchar(6) NOT NULL,
-  `time_in` date DEFAULT NULL,
-  `time_out` date DEFAULT NULL,
+  `time_in` datetime DEFAULT NULL,
+  `time_out` datetime DEFAULT NULL,
   `rpi_out` enum('false','true') NOT NULL DEFAULT 'false'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -159,9 +140,9 @@ CREATE TABLE `qr_logs-visitors` (
   `qr_lastname` char(32) DEFAULT NULL,
   `qr_number` char(16) DEFAULT NULL,
   `qr_purpose` varchar(16) DEFAULT NULL,
-  `time_in` date DEFAULT NULL,
-  `time_out` date DEFAULT NULL,
-  `rpi` enum('false','true') NOT NULL DEFAULT 'false'
+  `time_in` datetime DEFAULT NULL,
+  `time_out` datetime DEFAULT NULL,
+  `qr_pin` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -193,7 +174,9 @@ CREATE TABLE `qr_pending-visitors` (
   `qr_firstname` char(32) DEFAULT NULL,
   `qr_lastname` char(32) DEFAULT NULL,
   `qr_number` char(16) DEFAULT NULL,
-  `qr_purpose` varchar(16) DEFAULT NULL
+  `qr_gender` varchar(12) DEFAULT NULL,
+  `qr_purpose` varchar(16) DEFAULT NULL,
+  `qr_pin` varchar(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -282,6 +265,26 @@ ALTER TABLE `qr_pending-visitors`
 --
 ALTER TABLE `fr_logs`
   MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `qr_logs-visitors`
+--
+ALTER TABLE `qr_logs-visitors`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `qr_pending-users`
+--
+ALTER TABLE `qr_pending-users`
+  MODIFY `count` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `qr_pending-visitors`
+--
+ALTER TABLE `qr_pending-visitors`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'System ID#', AUTO_INCREMENT=6;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
