@@ -29,7 +29,7 @@ include 'config.php';
 		<form autocomplete="off" action="signin.php">
 			<img src="images/logo.png" style="width:100px;height:100px;">
 			<h1>FaceCognition
-				<br>Admin Login
+				<br>Login
 			</h1>
 
 			<?php
