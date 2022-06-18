@@ -226,7 +226,7 @@ body {
 
         <br>
 
-        <form action="Register_signup.php">
+        <form autocomplete="off" action="Register_signup.php">
 
 
             <?php if (isset($_GET['error'])) { ?>

@@ -2,7 +2,9 @@
 include 'config.php';
 include 'err.php';
 include 'session_checker.php';
-$from = mysqli_query($conn, "SELECT * FROM `qr_pending-users`");
+
+$get_id = $_GET['count'];
+$from = mysqli_query($conn, "SELECT * FROM `qr_pending-users` WHERE `count` = '$get_id'");
 $from_row = mysqli_fetch_assoc($from);
 $pending_id = $from_row['count'];
 $qr_firstname = $from_row['qr_firstname'];

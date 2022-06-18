@@ -279,7 +279,7 @@ include 'config.php';
           $num = mysqli_num_rows($query);
           if ($num > 0) {
             while ($result = $query->fetch_assoc()) {
-              if ($result['ru_firstname'])
+              if ($result['ru_firstname']){
                 echo "
           <tr>
 
@@ -298,6 +298,7 @@ include 'config.php';
 
 
         ";
+              }
             }
           }
 

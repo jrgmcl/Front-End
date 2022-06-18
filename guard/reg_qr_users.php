@@ -5,9 +5,6 @@ include '../config.php';
 error_reporting(0);
 
 
-
-error_reporting(0);
-
 #Reject the reuqest from the database
 if (isset($_GET['count'])) {
     $count = $_GET['count'];
@@ -349,8 +346,8 @@ $query = $conn->query($sel);
                                 <td><?php echo $result->qr_pin; ?></td>
 
                                 <td>
-                                    <a href='visitor_accept.php?id=" <?php echo $result->id; ?>"' class='w3-button  w3-green'> Accept </a>
-                                    <a href='qr_visitor.php?id=" <?php echo $result->id; ?> "' class='w3-button w3-red'> Reject </a>
+                                    <a href='reg_qr_accept.php?id=" <?php echo $result->id; ?>"' class='w3-button  w3-green'> Accept </a>
+                                    <a href='reg_qr_users.php?id=" <?php echo $result->id; ?> "' class='w3-button w3-red'> Reject </a>
                                 </td>
 
                             </tr>

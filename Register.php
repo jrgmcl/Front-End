@@ -221,7 +221,7 @@ include 'config.php';
    <div class="container">
       <h2 class=" w3-cyan w3-text-white"> User Registration </h2>
       <br>
-      <form action="Register_signup.php" ">
+      <form autocomplete="off" action="Register_signup.php" ">
    
          <?php if (isset($_GET['error'])) { ?>
             <p class=" regerror-msg"><?php echo $_GET['error']; ?></p>

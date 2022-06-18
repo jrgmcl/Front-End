@@ -229,7 +229,7 @@ $ru_course = $_GET["ru_course"];
 
             <br>
             <br>
-            <form>
+            <form autocomplete="off">
 
 
                 <?php if (isset($_GET['error'])) { ?>
