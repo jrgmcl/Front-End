@@ -223,6 +223,10 @@ $query = $conn->query($select);
                         if ($result['time_out']) {
                             $timeout = date('Y-m-d H:i:s', strtotime($result['time_out']));
                         }
+                        elseif ($result['time_out'] == NULL){
+                            $timeout = " ";
+                        }
+                        
                         
                         echo "
           <tr>
