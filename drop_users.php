@@ -14,8 +14,8 @@ $firstname = $from_row['ru_firstname'];
 $lastname = $from_row['ru_lastname'];
 $course = $from_row['ru_course'];
 $studentid = $from_row['ru_studentid'];
-$old_name = $selected_id.".".$firstname.".".$lastname;
-$new_name = $firstname.".".$lastname;
+$old_name = $selected_id . "." . $firstname . "." . $lastname;
+$new_name = $firstname . "." . $lastname;
 
 #Count the rows in the rgstrd_users and increment it by one
 $count_id = mysqli_query($conn, "SELECT COUNT(*) FROM `fr_dropped-users`");
@@ -33,8 +33,8 @@ if ($destination) {
     $delete_pending = mysqli_query($conn, "UPDATE `fr_registered-users` SET `ru_firstname` = NULL, `ru_lastname` = NULL, `ru_studentid` = NULL, `ru_course` = NULL WHERE `id` = '$drop_id'");
 
     if ($delete_pending) {
-        rename("/home/pi/Desktop/facerecognitionsystem-backend/datasets/".$old_name, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$drop_count."_".$new_name);
-        chmod("/home/pi/Desktop/facerecognitionsystem-backend/dropped/".$drop_count."_".$new_name, 0777);
+        rename("/home/pi/Desktop/facerecognitionsystem-backend/datasets/" . $old_name, "/home/pi/Desktop/facerecognitionsystem-backend/dropped/" . $drop_count . "_" . $new_name);
+        chmod("/home/pi/Desktop/facerecognitionsystem-backend/dropped/" . $drop_count . "_" . $new_name, 0777);
 
         $deletepickle = unlink($pickle);
         echo ("<script LANGUAGE='JavaScript'>
@@ -43,5 +43,3 @@ if ($destination) {
         </script>");
     }
 }
-
-?>

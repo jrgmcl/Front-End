@@ -4,6 +4,9 @@ include 'session_checker.php';
 include 'config.php';
 
 
+
+
+
 ?>
 
 
@@ -14,140 +17,142 @@ include 'config.php';
 <head>
 
 
-<link rel=" icon" href="images/logo.png">
-<!-- CSS FOR SIDE BAR and NAVBAR -->
+  <link rel=" icon" href="images/logo.png">
+  <!-- CSS FOR SIDE BAR and NAVBAR -->
 
-<link rel=" stylesheet" type="text/css" href="css/design.css">
-<link rel="stylesheet" type="text/css" href="css/w3.css">
+  <link rel=" stylesheet" type="text/css" href="css/design.css">
+  <link rel="stylesheet" type="text/css" href="css/w3.css">
 
-<!-- CSS SEARCHBAR -->
-<link rel="stylesheet" href="css/searchbar.css">
-<link rel="stylesheet" href="css/search.css">
-
-
-<!-- SCRIPT FOR EXCEL EXPORT-->
-
-<script src="table2excel.js"></script>
+  <!-- CSS SEARCHBAR -->
+  <link rel="stylesheet" href="css/searchbar.css">
+  <link rel="stylesheet" href="css/search.css">
 
 
-<!-- CSS FOR MAIN -->
+  <!-- SCRIPT FOR EXCEL EXPORT-->
 
-<style>
-  body {
-    background-image: url("images/BGpic.jpg");
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    font-family: 'Montserrat', sans-serif;
-
-  }
-
-  .logout {
-    margin-right: 2rem;
-    float: right;
-  }
-
-  a {
-    font-size: 18px;
-    font-weight: 600;
-  }
-
-  button {
-    font-weight: 600;
-    font-size: 18px;
-  }
-
-  .image {
-    margin-top: -2px;
-    margin-left: -35px;
-  }
-
-  li {
-    margin-top: 1.5rem;
-  }
+  <script src="table2excel.js"></script>
 
 
+  <!-- CSS FOR MAIN -->
 
-  button {
-    border-radius: 20px;
-    border: 1px solid #5DB1B9;
-    background-color: #5DB1B9;
-    color: #FFFFFF;
-    font-size: 12px;
-    font-weight: bold;
-    padding: 10px 30px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: transform 80ms ease-in;
+  <style>
+    body {
+      background-image: url("images/BGpic.jpg");
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      font-family: 'Montserrat', sans-serif;
 
-  }
+    }
 
-  button:active {
-    transform: scale(0.95);
-  }
+    .logout {
+      margin-right: 2rem;
+      float: right;
+    }
 
-  button:focus {
-    outline: none;
-  }
+    a {
+      font-size: 18px;
+      font-weight: 600;
+    }
 
-  button.ghost {
-    background-color: transparent;
-    border-color: #FFFFFF;
-  }
+    button {
+      font-weight: 600;
+      font-size: 18px;
+    }
 
-  table-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-      0 10px 10px rgba(0, 0, 0, 0.22);
-    position: relative;
-    margin-left: auto;
-  }
+    .image {
+      margin-top: -2px;
+      margin-left: -35px;
+    }
 
-  h1 {
-    font-family: 'Montserrat', sans-serif;
-    text-align: center;
-    font-weight: 700;
-    margin-top: 10px;
-
-  }
-
-  .title-container {
-
-
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
-      0 5px 5px rgba(0, 0, 0, 0.22);
-    position: relative;
-    overflow: hidden;
-    width: 15rem;
-    height: auto;
-
-  }
+    li {
+      margin-top: 1.5rem;
+    }
 
 
 
+    button {
+      border-radius: 20px;
+      border: 1px solid #5DB1B9;
+      background-color: #5DB1B9;
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 10px 30px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: transform 80ms ease-in;
 
-  a {
-    color: white;
-  }
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    button.ghost {
+      background-color: transparent;
+      border-color: #FFFFFF;
+    }
+
+    table-container {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      margin-left: auto;
+    }
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 10px;
+
+    }
+
+    .title-container {
+
+
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.20),
+        0 5px 5px rgba(0, 0, 0, 0.22);
+      position: relative;
+      overflow: hidden;
+      width: 15rem;
+      height: auto;
+
+    }
+
+
+    td:empty {
+      display: none;
+    }
+
+    a {
+      color: white;
+    }
 
 
 
-  th,
-  td {
-    padding: 8px;
-    text-align: center;
-    border-bottom: 1px solid #DDD;
-  }
+    th,
+    td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #DDD;
+    }
 
-  tr:hover {
-    background-color: #D6EEEE;
-  }
-</style>
+    tr:hover {
+      background-color: #D6EEEE;
+    }
+  </style>
 
-<!-- CSS MAIN ENDS -->
+  <!-- CSS MAIN ENDS -->
 
 <body>
 
@@ -270,11 +275,12 @@ include 'config.php';
           $sel = "SELECT * FROM `fr_registered-users` ";
           $query = $conn->query($sel);
 
+
           $num = mysqli_num_rows($query);
           if ($num > 0) {
             while ($result = $query->fetch_assoc()) {
-
-              echo "
+              if ($result['ru_firstname'])
+                echo "
           <tr>
 
           <td>" . $result['ru_studentid'] . " </td>
@@ -285,7 +291,7 @@ include 'config.php';
          
         
           <td>
-          <a href='drop_users.php?id=".$result['id']."' class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
+          <a href='drop_users.php?id=" . $result['id'] . "' class='w3button w3-gray w3-text-white w3-hover-cyan' > Drop </a> 
           </td>
           </tr> 
           
