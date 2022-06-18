@@ -28,7 +28,7 @@ for ($i = 0; $i < $count; $i++) {
             if ($delete_pending) {
                 echo ("<script LANGUAGE='JavaScript'>
                 window.alert('Successfully registered the user!');
-                window.location.href='Register.php';
+                window.location.href='reg_qr_users.php';
                 </script>");
             }
         }
