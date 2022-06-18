@@ -29,12 +29,18 @@ $row = mysqli_fetch_array($sql);
 if ($row["total"] > 0) {
 	session_start();
 	$_SESSION['username'] = $username;
-	echo  ("<script LANGUAGE='JavaScript'>
-	window.alert('Welcome back, Admin!');
-	window.location.href='Dashboard.php';
-	</script>");
-	
-	exit();
+	if ($_SESSION['username'] == 'admin') {
+		echo ("<script LANGUAGE='JavaScript'>
+		window.alert('Welcome back, Admin.');
+		window.location.href='Dashboard.php';
+		</script>");
+	}
+	else if ($_SESSION['username'] == 'guard') {
+		echo ("<script LANGUAGE='JavaScript'>
+		window.alert('Welcome back, Guard.');
+		window.location.href='guard/guard_dashboard.php';
+		</script>");
+	}
 } else {
 	header("Location: index.php?error=" . $invalidcredentials_err . "&username=" . $username);
 	exit();

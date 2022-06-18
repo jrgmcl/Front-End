@@ -27,7 +27,7 @@ if ($destination) {
     $delete_pending = mysqli_query($conn, "DELETE FROM `qr_pending-users` WHERE `count` = $pending_id");
     if ($delete_pending) {
         echo ("<script LANGUAGE='JavaScript'>
-        window.alert('Successfully registered the user!');
+        window.alert('Successfully registered the user.');
         window.location.href='reg_qr_users.php';
         </script>");
     }

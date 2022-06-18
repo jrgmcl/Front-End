@@ -13,7 +13,7 @@ if (isset($_GET['count'])) {
     if ($delete) {
 
         echo ("<script LANGUAGE='JavaScript'>
-    window.alert('Successfully rejected the user!');
+    window.alert('Successfully rejected the user');
     window.location.href='reg_qr_users.php';
     </script>");
     }
