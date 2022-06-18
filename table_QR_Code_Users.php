@@ -216,7 +216,14 @@ $query = $conn->query($select);
                 $num = mysqli_num_rows($query);
                 if ($num > 0) {
                     while ($result = $query->fetch_assoc()) {
-
+                        
+                        if ($result['time_in']) {
+                            $timein = date('Y-m-d H:i:s', strtotime($result['time_in']));
+                        }
+                        if ($result['time_out']) {
+                            $timeout = date('Y-m-d H:i:s', strtotime($result['time_out']));
+                        }
+                        
                         echo "
           <tr>
 
@@ -228,8 +235,8 @@ $query = $conn->query($select);
           <td>" . $result['qr_course'] . " </td>
           <td>" . $result['qr_pin'] . " </td>
 
-          <td> " . $result['time_in'] . "</td>
-          <td> " . $result['time_out'] . "</td>
+          <td> " . $timein . "</td>
+          <td> " . $timeout . "</td>
           
           </tr> 
           
