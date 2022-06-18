@@ -20,7 +20,7 @@ include '../config.php';
 
 <body class="body">
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/design.css">
+
     <link rel="stylesheet" type="text/css" href="css/w3.css">
     <script src="js/jquery.slim.min.js"></script>
     <script src="js/popper.min.js"></script>

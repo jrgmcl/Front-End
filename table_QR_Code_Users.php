@@ -22,7 +22,7 @@ $query = $conn->query($select);
 
 <link rel=" icon" href="images/logo.png">
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel=" stylesheet" type="text/css" href="css/design.css">
+
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 
@@ -216,18 +216,17 @@ $query = $conn->query($select);
                 $num = mysqli_num_rows($query);
                 if ($num > 0) {
                     while ($result = $query->fetch_assoc()) {
-                        
+
                         if ($result['time_in']) {
                             $timein = date('Y-m-d H:i:s', strtotime($result['time_in']));
                         }
                         if ($result['time_out']) {
                             $timeout = date('Y-m-d H:i:s', strtotime($result['time_out']));
-                        }
-                        elseif ($result['time_out'] == NULL){
+                        } elseif ($result['time_out'] == NULL) {
                             $timeout = " ";
                         }
-                        
-                        
+
+
                         echo "
           <tr>
 

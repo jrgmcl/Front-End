@@ -243,7 +243,7 @@ $query = $conn->query($sel);
 
                         <th>First Name</th>
                         <th>Last Name </th>
-                        <th>Number</th>
+                        <th>Mobile No.</th>
                         <th>Purpose</th>
 
 

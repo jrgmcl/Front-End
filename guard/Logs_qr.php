@@ -24,7 +24,7 @@ $query = $conn->query($sel);
 </head>
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel=" stylesheet" type="text/css" href="css/design.css">
+
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->

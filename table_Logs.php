@@ -19,7 +19,7 @@ $query = $conn->query($sel);
 
     <link rel=" icon" href="images/logo.png">
     <!-- CSS FOR SIDE BAR and NAVBAR -->
-    <link rel=" stylesheet" type="text/css" href="css/design.css">
+
     <link rel="stylesheet" type="text/css" href="css/w3.css">
     <!-- CSS SEARCHBAR -->
     <link rel="stylesheet" href="css/searchbar.css">
@@ -185,6 +185,7 @@ $query = $conn->query($sel);
                             <th>Last Name</th>
                             <th>ID No.</th>
                             <th>Department</th>
+                            <th>Temp</th>
                             <th>Time in </th>
                             <th>Time out </th>
 
@@ -217,17 +218,16 @@ $query = $conn->query($sel);
                         $num = mysqli_num_rows($query);
                         if ($num > 0) {
                             while ($result = $query->fetch_assoc()) {
-                                
+
                                 if ($result['time_in']) {
                                     $timein = date('Y-m-d H:i:s', strtotime($result['time_in']));
                                 }
                                 if ($result['time_out']) {
                                     $timeout = date('Y-m-d H:i:s', strtotime($result['time_out']));
-                                }
-                                elseif ($result['time_out'] == NULL){
+                                } elseif ($result['time_out'] == NULL) {
                                     $timeout = " ";
                                 }
-                                
+
                                 echo "
           <tr>
           <td>" . $result['count'] . " </td>
@@ -235,6 +235,7 @@ $query = $conn->query($sel);
           <td>" . $result['ru_lastname'] . " </td>
           <td>" . $result['ru_studentid'] . " </td>
           <td>" . $result['ru_course'] . " </td>
+          <td>" . $result['ru_temp'] . " </td>
           <td> " . $timein . "</td>
           <td> " . $timeout . "</td>
           

@@ -14,7 +14,7 @@ $query = $conn->query($sel);
 </head>
 
 <!-- CSS FOR SIDE BAR and NAVBAR -->
-<link rel=" stylesheet" type="text/css" href="css/design.css">
+
 <link rel="stylesheet" type="text/css" href="css/w3.css">
 
 <!-- CSS SEARCHBAR -->
@@ -224,11 +224,10 @@ $query = $conn->query($sel);
                             }
                             if ($result['time_out']) {
                                 $timeout = date('Y-m-d H:i:s', strtotime($result['time_out']));
-                            }
-                            elseif ($result['time_out'] == NULL){
+                            } elseif ($result['time_out'] == NULL) {
                                 $timeout = " ";
                             }
-                            
+
                             echo "
           <tr>
           <td>" . $result['id'] . " </td>
